@@ -79,15 +79,18 @@
 
 
 
+<meta name="description" content="题目描述输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。 思路分析：其实本题和链表逆序很类似，链表逆序要求改变链表，采用头插法。此题逆序打印链表，一般理解为不改变链表结构，因此采用栈的结构。 1234567891011121314151617181920212223242526272829/***  struct ListNode &amp;#123;*        int val;*">
 <meta name="keywords" content="剑指offer,链表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[剑指offer]-从尾到头打印链表">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/06/17/剑指offer-从尾到头打印链表/index.html">
 <meta property="og:site_name" content="yue">
+<meta property="og:description" content="题目描述输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。 思路分析：其实本题和链表逆序很类似，链表逆序要求改变链表，采用头插法。此题逆序打印链表，一般理解为不改变链表结构，因此采用栈的结构。 1234567891011121314151617181920212223242526272829/***  struct ListNode &amp;#123;*        int val;*">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-17T05:53:41.067Z">
+<meta property="og:updated_time" content="2019-06-17T08:28:59.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[剑指offer]-从尾到头打印链表">
+<meta name="twitter:description" content="题目描述输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。 思路分析：其实本题和链表逆序很类似，链表逆序要求改变链表，采用头插法。此题逆序打印链表，一般理解为不改变链表结构，因此采用栈的结构。 1234567891011121314151617181920212223242526272829/***  struct ListNode &amp;#123;*        int val;*">
 
 
 
@@ -396,7 +399,11 @@
       
 
       
-        
+        <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。</p>
+<h3 id="思路分析："><a href="#思路分析：" class="headerlink" title="思路分析："></a>思路分析：</h3><p>其实本题和链表逆序很类似，链表逆序要求改变链表，采用头插法。此题逆序打印链表，一般理解为不改变链表结构，因此采用栈的结构。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*  struct ListNode &#123;</span></span><br><span class="line"><span class="comment">*        int val;</span></span><br><span class="line"><span class="comment">*        struct ListNode *next;</span></span><br><span class="line"><span class="comment">*        ListNode(int x) :</span></span><br><span class="line"><span class="comment">*              val(x), next(NULL) &#123;</span></span><br><span class="line"><span class="comment">*        &#125;</span></span><br><span class="line"><span class="comment">*  &#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; printListFromTailToHead(ListNode* head) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">stack</span>&lt;ListNode*&gt; nodes;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; mVector;</span><br><span class="line">        ListNode* pNodes = head;</span><br><span class="line">        <span class="keyword">while</span>(pNodes != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            nodes.push(pNodes);</span><br><span class="line">            pNodes = pNodes-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!nodes.empty())&#123;</span><br><span class="line">            pNodes = nodes.top();</span><br><span class="line">            mVector.push_back(pNodes-&gt;val);</span><br><span class="line">            nodes.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mVector;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -541,8 +548,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -622,6 +638,22 @@ var jiathis_config={
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路分析："><span class="nav-number">2.</span> <span class="nav-text">思路分析：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

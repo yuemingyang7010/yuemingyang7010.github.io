@@ -15,7 +15,7 @@
   <entry>
     <title><![CDATA[[剑指offer]-复杂链表的复制]]></title>
     <url>%2F2019%2F06%2F17%2F%E5%89%91%E6%8C%87offer-%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[题目描述输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针指向任意一个节点），返回结果为复制后复杂链表的head。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）思路：(在不借助辅助空间的情况下，实现O(n)的时间效率)分为三步走：]]></content>
       <categories>
         <category>剑指offer</category>
       </categories>
@@ -51,7 +51,7 @@
   <entry>
     <title><![CDATA[[剑指offer]-从尾到头打印链表]]></title>
     <url>%2F2019%2F06%2F17%2F%E5%89%91%E6%8C%87offer-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[题目描述输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。 思路分析：其实本题和链表逆序很类似，链表逆序要求改变链表，采用头插法。此题逆序打印链表，一般理解为不改变链表结构，因此采用栈的结构。 1234567891011121314151617181920212223242526272829/*** struct ListNode &#123;* int val;* struct ListNode *next;* ListNode(int x) :* val(x), next(NULL) &#123;* &#125;* &#125;;*/#include &lt;stack&gt;#include &lt;vector&gt;class Solution &#123;public: vector&lt;int&gt; printListFromTailToHead(ListNode* head) &#123; std::stack&lt;ListNode*&gt; nodes; vector&lt;int&gt; mVector; ListNode* pNodes = head; while(pNodes != NULL)&#123; nodes.push(pNodes); pNodes = pNodes-&gt;next; &#125; while(!nodes.empty())&#123; pNodes = nodes.top(); mVector.push_back(pNodes-&gt;val); nodes.pop(); &#125; return mVector; &#125;&#125;;]]></content>
       <categories>
         <category>剑指offer</category>
       </categories>
