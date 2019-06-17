@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="题目：圆圈中最后剩下的数 题目：0，1，n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。 思路：用约瑟夫环的思想例如，0、1、2、3、4这5个数字组成一个圆圈（如图6.3所示），从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。  可以用模板库中的std:list来模拟一个环形链表。由于st">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/blog/source/img/006.png">
-<meta property="og:updated_time" content="2019-06-17T12:40:24.272Z">
+<meta property="og:image" content="http://yuemingyang7010.github.io/blog/source/img/006-1560776577830.png">
+<meta property="og:updated_time" content="2019-06-17T13:03:29.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[剑指offer]-圆圈中最后剩下的数">
 <meta name="twitter:description" content="题目：圆圈中最后剩下的数 题目：0，1，n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。 思路：用约瑟夫环的思想例如，0、1、2、3、4这5个数字组成一个圆圈（如图6.3所示），从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。  可以用模板库中的std:list来模拟一个环形链表。由于st">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/blog/source/img/006.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/blog/source/img/006-1560776577830.png">
 
 
 
@@ -404,8 +404,10 @@
         <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>圆圈中最后剩下的数</p>
 <p>题目：0，1，n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。</p>
 <h3 id="思路：用约瑟夫环的思想"><a href="#思路：用约瑟夫环的思想" class="headerlink" title="思路：用约瑟夫环的思想"></a><strong>思路：用约瑟夫环的思想</strong></h3><p>例如，0、1、2、3、4这5个数字组成一个圆圈（如图6.3所示），从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。</p>
-<p><img src="/.io//../../blog/source/img/006.png" alt="img"></p>
+<p><img src="/.io//../../blog/source/img/006-1560776577830.png" alt></p>
 <p>可以用模板库中的std:list来模拟一个环形链表。由于std:：list本身并不是一个环形结构，因此每当迭代器（Iterator）扫描到链表末尾的时候，我们要记得把迭代器移到链表的头部。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">LastRemaining_Solution</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (n &lt; <span class="number">1</span> || m &lt; <span class="number">1</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">		<span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt; mlist;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">			mlist.push_back(i);</span><br><span class="line">		<span class="keyword">long</span> count = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">auto</span> it = mlist.begin();</span><br><span class="line">		<span class="keyword">int</span> k = m - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (mlist.size() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">while</span> (k--) &#123;</span><br><span class="line">				it++;</span><br><span class="line">				<span class="keyword">if</span> (it == mlist.end())</span><br><span class="line">					it = mlist.begin();</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">			it = mlist.erase(it);</span><br><span class="line">			<span class="keyword">if</span> (it == mlist.end())</span><br><span class="line">				it = mlist.begin();</span><br><span class="line">			k = m - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> mlist.front();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -462,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/17/剑指offer-复杂链表的复制/" rel="next" title="[剑指offer]-复杂链表的复制">
-                <i class="fa fa-chevron-left"></i> [剑指offer]-复杂链表的复制
+              <a href="/2019/06/17/剑指offer-合并两个排序的链表/" rel="next" title="[剑指offer]-合并两个排序的链表">
+                <i class="fa fa-chevron-left"></i> [剑指offer]-合并两个排序的链表
               </a>
             
           </div>
@@ -471,6 +473,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/17/剑指offer-复杂链表的复制/" rel="prev" title="[剑指offer]-复杂链表的复制">
+                [剑指offer]-复杂链表的复制 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
