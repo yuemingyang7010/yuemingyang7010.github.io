@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="题目描述输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。  123456789101112131415161718192021222324252627282930313233343536373839/*struct ListNode &amp;#123;	int val;	struct ListNode *next;	ListNode(int x) :			va">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/blog/source/img/005-1560775012191.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/blog/source/img/005-1560775012191.png">
 <meta property="og:updated_time" content="2019-06-17T12:37:31.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[剑指offer]-合并两个排序的链表">
 <meta name="twitter:description" content="题目描述输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。  123456789101112131415161718192021222324252627282930313233343536373839/*struct ListNode &amp;#123;	int val;	struct ListNode *next;	ListNode(int x) :			va">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/blog/source/img/005-1560775012191.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/blog/source/img/005-1560775012191.png">
 
 
 
@@ -402,7 +402,7 @@
 
       
         <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。</p>
-<p><img src="../../../blog/source/img/005-1560775012191.png" alt></p>
+<p><img src="/.io//../../blog/source/img/005-1560775012191.png" alt></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct ListNode &#123;</span></span><br><span class="line"><span class="comment">	int val;</span></span><br><span class="line"><span class="comment">	struct ListNode *next;</span></span><br><span class="line"><span class="comment">	ListNode(int x) :</span></span><br><span class="line"><span class="comment">			val(x), next(NULL) &#123;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;;*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">Merge</span><span class="params">(ListNode* pHead1, ListNode* pHead2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pHead1 ==<span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> pHead2;</span><br><span class="line">        <span class="keyword">if</span>(pHead2 == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> pHead1;</span><br><span class="line">        ListNode* pre_head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode* pTemp = pre_head;</span><br><span class="line">        <span class="keyword">while</span>(pHead1 !=<span class="literal">NULL</span> &amp;&amp; pHead2 != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(pHead1-&gt;val &lt; pHead2-&gt;val)&#123;</span><br><span class="line">                pTemp-&gt;next = pHead1;</span><br><span class="line">                pHead1 = pHead1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                pTemp-&gt;next = pHead2;</span><br><span class="line">                pHead2 = pHead2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            pTemp = pTemp-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将比较后某一个原始链表剩余部分直接插到新的链表后方</span></span><br><span class="line">        <span class="keyword">if</span>(pHead1)</span><br><span class="line">            pTemp-&gt;next = pHead1;</span><br><span class="line">        <span class="keyword">if</span>(pHead2)</span><br><span class="line">            pTemp-&gt;next = pHead2;</span><br><span class="line">        ListNode* ans = pre_head-&gt;next;</span><br><span class="line">        <span class="keyword">delete</span> pre_head;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
@@ -491,32 +491,6 @@
 
 
     <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-<span class="jiathis_txt">分享到：</span>
-<a class="jiathis_button_fav">收藏夹</a>
-<a class="jiathis_button_copy">复制网址</a>
-<a class="jiathis_button_email">邮件</a>
-<a class="jiathis_button_weixin">微信</a>
-<a class="jiathis_button_qzone">QQ空间</a>
-<a class="jiathis_button_tqq">腾讯微博</a>
-<a class="jiathis_button_douban">豆瓣</a>
-<a class="jiathis_button_share">一键分享</a>
-
-<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-<a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript">
-var jiathis_config={
-  data_track_clickback:true,
-  summary:"",
-  shortUrl:false,
-  hideMore:false
-}
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
-<!-- JiaThis Button END -->
       
     </div>
   </div>
