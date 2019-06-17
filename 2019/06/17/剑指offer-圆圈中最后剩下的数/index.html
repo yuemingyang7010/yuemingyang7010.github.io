@@ -79,15 +79,20 @@
 
 
 
+<meta name="description" content="题目：圆圈中最后剩下的数 题目：0，1，n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。 思路：用约瑟夫环的思想例如，0、1、2、3、4这5个数字组成一个圆圈（如图6.3所示），从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。  可以用模板库中的std:list来模拟一个环形链表。由于st">
 <meta name="keywords" content="剑指offer,链表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[剑指offer]-圆圈中最后剩下的数">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/06/17/剑指offer-圆圈中最后剩下的数/index.html">
 <meta property="og:site_name" content="yue">
+<meta property="og:description" content="题目：圆圈中最后剩下的数 题目：0，1，n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。 思路：用约瑟夫环的思想例如，0、1、2、3、4这5个数字组成一个圆圈（如图6.3所示），从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。  可以用模板库中的std:list来模拟一个环形链表。由于st">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-17T05:54:28.799Z">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/blog/source/img/006.png">
+<meta property="og:updated_time" content="2019-06-17T12:40:24.272Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[剑指offer]-圆圈中最后剩下的数">
+<meta name="twitter:description" content="题目：圆圈中最后剩下的数 题目：0，1，n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。 思路：用约瑟夫环的思想例如，0、1、2、3、4这5个数字组成一个圆圈（如图6.3所示），从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。  可以用模板库中的std:list来模拟一个环形链表。由于st">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/blog/source/img/006.png">
 
 
 
@@ -396,7 +401,12 @@
       
 
       
-        
+        <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>圆圈中最后剩下的数</p>
+<p>题目：0，1，n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。</p>
+<h3 id="思路：用约瑟夫环的思想"><a href="#思路：用约瑟夫环的思想" class="headerlink" title="思路：用约瑟夫环的思想"></a><strong>思路：用约瑟夫环的思想</strong></h3><p>例如，0、1、2、3、4这5个数字组成一个圆圈（如图6.3所示），从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。</p>
+<p><img src="../../../blog/source/img/006.png" alt="img"></p>
+<p>可以用模板库中的std:list来模拟一个环形链表。由于std:：list本身并不是一个环形结构，因此每当迭代器（Iterator）扫描到链表末尾的时候，我们要记得把迭代器移到链表的头部。</p>
+
       
     </div>
     
@@ -541,8 +551,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -623,6 +642,22 @@ var jiathis_config={
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目："><span class="nav-number">1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路：用约瑟夫环的思想"><span class="nav-number">2.</span> <span class="nav-text">思路：用约瑟夫环的思想</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -661,7 +696,8 @@ var jiathis_config={
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
   
     <span class="site-uv">

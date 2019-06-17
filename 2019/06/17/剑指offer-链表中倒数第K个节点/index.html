@@ -79,15 +79,18 @@
 
 
 
+<meta name="description" content="题目：输入一个链表，输出该链表中倒数第k个结点。 思路：快慢指针 123456789101112131415161718192021222324252627/*struct ListNode &amp;#123;	int val;	struct ListNode *next;	ListNode(int x) :			val(x), next(NULL) &amp;#123;	&amp;#125;&amp;#125;;*/clas">
 <meta name="keywords" content="剑指offer,链表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[剑指offer]-链表中倒数第K个节点">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/06/17/剑指offer-链表中倒数第K个节点/index.html">
 <meta property="og:site_name" content="yue">
+<meta property="og:description" content="题目：输入一个链表，输出该链表中倒数第k个结点。 思路：快慢指针 123456789101112131415161718192021222324252627/*struct ListNode &amp;#123;	int val;	struct ListNode *next;	ListNode(int x) :			val(x), next(NULL) &amp;#123;	&amp;#125;&amp;#125;;*/clas">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-17T05:54:23.600Z">
+<meta property="og:updated_time" content="2019-06-17T12:38:56.345Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[剑指offer]-链表中倒数第K个节点">
+<meta name="twitter:description" content="题目：输入一个链表，输出该链表中倒数第k个结点。 思路：快慢指针 123456789101112131415161718192021222324252627/*struct ListNode &amp;#123;	int val;	struct ListNode *next;	ListNode(int x) :			val(x), next(NULL) &amp;#123;	&amp;#125;&amp;#125;;*/clas">
 
 
 
@@ -396,7 +399,11 @@
       
 
       
-        
+        <p>题目：输入一个链表，输出该链表中倒数第k个结点。</p>
+<p>思路：快慢指针</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct ListNode &#123;</span></span><br><span class="line"><span class="comment">	int val;</span></span><br><span class="line"><span class="comment">	struct ListNode *next;</span></span><br><span class="line"><span class="comment">	ListNode(int x) :</span></span><br><span class="line"><span class="comment">			val(x), next(NULL) &#123;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;;*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">FindKthToTail</span><span class="params">(ListNode* pListHead, <span class="keyword">unsigned</span> <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        ListNode* fast = pListHead;</span><br><span class="line">        ListNode* low = pListHead;</span><br><span class="line">        <span class="keyword">while</span>(k &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(fast == <span class="literal">NULL</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">NULL</span>;   <span class="comment">//防止越界错误！！！要加</span></span><br><span class="line">            &#125;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">            k--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">            low = low-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -665,7 +672,8 @@ var jiathis_config={
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
   
     <span class="site-uv">
