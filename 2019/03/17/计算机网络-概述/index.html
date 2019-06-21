@@ -87,10 +87,21 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="网络的网络网络把主机连接起来，而互联网是把多种不同的网络连接起来，因此互联网是网络的网络。   ISP互联网服务提供商 ISP 可以从互联网管理机构获得许多 IP 地址，同时拥有通信线路以及路由器等联网设备，个人或机构向 ISP 缴纳一定的费用就可以接入互联网。   目前的互联网是一种多层次 ISP 结构，ISP 根据覆盖面积的大小分为第一层 ISP、区域 ISP 和接入 ISP。互联网交换点 I">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-21T02:55:42.246Z">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/001.gif">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/002.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/003.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/004.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/005.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/006.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/007.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/008.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/009.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/010.png">
+<meta property="og:updated_time" content="2019-06-21T03:00:59.752Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络-概述">
 <meta name="twitter:description" content="网络的网络网络把主机连接起来，而互联网是把多种不同的网络连接起来，因此互联网是网络的网络。   ISP互联网服务提供商 ISP 可以从互联网管理机构获得许多 IP 地址，同时拥有通信线路以及路由器等联网设备，个人或机构向 ISP 缴纳一定的费用就可以接入互联网。   目前的互联网是一种多层次 ISP 结构，ISP 根据覆盖面积的大小分为第一层 ISP、区域 ISP 和接入 ISP。互联网交换点 I">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/001.gif">
 
 
 
@@ -400,42 +411,42 @@
 
       
         <h1 id="网络的网络"><a href="#网络的网络" class="headerlink" title="网络的网络"></a>网络的网络</h1><p>网络把主机连接起来，而互联网是把多种不同的网络连接起来，因此互联网是网络的网络。</p>
-
+<img src="/2019/03/17/计算机网络-概述/001.gif">
 
 <h1 id="ISP"><a href="#ISP" class="headerlink" title="ISP"></a>ISP</h1><p>互联网服务提供商 ISP 可以从互联网管理机构获得许多 IP 地址，同时拥有通信线路以及路由器等联网设备，个人或机构向 ISP 缴纳一定的费用就可以接入互联网。</p>
-
+<img src="/2019/03/17/计算机网络-概述/002.png">
 
 <p>目前的互联网是一种多层次 ISP 结构，ISP 根据覆盖面积的大小分为第一层 ISP、区域 ISP 和接入 ISP。互联网交换点 IXP 允许两个 ISP 直接相连而不用经过第三个 ISP。</p>
-
+<img src="/2019/03/17/计算机网络-概述/003.png">
 
 <h1 id="主机之间的通信方式"><a href="#主机之间的通信方式" class="headerlink" title="主机之间的通信方式"></a>主机之间的通信方式</h1><ul>
 <li>客户-服务器（C/S）：客户是服务的请求方，服务器是服务的提供方。</li>
 </ul>
-
+<img src="/2019/03/17/计算机网络-概述/004.jpg">
 
 <ul>
 <li>对等（P2P）：不区分客户和服务器。</li>
 </ul>
-
+<img src="/2019/03/17/计算机网络-概述/005.jpg">
 
 <h1 id="电路交换与分组交换"><a href="#电路交换与分组交换" class="headerlink" title="电路交换与分组交换"></a>电路交换与分组交换</h1><h2 id="1-电路交换"><a href="#1-电路交换" class="headerlink" title="1. 电路交换"></a>1. 电路交换</h2><p>电路交换用于电话通信系统，两个用户要通信之前需要建立一条专用的物理链路，并且在整个通信过程中始终占用该链路。由于通信的过程中不可能一直在使用传输线路，因此电路交换对线路的利用率很低，往往不到 10%。</p>
 <h2 id="2-分组交换"><a href="#2-分组交换" class="headerlink" title="2. 分组交换"></a>2. 分组交换</h2><p>每个分组都有首部和尾部，包含了源地址和目的地址等控制信息，在同一个传输线路上同时传输多个分组互相不会影响，因此在同一条传输线路上允许同时传输多个分组，也就是说分组交换不需要占用传输线路。</p>
 <p>在一个邮局通信系统中，邮局收到一份邮件之后，先存储下来，然后把相同目的地的邮件一起转发到下一个目的地，这个过程就是存储转发过程，分组交换也使用了存储转发过程。</p>
 <h1 id="时延"><a href="#时延" class="headerlink" title="时延"></a>时延</h1><p>总时延 = 排队时延 + 处理时延 + 传输时延 + 传播时延</p>
-
+<img src="/2019/03/17/计算机网络-概述/006.jpg">
 
 <h2 id="1-排队时延"><a href="#1-排队时延" class="headerlink" title="1. 排队时延"></a>1. 排队时延</h2><p>分组在路由器的输入队列和输出队列中排队等待的时间，取决于网络当前的通信量。</p>
 <h2 id="2-处理时延"><a href="#2-处理时延" class="headerlink" title="2. 处理时延"></a>2. 处理时延</h2><p>主机或路由器收到分组时进行处理所需要的时间，例如分析首部、从分组中提取数据、进行差错检验或查找适当的路由等。</p>
 <h2 id="3-传输时延"><a href="#3-传输时延" class="headerlink" title="3. 传输时延"></a>3. 传输时延</h2><p>主机或路由器传输数据帧所需要的时间。</p>
-
+<img src="/2019/03/17/计算机网络-概述/007.png">
 
 
 <p>其中 l 表示数据帧的长度，v 表示传输速率。</p>
 <h2 id="4-传播时延"><a href="#4-传播时延" class="headerlink" title="4. 传播时延"></a>4. 传播时延</h2><p>电磁波在信道中传播所需要花费的时间，电磁波传播的速度接近光速。</p>
-
+<img src="/2019/03/17/计算机网络-概述/008.png">
 
 <p>其中 l 表示信道长度，v 表示电磁波在信道上的传播速度。</p>
-<h1 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h1>
+<h1 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h1><img src="/2019/03/17/计算机网络-概述/009.png">
 
 <h2 id="1-五层协议"><a href="#1-五层协议" class="headerlink" title="1. 五层协议"></a>1. 五层协议</h2><ul>
 <li><p><strong>应用层</strong> ：为特定应用程序提供数据传输服务，例如 HTTP、DNS 等协议。数据单位为报文。</p>
@@ -459,7 +470,7 @@
 <p>五层协议没有表示层和会话层，而是将这些功能留给应用程序开发者处理。</p>
 <h2 id="3-TCP-IP"><a href="#3-TCP-IP" class="headerlink" title="3. TCP/IP"></a>3. TCP/IP</h2><p>它只有四层，相当于五层协议中数据链路层和物理层合并为网络接口层。</p>
 <p>TCP/IP 体系结构不严格遵循 OSI 分层概念，应用层可能会直接使用 IP 层或者网络接口层。</p>
-
+<img src="/2019/03/17/计算机网络-概述/010.png">
 
 <h2 id="4-数据在各层之间的传递过程"><a href="#4-数据在各层之间的传递过程" class="headerlink" title="4. 数据在各层之间的传递过程"></a>4. 数据在各层之间的传递过程</h2><p>在向下的过程中，需要添加下层协议所需要的首部或者尾部，而在向上的过程中不断拆开首部和尾部。</p>
 <p>路由器只有下面三层协议，因为路由器位于网络核心中，不需要为进程或者应用程序提供服务，因此也就不需要传输层和应用层。</p>
