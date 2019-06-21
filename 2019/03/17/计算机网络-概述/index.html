@@ -92,11 +92,12 @@
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/003.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/004.jpg">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/005.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/006.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/007.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/008.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/01.png">
-<meta property="og:updated_time" content="2019-06-21T09:41:57.590Z">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/04.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-概述/05.png">
+<meta property="og:updated_time" content="2019-06-21T10:27:45.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络-概述">
 <meta name="twitter:description" content="网络的网络网络把主机连接起来，而互联网是把多种不同的网络连接起来，因此互联网是网络的网络。   ISP互联网服务提供商 ISP 可以从互联网管理机构获得许多 IP 地址，同时拥有通信线路以及路由器等联网设备，个人或机构向 ISP 缴纳一定的费用就可以接入互联网。   目前的互联网是一种多层次 ISP 结构，ISP 根据覆盖面积的大小分为第一层 ISP、区域 ISP 和接入 ISP。互联网交换点 I">
@@ -439,24 +440,9 @@
 </ul>
 <img src="/2019/03/17/计算机网络-概述/005.jpg">
 
-<h1 id="电路交换与分组交换"><a href="#电路交换与分组交换" class="headerlink" title="电路交换与分组交换"></a>电路交换与分组交换</h1><h2 id="1-电路交换"><a href="#1-电路交换" class="headerlink" title="1. 电路交换"></a>1. 电路交换</h2><p>电路交换用于电话通信系统，两个用户要通信之前需要建立一条专用的物理链路，并且在整个通信过程中始终占用该链路。由于通信的过程中不可能一直在使用传输线路，因此电路交换对线路的利用率很低，往往不到 10%。</p>
-<h2 id="2-分组交换"><a href="#2-分组交换" class="headerlink" title="2. 分组交换"></a>2. 分组交换</h2><p>每个分组都有首部和尾部，包含了源地址和目的地址等控制信息，在同一个传输线路上同时传输多个分组互相不会影响，因此在同一条传输线路上允许同时传输多个分组，也就是说分组交换不需要占用传输线路。</p>
-<p>在一个邮局通信系统中，邮局收到一份邮件之后，先存储下来，然后把相同目的地的邮件一起转发到下一个目的地，这个过程就是存储转发过程，分组交换也使用了存储转发过程。</p>
-<h1 id="时延"><a href="#时延" class="headerlink" title="时延"></a>时延</h1><p>总时延 = 排队时延 + 处理时延 + 传输时延 + 传播时延</p>
-<img src="/2019/03/17/计算机网络-概述/006.jpg">
-
-<h2 id="1-排队时延"><a href="#1-排队时延" class="headerlink" title="1. 排队时延"></a>1. 排队时延</h2><p>分组在路由器的输入队列和输出队列中排队等待的时间，取决于网络当前的通信量。</p>
-<h2 id="2-处理时延"><a href="#2-处理时延" class="headerlink" title="2. 处理时延"></a>2. 处理时延</h2><p>主机或路由器收到分组时进行处理所需要的时间，例如分析首部、从分组中提取数据、进行差错检验或查找适当的路由等。</p>
-<h2 id="3-传输时延"><a href="#3-传输时延" class="headerlink" title="3. 传输时延"></a>3. 传输时延</h2><p>主机或路由器传输数据帧所需要的时间。</p>
-<img src="/2019/03/17/计算机网络-概述/007.png">
 
 
-<p>其中 l 表示数据帧的长度，v 表示传输速率。</p>
-<h2 id="4-传播时延"><a href="#4-传播时延" class="headerlink" title="4. 传播时延"></a>4. 传播时延</h2><p>电磁波在信道中传播所需要花费的时间，电磁波传播的速度接近光速。</p>
-<img src="/2019/03/17/计算机网络-概述/008.png">
-
-<p>其中 l 表示信道长度，v 表示电磁波在信道上的传播速度。</p>
-<h1 id="讲一下OSI七层参考模型与TCP-IP四层模型，以及各层的代表协议"><a href="#讲一下OSI七层参考模型与TCP-IP四层模型，以及各层的代表协议" class="headerlink" title="讲一下OSI七层参考模型与TCP/IP四层模型，以及各层的代表协议"></a><strong>讲一下OSI七层参考模型与TCP/IP四层模型，以及各层的代表协议</strong></h1><img src="/2019/03/17/计算机网络-概述/01.png">
+<h1 id="网络参考模型"><a href="#网络参考模型" class="headerlink" title="==网络参考模型=="></a>==<strong>网络参考模型</strong>==</h1><img src="/2019/03/17/计算机网络-概述/01.png">
 
 <ul>
 <li><p>注意：TCP/IP 协议实际用的是4层，5层和7层一般用来教学。</p>
@@ -472,6 +458,27 @@
 <p><strong>表示层 ：</strong>表示层对上层数据或信息进行变换以保证一个主机应用层信息可以被另一个主机的应用程序理解。表示层的数据转换包括数据的加密、压缩、格式转换等。 </p>
 <p><strong>应用层 ：</strong>为操作系统或网络应用程序提供访问网络服务的接口。 </p>
 <p>会话层、表示层和应用层重点： <strong>数据传输基本单位为报文；包含的主要协议：FTP（文件传送协议）、Telnet（远程登录协议）、DNS（域名解析协议）、SMTP（邮件传送协议），POP3协议（邮局协议），HTTP协议（Hyper Text Transfer Protocol）。</strong></p>
+<h3 id="数据封装："><a href="#数据封装：" class="headerlink" title="数据封装："></a>数据封装：</h3><img src="/2019/03/17/计算机网络-概述/02.png">
+
+<h1 id="计算机网络性能参数"><a href="#计算机网络性能参数" class="headerlink" title="计算机网络性能参数"></a><strong>计算机网络性能参数</strong></h1><p>【1】速率</p>
+<p>连接在计算机网络上的<strong>主机</strong>在数字信道上<strong>传送数据位数的速率</strong>也称为 data rate或 bit rate。</p>
+<p>单位是b/s,kbs,Mb/s,Gb/s</p>
+<p>【2】带宽</p>
+<p>数据通信领域中,数字信道所能传送的<strong>最高数据率，</strong>单位是b/s,kbs,Mb/s,Gb/s</p>
+<p>【3】吞吐量(即总的速率)</p>
+<p>即在单位时间内通过某个网络的数据量单位b/s,Mb/s。</p>
+<p>【4】时延</p>
+<img src="/2019/03/17/计算机网络-概述/03.png">
+
+<p>【5】时延带宽积</p>
+<img src="/2019/03/17/计算机网络-概述/04.png">
+
+<p>【6】往返时间RTT</p>
+<p>从发送方发送数据开始到发送方收到接收方确认</p>
+<p>【7】网络利用率</p>
+<img src="/2019/03/17/计算机网络-概述/05.png">
+
+<p># </p>
 
       
     </div>
@@ -693,7 +700,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络的网络"><span class="nav-number">1.</span> <span class="nav-text">网络的网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ISP"><span class="nav-number">2.</span> <span class="nav-text">ISP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主机之间的通信方式"><span class="nav-number">3.</span> <span class="nav-text">主机之间的通信方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#电路交换与分组交换"><span class="nav-number">4.</span> <span class="nav-text">电路交换与分组交换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-电路交换"><span class="nav-number">4.1.</span> <span class="nav-text">1. 电路交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-分组交换"><span class="nav-number">4.2.</span> <span class="nav-text">2. 分组交换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时延"><span class="nav-number">5.</span> <span class="nav-text">时延</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-排队时延"><span class="nav-number">5.1.</span> <span class="nav-text">1. 排队时延</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-处理时延"><span class="nav-number">5.2.</span> <span class="nav-text">2. 处理时延</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-传输时延"><span class="nav-number">5.3.</span> <span class="nav-text">3. 传输时延</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-传播时延"><span class="nav-number">5.4.</span> <span class="nav-text">4. 传播时延</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#讲一下OSI七层参考模型与TCP-IP四层模型，以及各层的代表协议"><span class="nav-number">6.</span> <span class="nav-text">讲一下OSI七层参考模型与TCP/IP四层模型，以及各层的代表协议</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络的网络"><span class="nav-number">1.</span> <span class="nav-text">网络的网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ISP"><span class="nav-number">2.</span> <span class="nav-text">ISP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主机之间的通信方式"><span class="nav-number">3.</span> <span class="nav-text">主机之间的通信方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络参考模型"><span class="nav-number">4.</span> <span class="nav-text">==网络参考模型==</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据封装："><span class="nav-number">4.0.1.</span> <span class="nav-text">数据封装：</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络性能参数"><span class="nav-number">5.</span> <span class="nav-text">计算机网络性能参数</span></a></li></div>
             
 
           </div>
