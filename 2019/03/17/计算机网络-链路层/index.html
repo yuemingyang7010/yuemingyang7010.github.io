@@ -79,31 +79,31 @@
 
 
 
-<meta name="description" content="基本问题1. 封装成帧将网络层传下来的分组添加首部和尾部，用于标记帧的开始和结束。   2. 透明传输透明表示一个实际存在的事物看起来好像不存在一样。 帧使用首部和尾部进行定界，如果帧的数据部分含有和首部尾部相同的内容，那么帧的开始和结束位置就会被错误的判定。需要在数据部分出现首部尾部相同的内容前面插入转义字符。如果数据部分出现转义字符，那么就在转义字符前面再加个转义字符。在接收端进行处理之后可以">
+<meta name="description" content="==数据链路层3个基本功能==封装成帧、透明传输、差错控制 1. 封装成帧将网络层传下来的分组添加首部和尾部，用于标记帧的开始和结束。   2. 透明传输透明表示一个实际存在的事物看起来好像不存在一样。 数据链路层通过控制字符进行帧定界   ==若传输的数据是ASC码中“可打印字符（共95个）”集时，一切正常。若传输的数据不是仅由“可打印字符”组成时，就会出问题，如下图。==   用字节填充法解决">
 <meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络-链路层">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="基本问题1. 封装成帧将网络层传下来的分组添加首部和尾部，用于标记帧的开始和结束。   2. 透明传输透明表示一个实际存在的事物看起来好像不存在一样。 帧使用首部和尾部进行定界，如果帧的数据部分含有和首部尾部相同的内容，那么帧的开始和结束位置就会被错误的判定。需要在数据部分出现首部尾部相同的内容前面插入转义字符。如果数据部分出现转义字符，那么就在转义字符前面再加个转义字符。在接收端进行处理之后可以">
+<meta property="og:description" content="==数据链路层3个基本功能==封装成帧、透明传输、差错控制 1. 封装成帧将网络层传下来的分组添加首部和尾部，用于标记帧的开始和结束。   2. 透明传输透明表示一个实际存在的事物看起来好像不存在一样。 数据链路层通过控制字符进行帧定界   ==若传输的数据是ASC码中“可打印字符（共95个）”集时，一切正常。若传输的数据不是仅由“可打印字符”组成时，就会出问题，如下图。==   用字节填充法解决">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/001.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/002.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/003.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/004.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/005.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/010.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/011.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/011.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/04.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/012.jpg">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/013.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/014.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/015.png">
-<meta property="og:updated_time" content="2019-06-21T09:41:41.955Z">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/07.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/010.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/05.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/06.png">
+<meta property="og:updated_time" content="2019-06-21T15:35:57.894Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络-链路层">
-<meta name="twitter:description" content="基本问题1. 封装成帧将网络层传下来的分组添加首部和尾部，用于标记帧的开始和结束。   2. 透明传输透明表示一个实际存在的事物看起来好像不存在一样。 帧使用首部和尾部进行定界，如果帧的数据部分含有和首部尾部相同的内容，那么帧的开始和结束位置就会被错误的判定。需要在数据部分出现首部尾部相同的内容前面插入转义字符。如果数据部分出现转义字符，那么就在转义字符前面再加个转义字符。在接收端进行处理之后可以">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/001.png">
+<meta name="twitter:description" content="==数据链路层3个基本功能==封装成帧、透明传输、差错控制 1. 封装成帧将网络层传下来的分组添加首部和尾部，用于标记帧的开始和结束。   2. 透明传输透明表示一个实际存在的事物看起来好像不存在一样。 数据链路层通过控制字符进行帧定界   ==若传输的数据是ASC码中“可打印字符（共95个）”集时，一切正常。若传输的数据不是仅由“可打印字符”组成时，就会出问题，如下图。==   用字节填充法解决">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/17/计算机网络-链路层/01.png">
 
 
 
@@ -423,56 +423,39 @@
       
 
       
-        <h1 id="基本问题"><a href="#基本问题" class="headerlink" title="基本问题"></a>基本问题</h1><h2 id="1-封装成帧"><a href="#1-封装成帧" class="headerlink" title="1. 封装成帧"></a>1. 封装成帧</h2><p>将网络层传下来的分组添加首部和尾部，用于标记帧的开始和结束。</p>
-<img src="/2019/03/17/计算机网络-链路层/001.png">
+        <h1 id="数据链路层3个基本功能"><a href="#数据链路层3个基本功能" class="headerlink" title="==数据链路层3个基本功能=="></a>==数据链路层3个基本功能==</h1><p>封装成帧、透明传输、差错控制</p>
+<h2 id="1-封装成帧"><a href="#1-封装成帧" class="headerlink" title="1. 封装成帧"></a>1. 封装成帧</h2><p>将网络层传下来的分组添加首部和尾部，用于标记帧的开始和结束。</p>
+<img src="/2019/03/17/计算机网络-链路层/01.png">
 
 <h2 id="2-透明传输"><a href="#2-透明传输" class="headerlink" title="2. 透明传输"></a>2. 透明传输</h2><p><strong>透明表示一个实际存在的事物看起来好像不存在一样。</strong></p>
-<p><strong>帧使用首部和尾部进行定界</strong>，如果帧的数据部分含有和首部尾部相同的内容，那么帧的开始和结束位置就会被错误的判定。需要在数据部分出现首部尾部相同的内容前面插入转义字符。如果数据部分出现转义字符，那么就在转义字符前面再加个转义字符。在接收端进行处理之后可以还原出原始数据。<strong>这个过程透明传输的内容是转义字符，用户察觉不到转义字符的存在。</strong></p>
-<img src="/2019/03/17/计算机网络-链路层/002.png">
+<p>数据链路层通过<strong>控制字符</strong>进行帧定界</p>
+<img src="/2019/03/17/计算机网络-链路层/02.png">
+
+<p><strong>==若传输的数据是ASC码中“可打印字符（共95个）”集时，一切正常。若传输的数据不是仅由“可打印字符”组成时，就会出问题，如下图。==</strong></p>
+<img src="/2019/03/17/计算机网络-链路层/03.png">
+
+<p>用<strong>字节填充法</strong>解决透明传输的问题发送端的数据链路层在数据中出现控制字符“SOH”或“EOT”的前面插入一个转义字符“ESC”（其十六进制编码是1B）。</p>
+<p>字节填充（byte stuffing）或字符填充（（characterstuffing）——接收端的数据链路层在将数据送往网络层之前删除插入的转义字符。</p>
+<p>如果转义字符也出现数据当中，那么应在<strong>转义字符前插入一个转义字符</strong>。当接收端收到连续的两个转义字符时，就删除其中前面的一个。</p>
+<img src="/2019/03/17/计算机网络-链路层/04.png">
 
 <h2 id="3-差错检测"><a href="#3-差错检测" class="headerlink" title="3. 差错检测"></a>3. 差错检测</h2><p>目前数据链路层广泛使用了循环冗余检验（CRC）来检查比特差错。</p>
-<h1 id="信道分类"><a href="#信道分类" class="headerlink" title="信道分类"></a>信道分类</h1><h2 id="1-广播信道"><a href="#1-广播信道" class="headerlink" title="1. 广播信道"></a>1. 广播信道</h2><p>一对多通信，一个节点发送的数据能够被广播信道上所有的节点接收到。</p>
+<h1 id="信道分类"><a href="#信道分类" class="headerlink" title="信道分类"></a>信道分类</h1><h2 id="1-点对点信道"><a href="#1-点对点信道" class="headerlink" title="1. 点对点信道"></a>1. 点对点信道</h2><p>一对一通信。</p>
+<p>因为不会发生碰撞，因此也比较简单，使用 PPP 协议进行控制。</p>
+<h2 id="2-广播信道"><a href="#2-广播信道" class="headerlink" title="2. 广播信道"></a>2. 广播信道</h2><p>一对多通信，一个节点发送的数据能够被广播信道上所有的节点接收到。</p>
 <p>所有的节点都在同一个广播信道上发送数据，因此需要有专门的控制方法进行协调，避免发生冲突（冲突也叫碰撞）。</p>
 <p>主要有两种控制方法进行协调，一个是使用信道复用技术，一是使用 CSMA/CD 协议。</p>
-<h2 id="2-点对点信道"><a href="#2-点对点信道" class="headerlink" title="2. 点对点信道"></a>2. 点对点信道</h2><p>一对一通信。</p>
-<p>因为不会发生碰撞，因此也比较简单，使用 PPP 协议进行控制。</p>
-<h1 id="信道复用技术"><a href="#信道复用技术" class="headerlink" title="信道复用技术"></a>信道复用技术</h1><h2 id="1-频分复用"><a href="#1-频分复用" class="headerlink" title="1. 频分复用"></a>1. 频分复用</h2><p>频分复用的所有主机在相同的时间占用不同的频率带宽资源。</p>
-<img src="/2019/03/17/计算机网络-链路层/003.png">
-
-<h2 id="2-时分复用"><a href="#2-时分复用" class="headerlink" title="2. 时分复用"></a>2. 时分复用</h2><p>时分复用的所有主机在不同的时间占用相同的频率带宽资源。</p>
-<img src="/2019/03/17/计算机网络-链路层/004.png">
-
-<p>使用频分复用和时分复用进行通信，在通信的过程中主机会一直占用一部分信道资源。但是由于计算机数据的突发性质，通信过程没必要一直占用信道资源而不让出给其它用户使用，因此这两种方式对信道的利用率都不高。</p>
-<h2 id="3-统计时分复用"><a href="#3-统计时分复用" class="headerlink" title="3. 统计时分复用"></a>3. 统计时分复用</h2><p>是对时分复用的一种改进，不固定每个用户在时分复用帧中的位置，只要有数据就集中起来组成统计时分复用帧然后发送。</p>
-<img src="/2019/03/17/计算机网络-链路层/005.png">
-
-<h2 id="4-波分复用"><a href="#4-波分复用" class="headerlink" title="4. 波分复用"></a>4. 波分复用</h2><p>光的频分复用。由于光的频率很高，因此习惯上用波长而不是频率来表示所使用的光载波。</p>
-<h2 id="5-码分复用"><a href="#5-码分复用" class="headerlink" title="5. 码分复用"></a>5. 码分复用</h2><h1 id="CSMA-CD-协议"><a href="#CSMA-CD-协议" class="headerlink" title="CSMA/CD 协议"></a>CSMA/CD 协议</h1><p>CSMA/CD 表示载波监听多点接入 / 碰撞检测。</p>
-<ul>
-<li><strong>多点接入</strong> ：说明这是总线型网络，许多主机以多点的方式连接到总线上。</li>
-<li><strong>载波监听</strong> ：每个主机都必须不停地监听信道。在发送前，如果监听到信道正在使用，就必须等待。</li>
-<li><strong>碰撞检测</strong> ：在发送中，如果监听到信道已有其它主机正在发送数据，就表示发生了碰撞。虽然每个主机在发送数据之前都已经监听到信道为空闲，但是由于电磁波的传播时延的存在，还是有可能会发生碰撞。</li>
-</ul>
-<p>记端到端的传播时延为 τ，最先发送的站点最多经过 2τ 就可以知道是否发生了碰撞，称 2τ 为  <strong>争用期</strong> 。只有经过争用期之后还没有检测到碰撞，才能肯定这次发送不会发生碰撞。</p>
-<p>当发生碰撞时，站点要停止发送，等待一段时间再发送。这个时间采用  <strong>截断二进制指数退避算法</strong>  来确定。从离散的整数集合 {0, 1, .., (2<sup>k</sup>-1)} 中随机取出一个数，记作 r，然后取 r 倍的争用期作为重传等待时间。</p>
-<img src="/2019/03/17/计算机网络-链路层/010.png">
-
-<h1 id="PPP-协议"><a href="#PPP-协议" class="headerlink" title="PPP 协议"></a>PPP 协议</h1><p>互联网用户通常需要连接到某个 ISP 之后才能接入到互联网，PPP 协议是用户计算机和 ISP 进行通信时所使用的数据链路层协议。</p>
-<img src="/2019/03/17/计算机网络-链路层/011.jpg">
-
-<p>PPP 的帧格式：</p>
-<ul>
-<li>F 字段为帧的定界符</li>
-<li>A 和 C 字段暂时没有意义</li>
-<li>FCS 字段是使用 CRC 的检验序列</li>
-<li>信息部分的长度不超过 1500</li>
-</ul>
-<img src="/2019/03/17/计算机网络-链路层/011.png">
-
-<h1 id="MAC-地址"><a href="#MAC-地址" class="headerlink" title="MAC 地址"></a>MAC 地址</h1><p>MAC 地址是链路层地址，长度为 6 字节（48 位），用于唯一标识网络适配器（网卡）。</p>
+<h2 id="3-组播"><a href="#3-组播" class="headerlink" title="3.组播"></a>3.组播</h2><h1 id="MAC-地址"><a href="#MAC-地址" class="headerlink" title="==MAC 地址=="></a>==MAC 地址==</h1><p>MAC 地址是链路层地址，长度为 6 字节（48 位），用于唯一标识网络适配器（网卡）。</p>
 <p>一台主机拥有多少个网络适配器就有多少个 MAC 地址。例如笔记本电脑普遍存在无线网络适配器和有线网络适配器，因此就有两个 MAC 地址。</p>
+<p>在局域网中，硬件地址又称为物理地址，或MAC地址。</p>
+<p>IEEE的注册管理机构RA负责向厂家分配地址字段的前三个字节（即高位24位）。</p>
+<p>前高24位为厂家代号，低24位厂家自行指定</p>
+<p>查看电脑的MAC地址：</p>
+<p>ipconfig /all </p>
+<p>修改MAC地址：</p>
+<p>打来【网络连接】-【属性】-【高级】-设定指定值</p>
 <h1 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h1><p><strong>局域网是一种典型的广播信道，主要特点是网络为一个单位所拥有，且地理范围和站点数目均有限。</strong></p>
-<p>主要有以太网、令牌环网、FDDI 和 ATM 等局域网技术，目前以太网占领着有线局域网市场。</p>
+<p>主要有<strong>以太网</strong>、令牌环网、FDDI 和 ATM 等局域网技术，目前以太网占领着有线局域网市场。</p>
 <p>可以按照网络拓扑结构对局域网进行分类：</p>
 <img src="/2019/03/17/计算机网络-链路层/012.jpg">
 
@@ -496,6 +479,34 @@
 <p>例如下图中 (A1, A2, A3, A4) 属于一个虚拟局域网，A1 发送的广播会被 A2、A3、A4 收到，而其它站点收不到。</p>
 <p>使用 VLAN 干线连接来建立虚拟局域网，每台交换机上的一个特殊接口被设置为干线接口，以互连 VLAN 交换机。IEEE 定义了一种扩展的以太网帧格式 802.1Q，它在标准以太网帧上加进了 4 字节首部 VLAN 标签，用于表示该帧属于哪一个虚拟局域网。</p>
 <img src="/2019/03/17/计算机网络-链路层/015.png">
+
+<h1 id="CSMA-CD-协议-广播信道，一般用于局域网"><a href="#CSMA-CD-协议-广播信道，一般用于局域网" class="headerlink" title="==CSMA/CD 协议(广播信道，一般用于局域网)=="></a>==CSMA/CD 协议(广播信道，一般用于局域网)==</h1><p>CSMA/CD 表示载波监听多点接入 / 碰撞检测。</p>
+<p><strong>局域网是一种典型的广播信道，主要特点是网络为一个单位所拥有，且地理范围和站点数目均有限。</strong></p>
+<p>主要有<strong>以太网</strong>、令牌环网、FDDI 和 ATM 等局域网技术，目前以太网占领着有线局域网市场。</p>
+<p>可以按照网络拓扑结构对局域网进行分类：</p>
+<img src="/2019/03/17/计算机网络-链路层/07.png">
+
+<p>多点接入：随机接入，现在以太网采用</p>
+<ul>
+<li><strong>多点接入</strong> ：说明这是总线型网络，许多主机以多点的方式连接到总线上。</li>
+<li><strong>载波监听</strong> ：每个主机都必须不停地监听信道。在发送前，如果监听到信道正在使用，就必须等待。</li>
+<li><strong>碰撞检测</strong> ：在发送中，如果监听到信道已有其它主机正在发送数据，就表示发生了碰撞。虽然每个主机在发送数据之前都已经监听到信道为空闲，但是由于电磁波的传播时延的存在，还是有可能会发生碰撞。</li>
+</ul>
+<p>记端到端的传播时延为 τ，最先发送的站点最多经过 2τ 就可以知道是否发生了碰撞，称 2τ 为  <strong>争用期</strong> 。只有经过争用期之后还没有检测到碰撞，才能肯定这次发送不会发生碰撞。</p>
+<p>当发生碰撞时，站点要停止发送，等待一段时间再发送。这个时间采用  <strong>截断二进制指数退避算法</strong>  来确定。从离散的整数集合 {0, 1, .., (2<sup>k</sup>-1)} 中随机取出一个数，记作 r，然后取 r 倍的争用期作为重传等待时间。</p>
+<img src="/2019/03/17/计算机网络-链路层/010.png">
+
+<h1 id="PPP-协议-点到点信道，一般用于广域网"><a href="#PPP-协议-点到点信道，一般用于广域网" class="headerlink" title="==PPP 协议(点到点信道，一般用于广域网)=="></a>==PPP 协议(点到点信道，一般用于广域网)==</h1><p>互联网用户通常需要连接到某个 ISP 之后才能接入到互联网，PPP 协议是用户计算机和 ISP 进行通信时所使用的数据链路层协议。</p>
+<img src="/2019/03/17/计算机网络-链路层/05.png">
+
+<p>PPP 的帧格式：</p>
+<ul>
+<li>F 字段为帧的定界符</li>
+<li>A 和 C 字段暂时没有意义</li>
+<li>FCS 字段是使用 CRC 的检验序列</li>
+<li>信息部分的长度不超过 1500</li>
+</ul>
+<img src="/2019/03/17/计算机网络-链路层/06.png">
       
     </div>
     
@@ -712,7 +723,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本问题"><span class="nav-number">1.</span> <span class="nav-text">基本问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-封装成帧"><span class="nav-number">1.1.</span> <span class="nav-text">1. 封装成帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-透明传输"><span class="nav-number">1.2.</span> <span class="nav-text">2. 透明传输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-差错检测"><span class="nav-number">1.3.</span> <span class="nav-text">3. 差错检测</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#信道分类"><span class="nav-number">2.</span> <span class="nav-text">信道分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-广播信道"><span class="nav-number">2.1.</span> <span class="nav-text">1. 广播信道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-点对点信道"><span class="nav-number">2.2.</span> <span class="nav-text">2. 点对点信道</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#信道复用技术"><span class="nav-number">3.</span> <span class="nav-text">信道复用技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-频分复用"><span class="nav-number">3.1.</span> <span class="nav-text">1. 频分复用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-时分复用"><span class="nav-number">3.2.</span> <span class="nav-text">2. 时分复用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-统计时分复用"><span class="nav-number">3.3.</span> <span class="nav-text">3. 统计时分复用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-波分复用"><span class="nav-number">3.4.</span> <span class="nav-text">4. 波分复用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-码分复用"><span class="nav-number">3.5.</span> <span class="nav-text">5. 码分复用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSMA-CD-协议"><span class="nav-number">4.</span> <span class="nav-text">CSMA/CD 协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PPP-协议"><span class="nav-number">5.</span> <span class="nav-text">PPP 协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MAC-地址"><span class="nav-number">6.</span> <span class="nav-text">MAC 地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#局域网"><span class="nav-number">7.</span> <span class="nav-text">局域网</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以太网"><span class="nav-number">8.</span> <span class="nav-text">以太网</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交换机"><span class="nav-number">9.</span> <span class="nav-text">交换机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟局域网"><span class="nav-number">10.</span> <span class="nav-text">虚拟局域网</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据链路层3个基本功能"><span class="nav-number">1.</span> <span class="nav-text">==数据链路层3个基本功能==</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-封装成帧"><span class="nav-number">1.1.</span> <span class="nav-text">1. 封装成帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-透明传输"><span class="nav-number">1.2.</span> <span class="nav-text">2. 透明传输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-差错检测"><span class="nav-number">1.3.</span> <span class="nav-text">3. 差错检测</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#信道分类"><span class="nav-number">2.</span> <span class="nav-text">信道分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-点对点信道"><span class="nav-number">2.1.</span> <span class="nav-text">1. 点对点信道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-广播信道"><span class="nav-number">2.2.</span> <span class="nav-text">2. 广播信道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-组播"><span class="nav-number">2.3.</span> <span class="nav-text">3.组播</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MAC-地址"><span class="nav-number">3.</span> <span class="nav-text">==MAC 地址==</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#局域网"><span class="nav-number">4.</span> <span class="nav-text">局域网</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以太网"><span class="nav-number">5.</span> <span class="nav-text">以太网</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交换机"><span class="nav-number">6.</span> <span class="nav-text">交换机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟局域网"><span class="nav-number">7.</span> <span class="nav-text">虚拟局域网</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSMA-CD-协议-广播信道，一般用于局域网"><span class="nav-number">8.</span> <span class="nav-text">==CSMA/CD 协议(广播信道，一般用于局域网)==</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PPP-协议-点到点信道，一般用于广域网"><span class="nav-number">9.</span> <span class="nav-text">==PPP 协议(点到点信道，一般用于广域网)==</span></a></li></ol></div>
             
 
           </div>
