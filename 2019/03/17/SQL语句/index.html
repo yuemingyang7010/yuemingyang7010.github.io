@@ -79,15 +79,23 @@
 
 
 
+<meta name="description" content="● 常用SQL语句（DDL,DML,DCL,TCL）数据查询语言(DQL-Data Query Language)  代表关键字:select 数据操纵语言(DML-Data Manipulation Language)   增删改，针对表的数据 代表关键字:insert,delete,update 数据定义语言(DDL-Data Definition Language)  增删改，针对表的结构">
 <meta name="keywords" content="数据库,SQL语句">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL语句">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/index.html">
 <meta property="og:site_name" content="yue">
+<meta property="og:description" content="● 常用SQL语句（DDL,DML,DCL,TCL）数据查询语言(DQL-Data Query Language)  代表关键字:select 数据操纵语言(DML-Data Manipulation Language)   增删改，针对表的数据 代表关键字:insert,delete,update 数据定义语言(DDL-Data Definition Language)  增删改，针对表的结构">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-22T13:18:35.215Z">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/04.png">
+<meta property="og:updated_time" content="2019-06-22T16:43:23.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL语句">
+<meta name="twitter:description" content="● 常用SQL语句（DDL,DML,DCL,TCL）数据查询语言(DQL-Data Query Language)  代表关键字:select 数据操纵语言(DML-Data Manipulation Language)   增删改，针对表的数据 代表关键字:insert,delete,update 数据定义语言(DDL-Data Definition Language)  增删改，针对表的结构">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/01.png">
 
 
 
@@ -407,7 +415,148 @@
       
 
       
-        
+        <h1 id="●-常用SQL语句（DDL-DML-DCL-TCL）"><a href="#●-常用SQL语句（DDL-DML-DCL-TCL）" class="headerlink" title="● 常用SQL语句（DDL,DML,DCL,TCL）"></a><strong>●</strong> <strong>常用SQL语句（DDL,DML,DCL,TCL）</strong></h1><p>数据查询语言(DQL-Data Query Language) </p>
+<p>代表关键字:select</p>
+<p>数据操纵语言(DML-Data Manipulation Language)   <strong>增删改，针对表的数据</strong></p>
+<p>代表关键字:insert,delete,update</p>
+<p>数据定义语言(DDL-Data Definition Language)  <strong>增删改，针对表的结构</strong></p>
+<p>代表关键字:create ,drop,alter,</p>
+<p>事务控制语言(TCL-Transactional Control Language)    <strong>提交，回滚</strong></p>
+<p>代表关键字:commit ,rollback;</p>
+<p>数据控制语言(DCL-Data Control Language)    </p>
+<p>代表关键字:grant,revoke.</p>
+<h2 id="●数据定义语句-create、drop、alter"><a href="#●数据定义语句-create、drop、alter" class="headerlink" title="●数据定义语句(create、drop、alter)"></a><strong>●数据定义语句(create、drop、alter)</strong></h2><p><strong>1.定义基本表</strong></p>
+<p>SQL 语言使用CREATETABLE语句定义基本表，其基本格式如下：</p>
+<img src="/2019/03/17/SQL语句/01.png">
+
+<p>建立一个“学生信息”表Student：</p>
+<img src="/2019/03/17/SQL语句/02.png">
+
+<p><strong>2.修改基本表</strong></p>
+<p>随着应用环境和应用需求的变化，有时需要修改已建立好的基本表，SQL 语言用ALTER TABLE语句修改基本表，其一般格式为：</p>
+<img src="/2019/03/17/SQL语句/03.png">
+
+<p>其中，&lt;表名&gt;是要修改的表，<strong>ADD子句用于增加新列和新的完整性约束条件</strong>，DROP子句用于删除指定的完整性约束条件，<strong>MODIFY COLUMN子句用于修改原有的列定义，包括修改列名和数据类型。</strong></p>
+<p><strong>例1：</strong>向Student表增加“入学时间”列，其数据类型为日期型。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Student <span class="keyword">ADD</span> S entrance <span class="built_in">DATE</span>；</span><br></pre></td></tr></table></figure>
+
+<p>上述代码不论基本表中原来是否已有数据，新增加的列一律为空值。</p>
+<p><strong>例2：</strong>要求将年龄的数据类型由字符型（假设原来的数据类型是字符型）改为整数。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Student <span class="keyword">MODIFY</span> <span class="keyword">COLUMN</span> Sage <span class="built_in">INT</span>；</span><br></pre></td></tr></table></figure>
+
+<p><strong>例3：</strong>增加Student表Sname必须取唯一值的约束条件：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Student <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span>（Sname）；</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.删除基本表</strong></p>
+<p>当某个基本表不再需要时，可以使用DROPTABLE语句删除它。其一般格式为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span>&lt;表名&gt; [RESTRICT ICASCADE]；</span><br></pre></td></tr></table></figure>
+
+<p>若选择RESTRICT，则该表的删除是有限制条件的：欲删除的基本表不能被其他表的约束所引用（如check，foreign key等约束），不能有视图，不能有触发器，不能有存储过程或函数等。如果存在这些依赖该表的对象，则此表不能被删除。</p>
+<p>若选择CASCADE，则该表的删除没有限制条件。在删除该表的同时，相关的依赖对象，例如视图，都将被一起删除。删除Student表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> Student <span class="keyword">CASCADE</span>；</span><br></pre></td></tr></table></figure>
+
+<h2 id="●数据查询-select"><a href="#●数据查询-select" class="headerlink" title="●数据查询(select)"></a><strong>●数据查询(select)</strong></h2><img src="/2019/03/17/SQL语句/04.png">
+
+<p><strong>整个SELECT语句的含义是：</strong>根据WHERE子句的条件表达式，从FROM子句指定的基本表或视图中找出满足条件的元组，再按SELECT子句中的目标列表达式，选出元组中的属性值形成结果表。</p>
+<p>如果有GROUP BY子句，则将结果按&lt;列名1&gt;的值进行分组，该属性列值相等的元组为一个组。</p>
+<p><strong>通常会在每组中作用聚集函数。</strong>如果GROUPBY子句带<strong>HAVING</strong>子句，则只有满足指定条件的组才予以输出。如果有ORDER BY子句，则结果表还要按&lt;列名2&gt;的值的升序或降序排序。</p>
+<p><strong>1.选择表中的若干列</strong></p>
+<p>假设在表Student（1.2.1节中已定义）中，查询名为BilGates的学生信息，你可以使用下面的查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>*<span class="keyword">from</span> Student <span class="keyword">WHERE</span> Sname=<span class="string">'Bill Gates'</span>；</span><br></pre></td></tr></table></figure>
+
+<p>假设在表Student中，查询名字中有Bill的学生信息，你可以使用下面的查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>*<span class="keyword">from</span> Student <span class="keyword">WHERE</span> Sname <span class="keyword">like</span><span class="string">'$Bill%'</span>；</span><br></pre></td></tr></table></figure>
+
+<p>上述%是通配符，代表任意长度（可为0）的字符串。例如a%b表示以a开头，以b结尾的任意长度的字符串。除此之外，（下画线）代表任意单词字符。</p>
+<p>假设在表Student中查询年龄在20~23岁（包括20岁与23岁）之间的学生的信息：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>*<span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sage <span class="keyword">BETWEEN</span> <span class="number">20</span> <span class="keyword">AND</span> <span class="number">23</span>；</span><br></pre></td></tr></table></figure>
+
+<p>与BETWEEN…AND…相对的谓词是NOT BETWEEN·…AND…。</p>
+<p>假设在表Student中查询计算机系（CS）、信息系（MA）和数学系（IS）学生的姓名和性别：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sname，Ssex <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sdept <span class="keyword">IN</span>（<span class="string">'CS'</span>，<span class="string">'IS'</span>，<span class="string">'MA'</span>）；</span><br></pre></td></tr></table></figure>
+
+<p>与IN相对的谓词是NOTIN，用于查找属性值不属于指定集合的元组。</p>
+<p>假设在表Student中查询没有年龄信息的学生：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sage <span class="keyword">IS</span> <span class="literal">NULL</span>；</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意这里的“IS”不能被等号代替。</strong></p>
+<p><strong>2.ORDER BY子句</strong></p>
+<p>用户可以用order by子句对查询的结果按照<strong>一个或多个属性</strong>列的升序（ASC）或降序（DESC）排列，默认值为升序。</p>
+<p>例如在表Student中，按学生的年龄值升序检索出全部学生的信息：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Student <span class="keyword">ORDER</span> <span class="keyword">BY</span> Sage；</span><br></pre></td></tr></table></figure>
+
+<p>在表Student中，先按专业升序排序，然后同一专业的学生再按年龄降序排序，并输出全部学生信息：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Student <span class="keyword">ORDER</span> <span class="keyword">BY</span> Sdept，Sage <span class="keyword">desc</span>；</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.LIMIT子句</strong></p>
+<p>LIMIT主要是用于查询之后要显示返回的前几条或者中间某几行数据。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">LIMIT</span>[<span class="keyword">offset</span>，]<span class="keyword">rows</span> I <span class="keyword">rows</span> <span class="keyword">OFFSET</span> <span class="keyword">offset</span></span><br></pre></td></tr></table></figure>
+
+<p>LIMIT子句可以被用于强制SELECT 语句返回指定的记录数。LIMIT接受一个或两个数字参数。参数必须是一个整数常量。如果给定两个参数，第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目。<strong>初始记录行的偏移量是0（而不是1）。</strong>如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Student <span class="keyword">LIMIT</span> <span class="number">5</span>，<span class="number">10</span>；//检索记录行<span class="number">6</span><span class="number">-15</span></span><br></pre></td></tr></table></figure>
+
+<p>如果只给定一个参数，它表示返回最前面的记录行数目：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>*<span class="keyword">FROM</span> Student <span class="keyword">LIMIT</span> <span class="number">5</span>；//检索前<span class="number">5</span>个记录行</span><br></pre></td></tr></table></figure>
+
+<p>换句话说，LIMITn等价于LIMIT0，n。</p>
+<p>例1：如下SQL语句是需要列出一个论坛版面第一页（每页显示20个）的帖子（post）标题（title），并按照发布时间（create_time）降序排列：（2012·腾讯）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title <span class="keyword">FROM</span> post ? create_time <span class="keyword">DESC</span> ? <span class="number">0</span>，<span class="number">20</span>；</span><br></pre></td></tr></table></figure>
+
+<p>解答：order by，limit。</p>
+<p><strong>4.聚集函数</strong></p>
+<p>SQL 语句中常用的聚集函数有以下几种：count，sum，avg，max，min。用法如下：</p>
+<p>总数：select count（*）as totalcount from table1；</p>
+<p>求和：select sum（field1）as sumvalue from table1；</p>
+<p>平均：select avg（field1）as avgvalue from table1；</p>
+<p>最大：select max（field1）as maxvalue from table1；</p>
+<p>最小：select min（field1）as minvalue from table1；</p>
+<p>例1：在SQL中，用于聚集查询的函数有哪些？（2012·搜狗）</p>
+<p>解答：count，sum，avg，max，min。</p>
+<p><strong>5.GROUP BY子句</strong></p>
+<p>GROUP BY子句<strong>根据一个或多个属性的值来对元组进行分组，值相等的为一组。</strong></p>
+<p>对查询结果分组的目的是为了细化聚集函数的作用对象，分组后聚集函数将作用于每一个组，即每一组都有一个函数值，如下列语句为查询Student 表中具有相同年龄的每个组的人数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sage，<span class="keyword">count</span>（*）<span class="keyword">from</span> Student <span class="keyword">group</span> <span class="keyword">by</span> Sage；</span><br></pre></td></tr></table></figure>
+
+<p>如果分组后还要求按一定的条件对这些组进行筛选，最终只输出满足指定条件的组，则<strong>使用HAVING短语指定筛选条件。</strong></p>
+<p>通常，HAVING子句只用在GROUPBY子句的SQL语句中，用来选取符合指定条件的分组。例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sage，<span class="keyword">count</span>（*）<span class="keyword">from</span> Student <span class="keyword">group</span> <span class="keyword">by</span> Sage <span class="keyword">having</span> <span class="keyword">count</span>（*）&gt;<span class="number">1</span>；</span><br></pre></td></tr></table></figure>
+
+<p><u><strong>6.连接查询</strong></u></p>
+<p>前面的查询都是针对一个表进行的。若一个查询同时涉及两个以上的表，则称之为<strong>连接查询</strong>。若有表Student（学生信息表）、SC（选课表），要求查询每个学生及其选修课程的情况：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Student.*，SC.* <span class="keyword">FROM</span> Student，SC  <span class="keyword">WHERE</span> Student.Sno=SC.Sno；</span><br></pre></td></tr></table></figure>
+
+<p>在以上的连接操作中，只有满足条件的元组才能作为结果输出。若表Student中某些学生没有选课，则在SC表中没有相应的元组，造成最终结果中舍弃掉了这些学生的信息。</p>
+<p>上述连接称为自然连接、内连接。</p>
+<p>有时想以Student表为主体列出每个学生的基本情况及其选课情况。若某个学生没有选课，依然将其保存到结果中（在SC表的属性上填空值），这时就需要使用外连接。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Student.*，SC.* <span class="keyword">FROM</span> Student <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> SC <span class="keyword">ON</span>（Student.Sno=SC.Sno）;</span><br></pre></td></tr></table></figure>
+
+<p><strong>以上是左外连接，左外连接列出左边表（本例为Student表）中的所有元组，右外连接列出右表关系中所有的元组。</strong></p>
+<h2 id="●数据操纵-insert-delete-update"><a href="#●数据操纵-insert-delete-update" class="headerlink" title="●数据操纵(insert,delete,update)"></a><strong>●</strong>数据操纵(insert,delete,update)</h2><p>数据操纵操作有3种：向表中添加若干行数据、修改表中的数据和删除表中的若干行数据。</p>
+<p><strong>1.插入元组</strong></p>
+<p>插入元组的INSERT语句的格式为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span>  <span class="keyword">INTO</span> tablel（fieldl，field2..） </span><br><span class="line"><span class="keyword">VALUES</span>（value1，value2..）;</span><br></pre></td></tr></table></figure>
+
+<p>其功能是将新元组插入到指定表中。其中新元组的fieldl的值为valuel，field2的值为value2…</p>
+<p>如果INTO语句中没有指定任何属性列名，则新插入的元组必须在每个属性列上均有值。</p>
+<p>将一个新学生元组（学号：201009013；姓名：王明；性别：男；所在系：CS；年龄：23）插入到Student表中的语句为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Student（Sno，Sname，Ssex，Sdept，Sage） </span><br><span class="line"><span class="keyword">VALUES</span>（<span class="string">'201009013'</span>，<span class="string">'王明’，‘M'</span>，<span class="string">'CS'</span>，<span class="number">23</span>）；</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.修改数据</strong></p>
+<p>修改数据又称为更新操作，其语句的一般格式为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> table1 </span><br><span class="line"><span class="keyword">SET</span> fieldl=valuel，field2=value2 </span><br><span class="line"><span class="keyword">WHERE</span>范围；</span><br></pre></td></tr></table></figure>
+
+<p>其功能是修改指定表中满足WHERE子句条件的元组。其中SET子句给出的value值用于取代相应的属性列值。如果省略WHERE子句，则表示要修改表中的所有元组。</p>
+<p>将学生201009013的年龄改为22岁：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> Student  </span><br><span class="line"><span class="keyword">SET</span> Sage=<span class="number">22</span> </span><br><span class="line"><span class="keyword">WHERE</span> Sno=<span class="string">'201009013'</span>；</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.删除数据</strong></p>
+<p>删除语句的一般格式为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span>  </span><br><span class="line"><span class="keyword">FROM</span> table1 </span><br><span class="line"><span class="keyword">WHERE</span>范围；</span><br></pre></td></tr></table></figure>
+
+<p>DELETE语句的功能是从指定表中删除满足WHERE子句条件的所有元组。如果省略 WHERE子句，表示删除表中全部元组，但表仍存在。删除学号为201009013的学生记录：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span>  </span><br><span class="line"><span class="keyword">FROM</span> Student  </span><br><span class="line"><span class="keyword">WHERE</span> Sno=<span class="string">'201009013'</span>；</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -463,8 +612,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/17/HTTP/" rel="next" title="HTTP">
-                <i class="fa fa-chevron-left"></i> HTTP
+              <a href="/2019/03/17/计算机网络-链路层/" rel="next" title="计算机网络-链路层">
+                <i class="fa fa-chevron-left"></i> 计算机网络-链路层
               </a>
             
           </div>
@@ -473,8 +622,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/17/计算机网络-链路层/" rel="prev" title="计算机网络-链路层">
-                计算机网络-链路层 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/18/计算机网络-物理层/" rel="prev" title="计算机网络-物理层">
+                计算机网络-物理层 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -530,8 +679,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -611,6 +769,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#●-常用SQL语句（DDL-DML-DCL-TCL）"><span class="nav-number">1.</span> <span class="nav-text">● 常用SQL语句（DDL,DML,DCL,TCL）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据定义语句-create、drop、alter"><span class="nav-number">1.1.</span> <span class="nav-text">●数据定义语句(create、drop、alter)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据查询-select"><span class="nav-number">1.2.</span> <span class="nav-text">●数据查询(select)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据操纵-insert-delete-update"><span class="nav-number">1.3.</span> <span class="nav-text">●数据操纵(insert,delete,update)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
