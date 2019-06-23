@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据库,Leetcode数据库题解,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="595. Big Countrieshttps://leetcode.com/problems/big-countries/description/ Description123456789+-----------------+------------+------------+--------------+---------------+| name            | continent">
+<meta name="keywords" content="数据库,Leetcode数据库题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode数据库题解">
+<meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/17/Leetcode-Database 题解/index.html">
+<meta property="og:site_name" content="yue">
+<meta property="og:description" content="595. Big Countrieshttps://leetcode.com/problems/big-countries/description/ Description123456789+-----------------+------------+------------+--------------+---------------+| name            | continent">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-23T16:14:37.640Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode数据库题解">
+<meta name="twitter:description" content="595. Big Countrieshttps://leetcode.com/problems/big-countries/description/ Description123456789+-----------------+------------+------------+--------------+---------------+| name            | continent">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuemingyang7010.github.io/2019/03/17/Leetcode-Database 题解/">
+
+
+
+
+
+  <title>Leetcode数据库题解 | yue</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yue</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuemingyang7010.github.io/2019/03/17/Leetcode-Database 题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mingyang Yue">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Leetcode数据库题解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T13:52:09+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/Leetcode数据库题解/" itemprop="url" rel="index">
+                    <span itemprop="name">Leetcode数据库题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/17/Leetcode-Database 题解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/17/Leetcode-Database 题解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="595-Big-Countries"><a href="#595-Big-Countries" class="headerlink" title="595. Big Countries"></a>595. Big Countries</h1><p><a href="https://leetcode.com/problems/big-countries/description/" target="_blank" rel="noopener">https://leetcode.com/problems/big-countries/description/</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-----------------+------------+------------+--------------+---------------+</span><br><span class="line">| name            | continent  | area       | population   | gdp           |</span><br><span class="line">+-----------------+------------+------------+--------------+---------------+</span><br><span class="line">| Afghanistan     | Asia       | 652230     | 25500100     | 20343000      |</span><br><span class="line">| Albania         | Europe     | 28748      | 2831741      | 12960000      |</span><br><span class="line">| Algeria         | Africa     | 2381741    | 37100000     | 188681000     |</span><br><span class="line">| Andorra         | Europe     | 468        | 78115        | 3712000       |</span><br><span class="line">| Angola          | Africa     | 1246700    | 20609294     | 100990000     |</span><br><span class="line">+-----------------+------------+------------+--------------+---------------+</span><br></pre></td></tr></table></figure>
+
+<p>查找面积超过 3,000,000 或者人口数超过 25,000,000 的国家。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+--------------+-------------+--------------+</span><br><span class="line">| name         | population  | area         |</span><br><span class="line">+--------------+-------------+--------------+</span><br><span class="line">| Afghanistan  | 25500100    | 652230       |</span><br><span class="line">| Algeria      | 37100000    | 2381741      |</span><br><span class="line">+--------------+-------------+--------------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-Schema"><a href="#SQL-Schema" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><p>SQL Schema 用于在本地环境下创建表结构并导入数据，从而方便在本地环境解答。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> World;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> World ( <span class="keyword">NAME</span> <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ), continent <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ), area <span class="built_in">INT</span>, population <span class="built_in">INT</span>, gdp <span class="built_in">INT</span> );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> World ( <span class="keyword">NAME</span>, continent, area, population, gdp )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="string">'Afghanistan'</span>, <span class="string">'Asia'</span>, <span class="string">'652230'</span>, <span class="string">'25500100'</span>, <span class="string">'203430000'</span> ),</span><br><span class="line">    ( <span class="string">'Albania'</span>, <span class="string">'Europe'</span>, <span class="string">'28748'</span>, <span class="string">'2831741'</span>, <span class="string">'129600000'</span> ),</span><br><span class="line">    ( <span class="string">'Algeria'</span>, <span class="string">'Africa'</span>, <span class="string">'2381741'</span>, <span class="string">'37100000'</span>, <span class="string">'1886810000'</span> ),</span><br><span class="line">    ( <span class="string">'Andorra'</span>, <span class="string">'Europe'</span>, <span class="string">'468'</span>, <span class="string">'78115'</span>, <span class="string">'37120000'</span> ),</span><br><span class="line">    ( <span class="string">'Angola'</span>, <span class="string">'Africa'</span>, <span class="string">'1246700'</span>, <span class="string">'20609294'</span>, <span class="string">'1009900000'</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>,</span><br><span class="line">    population,</span><br><span class="line">    area</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    World</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    area &gt; <span class="number">3000000</span></span><br><span class="line">    <span class="keyword">OR</span> population &gt; <span class="number">25000000</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="627-Swap-Salary"><a href="#627-Swap-Salary" class="headerlink" title="627. Swap Salary"></a>627. Swap Salary</h1><p><a href="https://leetcode.com/problems/swap-salary/description/" target="_blank" rel="noopener">https://leetcode.com/problems/swap-salary/description/</a></p>
+<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| id | name | sex | salary |</span><br><span class="line">|----|------|-----|--------|</span><br><span class="line">| 1  | A    | m   | 2500   |</span><br><span class="line">| 2  | B    | f   | 1500   |</span><br><span class="line">| 3  | C    | m   | 5500   |</span><br><span class="line">| 4  | D    | f   | 500    |</span><br></pre></td></tr></table></figure>
+
+<p>只用一个 SQL 查询，将 sex 字段反转。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| id | name | sex | salary |</span><br><span class="line">|----|------|-----|--------|</span><br><span class="line">| 1  | A    | f   | 2500   |</span><br><span class="line">| 2  | B    | m   | 1500   |</span><br><span class="line">| 3  | C    | f   | 5500   |</span><br><span class="line">| 4  | D    | m   | 500    |</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-Schema-1"><a href="#SQL-Schema-1" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> salary;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> salary ( <span class="keyword">id</span> <span class="built_in">INT</span>, <span class="keyword">NAME</span> <span class="built_in">VARCHAR</span> ( <span class="number">100</span> ), sex <span class="built_in">CHAR</span> ( <span class="number">1</span> ), salary <span class="built_in">INT</span> );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> salary ( <span class="keyword">id</span>, <span class="keyword">NAME</span>, sex, salary )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="string">'1'</span>, <span class="string">'A'</span>, <span class="string">'m'</span>, <span class="string">'2500'</span> ),</span><br><span class="line">    ( <span class="string">'2'</span>, <span class="string">'B'</span>, <span class="string">'f'</span>, <span class="string">'1500'</span> ),</span><br><span class="line">    ( <span class="string">'3'</span>, <span class="string">'C'</span>, <span class="string">'m'</span>, <span class="string">'5500'</span> ),</span><br><span class="line">    ( <span class="string">'4'</span>, <span class="string">'D'</span>, <span class="string">'f'</span>, <span class="string">'500'</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><p>使用异或操作，两个相等的数异或的结果为 0，而 0 与任何一个数异或的结果为这个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;f&apos; ^ &apos;m&apos; ^ &apos;f&apos; = &apos;m&apos;</span><br><span class="line">&apos;m&apos; ^ &apos;m&apos; ^ &apos;f&apos; = &apos;f&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> salary</span><br><span class="line"><span class="keyword">SET</span> sex = <span class="built_in">CHAR</span> ( <span class="keyword">ASCII</span>(sex) ^ <span class="keyword">ASCII</span>( <span class="string">'m'</span> ) ^ <span class="keyword">ASCII</span>( <span class="string">'f'</span> ) );</span><br></pre></td></tr></table></figure>
+
+<h1 id="620-Not-Boring-Movies"><a href="#620-Not-Boring-Movies" class="headerlink" title="620. Not Boring Movies"></a>620. Not Boring Movies</h1><p><a href="https://leetcode.com/problems/not-boring-movies/description/" target="_blank" rel="noopener">https://leetcode.com/problems/not-boring-movies/description/</a></p>
+<h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+---------+-----------+--------------+-----------+</span><br><span class="line">|   id    | movie     |  description |  rating   |</span><br><span class="line">+---------+-----------+--------------+-----------+</span><br><span class="line">|   1     | War       |   great 3D   |   8.9     |</span><br><span class="line">|   2     | Science   |   fiction    |   8.5     |</span><br><span class="line">|   3     | irish     |   boring     |   6.2     |</span><br><span class="line">|   4     | Ice song  |   Fantacy    |   8.6     |</span><br><span class="line">|   5     | House card|   Interesting|   9.1     |</span><br><span class="line">+---------+-----------+--------------+-----------+</span><br></pre></td></tr></table></figure>
+
+<p>查找 id 为奇数，并且 description 不是 boring 的电影，按 rating 降序。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+---------+-----------+--------------+-----------+</span><br><span class="line">|   id    | movie     |  description |  rating   |</span><br><span class="line">+---------+-----------+--------------+-----------+</span><br><span class="line">|   5     | House card|   Interesting|   9.1     |</span><br><span class="line">|   1     | War       |   great 3D   |   8.9     |</span><br><span class="line">+---------+-----------+--------------+-----------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-Schema-2"><a href="#SQL-Schema-2" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> cinema;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> cinema ( <span class="keyword">id</span> <span class="built_in">INT</span>, movie <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ), description <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ), rating <span class="built_in">FLOAT</span> ( <span class="number">2</span>, <span class="number">1</span> ) );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> cinema ( <span class="keyword">id</span>, movie, description, rating )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="number">1</span>, <span class="string">'War'</span>, <span class="string">'great 3D'</span>, <span class="number">8.9</span> ),</span><br><span class="line">    ( <span class="number">2</span>, <span class="string">'Science'</span>, <span class="string">'fiction'</span>, <span class="number">8.5</span> ),</span><br><span class="line">    ( <span class="number">3</span>, <span class="string">'irish'</span>, <span class="string">'boring'</span>, <span class="number">6.2</span> ),</span><br><span class="line">    ( <span class="number">4</span>, <span class="string">'Ice song'</span>, <span class="string">'Fantacy'</span>, <span class="number">8.6</span> ),</span><br><span class="line">    ( <span class="number">5</span>, <span class="string">'House card'</span>, <span class="string">'Interesting'</span>, <span class="number">9.1</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    *</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    cinema</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    <span class="keyword">id</span> % <span class="number">2</span> = <span class="number">1</span></span><br><span class="line">    <span class="keyword">AND</span> description != <span class="string">'boring'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    rating <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="596-Classes-More-Than-5-Students"><a href="#596-Classes-More-Than-5-Students" class="headerlink" title="596. Classes More Than 5 Students"></a>596. Classes More Than 5 Students</h1><p><a href="https://leetcode.com/problems/classes-more-than-5-students/description/" target="_blank" rel="noopener">https://leetcode.com/problems/classes-more-than-5-students/description/</a></p>
+<h2 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">+---------+------------+</span><br><span class="line">| student | class      |</span><br><span class="line">+---------+------------+</span><br><span class="line">| A       | Math       |</span><br><span class="line">| B       | English    |</span><br><span class="line">| C       | Math       |</span><br><span class="line">| D       | Biology    |</span><br><span class="line">| E       | Math       |</span><br><span class="line">| F       | Computer   |</span><br><span class="line">| G       | Math       |</span><br><span class="line">| H       | Math       |</span><br><span class="line">| I       | Math       |</span><br><span class="line">+---------+------------+</span><br></pre></td></tr></table></figure>
+
+<p>查找有五名及以上 student 的 class。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------+</span><br><span class="line">| class   |</span><br><span class="line">+---------+</span><br><span class="line">| Math    |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-Schema-3"><a href="#SQL-Schema-3" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> courses;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> courses ( student <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ), <span class="keyword">class</span> <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ) );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> courses ( student, <span class="keyword">class</span> )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="string">'A'</span>, <span class="string">'Math'</span> ),</span><br><span class="line">    ( <span class="string">'B'</span>, <span class="string">'English'</span> ),</span><br><span class="line">    ( <span class="string">'C'</span>, <span class="string">'Math'</span> ),</span><br><span class="line">    ( <span class="string">'D'</span>, <span class="string">'Biology'</span> ),</span><br><span class="line">    ( <span class="string">'E'</span>, <span class="string">'Math'</span> ),</span><br><span class="line">    ( <span class="string">'F'</span>, <span class="string">'Computer'</span> ),</span><br><span class="line">    ( <span class="string">'G'</span>, <span class="string">'Math'</span> ),</span><br><span class="line">    ( <span class="string">'H'</span>, <span class="string">'Math'</span> ),</span><br><span class="line">    ( <span class="string">'I'</span>, <span class="string">'Math'</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution"></a>Solution</h2><p>对 class 列进行分组之后，再使用 count 汇总函数统计数量，统计之后使用 having 进行过滤。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="keyword">class</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    courses</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">class</span></span><br><span class="line"><span class="keyword">HAVING</span></span><br><span class="line">    <span class="keyword">count</span>( <span class="keyword">DISTINCT</span> student ) &gt;= <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="182-Duplicate-Emails"><a href="#182-Duplicate-Emails" class="headerlink" title="182. Duplicate Emails"></a>182. Duplicate Emails</h1><p><a href="https://leetcode.com/problems/duplicate-emails/description/" target="_blank" rel="noopener">https://leetcode.com/problems/duplicate-emails/description/</a></p>
+<h2 id="Description-4"><a href="#Description-4" class="headerlink" title="Description"></a>Description</h2><p>邮件地址表：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+---------+</span><br><span class="line">| Id | Email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com |</span><br><span class="line">| 3  | a@b.com |</span><br><span class="line">+----+---------+</span><br></pre></td></tr></table></figure>
+
+<p>查找重复的邮件地址：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------+</span><br><span class="line">| Email   |</span><br><span class="line">+---------+</span><br><span class="line">| a@b.com |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-Schema-4"><a href="#SQL-Schema-4" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> Person;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Person ( <span class="keyword">Id</span> <span class="built_in">INT</span>, Email <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ) );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Person ( <span class="keyword">Id</span>, Email )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="number">1</span>, <span class="string">'a@b.com'</span> ),</span><br><span class="line">    ( <span class="number">2</span>, <span class="string">'c@d.com'</span> ),</span><br><span class="line">    ( <span class="number">3</span>, <span class="string">'a@b.com'</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-4"><a href="#Solution-4" class="headerlink" title="Solution"></a>Solution</h2><p>对 Email 进行分组，如果相同 Email 的数量大于等于 2，则表示该 Email 重复。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    Email</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Person</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    Email</span><br><span class="line"><span class="keyword">HAVING</span></span><br><span class="line">    <span class="keyword">COUNT</span>( * ) &gt;= <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="196-Delete-Duplicate-Emails"><a href="#196-Delete-Duplicate-Emails" class="headerlink" title="196. Delete Duplicate Emails"></a>196. Delete Duplicate Emails</h1><p><a href="https://leetcode.com/problems/delete-duplicate-emails/description/" target="_blank" rel="noopener">https://leetcode.com/problems/delete-duplicate-emails/description/</a></p>
+<h2 id="Description-5"><a href="#Description-5" class="headerlink" title="Description"></a>Description</h2><p>邮件地址表：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+---------+</span><br><span class="line">| Id | Email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | john@example.com |</span><br><span class="line">| 2  | bob@example.com |</span><br><span class="line">| 3  | john@example.com |</span><br><span class="line">+----+---------+</span><br></pre></td></tr></table></figure>
+
+<p>删除重复的邮件地址：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+------------------+</span><br><span class="line">| Id | Email            |</span><br><span class="line">+----+------------------+</span><br><span class="line">| 1  | john@example.com |</span><br><span class="line">| 2  | bob@example.com  |</span><br><span class="line">+----+------------------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-Schema-5"><a href="#SQL-Schema-5" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><p>与 182 相同。</p>
+<h2 id="Solution-5"><a href="#Solution-5" class="headerlink" title="Solution"></a>Solution</h2><p>只保留相同 Email 中 Id 最小的那一个，然后删除其它的。</p>
+<p>连接：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> p1</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Person p1,</span><br><span class="line">    Person p2</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    p1.Email = p2.Email</span><br><span class="line">    <span class="keyword">AND</span> p1.Id &gt; p2.Id</span><br></pre></td></tr></table></figure>
+
+<p>子查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Person</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    <span class="keyword">id</span> <span class="keyword">NOT</span> <span class="keyword">IN</span> ( <span class="keyword">SELECT</span> <span class="keyword">id</span> <span class="keyword">FROM</span> ( <span class="keyword">SELECT</span> <span class="keyword">min</span>( <span class="keyword">id</span> ) <span class="keyword">AS</span> <span class="keyword">id</span> <span class="keyword">FROM</span> Person <span class="keyword">GROUP</span> <span class="keyword">BY</span> email ) <span class="keyword">AS</span> m );</span><br></pre></td></tr></table></figure>
+
+<p>应该注意的是上述解法额外嵌套了一个 SELECT 语句，如果不这么做，会出现错误：You can’t specify target table ‘Person’ for update in FROM clause。以下演示了这种错误解法。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Person</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    <span class="keyword">id</span> <span class="keyword">NOT</span> <span class="keyword">IN</span> ( <span class="keyword">SELECT</span> <span class="keyword">min</span>( <span class="keyword">id</span> ) <span class="keyword">AS</span> <span class="keyword">id</span> <span class="keyword">FROM</span> Person <span class="keyword">GROUP</span> <span class="keyword">BY</span> email );</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://stackoverflow.com/questions/45494/mysql-error-1093-cant-specify-target-table-for-update-in-from-clause" target="_blank" rel="noopener">pMySQL Error 1093 - Can’t specify target table for update in FROM clause</a></p>
+<h1 id="175-Combine-Two-Tables"><a href="#175-Combine-Two-Tables" class="headerlink" title="175. Combine Two Tables"></a>175. Combine Two Tables</h1><p><a href="https://leetcode.com/problems/combine-two-tables/description/" target="_blank" rel="noopener">https://leetcode.com/problems/combine-two-tables/description/</a></p>
+<h2 id="Description-6"><a href="#Description-6" class="headerlink" title="Description"></a>Description</h2><p>Person 表：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| PersonId    | int     |</span><br><span class="line">| FirstName   | varchar |</span><br><span class="line">| LastName    | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">PersonId is the primary key column for this table.</span><br></pre></td></tr></table></figure>
+
+<p>Address 表：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| AddressId   | int     |</span><br><span class="line">| PersonId    | int     |</span><br><span class="line">| City        | varchar |</span><br><span class="line">| State       | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">AddressId is the primary key column for this table.</span><br></pre></td></tr></table></figure>
+
+<p>查找 FirstName, LastName, City, State 数据，而不管一个用户有没有填地址信息。</p>
+<h2 id="SQL-Schema-6"><a href="#SQL-Schema-6" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> Person;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Person ( PersonId <span class="built_in">INT</span>, FirstName <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ), LastName <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ) );</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> Address;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Address ( AddressId <span class="built_in">INT</span>, PersonId <span class="built_in">INT</span>, City <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ), State <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ) );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Person ( PersonId, LastName, FirstName )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="number">1</span>, <span class="string">'Wang'</span>, <span class="string">'Allen'</span> );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Address ( AddressId, PersonId, City, State )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="number">1</span>, <span class="number">2</span>, <span class="string">'New York City'</span>, <span class="string">'New York'</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-6"><a href="#Solution-6" class="headerlink" title="Solution"></a>Solution</h2><p>涉及到 Person 和 Address 两个表，在对这两个表执行连接操作时，因为要保留 Person 表中的信息，即使在 Address 表中没有关联的信息也要保留。此时可以用左外连接，将 Person 表放在 LEFT JOIN 的左边。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    FirstName,</span><br><span class="line">    LastName,</span><br><span class="line">    City,</span><br><span class="line">    State</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Person P</span><br><span class="line">    <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Address A</span><br><span class="line">    <span class="keyword">ON</span> P.PersonId = A.PersonId;</span><br></pre></td></tr></table></figure>
+
+<h1 id="181-Employees-Earning-More-Than-Their-Managers"><a href="#181-Employees-Earning-More-Than-Their-Managers" class="headerlink" title="181. Employees Earning More Than Their Managers"></a>181. Employees Earning More Than Their Managers</h1><p><a href="https://leetcode.com/problems/employees-earning-more-than-their-managers/description/" target="_blank" rel="noopener">https://leetcode.com/problems/employees-earning-more-than-their-managers/description/</a></p>
+<h2 id="Description-7"><a href="#Description-7" class="headerlink" title="Description"></a>Description</h2><p>Employee 表：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+-----------+</span><br><span class="line">| Id | Name  | Salary | ManagerId |</span><br><span class="line">+----+-------+--------+-----------+</span><br><span class="line">| 1  | Joe   | 70000  | 3         |</span><br><span class="line">| 2  | Henry | 80000  | 4         |</span><br><span class="line">| 3  | Sam   | 60000  | NULL      |</span><br><span class="line">| 4  | Max   | 90000  | NULL      |</span><br><span class="line">+----+-------+--------+-----------+</span><br></pre></td></tr></table></figure>
+
+<p>查找薪资大于其经理薪资的员工信息。</p>
+<h2 id="SQL-Schema-7"><a href="#SQL-Schema-7" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> Employee;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Employee ( <span class="keyword">Id</span> <span class="built_in">INT</span>, <span class="keyword">NAME</span> <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ), Salary <span class="built_in">INT</span>, ManagerId <span class="built_in">INT</span> );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Employee ( <span class="keyword">Id</span>, <span class="keyword">NAME</span>, Salary, ManagerId )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="number">1</span>, <span class="string">'Joe'</span>, <span class="number">70000</span>, <span class="number">3</span> ),</span><br><span class="line">    ( <span class="number">2</span>, <span class="string">'Henry'</span>, <span class="number">80000</span>, <span class="number">4</span> ),</span><br><span class="line">    ( <span class="number">3</span>, <span class="string">'Sam'</span>, <span class="number">60000</span>, <span class="literal">NULL</span> ),</span><br><span class="line">    ( <span class="number">4</span>, <span class="string">'Max'</span>, <span class="number">90000</span>, <span class="literal">NULL</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-7"><a href="#Solution-7" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    E1.NAME <span class="keyword">AS</span> Employee</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Employee E1</span><br><span class="line">    <span class="keyword">INNER</span> <span class="keyword">JOIN</span> Employee E2</span><br><span class="line">    <span class="keyword">ON</span> E1.ManagerId = E2.Id</span><br><span class="line">    <span class="keyword">AND</span> E1.Salary &gt; E2.Salary;</span><br></pre></td></tr></table></figure>
+
+<h1 id="183-Customers-Who-Never-Order"><a href="#183-Customers-Who-Never-Order" class="headerlink" title="183. Customers Who Never Order"></a>183. Customers Who Never Order</h1><p><a href="https://leetcode.com/problems/customers-who-never-order/description/" target="_blank" rel="noopener">https://leetcode.com/problems/customers-who-never-order/description/</a></p>
+<h2 id="Description-8"><a href="#Description-8" class="headerlink" title="Description"></a>Description</h2><p>Customers 表：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+</span><br><span class="line">| Id | Name  |</span><br><span class="line">+----+-------+</span><br><span class="line">| 1  | Joe   |</span><br><span class="line">| 2  | Henry |</span><br><span class="line">| 3  | Sam   |</span><br><span class="line">| 4  | Max   |</span><br><span class="line">+----+-------+</span><br></pre></td></tr></table></figure>
+
+<p>Orders 表：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+------------+</span><br><span class="line">| Id | CustomerId |</span><br><span class="line">+----+------------+</span><br><span class="line">| 1  | 3          |</span><br><span class="line">| 2  | 1          |</span><br><span class="line">+----+------------+</span><br></pre></td></tr></table></figure>
+
+<p>查找没有订单的顾客信息：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+-----------+</span><br><span class="line">| Customers |</span><br><span class="line">+-----------+</span><br><span class="line">| Henry     |</span><br><span class="line">| Max       |</span><br><span class="line">+-----------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-Schema-8"><a href="#SQL-Schema-8" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> Customers;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Customers ( <span class="keyword">Id</span> <span class="built_in">INT</span>, <span class="keyword">NAME</span> <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ) );</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> Orders;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Orders ( <span class="keyword">Id</span> <span class="built_in">INT</span>, CustomerId <span class="built_in">INT</span> );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Customers ( <span class="keyword">Id</span>, <span class="keyword">NAME</span> )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="number">1</span>, <span class="string">'Joe'</span> ),</span><br><span class="line">    ( <span class="number">2</span>, <span class="string">'Henry'</span> ),</span><br><span class="line">    ( <span class="number">3</span>, <span class="string">'Sam'</span> ),</span><br><span class="line">    ( <span class="number">4</span>, <span class="string">'Max'</span> );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Orders ( <span class="keyword">Id</span>, CustomerId )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="number">1</span>, <span class="number">3</span> ),</span><br><span class="line">    ( <span class="number">2</span>, <span class="number">1</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-8"><a href="#Solution-8" class="headerlink" title="Solution"></a>Solution</h2><p>左外链接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    C.Name <span class="keyword">AS</span> Customers</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Customers C</span><br><span class="line">    <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Orders O</span><br><span class="line">    <span class="keyword">ON</span> C.Id = O.CustomerId</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    O.CustomerId <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p>子查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="keyword">Name</span> <span class="keyword">AS</span> Customers</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Customers</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    <span class="keyword">Id</span> <span class="keyword">NOT</span> <span class="keyword">IN</span> ( <span class="keyword">SELECT</span> CustomerId <span class="keyword">FROM</span> Orders );</span><br></pre></td></tr></table></figure>
+
+<h1 id="184-Department-Highest-Salary"><a href="#184-Department-Highest-Salary" class="headerlink" title="184. Department Highest Salary"></a>184. Department Highest Salary</h1><p><a href="https://leetcode.com/problems/department-highest-salary/description/" target="_blank" rel="noopener">https://leetcode.com/problems/department-highest-salary/description/</a></p>
+<h2 id="Description-9"><a href="#Description-9" class="headerlink" title="Description"></a>Description</h2><p>Employee 表：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| Id | Name  | Salary | DepartmentId |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| 1  | Joe   | 70000  | 1            |</span><br><span class="line">| 2  | Henry | 80000  | 2            |</span><br><span class="line">| 3  | Sam   | 60000  | 2            |</span><br><span class="line">| 4  | Max   | 90000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+
+<p>Department 表：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+----------+</span><br><span class="line">| Id | Name     |</span><br><span class="line">+----+----------+</span><br><span class="line">| 1  | IT       |</span><br><span class="line">| 2  | Sales    |</span><br><span class="line">+----+----------+</span><br></pre></td></tr></table></figure>
+
+<p>查找一个 Department 中收入最高者的信息：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+------------+----------+--------+</span><br><span class="line">| Department | Employee | Salary |</span><br><span class="line">+------------+----------+--------+</span><br><span class="line">| IT         | Max      | 90000  |</span><br><span class="line">| Sales      | Henry    | 80000  |</span><br><span class="line">+------------+----------+--------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-Schema-9"><a href="#SQL-Schema-9" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> Employee;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Employee ( <span class="keyword">Id</span> <span class="built_in">INT</span>, <span class="keyword">NAME</span> <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ), Salary <span class="built_in">INT</span>, DepartmentId <span class="built_in">INT</span> );</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> Department;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Department ( <span class="keyword">Id</span> <span class="built_in">INT</span>, <span class="keyword">NAME</span> <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ) );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Employee ( <span class="keyword">Id</span>, <span class="keyword">NAME</span>, Salary, DepartmentId )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="number">1</span>, <span class="string">'Joe'</span>, <span class="number">70000</span>, <span class="number">1</span> ),</span><br><span class="line">    ( <span class="number">2</span>, <span class="string">'Henry'</span>, <span class="number">80000</span>, <span class="number">2</span> ),</span><br><span class="line">    ( <span class="number">3</span>, <span class="string">'Sam'</span>, <span class="number">60000</span>, <span class="number">2</span> ),</span><br><span class="line">    ( <span class="number">4</span>, <span class="string">'Max'</span>, <span class="number">90000</span>, <span class="number">1</span> );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Department ( <span class="keyword">Id</span>, <span class="keyword">NAME</span> )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="number">1</span>, <span class="string">'IT'</span> ),</span><br><span class="line">    ( <span class="number">2</span>, <span class="string">'Sales'</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-9"><a href="#Solution-9" class="headerlink" title="Solution"></a>Solution</h2><p>创建一个临时表，包含了部门员工的最大薪资。可以对部门进行分组，然后使用 MAX() 汇总函数取得最大薪资。</p>
+<p>之后使用连接找到一个部门中薪资等于临时表中最大薪资的员工。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    D.NAME Department,</span><br><span class="line">    E.NAME Employee,</span><br><span class="line">    E.Salary</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Employee E,</span><br><span class="line">    Department D,</span><br><span class="line">    ( <span class="keyword">SELECT</span> DepartmentId, <span class="keyword">MAX</span>( Salary ) Salary <span class="keyword">FROM</span> Employee <span class="keyword">GROUP</span> <span class="keyword">BY</span> DepartmentId ) M</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    E.DepartmentId = D.Id</span><br><span class="line">    <span class="keyword">AND</span> E.DepartmentId = M.DepartmentId</span><br><span class="line">    <span class="keyword">AND</span> E.Salary = M.Salary;</span><br></pre></td></tr></table></figure>
+
+<h1 id="176-Second-Highest-Salary"><a href="#176-Second-Highest-Salary" class="headerlink" title="176. Second Highest Salary"></a>176. Second Highest Salary</h1><p><a href="https://leetcode.com/problems/second-highest-salary/description/" target="_blank" rel="noopener">https://leetcode.com/problems/second-highest-salary/description/</a></p>
+<h2 id="Description-10"><a href="#Description-10" class="headerlink" title="Description"></a>Description</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+--------+</span><br><span class="line">| Id | Salary |</span><br><span class="line">+----+--------+</span><br><span class="line">| 1  | 100    |</span><br><span class="line">| 2  | 200    |</span><br><span class="line">| 3  | 300    |</span><br><span class="line">+----+--------+</span><br></pre></td></tr></table></figure>
+
+<p>查找工资第二高的员工。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------------------+</span><br><span class="line">| SecondHighestSalary |</span><br><span class="line">+---------------------+</span><br><span class="line">| 200                 |</span><br><span class="line">+---------------------+</span><br></pre></td></tr></table></figure>
+
+<p>没有找到返回 null 而不是不返回数据。</p>
+<h2 id="SQL-Schema-10"><a href="#SQL-Schema-10" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> Employee;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Employee ( <span class="keyword">Id</span> <span class="built_in">INT</span>, Salary <span class="built_in">INT</span> );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Employee ( <span class="keyword">Id</span>, Salary )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="number">1</span>, <span class="number">100</span> ),</span><br><span class="line">    ( <span class="number">2</span>, <span class="number">200</span> ),</span><br><span class="line">    ( <span class="number">3</span>, <span class="number">300</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-10"><a href="#Solution-10" class="headerlink" title="Solution"></a>Solution</h2><p>为了在没有查找到数据时返回 null，需要在查询结果外面再套一层 SELECT。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    ( <span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> Salary <span class="keyword">FROM</span> Employee <span class="keyword">ORDER</span> <span class="keyword">BY</span> Salary <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">1</span>, <span class="number">1</span> ) SecondHighestSalary;</span><br></pre></td></tr></table></figure>
+
+<h1 id="177-Nth-Highest-Salary"><a href="#177-Nth-Highest-Salary" class="headerlink" title="177. Nth Highest Salary"></a>177. Nth Highest Salary</h1><h2 id="Description-11"><a href="#Description-11" class="headerlink" title="Description"></a>Description</h2><p>查找工资第 N 高的员工。</p>
+<h2 id="SQL-Schema-11"><a href="#SQL-Schema-11" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><p>同 176。</p>
+<h2 id="Solution-11"><a href="#Solution-11" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> getNthHighestSalary ( N <span class="built_in">INT</span> ) <span class="keyword">RETURNS</span> <span class="built_in">INT</span> <span class="keyword">BEGIN</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> N = N - <span class="number">1</span>;</span><br><span class="line">RETURN ( <span class="keyword">SELECT</span> ( <span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> Salary <span class="keyword">FROM</span> Employee <span class="keyword">ORDER</span> <span class="keyword">BY</span> Salary <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> N, <span class="number">1</span> ) );</span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="178-Rank-Scores"><a href="#178-Rank-Scores" class="headerlink" title="178. Rank Scores"></a>178. Rank Scores</h1><p><a href="https://leetcode.com/problems/rank-scores/description/" target="_blank" rel="noopener">https://leetcode.com/problems/rank-scores/description/</a></p>
+<h2 id="Description-12"><a href="#Description-12" class="headerlink" title="Description"></a>Description</h2><p>得分表：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+</span><br><span class="line">| Id | Score |</span><br><span class="line">+----+-------+</span><br><span class="line">| 1  | 3.50  |</span><br><span class="line">| 2  | 3.65  |</span><br><span class="line">| 3  | 4.00  |</span><br><span class="line">| 4  | 3.85  |</span><br><span class="line">| 5  | 4.00  |</span><br><span class="line">| 6  | 3.65  |</span><br><span class="line">+----+-------+</span><br></pre></td></tr></table></figure>
+
+<p>将得分排序，并统计排名。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-------+------+</span><br><span class="line">| Score | Rank |</span><br><span class="line">+-------+------+</span><br><span class="line">| 4.00  | 1    |</span><br><span class="line">| 4.00  | 1    |</span><br><span class="line">| 3.85  | 2    |</span><br><span class="line">| 3.65  | 3    |</span><br><span class="line">| 3.65  | 3    |</span><br><span class="line">| 3.50  | 4    |</span><br><span class="line">+-------+------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-Schema-12"><a href="#SQL-Schema-12" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> Scores;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Scores ( <span class="keyword">Id</span> <span class="built_in">INT</span>, Score <span class="built_in">DECIMAL</span> ( <span class="number">3</span>, <span class="number">2</span> ) );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Scores ( <span class="keyword">Id</span>, Score )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="number">1</span>, <span class="number">3.5</span> ),</span><br><span class="line">    ( <span class="number">2</span>, <span class="number">3.65</span> ),</span><br><span class="line">    ( <span class="number">3</span>, <span class="number">4.0</span> ),</span><br><span class="line">    ( <span class="number">4</span>, <span class="number">3.85</span> ),</span><br><span class="line">    ( <span class="number">5</span>, <span class="number">4.0</span> ),</span><br><span class="line">    ( <span class="number">6</span>, <span class="number">3.65</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-12"><a href="#Solution-12" class="headerlink" title="Solution"></a>Solution</h2><p>要统计某个 score 的排名，只要统计大于该 score 的 score 数量，然后加 1。</p>
+<table>
+<thead>
+<tr>
+<th align="center">score</th>
+<th align="center">大于该 score 的 score 数量</th>
+<th align="center">排名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">4.1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">4.2</td>
+<td align="center">1</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">4.3</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>但是在本题中，相同的 score 只算一个排名：</p>
+<table>
+<thead>
+<tr>
+<th align="center">score</th>
+<th align="center">排名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">4.1</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">4.1</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">4.2</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">4.2</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">4.3</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">4.3</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>可以按 score 进行分组，将同一个分组中的 score 只当成一个。</p>
+<p>但是如果分组字段只有 score 的话，那么相同的 score 最后的结果只会有一个，例如上面的 6 个记录最后只取出 3 个。</p>
+<table>
+<thead>
+<tr>
+<th align="center">score</th>
+<th align="center">排名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">4.1</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">4.2</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">4.3</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>所以在分组中需要加入 Id，每个记录显示一个结果。综上，需要使用 score 和 id 两个分组字段。</p>
+<p>在下面的实现中，首先将 Scores 表根据 score 字段进行自连接，得到一个新表，然后在新表上对 id 和 score 进行分组。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    S1.score <span class="string">'Score'</span>,</span><br><span class="line">    <span class="keyword">COUNT</span>( <span class="keyword">DISTINCT</span> S2.score ) <span class="string">'Rank'</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Scores S1</span><br><span class="line">    <span class="keyword">INNER</span> <span class="keyword">JOIN</span> Scores S2</span><br><span class="line">    <span class="keyword">ON</span> S1.score &lt;= S2.score</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    S1.id, S1.score</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    S1.score <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="180-Consecutive-Numbers"><a href="#180-Consecutive-Numbers" class="headerlink" title="180. Consecutive Numbers"></a>180. Consecutive Numbers</h1><p><a href="https://leetcode.com/problems/consecutive-numbers/description/" target="_blank" rel="noopener">https://leetcode.com/problems/consecutive-numbers/description/</a></p>
+<h2 id="Description-13"><a href="#Description-13" class="headerlink" title="Description"></a>Description</h2><p>数字表：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+----+-----+</span><br><span class="line">| Id | Num |</span><br><span class="line">+----+-----+</span><br><span class="line">| 1  |  1  |</span><br><span class="line">| 2  |  1  |</span><br><span class="line">| 3  |  1  |</span><br><span class="line">| 4  |  2  |</span><br><span class="line">| 5  |  1  |</span><br><span class="line">| 6  |  2  |</span><br><span class="line">| 7  |  2  |</span><br><span class="line">+----+-----+</span><br></pre></td></tr></table></figure>
+
+<p>查找连续出现三次的数字。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------+</span><br><span class="line">| ConsecutiveNums |</span><br><span class="line">+-----------------+</span><br><span class="line">| 1               |</span><br><span class="line">+-----------------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-Schema-13"><a href="#SQL-Schema-13" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> <span class="keyword">LOGS</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">LOGS</span> ( <span class="keyword">Id</span> <span class="built_in">INT</span>, <span class="keyword">Num</span> <span class="built_in">INT</span> );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">LOGS</span> ( <span class="keyword">Id</span>, <span class="keyword">Num</span> )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="number">1</span>, <span class="number">1</span> ),</span><br><span class="line">    ( <span class="number">2</span>, <span class="number">1</span> ),</span><br><span class="line">    ( <span class="number">3</span>, <span class="number">1</span> ),</span><br><span class="line">    ( <span class="number">4</span>, <span class="number">2</span> ),</span><br><span class="line">    ( <span class="number">5</span>, <span class="number">1</span> ),</span><br><span class="line">    ( <span class="number">6</span>, <span class="number">2</span> ),</span><br><span class="line">    ( <span class="number">7</span>, <span class="number">2</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-13"><a href="#Solution-13" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="keyword">DISTINCT</span> L1.num ConsecutiveNums</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    <span class="keyword">Logs</span> L1,</span><br><span class="line">    <span class="keyword">Logs</span> L2,</span><br><span class="line">    <span class="keyword">Logs</span> L3</span><br><span class="line"><span class="keyword">WHERE</span> L1.id = l2.id - <span class="number">1</span></span><br><span class="line">    <span class="keyword">AND</span> L2.id = L3.id - <span class="number">1</span></span><br><span class="line">    <span class="keyword">AND</span> L1.num = L2.num</span><br><span class="line">    <span class="keyword">AND</span> l2.num = l3.num;</span><br></pre></td></tr></table></figure>
+
+<h1 id="626-Exchange-Seats"><a href="#626-Exchange-Seats" class="headerlink" title="626. Exchange Seats"></a>626. Exchange Seats</h1><p><a href="https://leetcode.com/problems/exchange-seats/description/" target="_blank" rel="noopener">https://leetcode.com/problems/exchange-seats/description/</a></p>
+<h2 id="Description-14"><a href="#Description-14" class="headerlink" title="Description"></a>Description</h2><p>seat 表存储着座位对应的学生。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+---------+---------+</span><br><span class="line">|    id   | student |</span><br><span class="line">+---------+---------+</span><br><span class="line">|    1    | Abbot   |</span><br><span class="line">|    2    | Doris   |</span><br><span class="line">|    3    | Emerson |</span><br><span class="line">|    4    | Green   |</span><br><span class="line">|    5    | Jeames  |</span><br><span class="line">+---------+---------+</span><br></pre></td></tr></table></figure>
+
+<p>要求交换相邻座位的两个学生，如果最后一个座位是奇数，那么不交换这个座位上的学生。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+---------+---------+</span><br><span class="line">|    id   | student |</span><br><span class="line">+---------+---------+</span><br><span class="line">|    1    | Doris   |</span><br><span class="line">|    2    | Abbot   |</span><br><span class="line">|    3    | Green   |</span><br><span class="line">|    4    | Emerson |</span><br><span class="line">|    5    | Jeames  |</span><br><span class="line">+---------+---------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-Schema-14"><a href="#SQL-Schema-14" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">IF</span></span><br><span class="line">    <span class="keyword">EXISTS</span> seat;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> seat ( <span class="keyword">id</span> <span class="built_in">INT</span>, student <span class="built_in">VARCHAR</span> ( <span class="number">255</span> ) );</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> seat ( <span class="keyword">id</span>, student )</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">    ( <span class="string">'1'</span>, <span class="string">'Abbot'</span> ),</span><br><span class="line">    ( <span class="string">'2'</span>, <span class="string">'Doris'</span> ),</span><br><span class="line">    ( <span class="string">'3'</span>, <span class="string">'Emerson'</span> ),</span><br><span class="line">    ( <span class="string">'4'</span>, <span class="string">'Green'</span> ),</span><br><span class="line">    ( <span class="string">'5'</span>, <span class="string">'Jeames'</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-14"><a href="#Solution-14" class="headerlink" title="Solution"></a>Solution</h2><p>使用多个 union。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 处理偶数 id，让 id 减 1</span></span><br><span class="line"><span class="comment"># 例如 2,4,6,... 变成 1,3,5,...</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    s1.id - <span class="number">1</span> <span class="keyword">AS</span> <span class="keyword">id</span>,</span><br><span class="line">    s1.student</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    seat s1</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    s1.id <span class="keyword">MOD</span> <span class="number">2</span> = <span class="number">0</span> <span class="keyword">UNION</span></span><br><span class="line"><span class="comment"># 处理奇数 id，让 id 加 1。但是如果最大的 id 为奇数，则不做处理</span></span><br><span class="line"><span class="comment"># 例如 1,3,5,... 变成 2,4,6,...</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    s2.id + <span class="number">1</span> <span class="keyword">AS</span> <span class="keyword">id</span>,</span><br><span class="line">    s2.student</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    seat s2</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    s2.id <span class="keyword">MOD</span> <span class="number">2</span> = <span class="number">1</span></span><br><span class="line">    <span class="keyword">AND</span> s2.id != ( <span class="keyword">SELECT</span> <span class="keyword">max</span>( s3.id ) <span class="keyword">FROM</span> seat s3 ) <span class="keyword">UNION</span></span><br><span class="line"><span class="comment"># 如果最大的 id 为奇数，单独取出这个数</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    s4.id <span class="keyword">AS</span> <span class="keyword">id</span>,</span><br><span class="line">    s4.student</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    seat s4</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    s4.id <span class="keyword">MOD</span> <span class="number">2</span> = <span class="number">1</span></span><br><span class="line">    <span class="keyword">AND</span> s4.id = ( <span class="keyword">SELECT</span> <span class="keyword">max</span>( s5.id ) <span class="keyword">FROM</span> seat s5 )</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">id</span>;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>夏天来块儿冰西瓜!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mingyang Yue 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+            <a href="/tags/Leetcode数据库题解/" rel="tag"># Leetcode数据库题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/17/计算机网络-概述/" rel="next" title="计算机网络-概述">
+                <i class="fa fa-chevron-left"></i> 计算机网络-概述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/17/SQL语句/" rel="prev" title="SQL语句">
+                SQL语句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg" alt="Mingyang Yue">
+            
+              <p class="site-author-name" itemprop="name">Mingyang Yue</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/yuemingyang7010" title="GitHub主页" target="_blank">GitHub主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/yuemingyang7010" title="CSDN主页" target="_blank">CSDN主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#595-Big-Countries"><span class="nav-number">1.</span> <span class="nav-text">595. Big Countries</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema"><span class="nav-number">1.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">1.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#627-Swap-Salary"><span class="nav-number">2.</span> <span class="nav-text">627. Swap Salary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-1"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-1"><span class="nav-number">2.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#620-Not-Boring-Movies"><span class="nav-number">3.</span> <span class="nav-text">620. Not Boring Movies</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-2"><span class="nav-number">3.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-2"><span class="nav-number">3.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-2"><span class="nav-number">3.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#596-Classes-More-Than-5-Students"><span class="nav-number">4.</span> <span class="nav-text">596. Classes More Than 5 Students</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-3"><span class="nav-number">4.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-3"><span class="nav-number">4.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-3"><span class="nav-number">4.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#182-Duplicate-Emails"><span class="nav-number">5.</span> <span class="nav-text">182. Duplicate Emails</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-4"><span class="nav-number">5.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-4"><span class="nav-number">5.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-4"><span class="nav-number">5.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#196-Delete-Duplicate-Emails"><span class="nav-number">6.</span> <span class="nav-text">196. Delete Duplicate Emails</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-5"><span class="nav-number">6.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-5"><span class="nav-number">6.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-5"><span class="nav-number">6.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#175-Combine-Two-Tables"><span class="nav-number">7.</span> <span class="nav-text">175. Combine Two Tables</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-6"><span class="nav-number">7.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-6"><span class="nav-number">7.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-6"><span class="nav-number">7.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#181-Employees-Earning-More-Than-Their-Managers"><span class="nav-number">8.</span> <span class="nav-text">181. Employees Earning More Than Their Managers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-7"><span class="nav-number">8.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-7"><span class="nav-number">8.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-7"><span class="nav-number">8.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#183-Customers-Who-Never-Order"><span class="nav-number">9.</span> <span class="nav-text">183. Customers Who Never Order</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-8"><span class="nav-number">9.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-8"><span class="nav-number">9.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-8"><span class="nav-number">9.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#184-Department-Highest-Salary"><span class="nav-number">10.</span> <span class="nav-text">184. Department Highest Salary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-9"><span class="nav-number">10.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-9"><span class="nav-number">10.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-9"><span class="nav-number">10.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#176-Second-Highest-Salary"><span class="nav-number">11.</span> <span class="nav-text">176. Second Highest Salary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-10"><span class="nav-number">11.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-10"><span class="nav-number">11.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-10"><span class="nav-number">11.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#177-Nth-Highest-Salary"><span class="nav-number">12.</span> <span class="nav-text">177. Nth Highest Salary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-11"><span class="nav-number">12.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-11"><span class="nav-number">12.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-11"><span class="nav-number">12.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#178-Rank-Scores"><span class="nav-number">13.</span> <span class="nav-text">178. Rank Scores</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-12"><span class="nav-number">13.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-12"><span class="nav-number">13.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-12"><span class="nav-number">13.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#180-Consecutive-Numbers"><span class="nav-number">14.</span> <span class="nav-text">180. Consecutive Numbers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-13"><span class="nav-number">14.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-13"><span class="nav-number">14.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-13"><span class="nav-number">14.3.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#626-Exchange-Seats"><span class="nav-number">15.</span> <span class="nav-text">626. Exchange Seats</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-14"><span class="nav-number">15.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema-14"><span class="nav-number">15.2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-14"><span class="nav-number">15.3.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingyang Yue</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+    <span class="site-uv">
+      本站访问数 <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人数
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量 <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'aKc2tU1wp20XlT9yQMdSn05x-gzGzoHsz',
+        appKey: 'twkLoqUVOTUyJgPUtk1myvof',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
