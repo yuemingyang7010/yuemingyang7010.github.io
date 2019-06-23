@@ -79,23 +79,23 @@
 
 
 
-<meta name="description" content="2.1逻辑地址空间与物理地址空间Eg：编译时只需确定变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。 相对地址又称逻辑地址，绝对地址又称物理地址。 编译后，每个目标模块都是从0号单元开始编址，称为该目标模块的相对地址（或逻辑地址）。 当链接程序将各个模块链接成一个完整的可执行目标程序时，链接">
+<meta name="description" content="function displayTOC() {document.querySelector(&quot;.post-body &amp;gt; ul&quot;).style.display = &quot;block&quot;;}     function hideTOC() {document.querySelector(&quot;.post-body &amp;gt; ul&quot;).style.display = &quot;none&quot;;}     (functio">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统-内存管理">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="2.1逻辑地址空间与物理地址空间Eg：编译时只需确定变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。 相对地址又称逻辑地址，绝对地址又称物理地址。 编译后，每个目标模块都是从0号单元开始编址，称为该目标模块的相对地址（或逻辑地址）。 当链接程序将各个模块链接成一个完整的可执行目标程序时，链接">
+<meta property="og:description" content="function displayTOC() {document.querySelector(&quot;.post-body &amp;gt; ul&quot;).style.display = &quot;block&quot;;}     function hideTOC() {document.querySelector(&quot;.post-body &amp;gt; ul&quot;).style.display = &quot;none&quot;;}     (functio">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/01.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/02.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/03.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/04.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/05.png">
-<meta property="og:updated_time" content="2019-06-23T04:20:58.682Z">
+<meta property="og:updated_time" content="2019-06-23T07:02:57.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统-内存管理">
-<meta name="twitter:description" content="2.1逻辑地址空间与物理地址空间Eg：编译时只需确定变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。 相对地址又称逻辑地址，绝对地址又称物理地址。 编译后，每个目标模块都是从0号单元开始编址，称为该目标模块的相对地址（或逻辑地址）。 当链接程序将各个模块链接成一个完整的可执行目标程序时，链接">
+<meta name="twitter:description" content="function displayTOC() {document.querySelector(&quot;.post-body &amp;gt; ul&quot;).style.display = &quot;block&quot;;}     function hideTOC() {document.querySelector(&quot;.post-body &amp;gt; ul&quot;).style.display = &quot;none&quot;;}     (functio">
 <meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/01.png">
 
 
@@ -416,7 +416,14 @@
       
 
       
-        <h2 id="2-1逻辑地址空间与物理地址空间"><a href="#2-1逻辑地址空间与物理地址空间" class="headerlink" title="2.1逻辑地址空间与物理地址空间"></a><strong>2.1逻辑地址空间与物理地址空间</strong></h2><p>Eg：<strong>编译时只需确定</strong>变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。</p>
+        <table><tr><td><input type="button" value="显示目录" onclick="displayTOC()"></td><td><input type="button" value="隐藏目录" onclick=" hideTOC()"></td></tr></table>
+<script>
+    function displayTOC() {document.querySelector(".post-body > ul").style.display = "block";}
+    function hideTOC() {document.querySelector(".post-body > ul").style.display = "none";}
+    (function () {document.querySelector(".post-body > ul").style.display = "none";})();
+</script>
+
+<h2 id="2-1逻辑地址空间与物理地址空间"><a href="#2-1逻辑地址空间与物理地址空间" class="headerlink" title="2.1逻辑地址空间与物理地址空间**"></a>2.1逻辑地址空间与物理地址空间**</h2><p>Eg：<strong>编译时只需确定</strong>变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。</p>
 <p><strong>相对地址又称逻辑地址，绝对地址又称物理地址</strong>。</p>
 <p><strong>编译后，每个目标模块都是从0号单元开始编址，称为该目标模块的相对地址（或逻辑地址）。</strong></p>
 <p>当链接程序将各个模块链接成一个完整的可执行目标程序时，链接程序顺序依次按各个模块的相对地址构成统一的<strong>从0号单元开始编址的逻辑地址空间。</strong></p>
@@ -708,7 +715,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1逻辑地址空间与物理地址空间"><span class="nav-number">1.</span> <span class="nav-text">2.1逻辑地址空间与物理地址空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2内存分配管理方式内存分配管理方式"><span class="nav-number">2.</span> <span class="nav-text">2.2内存分配管理方式内存分配管理方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1基本分页存储管理方式"><span class="nav-number">2.1.</span> <span class="nav-text">2.2.1基本分页存储管理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2基本分段存储管理方式"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.2基本分段存储管理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3段页式管理方式"><span class="nav-number">2.3.</span> <span class="nav-text">2.2.3段页式管理方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3虚拟内存管理"><span class="nav-number">3.</span> <span class="nav-text">2.3虚拟内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1虚拟存储器的定义和特征"><span class="nav-number">3.1.</span> <span class="nav-text">2.3.1虚拟存储器的定义和特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2请求分页管理方式"><span class="nav-number">3.2.</span> <span class="nav-text">2.3.2请求分页管理方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4抖动："><span class="nav-number">4.</span> <span class="nav-text">2.4抖动：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1逻辑地址空间与物理地址空间"><span class="nav-number">1.</span> <span class="nav-text">2.1逻辑地址空间与物理地址空间**</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2内存分配管理方式内存分配管理方式"><span class="nav-number">2.</span> <span class="nav-text">2.2内存分配管理方式内存分配管理方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1基本分页存储管理方式"><span class="nav-number">2.1.</span> <span class="nav-text">2.2.1基本分页存储管理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2基本分段存储管理方式"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.2基本分段存储管理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3段页式管理方式"><span class="nav-number">2.3.</span> <span class="nav-text">2.2.3段页式管理方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3虚拟内存管理"><span class="nav-number">3.</span> <span class="nav-text">2.3虚拟内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1虚拟存储器的定义和特征"><span class="nav-number">3.1.</span> <span class="nav-text">2.3.1虚拟存储器的定义和特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2请求分页管理方式"><span class="nav-number">3.2.</span> <span class="nav-text">2.3.2请求分页管理方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4抖动："><span class="nav-number">4.</span> <span class="nav-text">2.4抖动：</span></a></li></ol></div>
             
 
           </div>
