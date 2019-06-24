@@ -79,23 +79,25 @@
 
 
 
-<meta name="description" content="2.1逻辑地址空间与物理地址空间Eg：编译时只需确定变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。 相对地址又称逻辑地址，绝对地址又称物理地址。 编译后，每个目标模块都是从0号单元开始编址，称为该目标模块的相对地址（或逻辑地址）。 当链接程序将各个模块链接成一个完整的可执行目标程序时，链接">
+<meta name="description" content="2.1逻辑地址空间与物理地址空间Eg：编译时只需确定变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。 相对地址又称逻辑地址，绝对地址又称物理地址。 2.2内存分配管理方式包括连续分配管理方式与非连续分配管理方式。 连续分配方式，是指为一个用户程序分配一个连续的内存空间。它主要包括单一连续分配">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统-内存管理">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="2.1逻辑地址空间与物理地址空间Eg：编译时只需确定变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。 相对地址又称逻辑地址，绝对地址又称物理地址。 编译后，每个目标模块都是从0号单元开始编址，称为该目标模块的相对地址（或逻辑地址）。 当链接程序将各个模块链接成一个完整的可执行目标程序时，链接">
+<meta property="og:description" content="2.1逻辑地址空间与物理地址空间Eg：编译时只需确定变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。 相对地址又称逻辑地址，绝对地址又称物理地址。 2.2内存分配管理方式包括连续分配管理方式与非连续分配管理方式。 连续分配方式，是指为一个用户程序分配一个连续的内存空间。它主要包括单一连续分配">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/01.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/02.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/03.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/04.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/06.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/07.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/05.png">
-<meta property="og:updated_time" content="2019-06-23T07:13:59.767Z">
+<meta property="og:updated_time" content="2019-06-24T15:38:12.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统-内存管理">
-<meta name="twitter:description" content="2.1逻辑地址空间与物理地址空间Eg：编译时只需确定变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。 相对地址又称逻辑地址，绝对地址又称物理地址。 编译后，每个目标模块都是从0号单元开始编址，称为该目标模块的相对地址（或逻辑地址）。 当链接程序将各个模块链接成一个完整的可执行目标程序时，链接">
+<meta name="twitter:description" content="2.1逻辑地址空间与物理地址空间Eg：编译时只需确定变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。 相对地址又称逻辑地址，绝对地址又称物理地址。 2.2内存分配管理方式包括连续分配管理方式与非连续分配管理方式。 连续分配方式，是指为一个用户程序分配一个连续的内存空间。它主要包括单一连续分配">
 <meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/01.png">
 
 
@@ -418,15 +420,11 @@
       
         <h2 id="2-1逻辑地址空间与物理地址空间"><a href="#2-1逻辑地址空间与物理地址空间" class="headerlink" title="2.1逻辑地址空间与物理地址空间"></a>2.1逻辑地址空间与物理地址空间</h2><p>Eg：<strong>编译时只需确定</strong>变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。</p>
 <p><strong>相对地址又称逻辑地址，绝对地址又称物理地址</strong>。</p>
-<p><strong>编译后，每个目标模块都是从0号单元开始编址，称为该目标模块的相对地址（或逻辑地址）。</strong></p>
-<p>当链接程序将各个模块链接成一个完整的可执行目标程序时，链接程序顺序依次按各个模块的相对地址构成统一的<strong>从0号单元开始编址的逻辑地址空间。</strong></p>
-<p><strong>物理地址空间是指内存中物理单元的集合，它是地址转换的最终地址</strong>，进程在运行时执行指令和访问数据最后都要通过物理地址来存取主存。当装入程序将可执行代码装入内存时，必须通过地址转换将逻辑地址转换成物理地址，这个过程称为<strong>地址重定位</strong>。</p>
-<h2 id="2-2内存分配管理方式内存分配管理方式"><a href="#2-2内存分配管理方式内存分配管理方式" class="headerlink" title="2.2内存分配管理方式内存分配管理方式"></a><strong>2.2内存分配管理方式内存分配管理方式</strong></h2><p>包括连续分配管理方式与非连续分配管理方式。</p>
+<h2 id="2-2内存分配管理方式"><a href="#2-2内存分配管理方式" class="headerlink" title="2.2内存分配管理方式"></a><strong>2.2内存分配管理方式</strong></h2><p>包括连续分配管理方式与非连续分配管理方式。</p>
 <p><strong>连续分配方式</strong>，是指为一个用户程序分配一个连续的内存空间。它主要包括单一连续分配、固定分区分配和动态分区分配。</p>
 <p><strong>非连续分配管理方式</strong>允许一个程序分散地装入到不相邻的内存分区中，根据分区的大小是否固定分为<strong>分页存储管理方式</strong>和<strong>分段存储管理方式</strong>。分页存储管理方式中，又根据运行作业时是否要把作业的所有页面都装入内存才能运行分为<strong>基本分页存储管理方式</strong>和<strong>请求分页存储管理方式</strong>。</p>
 <h3 id="2-2-1基本分页存储管理方式"><a href="#2-2-1基本分页存储管理方式" class="headerlink" title="2.2.1基本分页存储管理方式"></a><strong>2.2.1基本分页存储管理方式</strong></h3><p>固定分区会产生内部碎片，动态分区会产生外部碎片，这两种技术对内存的利用率都比较低。<strong>我们希望内存的使用能尽量避免碎片的产生，这就引入了分页的思想：</strong>把主存空间划分为大小相等且固定的块，块相对较小，作为主存的基本单位。每个进程也以块为单位进行划分，进程在执行时，以块为单位逐个申请主存中的块空间。</p>
-<p>分页的方法从形式上看，像分区相等的固定分区技术，<strong>分页管理不会产生外部碎片</strong>。但它又有本</p>
-<p>质的不同点：块的大小相对分区要小很多，而且进程也按照块进行划分，进程运行时按块申请主存可用空间并执行。这样，<strong>进程只会在为最后一个不完整的块申请一个主存块空间时，才产生主存碎片，所以尽管会产生内部碎片，但是这种碎片相对于进程来说也是很小的</strong>，每个进程平均只产生半个块大小的内部碎片（也称页内碎片）。</p>
+<p>分页的方法从形式上看，像分区相等的固定分区技术，<strong>分页管理不会产生外部碎片</strong>。但它又有本质的不同点：块的大小相对分区要小很多，而且进程也按照块进行划分，进程运行时按块申请主存可用空间并执行。这样，<strong>进程只会在为最后一个不完整的块申请一个主存块空间时，才产生主存碎片，所以尽管会产生内部碎片，但是这种碎片相对于进程来说也是很小的</strong>，每个进程平均只产生半个块大小的内部碎片（也称页内碎片）。</p>
 <p>1）分页存储的几个基本概念</p>
 <p>①页面和页面大小。进程中的块称为页（Page），内存中的块称为页框（Page Frame，或页帧）。外存也以同样的单位进行划分，称为块（Block）。进程在执行时需要申请主存空间，就是要为每个页面分配主存中的可用页框，这就产生了页和页框的一一对应。</p>
 <p><strong>为方便地址转换，页面大小应是2的整数幂。</strong>同时页面大小应该适中，如果页面太小，会使进程的页面数过多，这样页表就过长，占用大量内存，而且也会增加硬件地址转换的开销，降低页面换/</p>
@@ -452,15 +450,15 @@
 <p>在页式系统中，逻辑地址的页号和页内偏移量对用户是透明的，但在段式系统中，段号和段内偏移量必须由用户显示提供，在高级程序设计语言中，这个工作由编译程序完成。</p>
 <img src="/2019/03/22/操作系统-内存管理/04.png">
 
-<h3 id="2-2-3段页式管理方式"><a href="#2-2-3段页式管理方式" class="headerlink" title="2.2.3段页式管理方式"></a><strong>2.2.3段页式管理方式</strong></h3><p>页式存储管理能有效地提高内存利用率，而分段存储管理能反映程序的逻辑结构并有利于段的共享。如果将这两种存储管理方法结合起来，就形成了段页式存储管理方式。</p>
-<p>在段页式系统中，作业的地址空间首先被分成若干逻辑段，每段都有自己的段号，然后再将每一段分成若干大小固定的页。对内存空间的管理仍然和分页存储管理一样，将其分成若干和页面大小相同的存储块，对内存的分配以存储块为单位。</p>
-<p>在段页式系统中，作业的逻辑地址分为三部分：段号、页号和页内偏移量。为了实现地址变换，系统为每个进程建立一张段表，而每个分段有一张页表。段表表项中至少包括段号、页表长度和页表起始地址，页表表项中至少包括页号和块号。此外，系统中还应有一个段表寄存器，指出作业的段表起始地址和段表长度。</p>
-<p>在进行地址变换时，首先通过段表查到页表起始地址，然后通过页表找到页帧号，最后形成物理地址。</p>
+<h3 id="2-2-3段页式管理方式"><a href="#2-2-3段页式管理方式" class="headerlink" title="2.2.3段页式管理方式"></a><strong>2.2.3段页式管理方式</strong></h3><img src="/2019/03/22/操作系统-内存管理/06.png">
+
+<img src="/2019/03/22/操作系统-内存管理/07.png">
+
 <p>例1：关于段页式管理中，地址映像表是（）。</p>
 <p>A.每个进程一张段表，一张页表B.进程的每个段一张段表，一张页表C.每个进程一张段表，每个段一张页表D.每个进程一张页表，每个段一张段表解答：C。</p>
 <h2 id="2-3虚拟内存管理"><a href="#2-3虚拟内存管理" class="headerlink" title="2.3虚拟内存管理"></a><strong>2.3虚拟内存管理</strong></h2><p>上一节所讨论的各种内存管理策略都是为了同时将多个进程保存在内存中以便允许多道程序设计。它们都具有以下两个共同的特征：作业必须一次性全部装入内存后，方能开始运行；驻留性：作业被装入内存后，就一直驻留在内存中，其任何部分都不会被换出，直至作业运行结束。</p>
 <p>由以上分析可知，许多在程序运行中不用或暂时不用的程序（数据）占据了大量的内存空间，而一些需要运行的作业又无法装入运行，显然浪费了宝贵的内存资源。</p>
-<h3 id="2-3-1虚拟存储器的定义和特征"><a href="#2-3-1虚拟存储器的定义和特征" class="headerlink" title="2.3.1虚拟存储器的定义和特征"></a><strong>2.3.1虚拟存储器的定义和特征</strong></h3><p>基于局部性原理，在程序装入时，可以将程序的一部分装入内存，而将其余部分留在外存，就可以启动程序执行。在程序执行过程中，当所访问的信息不在内存时，由操作系统将所需要的部分调入内存，然后继续执行程序。另一方面，操作系统将内存中暂时不使用的内容换出到外存上，从而腾出空间存放将要调入内存的信息。这样，系统好像为用户提供了一个比实际内存大得多的存储器，称为<strong>虚拟存储器。</strong></p>
+<h3 id="2-3-1虚拟存储器的定义和特征"><a href="#2-3-1虚拟存储器的定义和特征" class="headerlink" title="2.3.1虚拟存储器的定义和特征"></a><strong>2.3.1虚拟存储器的定义和特征</strong></h3><p>基于局部性原理，在程序装入时，可以<strong>将程序的一部分装入内存，而将其余部分留在外存，就可以启动程序执行。</strong>在程序执行过程中，当所访问的信息不在内存时，由操作系统将所需要的部分调入内存，然后继续执行程序。另一方面，操作系统将内存中暂时不使用的内容换出到外存上，从而腾出空间存放将要调入内存的信息。这样，<strong>系统好像为用户提供了一个比实际内存大得多的存储器，称为虚拟存储器。</strong></p>
 <p>之所以将其称为虚拟存储器，是因为这种存储器实际上并不存在，只是由于系统提供了部分装入、<strong>请求调入和置换功能</strong>后（对用户完全透明），给用户的感觉是好像存在一个比实际物理内存大得多的存储器。</p>
 <p>虚拟内存的实现有以下三种方式：</p>
 <p>1）请求分页存储管理。</p>
@@ -469,7 +467,7 @@
 <p>不管哪种方式，都需要有一定的硬件支持。一般需要的支持有以下几个方面：</p>
 <p>1）一定容量的内存和外存。</p>
 <p>2）页表机制（或段表机制），作为主要的数据结构。</p>
-<p>3）中断机构，当用户程序要访问的部分尚未调入内存，则产生中断。</p>
+<p>3）中断机构，当用户程序要访问的部分尚未调入内存，则产生缺页中断。</p>
 <p>4）地址变换机构，逻辑地址到物理地址的变换。</p>
 <p>例1：段页式虚拟存储管理方案的特点是（）。（2012·腾讯）</p>
 <p>A.空间浪费大、存储共享不易，存储保护容易、不能动态链接</p>
@@ -480,8 +478,8 @@
 <p>段页式虚拟存储器<strong>一方面具有段式虚拟存储器的主要优点</strong>。例如，<strong>用户程序可以模块化编写，程序段的共享和信息的保护都比较方便，程序可以在执行时再动态链接等。</strong></p>
 <p>另<strong>一方面也具有页式虚拟存储器的主要优点</strong>。例如：<strong>主存储器的利用率比较高，对辅助存储器的管理比较容易等。</strong></p>
 <h3 id="2-3-2请求分页管理方式"><a href="#2-3-2请求分页管理方式" class="headerlink" title="2.3.2请求分页管理方式"></a>2.3.2请求分页管理方式</h3><p>请求分页系统建立在基本分页系统基础之上，为了支持虚拟存储器功能而增加了请求调页功能和页面置换功能。请求分页是目前最常用的一种实现虚拟存储器的方法。</p>
-<p>在请求分页系统中，只要求将当前需要的一部分页面装入内存，便可以启动作业运行。在作业执行过程中，当所要访问的页面不在内存时，再通过调页功能将其调入，同时还可以通过置换功能将暂时不用的页面换出到外存上，以便腾出内存空间。</p>
-<p>为了实现请求分页，系统必须提供一定的硬件支持。除了需要一定容量的内存及外存的计算机系统，还需要有页表机制、缺页中断机构和地址变换机构。</p>
+<p>在请求分页系统中，只要求将当前需要的一部分页面装入内存，便可以启动作业运行。在作业执行过程中，<strong>当所要访问的页面不在内存时，再通过调页功能将其调入，同时还可以通过置换功能将暂时不用的页面换出到外存上，以便腾出内存空间。</strong></p>
+<p>为了实现请求分页，系统必须提供一定的硬件支持。除了需要一定容量的内存及外存的计算机系统，还需要有页表机制(在基本分页的页表基础上对每个页加了状态位、访问字段等，用于判断是否调入内存，以及最近访问的次数等..)、缺页中断机构和地址变换机构。</p>
 <p>常见的置换算法有以下三种：最佳置换算法、先进先出（FIFO）页面置换算法、最近最久未使用（LRU）置换算法。</p>
 <img src="/2019/03/22/操作系统-内存管理/05.png">
 
@@ -635,7 +633,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -646,7 +644,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -657,7 +655,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -708,7 +706,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1逻辑地址空间与物理地址空间"><span class="nav-number">1.</span> <span class="nav-text">2.1逻辑地址空间与物理地址空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2内存分配管理方式内存分配管理方式"><span class="nav-number">2.</span> <span class="nav-text">2.2内存分配管理方式内存分配管理方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1基本分页存储管理方式"><span class="nav-number">2.1.</span> <span class="nav-text">2.2.1基本分页存储管理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2基本分段存储管理方式"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.2基本分段存储管理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3段页式管理方式"><span class="nav-number">2.3.</span> <span class="nav-text">2.2.3段页式管理方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3虚拟内存管理"><span class="nav-number">3.</span> <span class="nav-text">2.3虚拟内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1虚拟存储器的定义和特征"><span class="nav-number">3.1.</span> <span class="nav-text">2.3.1虚拟存储器的定义和特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2请求分页管理方式"><span class="nav-number">3.2.</span> <span class="nav-text">2.3.2请求分页管理方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4抖动："><span class="nav-number">4.</span> <span class="nav-text">2.4抖动：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1逻辑地址空间与物理地址空间"><span class="nav-number">1.</span> <span class="nav-text">2.1逻辑地址空间与物理地址空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2内存分配管理方式"><span class="nav-number">2.</span> <span class="nav-text">2.2内存分配管理方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1基本分页存储管理方式"><span class="nav-number">2.1.</span> <span class="nav-text">2.2.1基本分页存储管理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2基本分段存储管理方式"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.2基本分段存储管理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3段页式管理方式"><span class="nav-number">2.3.</span> <span class="nav-text">2.2.3段页式管理方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3虚拟内存管理"><span class="nav-number">3.</span> <span class="nav-text">2.3虚拟内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1虚拟存储器的定义和特征"><span class="nav-number">3.1.</span> <span class="nav-text">2.3.1虚拟存储器的定义和特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2请求分页管理方式"><span class="nav-number">3.2.</span> <span class="nav-text">2.3.2请求分页管理方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4抖动："><span class="nav-number">4.</span> <span class="nav-text">2.4抖动：</span></a></li></ol></div>
             
 
           </div>

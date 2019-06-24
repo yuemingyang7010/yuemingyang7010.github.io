@@ -79,27 +79,29 @@
 
 
 
-<meta name="description" content="进程与线程1. 进程进程是资源分配的基本单位。 进程控制块 (Process Control Block, PCB) 描述进程的基本信息和运行状态，所谓的创建进程和撤销进程，都是指对 PCB 的操作。 下图显示了 4 个程序创建了 4 个进程，这 4 个进程可以并发地执行。     解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子">
+<meta name="description" content="中断与异常  进程与线程1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P2，接着Pl执行下一条语句输出一个”-“（其实是放入缓冲区，等合适的时候再输出，我们将此’-‘记为a）； P2成为一个独立的子进程，继承P1的诸如环境变量、PC等环境，P2也执行下一条语句输出一个’-‘（其实是放入缓冲区，等合适的时候再">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统-进程管理">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="进程与线程1. 进程进程是资源分配的基本单位。 进程控制块 (Process Control Block, PCB) 描述进程的基本信息和运行状态，所谓的创建进程和撤销进程，都是指对 PCB 的操作。 下图显示了 4 个程序创建了 4 个进程，这 4 个进程可以并发地执行。     解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子">
+<meta property="og:description" content="中断与异常  进程与线程1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P2，接着Pl执行下一条语句输出一个”-“（其实是放入缓冲区，等合适的时候再输出，我们将此’-‘记为a）； P2成为一个独立的子进程，继承P1的诸如环境变量、PC等环境，P2也执行下一条语句输出一个’-‘（其实是放入缓冲区，等合适的时候再">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/12.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/13.jpg">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/09.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/02.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/15.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/14.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/16.jpg">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/10.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/11.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/07.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/08.png">
-<meta property="og:updated_time" content="2019-06-24T03:05:03.075Z">
+<meta property="og:updated_time" content="2019-06-24T15:07:14.918Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统-进程管理">
-<meta name="twitter:description" content="进程与线程1. 进程进程是资源分配的基本单位。 进程控制块 (Process Control Block, PCB) 描述进程的基本信息和运行状态，所谓的创建进程和撤销进程，都是指对 PCB 的操作。 下图显示了 4 个程序创建了 4 个进程，这 4 个进程可以并发地执行。     解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/01.png">
+<meta name="twitter:description" content="中断与异常  进程与线程1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P2，接着Pl执行下一条语句输出一个”-“（其实是放入缓冲区，等合适的时候再输出，我们将此’-‘记为a）； P2成为一个独立的子进程，继承P1的诸如环境变量、PC等环境，P2也执行下一条语句输出一个’-‘（其实是放入缓冲区，等合适的时候再">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/12.jpg">
 
 
 
@@ -419,10 +421,9 @@
       
 
       
-        <h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><h2 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h2><p><strong>进程是资源分配的基本单位。</strong></p>
-<p>进程控制块 (Process Control Block, PCB) 描述进程的基本信息和运行状态，所谓的创建进程和撤销进程，都是指对 PCB 的操作。</p>
-<p>下图显示了 4 个程序创建了 4 个进程，这 4 个进程可以并发地执行。</p>
-<img src="/2019/03/20/操作系统-进程管理/01.png">
+        <h1 id="中断与异常"><a href="#中断与异常" class="headerlink" title="中断与异常"></a>中断与异常</h1><img src="/2019/03/20/操作系统-进程管理/12.jpg">
+
+<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><h2 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h2><img src="/2019/03/20/操作系统-进程管理/13.jpg">
 
 <img src="/2019/03/20/操作系统-进程管理/09.png">
 
@@ -431,9 +432,7 @@
 <p>P3进程为P2的子进程，它会复制其父进程P2的诸如环境变量、PC等环境，它执行下一条语句（输出语句）本应该输出一个，但事实上因为这里P3会继承P2的缓冲区，而P2的缓冲区中有一个（P2调用fork产生P3时缓冲区里有b），所以P3会输出两个。</p>
 <p>Pl产生子进程P2后，继续下一轮循环，当i=1时，fork()产生另一个它的子进程P4，同时P1执行输出语句输出一个’-‘。</p>
 <h2 id="2-线程"><a href="#2-线程" class="headerlink" title="2. 线程"></a>2. 线程</h2><p><strong>线程是独立调度的基本单位。</strong></p>
-<p><strong>一个进程中可以有多个线程，它们共享进程资源。</strong></p>
-<p>QQ 和浏览器是两个进程，浏览器进程里面有很多线程，例如 HTTP 请求线程、事件响应线程、渲染线程等等，线程的并发执行使得在浏览器中点击一个新链接从而发起 HTTP 请求时，浏览器还可以响应用户的其它事件。</p>
-<img src="/2019/03/20/操作系统-进程管理/02.png">
+<img src="/2019/03/20/操作系统-进程管理/15.jpg">
 
 <p><strong>例1：</strong>同一进程下的线程可以共享（）。（2012·搜狗）</p>
 <p>A.stack                                B.data section                             C.register set                        D.thread ID             </p>
@@ -464,18 +463,10 @@
 <p>由于创建或撤销进程时，系统都要为之分配或回收资源，如内存空间、I/O 设备等，所付出的开销远大于创建或撤销线程时的开销。类似地，在进行进程切换时，涉及当前执行进程 CPU 环境的保存及新调度进程 CPU 环境的设置，而线程切换时只需保存和设置少量寄存器内容，开销很小。</p>
 <p>Ⅳ 通信方面</p>
 <p>线程间可以通过直接读写同一进程中的数据进行通信，但是进程通信需要借助 IPC。</p>
-<h1 id="进程状态的切换"><a href="#进程状态的切换" class="headerlink" title="进程状态的切换"></a>进程状态的切换</h1><img src="/2019/03/20/操作系统-进程管理/03.png">
+<h1 id="进程状态的切换"><a href="#进程状态的切换" class="headerlink" title="进程状态的切换"></a>进程状态的切换</h1><img src="/2019/03/20/操作系统-进程管理/14.jpg">
 
-<ul>
-<li>就绪状态（ready）：等待被调度</li>
-<li>运行状态（running）</li>
-<li>阻塞状态（waiting）：等待资源</li>
-</ul>
-<p>应该注意以下内容：</p>
-<ul>
-<li>只有就绪态和运行态可以相互转换，其它的都是单向转换。就绪状态的进程通过调度算法从而获得 CPU 时间，转为运行状态；而运行状态的进程，在分配给它的 CPU 时间片用完之后就会转为就绪状态，等待下一次调度。</li>
-<li>阻塞状态是缺少需要的资源从而由运行状态转换而来，但是该资源不包括 CPU 时间，缺少 CPU 时间会从运行态转换为就绪态。</li>
-</ul>
+<img src="/2019/03/20/操作系统-进程管理/16.jpg">
+
 <h1 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h1><p>可以参考<a href="https://mp.weixin.qq.com/s/D_woyVReMhAXH-sHx7eZfA" target="_blank" rel="noopener">大话操作系统之调度算法</a>   重要！！！</p>
 <p>不同环境的调度算法目标不同，因此需要针对不同环境来讨论调度算法。</p>
 <p>调度的基本准则包括CPU利用率、系统吞吐量、周转时间、等待时间、响应时间等。</p>
@@ -522,7 +513,7 @@
 <p>注意，不能先对缓冲区进行加锁，再测试信号量。也就是说，不能先执行 down(mutex) 再执行 down(empty)。如果这么做了，那么可能会出现这种情况：生产者对缓冲区加锁后，执行 down(empty) 操作，发现 empty = 0，此时生产者睡眠。消费者不能进入临界区，因为生产者对缓冲区加锁了，消费者就无法执行 up(empty) 操作，empty 永远都为 0，导致生产者永远等待下，不会释放锁，消费者因此也会永远等待下去。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</span><br><span class="line">semaphore mutex = <span class="number">1</span>;</span><br><span class="line">semaphore empty = N;</span><br><span class="line">semaphore full = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">        <span class="keyword">int</span> item = produce_item();</span><br><span class="line">        down(&amp;empty);</span><br><span class="line">        down(&amp;mutex);</span><br><span class="line">        insert_item(item);</span><br><span class="line">        up(&amp;mutex);</span><br><span class="line">        up(&amp;full);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">consumer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">        down(&amp;full);</span><br><span class="line">        down(&amp;mutex);</span><br><span class="line">        <span class="keyword">int</span> item = remove_item();</span><br><span class="line">        consume_item(item);</span><br><span class="line">        up(&amp;mutex);</span><br><span class="line">        up(&amp;empty);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-管程"><a href="#4-管程" class="headerlink" title="4. 管程"></a>4. 管程</h2><p>使用信号量机制实现的生产者消费者问题需要客户端代码做很多控制，而管程把控制的代码独立出来，不仅不容易出错，也使得客户端代码调用更容易。</p>
+<h2 id="4-管程"><a href="#4-管程" class="headerlink" title="4. 管程"></a>4. 管程</h2><p>使用信号量机制实现的生产者消费者问题需要客户端代码做很多控制，而管程把控制的代码独立出来，不仅不容易出错，也使得客户端代码调用更容易。<strong>管程是对信号量更高层次的抽象，用类进行封装。</strong></p>
 <p>c 语言不支持管程，下面的示例代码使用了类 Pascal 语言来描述管程。示例代码的管程提供了 insert() 和 remove() 方法，客户端代码通过调用这两个方法来解决生产者-消费者问题。</p>
 <figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">monitor ProducerConsumer</span><br><span class="line">    integer i;</span><br><span class="line">    condition c;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">insert</span><span class="params">()</span>;</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">remove</span><span class="params">()</span>;</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span> monitor;</span><br></pre></td></tr></table></figure>
 
@@ -532,7 +523,7 @@
 <figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 管程</span></span><br><span class="line">monitor ProducerConsumer</span><br><span class="line">    condition full, empty;</span><br><span class="line">    integer count := <span class="number">0</span>;</span><br><span class="line">    condition c;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">insert</span><span class="params">(item: integer)</span>;</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> count = N <span class="keyword">then</span> wait(full);</span><br><span class="line">        insert_item(item);</span><br><span class="line">        count := count + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> count = <span class="number">1</span> <span class="keyword">then</span> signal(empty);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">remove</span>:</span> integer;</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> count = <span class="number">0</span> <span class="keyword">then</span> wait(empty);</span><br><span class="line">        remove = remove_item;</span><br><span class="line">        count := count - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> count = N -<span class="number">1</span> <span class="keyword">then</span> signal(full);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span> monitor;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生产者客户端</span></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">producer</span></span></span><br><span class="line"><span class="function"><span class="title">begin</span></span></span><br><span class="line"><span class="function">    <span class="title">while</span> <span class="title">true</span> <span class="title">do</span></span></span><br><span class="line"><span class="function">    <span class="title">begin</span></span></span><br><span class="line"><span class="function">        <span class="title">item</span> = <span class="title">produce_item</span>;</span></span><br><span class="line">        ProducerConsumer.insert(item);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 消费者客户端</span></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">consumer</span></span></span><br><span class="line"><span class="function"><span class="title">begin</span></span></span><br><span class="line"><span class="function">    <span class="title">while</span> <span class="title">true</span> <span class="title">do</span></span></span><br><span class="line"><span class="function">    <span class="title">begin</span></span></span><br><span class="line"><span class="function">        <span class="title">item</span> = <span class="title">ProducerConsumer</span>.<span class="title">remove</span>;</span></span><br><span class="line">        consume_item(item);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
 
 <h1 id="经典同步问题"><a href="#经典同步问题" class="headerlink" title="经典同步问题"></a>经典同步问题</h1><p>生产者和消费者问题前面已经讨论过了。</p>
-<h2 id="1-读者-写者问题"><a href="#1-读者-写者问题" class="headerlink" title="1. 读者-写者问题"></a>1. 读者-写者问题</h2><p>允许多个进程同时对数据进行读操作，但是不允许读和写以及写和写操作同时发生。</p>
+<h2 id="1-读者-写者问题"><a href="#1-读者-写者问题" class="headerlink" title="1. 读者-写者问题"></a>1. 读者-写者问题</h2><p><strong>允许多个进程同时对数据进行读操作，但是不允许读和写以及写和写操作同时发生。</strong></p>
 <p>一个整型变量 count 记录在对数据进行读操作的进程数量，一个互斥量 count_mutex 用于对 count 加锁，一个互斥量 data_mutex 用于对读写的数据加锁。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</span><br><span class="line">semaphore count_mutex = <span class="number">1</span>;</span><br><span class="line">semaphore data_mutex = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reader</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">        down(&amp;count_mutex);</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">if</span>(count == <span class="number">1</span>) down(&amp;data_mutex); <span class="comment">// 第一个读者需要对数据进行加锁，防止写进程访问</span></span><br><span class="line">        up(&amp;count_mutex);</span><br><span class="line">        read();</span><br><span class="line">        down(&amp;count_mutex);</span><br><span class="line">        count--;</span><br><span class="line">        <span class="keyword">if</span>(count == <span class="number">0</span>) up(&amp;data_mutex);</span><br><span class="line">        up(&amp;count_mutex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">writer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">        down(&amp;data_mutex);</span><br><span class="line">        write();</span><br><span class="line">        up(&amp;data_mutex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -582,8 +573,7 @@
 <p>需要使用信号量用来同步对共享存储的访问。</p>
 <p>多个进程可以将同一个文件映射到它们的地址空间从而实现共享内存。另外 XSI 共享内存不是使用文件，而是使用内存的匿名段。</p>
 <h2 id="6-套接字"><a href="#6-套接字" class="headerlink" title="6. 套接字"></a>6. 套接字</h2><p>与其它通信机制不同的是，它可用于不同机器间的进程通信。</p>
-<p>参考：</p>
-<p>[<a href="https://cyc2018.github.io/CS-Notes/#/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86]" target="_blank" rel="noopener">https://cyc2018.github.io/CS-Notes/#/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86]</a>(<a href="https://cyc2018.github.io/CS-Notes/#/notes/计算机操作系统" target="_blank" rel="noopener">https://cyc2018.github.io/CS-Notes/#/notes/计算机操作系统</a> - 进程管理)</p>
+<p><a href="https://cyc2018.github.io/CS-Notes/#/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86" target="_blank" rel="noopener">参考github资料</a></p>
 
       
     </div>
@@ -732,7 +722,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -743,7 +733,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -754,7 +744,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -805,7 +795,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程与线程"><span class="nav-number">1.</span> <span class="nav-text">进程与线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程"><span class="nav-number">1.1.</span> <span class="nav-text">1. 进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-线程"><span class="nav-number">1.2.</span> <span class="nav-text">2. 线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-区别"><span class="nav-number">1.3.</span> <span class="nav-text">3. 区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程状态的切换"><span class="nav-number">2.</span> <span class="nav-text">进程状态的切换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程调度算法"><span class="nav-number">3.</span> <span class="nav-text">进程调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-练习"><span class="nav-number">3.1.</span> <span class="nav-text">2.练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程同步"><span class="nav-number">4.</span> <span class="nav-text">进程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-临界区"><span class="nav-number">4.1.</span> <span class="nav-text">1. 临界区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-同步与互斥"><span class="nav-number">4.2.</span> <span class="nav-text">2. 同步与互斥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-信号量"><span class="nav-number">4.3.</span> <span class="nav-text">3. 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-管程"><span class="nav-number">4.4.</span> <span class="nav-text">4. 管程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典同步问题"><span class="nav-number">5.</span> <span class="nav-text">经典同步问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-读者-写者问题"><span class="nav-number">5.1.</span> <span class="nav-text">1. 读者-写者问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-哲学家进餐问题"><span class="nav-number">5.2.</span> <span class="nav-text">2. 哲学家进餐问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程通信"><span class="nav-number">6.</span> <span class="nav-text">进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-管道"><span class="nav-number">6.1.</span> <span class="nav-text">1. 管道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-FIFO"><span class="nav-number">6.2.</span> <span class="nav-text">2. FIFO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-消息队列"><span class="nav-number">6.3.</span> <span class="nav-text">3. 消息队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-信号量"><span class="nav-number">6.4.</span> <span class="nav-text">4. 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-共享存储"><span class="nav-number">6.5.</span> <span class="nav-text">5. 共享存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-套接字"><span class="nav-number">6.6.</span> <span class="nav-text">6. 套接字</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中断与异常"><span class="nav-number">1.</span> <span class="nav-text">中断与异常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程与线程"><span class="nav-number">2.</span> <span class="nav-text">进程与线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程"><span class="nav-number">2.1.</span> <span class="nav-text">1. 进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-线程"><span class="nav-number">2.2.</span> <span class="nav-text">2. 线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-区别"><span class="nav-number">2.3.</span> <span class="nav-text">3. 区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程状态的切换"><span class="nav-number">3.</span> <span class="nav-text">进程状态的切换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程调度算法"><span class="nav-number">4.</span> <span class="nav-text">进程调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-练习"><span class="nav-number">4.1.</span> <span class="nav-text">2.练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程同步"><span class="nav-number">5.</span> <span class="nav-text">进程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-临界区"><span class="nav-number">5.1.</span> <span class="nav-text">1. 临界区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-同步与互斥"><span class="nav-number">5.2.</span> <span class="nav-text">2. 同步与互斥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-信号量"><span class="nav-number">5.3.</span> <span class="nav-text">3. 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-管程"><span class="nav-number">5.4.</span> <span class="nav-text">4. 管程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典同步问题"><span class="nav-number">6.</span> <span class="nav-text">经典同步问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-读者-写者问题"><span class="nav-number">6.1.</span> <span class="nav-text">1. 读者-写者问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-哲学家进餐问题"><span class="nav-number">6.2.</span> <span class="nav-text">2. 哲学家进餐问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程通信"><span class="nav-number">7.</span> <span class="nav-text">进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-管道"><span class="nav-number">7.1.</span> <span class="nav-text">1. 管道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-FIFO"><span class="nav-number">7.2.</span> <span class="nav-text">2. FIFO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-消息队列"><span class="nav-number">7.3.</span> <span class="nav-text">3. 消息队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-信号量"><span class="nav-number">7.4.</span> <span class="nav-text">4. 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-共享存储"><span class="nav-number">7.5.</span> <span class="nav-text">5. 共享存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-套接字"><span class="nav-number">7.6.</span> <span class="nav-text">6. 套接字</span></a></li></ol></li></ol></div>
             
 
           </div>
