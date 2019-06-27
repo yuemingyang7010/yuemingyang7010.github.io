@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="剑指offer,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="目录   题目 难度     15.二进制中1的个数.note ☆ 要考虑到负数这种情况，右移数还是左移相与的数？   38.字符串的排列.note ☆☆ 采用递归回溯的方式实现，要考虑字符的重复，输出结果是否为字典序。   43.1~n整数中1出现的次数.note ☆☆☆ 设定整数点（如1、10、100等等）作为位置点i，求每个位置点为1时的数有多少个，再算出所有情况    //根据设定的整数位">
+<meta name="keywords" content="剑指offer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指offer-字符串与数字">
+<meta property="og:url" content="http://yuemingyang7010.github.io/2019/06/17/剑指offer-字符串与数字/index.html">
+<meta property="og:site_name" content="yue">
+<meta property="og:description" content="目录   题目 难度     15.二进制中1的个数.note ☆ 要考虑到负数这种情况，右移数还是左移相与的数？   38.字符串的排列.note ☆☆ 采用递归回溯的方式实现，要考虑字符的重复，输出结果是否为字典序。   43.1~n整数中1出现的次数.note ☆☆☆ 设定整数点（如1、10、100等等）作为位置点i，求每个位置点为1时的数有多少个，再算出所有情况    //根据设定的整数位">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/17/剑指offer-字符串与数字/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/17/剑指offer-字符串与数字/../../typora_img/clipboard-1561647861364.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/17/剑指offer-字符串与数字/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/17/剑指offer-字符串与数字/03.png">
+<meta property="og:updated_time" content="2019-06-27T15:21:43.430Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="剑指offer-字符串与数字">
+<meta name="twitter:description" content="目录   题目 难度     15.二进制中1的个数.note ☆ 要考虑到负数这种情况，右移数还是左移相与的数？   38.字符串的排列.note ☆☆ 采用递归回溯的方式实现，要考虑字符的重复，输出结果是否为字典序。   43.1~n整数中1出现的次数.note ☆☆☆ 设定整数点（如1、10、100等等）作为位置点i，求每个位置点为1时的数有多少个，再算出所有情况    //根据设定的整数位">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/06/17/剑指offer-字符串与数字/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuemingyang7010.github.io/2019/06/17/剑指offer-字符串与数字/">
+
+
+
+
+
+  <title>剑指offer-字符串与数字 | yue</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yue</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuemingyang7010.github.io/2019/06/17/剑指offer-字符串与数字/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mingyang Yue">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">剑指offer-字符串与数字</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-17T13:52:09+08:00">
+                2019-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/剑指offer/" itemprop="url" rel="index">
+                    <span itemprop="name">剑指offer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/17/剑指offer-字符串与数字/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/17/剑指offer-字符串与数字/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><table>
+<thead>
+<tr>
+<th>题目</th>
+<th>难度</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="note://2FE9426DFA26451590280DDE2FF5D995" target="_blank" rel="noopener">15.二进制中1的个数.note</a></td>
+<td>☆</td>
+<td>要考虑到负数这种情况，右移数还是左移相与的数？</td>
+</tr>
+<tr>
+<td><a href="note://0F2C9A08084941ACABE64F2321602B23" target="_blank" rel="noopener">38.字符串的排列.note</a></td>
+<td>☆☆</td>
+<td>采用递归回溯的方式实现，要考虑字符的重复，输出结果是否为字典序。</td>
+</tr>
+<tr>
+<td><a href="note://6433D1219FFA437180403A8BBF8FB764" target="_blank" rel="noopener">43.1~n整数中1出现的次数.note</a></td>
+<td>☆☆☆</td>
+<td>设定整数点（如1、10、100等等）作为位置点i，<strong>求每个位置点为1时的数有多少个，再算出所有情况</strong>    //<strong>根据设定的整数位置，对n进行分割，分为两部分，高位n/i，低位n%i</strong></td>
+</tr>
+<tr>
+<td><a href="note://00DEAC2A377142BDAAECF1A29FDD4F7D" target="_blank" rel="noopener">把数组排成最小的数.note</a></td>
+<td>☆☆</td>
+<td>要会用数字转字符串函数 to_string(number1),会写sort()的cmp函数。</td>
+</tr>
+<tr>
+<td><a href="note://0E29AFB8ABE446BB98834AFFFF1CDCE1" target="_blank" rel="noopener">49.丑数.note</a></td>
+<td>☆☆☆</td>
+<td>一个丑数的因子只有2,3,5，那么丑数p = 2 ^ x * 3 ^ y * 5 ^ z</td>
+</tr>
+<tr>
+<td><a href="note://7B71AF3F8E6341F6A7B00CEF6B8B1C82" target="_blank" rel="noopener">50.第一次只出现一次的字符.note</a></td>
+<td>☆☆</td>
+<td>采用hash思想，用int map[256]统计字符串中字符的个数，然后从头遍历字符串，到map[256]中寻找对应值，如果为1，则返回。</td>
+</tr>
+<tr>
+<td><a href="note://495347488DBB4A7D8BBF97F7F6219833" target="_blank" rel="noopener">50(2).字符流中第一个只出现一次的字符.note</a></td>
+<td>☆☆</td>
+<td>和上题类似，只是字符串S和map[256]作为类的成员变量，每次调用insert()函数时，从字符流中添加一个字符到S的结尾，同时，更新map[256]中对应位，findFirst()仍然按照字符串顺序，遍历map数组。</td>
+</tr>
+<tr>
+<td><a href="note://1BAB43C17FA84EF69194DDD5CDDECAE3" target="_blank" rel="noopener">求1+2+…+n.note</a></td>
+<td>☆☆</td>
+<td>采用递归代替循环，用&amp;&amp;代替if条件语句。</td>
+</tr>
+<tr>
+<td><a href="note://CDEFFF8B180046AA8FD27260647AF6E8" target="_blank" rel="noopener">把字符串转换成整数.note</a></td>
+<td>☆☆</td>
+<td>(1)字符串指针是否为空，字符串长度是否为0；(2)考虑字符串的正负，正数要考虑带不带正号；(3)确保除了符号位以外所有的字符必须都是0~9之间的几个字符，否则返回0.</td>
+</tr>
+<tr>
+<td><a href="note://3C01B41508FE4CCEA3220DA0E931715D" target="_blank" rel="noopener">19.正则表达式匹配.note</a></td>
+<td>☆☆☆</td>
+<td>分多种情况考虑，具体分析见链接</td>
+</tr>
+<tr>
+<td><a href="note://660AC5B81F104AB5B54A6CF4A7701F09" target="_blank" rel="noopener">58(2).左旋转字符串.note</a></td>
+<td>☆</td>
+<td>主要熟悉下string类的一些函数的操作<a href="note://81AE2E6AD935400C912AE83D10A7DBAF" target="_blank" rel="noopener">2.16 C++ string类详解.note</a></td>
+</tr>
+<tr>
+<td><a href="note://73104616EC1B4EEE947B96B4CD1EC0FF" target="_blank" rel="noopener">5.替换空格.note</a></td>
+<td>☆☆</td>
+<td>在同一个字符数组中，通过两个指针进行空格和%20的替换。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="二进制中1的个数"><a href="#二进制中1的个数" class="headerlink" title="二进制中1的个数"></a>二进制中1的个数</h2><p><strong>题目描述</strong></p>
+<p>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。</p>
+<p><strong>知识补充：</strong></p>
+<p>左移运算符m&lt;&lt;n，在左移n位时候，最左边n位丢弃，同时在最右边补上n个0；</p>
+<p>m&gt;&gt;n时分两种情况：(1)无符号数，用0填补最左边n位；</p>
+<p>（2）有符号数，则右移之后数字的符号位填补最左侧的n位。</p>
+<p>如：00001010&gt;&gt;2 = 00000010            10001010&gt;&gt;3 = 11110001</p>
+<p>思路分析：</p>
+<p>(1)拿到题目可能第一想法，直接右移(注意：右移比除以2效率高很多)，如果输入的是负数，右移后，最左侧补上的是’1’,从而造成死循环；</p>
+<p>(2)为了避免死循环，我们不右移输入的数字，而是将其与1,2,4,8…相与，实际采用标志位左移的方式，代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">     <span class="function"><span class="keyword">int</span>  <span class="title">NumberOf1</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">         <span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line">         <span class="keyword">while</span>(flag)&#123;</span><br><span class="line">             <span class="keyword">if</span>(n&amp;flag)</span><br><span class="line">                 count++;</span><br><span class="line">             flag = flag&lt;&lt;<span class="number">1</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> count;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串的排列"><a href="#字符串的排列" class="headerlink" title="字符串的排列"></a>字符串的排列</h2><p><strong>题目描述</strong></p>
+<p>输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。</p>
+<p><strong>输入描述:</strong></p>
+<p>输入一个字符串,长度不超过9(可能有字符重复),字符只包括大小写字母。</p>
+<p>思路：实际上本题需要排除重复情况，结果需要字典排序</p>
+<p><strong>思路：</strong></p>
+<p><strong>(1)将第一个元素与包括自身在内的所有元素交换。</strong></p>
+<p><strong>(2)那么第一个元素是固定的，转到下一个元素。</strong></p>
+<p><strong>(3)直到最后一个元素固定。输出。</strong></p>
+<img src="/2019/06/17/剑指offer-字符串与数字/01.png">
+
+<p>可以参考LeetCode刷题笔记：<a href="note://38033A07A3AD427AA3CA0E8ABE6D757F" target="_blank" rel="noopener">2.Permutations(中)全排列.note</a></p>
+<p>也可以<a href="https://www.cnblogs.com/AndyJee/p/4655485.html" target="_blank" rel="noopener">参考博客:</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; Permutation(<span class="built_in">string</span> str) &#123;</span><br><span class="line">        <span class="keyword">if</span>(str.length() &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        permu(str,<span class="number">0</span>);</span><br><span class="line">        sort(result.begin(),result.end());</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">permu</span><span class="params">(<span class="built_in">string</span> str,<span class="keyword">int</span> begin)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(begin == str.length()<span class="number">-1</span>)  <span class="comment">//最后一个字符的自身交换可以不考虑，如果考虑就不减1</span></span><br><span class="line">            result.push_back(str);</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = begin;i&lt;str.length();i++)&#123;      </span><br><span class="line">                <span class="keyword">if</span>(begin == i || str[begin] != str[i])&#123;  <span class="comment">//排除重复的影响</span></span><br><span class="line">                    swap(str[begin],str[i]);</span><br><span class="line">                    permu(str,begin+<span class="number">1</span>);</span><br><span class="line">                    swap(str[begin],str[i]);  <span class="comment">//采用回溯的方法</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">char</span>&amp; a,<span class="keyword">char</span>&amp; b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">char</span> temp = a;</span><br><span class="line">        a=b;</span><br><span class="line">        b=temp;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-n整数中1出现的次数"><a href="#1-n整数中1出现的次数" class="headerlink" title="1~n整数中1出现的次数"></a>1~n整数中1出现的次数</h2><p><strong>题目描述</strong></p>
+<p>求出1<del>13的整数中1出现的次数,并算出100</del>1300的整数中1出现的次数？为此他特别数了一下1~13中包含1的数字有1、10、11、12、13因此共出现6次,但是对于后面问题他就没辙了。ACMer希望你们帮帮他,并把问题更加普遍化,可以很快的求出任意非负整数区间中1出现的次数（从1 到 n 中1出现的次数）。</p>
+<p><strong>思路：</strong></p>
+<p>设定整数点（如1、10、100等等）作为位置点i（对应n的各位、十位、百位等等），分别对每个数位上有多少包含1的点进行分析，<strong>即求每个位置点为1时的数有多少个，再算出所有情况</strong></p>
+<p>​    //<strong>根据设定的整数位置，对n进行分割，分为两部分，高位n/i，低位n%i</strong></p>
+<p>​    //当i表示百位，且百位对应的数&gt;=2,如n=31456,i=100，则a=314,b=56，此时百位为1的次数有a/10+1=32（最高两位0~31），每一次都包含100个连续的点，即共有(a/10+1)*100个点的百位为1</p>
+<p>​    //当i表示百位，且百位对应的数为1，如n=31156,i=100，则a=311,b=56，此时百位对应的就是1，则共有(a/10)*100+(b+1)个数</p>
+<p>​    //当i表示百位，且百位对应的数为0,如n=31056,i=100，则a=310,b=56，此时百位为1的次数有(a/10)*100个</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">NumberOf1Between1AndN_Solution</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> i=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i*=<span class="number">10</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> a=n/i;</span><br><span class="line">            <span class="keyword">int</span> b=n%i;</span><br><span class="line">            <span class="keyword">if</span>(a%<span class="number">10</span> == <span class="number">0</span>)</span><br><span class="line">                count = count+(a/<span class="number">10</span>)*i;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(a%<span class="number">10</span> &gt;= <span class="number">2</span>)</span><br><span class="line">                count = count+(a/<span class="number">10</span> + <span class="number">1</span>)*i;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                count = count+(a/<span class="number">10</span>)*i+b+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="把数组排成最小的数"><a href="#把数组排成最小的数" class="headerlink" title="把数组排成最小的数"></a>把数组排成最小的数</h2><p><strong>题目描述</strong></p>
+<p>输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。</p>
+<p><strong>解题思路</strong></p>
+<p>可以看成是一个排序问题，在比较两个字符串S1和S2的大小时，应该比较的是S1+S2和S2+S1的大小，如果S1+S2&lt;S2+S1,那么应该把S1排在前面，否则应该把S2排在前面。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">PrintMinNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; numbers)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = numbers.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(numbers.begin(),numbers.end(),cmp);<span class="comment">//核心就一个sort()</span></span><br><span class="line">        <span class="built_in">string</span> result;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            result += to_string(numbers[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果在类里面定义cmp要设置为静态的，直接放在类外不用这样，可能和sort()的实现有关</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="built_in">string</span> A = to_string(a)+to_string(b);</span><br><span class="line">        <span class="built_in">string</span> B = to_string(b)+to_string(a);</span><br><span class="line">        <span class="keyword">return</span> A &lt; B;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="丑数"><a href="#丑数" class="headerlink" title="丑数"></a>丑数</h2><p><strong>题目描述</strong></p>
+<p>把只包含质因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含质因子7。 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。</p>
+<p><strong>思路：</strong></p>
+<p>首先从丑数的定义我们知道，一个丑数的因子只有2,3,5，那么丑数p = 2 ^ x * 3 ^ y * 5 ^ z，换句话说<strong>一个丑数一定由另一个丑数乘以2或者乘以3或者乘以5得到</strong>，那么我们从1开始乘以2,3,5，就得到2,3,5三个丑数，在从这三个丑数出发乘以2,3,5就得到4，6,10,6，9,15,10,15,25九个丑数，我们发现这种方法会得到重复的丑数，而且我们题目要求第N个丑数，这样的方法得到的丑数也是无序的。那么我们可以维护三个队列：</p>
+<p>（1）丑数数组： 1</p>
+<p>乘以2的队列：2</p>
+<p>乘以3的队列：3</p>
+<p>乘以5的队列：5</p>
+<p>选择三个队列头最小的数2加入丑数数组，同时将该最小的数乘以2,3,5放入三个队列；</p>
+<p>（2）丑数数组：1,2</p>
+<p>乘以2的队列：4</p>
+<p>乘以3的队列：3，6</p>
+<p>乘以5的队列：5，10</p>
+<p>选择三个队列头最小的数3加入丑数数组，同时将该最小的数乘以2,3,5放入三个队列；</p>
+<p>（3）丑数数组：1,2,3</p>
+<p>乘以2的队列：4,6</p>
+<p>乘以3的队列：6,9</p>
+<p>乘以5的队列：5,10,15</p>
+<p>选择三个队列头里最小的数4加入丑数数组，同时将该最小的数乘以2,3,5放入三个队列；</p>
+<p>（4）丑数数组：1,2,3,4</p>
+<p>乘以2的队列：6，8</p>
+<p>乘以3的队列：6,9,12</p>
+<p>乘以5的队列：5,10,15,20</p>
+<p>选择三个队列头里最小的数5加入丑数数组，同时将该最小的数乘以2,3,5放入三个队列；</p>
+<p>（5）丑数数组：1,2,3,4,5</p>
+<p>乘以2的队列：6,8,10，</p>
+<p>乘以3的队列：6,9,12,15</p>
+<p>乘以5的队列：10,15,20,25</p>
+<p>选择三个队列头里最小的数6加入丑数数组，但我们发现，有两个队列头都为6，所以我们弹出两个队列头，同时将12,18,30放入三个队列；</p>
+<p>……………………</p>
+<p>疑问：</p>
+<p>1.为什么分三个队列？</p>
+<p>丑数数组里的数一定是有序的，因为我们是从丑数数组里的数乘以2,3,5选出的最小数，一定比以前未乘以2,3,5大，同时对于三个队列内部，按先后顺序乘以2,3,5分别放入，所以同一个队列内部也是有序的；</p>
+<p>2.为什么比较三个队列头部最小的数放入丑数数组？</p>
+<p>因为三个队列是有序的，所以取出三个头中最小的，等同于找到了三个队列所有数中最小的。</p>
+<p>实现思路：</p>
+<p>我们没有必要维护三个队列，只需要记录三个指针显示到达哪一步；“|”表示指针,arr表示丑数数组；</p>
+<p>（1）1</p>
+<p>|2</p>
+<p>|3</p>
+<p>|5</p>
+<p>目前指针指向0,0,0，队列头arr[0] * 2 = 2,  arr[0] * 3 = 3,  arr[0] * 5 = 5</p>
+<p>（2）1 2</p>
+<p>2 |4</p>
+<p>|3 6</p>
+<p>|5 10</p>
+<p>目前指针指向1,0,0，队列头arr[1] * 2 = 4,  arr[0] * 3 = 3, arr[0] * 5 = 5</p>
+<p>（3）1 2 3</p>
+<p>2| 4 6</p>
+<p>3 |6 9</p>
+<p>|5 10 15</p>
+<p>目前指针指向1,1,0，队列头arr[1] * 2 = 4,  arr[1] * 3 = 6, arr[0] * 5 = 5</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">GetUglyNumber_Solution</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index &lt; <span class="number">7</span>)</span><br><span class="line">            <span class="keyword">return</span> index;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res(index);</span><br><span class="line">        res[<span class="number">0</span>] =<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> p2=<span class="number">0</span>,p3=<span class="number">0</span>,p5=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;index;i++)&#123;</span><br><span class="line">            res[i]=min_num(res[p2]*<span class="number">2</span>,res[p3]*<span class="number">3</span>,res[p5]*<span class="number">5</span>);</span><br><span class="line">            <span class="keyword">if</span>(res[i] == res[p2]*<span class="number">2</span>)</span><br><span class="line">                p2++;</span><br><span class="line">            <span class="keyword">if</span>(res[i] == res[p3]*<span class="number">3</span>)</span><br><span class="line">                p3++;</span><br><span class="line">            <span class="keyword">if</span>(res[i] == res[p5]*<span class="number">5</span>)</span><br><span class="line">                p5++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res[index <span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">min_num</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">        a = a &lt; b?a:b;</span><br><span class="line">        a = a &lt; c?a:c;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>我所遇到过的错误分析：</strong></p>
+<p><strong>在下面代码中，如果用if-else if-else，则会产生重复问题，比如产生两个6,6的重复。   所以一定要用if()….if()…..if()…..</strong>       </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">GetUglyNumber_Solution</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (index &lt; <span class="number">7</span>)</span><br><span class="line">			<span class="keyword">return</span> index;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result(index);</span><br><span class="line">		result[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> p2 = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> p3 = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> p5 = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; index; i++) &#123;</span><br><span class="line">			result[i] = find_min(result[p2] * <span class="number">2</span>, result[p3] * <span class="number">3</span>, result[p5] * <span class="number">5</span>);</span><br><span class="line">			<span class="keyword">if</span> (result[i] == result[p2] * <span class="number">2</span>)</span><br><span class="line">				p2++;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (result[i] == result[p3] * <span class="number">3</span>)</span><br><span class="line">				p3++;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				p5++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result[index - <span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">find_min</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">		a = a &lt; b ? a : b;</span><br><span class="line">		a = a &lt; c ? a : c;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第一次只出现一次的字符"><a href="#第一次只出现一次的字符" class="headerlink" title="第一次只出现一次的字符"></a>第一次只出现一次的字符</h2><p><strong>题目描述</strong></p>
+<p>在一个字符串(0&lt;=字符串长度&lt;=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置, 如果没有则返回 -1（需要区分大小写）.</p>
+<p><strong>思路：</strong></p>
+<p>用STL中的map或者直接构件一个哈希表，由于本题只需要一个简单的哈希表，因此考虑实现一个简单的哈希表。</p>
+<p><strong>每个字母根据其ASCII码值作为数组的下标对应数组的一个数字，而数组中存储的是每个字符出现的次数。这样我们就创建了一个大小为256、以字符ASCII码为键值的哈希表。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">FirstNotRepeatingChar</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> <span class="built_in">map</span>[<span class="number">256</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c : str)</span><br><span class="line">            <span class="built_in">map</span>[c]++;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">map</span>[str[i]] == <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符流中第一个只出现一次的字符"><a href="#字符流中第一个只出现一次的字符" class="headerlink" title="字符流中第一个只出现一次的字符"></a>字符流中第一个只出现一次的字符</h2><p><strong>题目描述</strong></p>
+<p>请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符”go”时，第一个只出现一次的字符是”g”。当从该字符流中读出前六个字符“google”时，第一个只出现一次的字符是”l”。</p>
+<p><strong>输出描述:</strong></p>
+<p>如果当前字符流没有存在出现一次的字符，返回#字符。</p>
+<p><strong>思路：</strong></p>
+<p>类似于上一题</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="comment">//Insert one char from stringstream</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">         s+=ch;</span><br><span class="line">        hash[ch]++;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="comment">//return the first appearence once char in current stringstream</span></span><br><span class="line">    <span class="function"><span class="keyword">char</span> <span class="title">FirstAppearingOnce</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hash[s[i]] == <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> s[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'#'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="keyword">char</span> hash[<span class="number">256</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="求1-2-…-n"><a href="#求1-2-…-n" class="headerlink" title="求1+2+…+n"></a>求1+2+…+n</h2><p><strong>题目：</strong></p>
+<p>求1+2+…+n，要求不能使用乘除法、for、while、ifelse、switch、case等关键字及条件判断语句（A？B:C）。</p>
+<p><strong>思路：</strong>采用递归，用&amp;&amp;代替if判断</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Sum_Solution</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = n;</span><br><span class="line">        ans&amp;&amp;(ans += Sum_Solution(n<span class="number">-1</span>));</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="把字符串转换成整数"><a href="#把字符串转换成整数" class="headerlink" title="把字符串转换成整数"></a>把字符串转换成整数</h2><p>题目描述：</p>
+<p>将一个字符串转换成一个整数(实现Integer.valueOf(string)的功能，但是string不符合数字要求时返回0)，要求不能使用字符串转换整数的库函数。 数值为0或者字符串不是一个合法的数值则返回0。</p>
+<p>思路：本题主要考察思维严密性，注意以下几点：</p>
+<p><strong>(1)字符串指针是否为空，字符串长度是否为0；</strong></p>
+<p><strong>(2)考虑字符串的正负，特别是正数要考虑带不带正号；</strong></p>
+<p><strong>(3)确保除了符号位以外所有的字符必须都是0~9之间的几个字符，否则返回0.</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">StrToInt</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = str.length();</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> s = (str[<span class="number">0</span>] == <span class="string">'-'</span> ? <span class="number">-1</span>:<span class="number">1</span>); <span class="comment">//记录符号正负</span></span><br><span class="line">        <span class="keyword">int</span> i = ((str[<span class="number">0</span>] == <span class="string">'-'</span>)||(str[<span class="number">0</span>] == <span class="string">'+'</span>)?<span class="number">1</span>:<span class="number">0</span>); <span class="comment">//看字符串前有符号没有</span></span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(;i&lt;len;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(str[i]&gt;=<span class="string">'0'</span> &amp;&amp; str[i]&lt;=<span class="string">'9'</span>)  <span class="comment">//只有每一个单个字符都在0~9之间才合理，否则返回0</span></span><br><span class="line">                result = result*<span class="number">10</span> + str[i]-<span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result*s;  <span class="comment">//乘以符号位</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="正则表达式匹配"><a href="#正则表达式匹配" class="headerlink" title="正则表达式匹配"></a>正则表达式匹配</h2><p><strong>题目描述</strong></p>
+<p>请实现一个函数用来匹配包括’.’和’<em>‘的正则表达式。模式中的字符’.’表示任意一个字符，而’</em>‘表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式”a.a”和”ab<em>ac</em>a”匹配，但是与”aa.a”和”ab*a”均不匹配</p>
+<p><img src="//yuemingyang7010.github.io/2019/06/17/剑指offer-字符串与数字/../../typora_img/clipboard-1561647861364.png" alt="img"></p>
+<p><strong>思路：</strong></p>
+<p>解这题需要把题意仔细研究清楚其多种情况。</p>
+<p>首先通过模式串是否到结尾作为分类标准，分为两类</p>
+<p>【1】模式串到结尾了</p>
+<p>这种情况根据字符串是否到结尾了又分为两类：</p>
+<p>(1)如果字符串和模式串都到了结尾，则返回true</p>
+<p>(2)如果模式串到尾了，字符串还没到尾，肯定匹配失败,返回false</p>
+<p>【2】模式串未到结尾</p>
+<p>根据模式串当前字符的下一个字符是否为‘*’分为2类：</p>
+<p>(1)若不为*，该种情况比较简单，比较字符串和模式串，分为当前字符匹配成功与失败2种；</p>
+<p>(2)若为*，该种情况相对复杂，也是比较字符串和模式串，分为当前字符匹配成功与失败2种；</p>
+<p>a.若匹配成功，则再分为字符串指针向后移动一位和不考虑模式串此次的成功匹配(考虑模式串出现多次连续与字符串当前位匹配成功的情况)字符串指针不向后移动两种情况，其中字符串指针向后移动一位的情况，又分为模式串指针保持在原位置和向后移动两位。具体如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> matchCore(str+<span class="number">1</span>,pattern+<span class="number">2</span>)||matchCore(str+<span class="number">1</span>,pattern)||matchCore(str,pattern+<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<p>b.若匹配不成功，则，字符串指针保持原位，模式串指针向后移动两位。</p>
+<p>   为了更加直观说明，各种分类情况如下脑图：</p>
+<img src="/2019/06/17/剑指offer-字符串与数字/02.png">
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">match</span><span class="params">(<span class="keyword">char</span>* str, <span class="keyword">char</span>* pattern)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(str == <span class="literal">NULL</span> || pattern == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> matchCore(str,pattern);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">matchCore</span><span class="params">(<span class="keyword">char</span>* str, <span class="keyword">char</span>* pattern)</span></span>&#123;</span><br><span class="line">        <span class="comment">//如果字符串和模式串都到了结尾，则返回true</span></span><br><span class="line">        <span class="keyword">if</span>(*str == <span class="string">'\0'</span> &amp;&amp; *pattern == <span class="string">'\0'</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//如果模式串到尾了，字符串还没到尾，肯定匹配失败</span></span><br><span class="line">        <span class="keyword">if</span>(*str != <span class="string">'\0'</span> &amp;&amp; *pattern == <span class="string">'\0'</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"><span class="comment">///!!!!!!!!!上方为模式串到结尾了，下方是模式串未到结尾的所有情况！！！/////</span></span><br><span class="line">        <span class="keyword">if</span>(*(pattern+<span class="number">1</span>) == <span class="string">'*'</span>)&#123;  <span class="comment">//剩下情况以模式串下一个字符是否为*作为分类标准，分两类</span></span><br><span class="line">            <span class="comment">//如果当前字符串与模式串匹配上了则分为两种情况：【1】字符串和模式串相等，【2】模式串是‘.’，</span></span><br><span class="line">            <span class="comment">//且字符串没有到结尾，则继续匹配，字符串指针向后移1位，模式串指针保持原位或者向后2位</span></span><br><span class="line">            <span class="comment">//此外还要额外考虑一种情况，如字符串abc  模式串 a*a*bc,即模式串可以匹配成功，但是模式串</span></span><br><span class="line">            <span class="comment">//放弃前两位a*，用后面的字符与字符串去匹配，这种情况极易忽略，重点！！！</span></span><br><span class="line">            <span class="keyword">if</span>(*str == *pattern || (*str != <span class="string">'\0'</span>&amp;&amp;*pattern == <span class="string">'.'</span>))</span><br><span class="line">                <span class="keyword">return</span> matchCore(str+<span class="number">1</span>,pattern+<span class="number">2</span>)||matchCore(str+<span class="number">1</span>,pattern)||matchCore(str,pattern+<span class="number">2</span>);</span><br><span class="line">            <span class="keyword">else</span>  <span class="comment">//如果字符串和模式串没配上，继续配，只能认为模式串*字符前一位字符出现0个</span></span><br><span class="line">                <span class="keyword">return</span> matchCore(str,pattern+<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(*str == *pattern || (*str != <span class="string">'\0'</span>&amp;&amp;*pattern == <span class="string">'.'</span>))</span><br><span class="line">                <span class="keyword">return</span> matchCore(str+<span class="number">1</span>,pattern+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="左旋转字符串"><a href="#左旋转字符串" class="headerlink" title="左旋转字符串"></a>左旋转字符串</h2><p>本题重点了解字符串string的用法：<a href="note://81AE2E6AD935400C912AE83D10A7DBAF" target="_blank" rel="noopener">2.16 C++ string类详解.note</a></p>
+<p>对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。例如，字符序列S=”abcXYZdef”,要求输出循环左移3位后的结果，即“XYZdefabc”。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">LeftRotateString</span><span class="params">(<span class="built_in">string</span> str, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = str.length();</span><br><span class="line">        <span class="keyword">if</span>(len &lt; n)</span><br><span class="line">            <span class="keyword">return</span> str;</span><br><span class="line">        <span class="built_in">string</span> temp = str.substr(n);</span><br><span class="line">        <span class="built_in">string</span> result = str.substr(<span class="number">0</span>,n);</span><br><span class="line">        result = temp + result;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="替换空格"><a href="#替换空格" class="headerlink" title="替换空格"></a>替换空格</h2><p><strong>题目描述</strong></p>
+<p>请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为4We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
+<p><strong>思路：</strong></p>
+<img src="/2019/06/17/剑指offer-字符串与数字/03.png">
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">replaceSpace</span><span class="params">(<span class="keyword">char</span> *str,<span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//先判断是否为空字符数组</span></span><br><span class="line">        <span class="keyword">if</span>(str == <span class="literal">NULL</span> || length &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="comment">//计算字符数组的实际长度(带\0)/////begin////</span></span><br><span class="line">        <span class="keyword">int</span> trueLength = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">char</span>* pTemp = str;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;str[i] != <span class="string">'\0'</span>;i++)&#123;</span><br><span class="line">            trueLength++;</span><br><span class="line">            <span class="keyword">if</span>(str[i] == <span class="string">' '</span>)</span><br><span class="line">                count++;</span><br><span class="line">        &#125;</span><br><span class="line">        trueLength++;</span><br><span class="line">        <span class="keyword">int</span> newlength = count*<span class="number">2</span>+trueLength;</span><br><span class="line">    <span class="comment">//计算字符数组的实际长度(带\0)/////end/////</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(newlength &gt; length)<span class="comment">//如果替换空格后所需的字符数组长度小于length,则返回</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">//进行替换////begin/////</span></span><br><span class="line">        <span class="keyword">int</span> indexOriginal = trueLength<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> indexNew = newlength<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(indexOriginal &gt;= <span class="number">0</span> &amp;&amp; indexNew &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(str[indexOriginal] == <span class="string">' '</span>)&#123;</span><br><span class="line">                str[indexNew--] = <span class="string">'0'</span>;</span><br><span class="line">                str[indexNew--] = <span class="string">'2'</span>;</span><br><span class="line">                str[indexNew--] = <span class="string">'%'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                str[indexNew--] = str[indexOriginal];</span><br><span class="line">            &#125;</span><br><span class="line">            indexOriginal--;</span><br><span class="line">        &#125;</span><br><span class="line">          <span class="comment">//进行替换////end/////</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>夏天来块儿冰西瓜!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mingyang Yue 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/剑指offer/" rel="tag"># 剑指offer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/18/socket编程-Windows下实现/" rel="next" title="socket编程(Windows下实现)">
+                <i class="fa fa-chevron-left"></i> socket编程(Windows下实现)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/17/剑指offer-圆圈中最后剩下的数/" rel="prev" title="[剑指offer]-圆圈中最后剩下的数">
+                [剑指offer]-圆圈中最后剩下的数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg" alt="Mingyang Yue">
+            
+              <p class="site-author-name" itemprop="name">Mingyang Yue</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/yuemingyang7010" title="GitHub主页" target="_blank">GitHub主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/yuemingyang7010" title="CSDN主页" target="_blank">CSDN主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制中1的个数"><span class="nav-number">2.</span> <span class="nav-text">二进制中1的个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的排列"><span class="nav-number">3.</span> <span class="nav-text">字符串的排列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-n整数中1出现的次数"><span class="nav-number">4.</span> <span class="nav-text">1~n整数中1出现的次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把数组排成最小的数"><span class="nav-number">5.</span> <span class="nav-text">把数组排成最小的数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#丑数"><span class="nav-number">6.</span> <span class="nav-text">丑数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一次只出现一次的字符"><span class="nav-number">7.</span> <span class="nav-text">第一次只出现一次的字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符流中第一个只出现一次的字符"><span class="nav-number">8.</span> <span class="nav-text">字符流中第一个只出现一次的字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求1-2-…-n"><span class="nav-number">9.</span> <span class="nav-text">求1+2+…+n</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把字符串转换成整数"><span class="nav-number">10.</span> <span class="nav-text">把字符串转换成整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式匹配"><span class="nav-number">11.</span> <span class="nav-text">正则表达式匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左旋转字符串"><span class="nav-number">12.</span> <span class="nav-text">左旋转字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换空格"><span class="nav-number">13.</span> <span class="nav-text">替换空格</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingyang Yue</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+    <span class="site-uv">
+      本站访问数 <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人数
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量 <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'aKc2tU1wp20XlT9yQMdSn05x-gzGzoHsz',
+        appKey: 'twkLoqUVOTUyJgPUtk1myvof',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
