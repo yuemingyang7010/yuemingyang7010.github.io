@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="剑指offer,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="目录   题目 难度     6.从尾到头打印链表.note ☆ 即链表逆序，如果不能改变原始链表结构，可用栈   22.链表中倒数第K个节点.note ☆ 快慢指针法   25.合并两个排序的链表.note ☆ 先获取新链表头(两链表最小的头)，然后按照递增方式连接，最后将某一个剩余一段的链表直接接上。   35.复杂链表的复制.note ☆☆☆ 细心！！分三步：1，复制每个节点，插在其后；2，">
+<meta name="keywords" content="剑指offer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指offer-链表、队列与栈">
+<meta property="og:url" content="http://yuemingyang7010.github.io/2019/06/20/剑指offer-链表、队列与栈/index.html">
+<meta property="og:site_name" content="yue">
+<meta property="og:description" content="目录   题目 难度     6.从尾到头打印链表.note ☆ 即链表逆序，如果不能改变原始链表结构，可用栈   22.链表中倒数第K个节点.note ☆ 快慢指针法   25.合并两个排序的链表.note ☆ 先获取新链表头(两链表最小的头)，然后按照递增方式连接，最后将某一个剩余一段的链表直接接上。   35.复杂链表的复制.note ☆☆☆ 细心！！分三步：1，复制每个节点，插在其后；2，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/20/剑指offer-链表、队列与栈/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/20/剑指offer-链表、队列与栈/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/20/剑指offer-链表、队列与栈/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/20/剑指offer-链表、队列与栈/04.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/20/剑指offer-链表、队列与栈/05.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/20/剑指offer-链表、队列与栈/06.png">
+<meta property="og:updated_time" content="2019-06-28T06:30:40.056Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="剑指offer-链表、队列与栈">
+<meta name="twitter:description" content="目录   题目 难度     6.从尾到头打印链表.note ☆ 即链表逆序，如果不能改变原始链表结构，可用栈   22.链表中倒数第K个节点.note ☆ 快慢指针法   25.合并两个排序的链表.note ☆ 先获取新链表头(两链表最小的头)，然后按照递增方式连接，最后将某一个剩余一段的链表直接接上。   35.复杂链表的复制.note ☆☆☆ 细心！！分三步：1，复制每个节点，插在其后；2，">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/06/20/剑指offer-链表、队列与栈/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuemingyang7010.github.io/2019/06/20/剑指offer-链表、队列与栈/">
+
+
+
+
+
+  <title>剑指offer-链表、队列与栈 | yue</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yue</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuemingyang7010.github.io/2019/06/20/剑指offer-链表、队列与栈/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mingyang Yue">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">剑指offer-链表、队列与栈</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T13:52:09+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/剑指offer/" itemprop="url" rel="index">
+                    <span itemprop="name">剑指offer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/20/剑指offer-链表、队列与栈/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/20/剑指offer-链表、队列与栈/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><table>
+<thead>
+<tr>
+<th>题目</th>
+<th>难度</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="note://267A264815194320AE99C6456F7F9067" target="_blank" rel="noopener">6.从尾到头打印链表.note</a></td>
+<td>☆</td>
+<td>即链表逆序，如果不能改变原始链表结构，可用栈</td>
+</tr>
+<tr>
+<td><a href="note://188647273FFD47D28D4BC73B9689F456" target="_blank" rel="noopener">22.链表中倒数第K个节点.note</a></td>
+<td>☆</td>
+<td>快慢指针法</td>
+</tr>
+<tr>
+<td><a href="note://1EB18F62FA924217AF3E9890E393B48F" target="_blank" rel="noopener">25.合并两个排序的链表.note</a></td>
+<td>☆</td>
+<td>先获取新链表头(两链表最小的头)，然后按照递增方式连接，最后将某一个剩余一段的链表直接接上。</td>
+</tr>
+<tr>
+<td><a href="note://A4047F5CE1E345E2917C4B71250C1BFB" target="_blank" rel="noopener">35.复杂链表的复制.note</a></td>
+<td>☆☆☆</td>
+<td>细心！！分三步：1，复制每个节点，插在其后；2，复制每个旧节点的random到新节点；3.拆分节点。</td>
+</tr>
+<tr>
+<td><a href="note://2B3B33D6AFDE4BD98362D2EC0146B083" target="_blank" rel="noopener">圆圈中最后剩下的数.note</a></td>
+<td>☆☆☆</td>
+<td>约瑟夫环问题，采用STL中的list构成环形链表。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>题目</th>
+<th>难度</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="note://E97F872F78694F578300934A2651FFB5" target="_blank" rel="noopener">9.用两个栈实现队列(易).note</a></td>
+<td>☆</td>
+<td>模拟队列先进先出，一个栈存数据，另一个栈临时放数据。</td>
+</tr>
+<tr>
+<td><a href="note://EFF3BEAF7B584C859F553D330A86E4E2" target="_blank" rel="noopener">30.包含min函数的栈.note</a></td>
+<td>☆</td>
+<td>设置两个栈，一个存放数据，一个存放每一步数据栈中最小的数。</td>
+</tr>
+<tr>
+<td><a href="note://E815AA4D2EF94E8CA776D8A770604A4F" target="_blank" rel="noopener">31.栈的压入、弹出序列.note</a></td>
+<td>☆☆☆</td>
+<td>用一个栈来模拟压入弹出操作。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="从尾到头打印链表"><a href="#从尾到头打印链表" class="headerlink" title="从尾到头打印链表"></a>从尾到头打印链表</h2><p><strong>题目描述</strong></p>
+<p>输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。</p>
+<p><strong>思路分析：</strong></p>
+<p>其实本题和链表逆序很类似，链表逆序要求改变链表，采用头插法。此题逆序打印链表，一般理解为不改变链表结构，因此采用栈的结构。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*  struct ListNode &#123;</span></span><br><span class="line"><span class="comment">*        int val;</span></span><br><span class="line"><span class="comment">*        struct ListNode *next;</span></span><br><span class="line"><span class="comment">*        ListNode(int x) :</span></span><br><span class="line"><span class="comment">*              val(x), next(NULL) &#123;</span></span><br><span class="line"><span class="comment">*        &#125;</span></span><br><span class="line"><span class="comment">*  &#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; printListFromTailToHead(ListNode* head) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">stack</span>&lt;ListNode*&gt; nodes;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; mVector;</span><br><span class="line">        ListNode* pNodes = head;</span><br><span class="line">        <span class="keyword">while</span>(pNodes != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            nodes.push(pNodes);</span><br><span class="line">            pNodes = pNodes-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!nodes.empty())&#123;</span><br><span class="line">            pNodes = nodes.top();</span><br><span class="line">            mVector.push_back(pNodes-&gt;val);</span><br><span class="line">            nodes.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mVector;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="链表中倒数第K个节点"><a href="#链表中倒数第K个节点" class="headerlink" title="链表中倒数第K个节点"></a>链表中倒数第K个节点</h2><p>输入一个链表，输出该链表中倒数第k个结点。</p>
+<p>思路：快慢指针</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct ListNode &#123;</span></span><br><span class="line"><span class="comment">	int val;</span></span><br><span class="line"><span class="comment">	struct ListNode *next;</span></span><br><span class="line"><span class="comment">	ListNode(int x) :</span></span><br><span class="line"><span class="comment">			val(x), next(NULL) &#123;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;;*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">FindKthToTail</span><span class="params">(ListNode* pListHead, <span class="keyword">unsigned</span> <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        ListNode* fast = pListHead;</span><br><span class="line">        ListNode* low = pListHead;</span><br><span class="line">        <span class="keyword">while</span>(k &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(fast == <span class="literal">NULL</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">NULL</span>;   <span class="comment">//防止越界错误！！！要加</span></span><br><span class="line">            &#125;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">            k--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">            low = low-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="合并两个排序的链表"><a href="#合并两个排序的链表" class="headerlink" title="合并两个排序的链表"></a>合并两个排序的链表</h2><p><strong>题目描述</strong></p>
+<p>输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。</p>
+<img src="/2019/06/20/剑指offer-链表、队列与栈/01.png">
+
+<p>非递归代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct ListNode &#123;</span></span><br><span class="line"><span class="comment">	int val;</span></span><br><span class="line"><span class="comment">	struct ListNode *next;</span></span><br><span class="line"><span class="comment">	ListNode(int x) :</span></span><br><span class="line"><span class="comment">			val(x), next(NULL) &#123;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;;*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">Merge</span><span class="params">(ListNode* pHead1, ListNode* pHead2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pHead1 ==<span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> pHead2;</span><br><span class="line">        <span class="keyword">if</span>(pHead2 == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> pHead1;</span><br><span class="line">        ListNode* pre_head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode* pTemp = pre_head;</span><br><span class="line">        <span class="keyword">while</span>(pHead1 !=<span class="literal">NULL</span> &amp;&amp; pHead2 != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(pHead1-&gt;val &lt; pHead2-&gt;val)&#123;</span><br><span class="line">                pTemp-&gt;next = pHead1;</span><br><span class="line">                pHead1 = pHead1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                pTemp-&gt;next = pHead2;</span><br><span class="line">                pHead2 = pHead2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            pTemp = pTemp-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将比较后某一个原始链表剩余部分直接插到新的链表后方</span></span><br><span class="line">        <span class="keyword">if</span>(pHead1)</span><br><span class="line">            pTemp-&gt;next = pHead1;</span><br><span class="line">        <span class="keyword">if</span>(pHead2)</span><br><span class="line">            pTemp-&gt;next = pHead2;</span><br><span class="line">        ListNode* ans = pre_head-&gt;next;</span><br><span class="line">        <span class="keyword">delete</span> pre_head;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="复杂链表的复制"><a href="#复杂链表的复制" class="headerlink" title="复杂链表的复制"></a>复杂链表的复制</h2><p><strong>题目描述</strong></p>
+<p>输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针指向任意一个节点），返回结果为复制后复杂链表的head。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）</p>
+<p>思路：(在不借助辅助空间的情况下，实现O(n)的时间效率)</p>
+<p>分为三步走：</p>
+<img src="/2019/06/20/剑指offer-链表、队列与栈/02.png">
+
+<img src="/2019/06/20/剑指offer-链表、队列与栈/03.png">
+
+<img src="/2019/06/20/剑指offer-链表、队列与栈/04.png">
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct RandomListNode &#123;</span></span><br><span class="line"><span class="comment">    int label;</span></span><br><span class="line"><span class="comment">    struct RandomListNode *next, *random;</span></span><br><span class="line"><span class="comment">    RandomListNode(int x) :</span></span><br><span class="line"><span class="comment">            label(x), next(NULL), random(NULL) &#123;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">RandomListNode* <span class="title">Clone</span><span class="params">(RandomListNode* pHead)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pHead == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//第一步：遍历链表，复制每个结点，如复制结点A得到A1，将结点A1插到结点A后面；</span></span><br><span class="line">        RandomListNode* curNode = pHead;</span><br><span class="line">        <span class="keyword">while</span>(curNode != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            RandomListNode* pCloned = <span class="keyword">new</span> RandomListNode(<span class="number">0</span>);</span><br><span class="line">            pCloned-&gt;label = curNode-&gt;label;</span><br><span class="line">            pCloned-&gt;next = curNode-&gt;next;</span><br><span class="line">            pCloned-&gt;random = <span class="literal">NULL</span>;</span><br><span class="line">            curNode-&gt;next = pCloned;</span><br><span class="line">            curNode = pCloned-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//第二步：重新遍历链表，复制老结点的随机指针给新结点，如A1.random = A.random.next;</span></span><br><span class="line">        curNode = pHead;</span><br><span class="line">        <span class="keyword">while</span>(curNode != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            RandomListNode* pCloned = curNode-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(curNode-&gt;random != <span class="literal">NULL</span>)&#123;  <span class="comment">//！！！！很关键的一个判断，不然就出现野指针</span></span><br><span class="line">                pCloned-&gt;random = curNode-&gt;random-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            curNode = pCloned-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//第三步：拆分链表，将链表拆分为原链表和复制后的链表</span></span><br><span class="line">        curNode = pHead;</span><br><span class="line">        RandomListNode* pCloneHead = pHead-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>(curNode != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            RandomListNode* pCloneNode = curNode-&gt;next;  <span class="comment">//临时存放当前节点的下一个指针</span></span><br><span class="line">            curNode-&gt;next = curNode-&gt;next-&gt;next;  <span class="comment">//原始链表，隔一个节点连接一个</span></span><br><span class="line">            <span class="comment">//复制后链表，隔一个节点连接一个，但是要考虑该节点是最后一个的情况</span></span><br><span class="line">            pCloneNode-&gt;next = pCloneNode-&gt;next == <span class="literal">NULL</span>?<span class="literal">NULL</span>:pCloneNode-&gt;next-&gt;next;</span><br><span class="line">            curNode = curNode-&gt;next;  <span class="comment">//移到下一个原始节点</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pCloneHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="圆圈中最后剩下的数"><a href="#圆圈中最后剩下的数" class="headerlink" title="圆圈中最后剩下的数"></a>圆圈中最后剩下的数</h2><p>圆圈中最后剩下的数</p>
+<p>题目：0，1，n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。</p>
+<p><strong>思路：用约瑟夫环的思想</strong></p>
+<p>例如，0、1、2、3、4这5个数字组成一个圆圈（如图6.3所示），从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。</p>
+<img src="/2019/06/20/剑指offer-链表、队列与栈/05.png">
+
+<p>可以用模板库中的std:list来模拟一个环形链表。由于std:：list本身并不是一个环形结构，因此每当迭代器（Iterator）扫描到链表末尾的时候，我们要记得把迭代器移到链表的头部。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">LastRemaining_Solution</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (n &lt; <span class="number">1</span> || m &lt; <span class="number">1</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">		<span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt; mlist;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">			mlist.push_back(i);</span><br><span class="line">		<span class="keyword">long</span> count = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">auto</span> it = mlist.begin();</span><br><span class="line">		<span class="keyword">int</span> k = m - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (mlist.size() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">while</span> (k--) &#123;</span><br><span class="line">				it++;</span><br><span class="line">				<span class="keyword">if</span> (it == mlist.end())</span><br><span class="line">					it = mlist.begin();</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">			it = mlist.erase(it);</span><br><span class="line">			<span class="keyword">if</span> (it == mlist.end())</span><br><span class="line">				it = mlist.begin();</span><br><span class="line">			k = m - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> mlist.front();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="用两个栈实现队列-易"><a href="#用两个栈实现队列-易" class="headerlink" title="用两个栈实现队列(易)"></a>用两个栈实现队列(易)</h2><p><strong>题目描述</strong></p>
+<p>用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(!stack1.empty())&#123;</span><br><span class="line">            stack2.push(stack1.top());</span><br><span class="line">            stack1.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        stack1.push(node);</span><br><span class="line">        <span class="keyword">while</span>(!stack2.empty())&#123;</span><br><span class="line">            stack1.push(stack2.top());</span><br><span class="line">            stack2.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> top = stack1.top();</span><br><span class="line">        stack1.pop();</span><br><span class="line">        <span class="keyword">return</span> top;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; stack1;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; stack2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="包含min函数的栈"><a href="#包含min函数的栈" class="headerlink" title="包含min函数的栈"></a>包含min函数的栈</h2><p><strong>题目描述</strong></p>
+<p>定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。</p>
+<img src="/2019/06/20/剑指offer-链表、队列与栈/06.png">
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        dataStack.push(value);</span><br><span class="line">        <span class="keyword">if</span>(minStack.empty())&#123;</span><br><span class="line">            minStack.push(value);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(value &lt; minStack.top())</span><br><span class="line">                minStack.push(value);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                minStack.push(minStack.top());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        dataStack.pop();</span><br><span class="line">        minStack.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dataStack.top();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">min</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> minStack.top();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; dataStack;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; minStack;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="栈的压入、弹出序列"><a href="#栈的压入、弹出序列" class="headerlink" title="栈的压入、弹出序列"></a>栈的压入、弹出序列</h2><p><strong>题目描述</strong></p>
+<p>输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否可能为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如序列1,2,3,4,5是某栈的压入顺序，序列4,5,3,2,1是该压栈序列对应的一个弹出序列，但4,3,5,1,2就不可能是该压栈序列的弹出序列。（注意：这两个序列的长度是相等的）</p>
+<p><strong>思路:用一个栈来模拟压入弹出操作。</strong></p>
+<p>如果下一个弹出的数字刚好是栈顶数字, 那么直接弹出;如果下一个弹出的数字不在栈顶, 则把<strong>压栈序列</strong>中还没有入栈的数字压入辅助栈,直到把下一个需要弹出的数字压入栈顶为止;如果所有数字都压入栈后仍然没有找到下一个弹出的数字, 那么该序列不可能是一个弹出序列。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">IsPopOrder</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; pushV,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; popV)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pushV.size()==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;pushV.size();i++)&#123;</span><br><span class="line">            dataStack.push(pushV[i]);</span><br><span class="line">            <span class="keyword">while</span>(j&lt;popV.size()&amp;&amp;dataStack.top() == popV[j])&#123;</span><br><span class="line">                dataStack.pop();</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dataStack.empty();  <span class="comment">//若压栈完了，没能全部弹出，说明不是弹出序列，反之是</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; dataStack;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>夏天来块儿冰西瓜!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mingyang Yue 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/剑指offer/" rel="tag"># 剑指offer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/19/剑指offer-树/" rel="next" title="剑指offer-树">
+                <i class="fa fa-chevron-left"></i> 剑指offer-树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/21/剑指offer-其他/" rel="prev" title="剑指offer-其他">
+                剑指offer-其他 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg" alt="Mingyang Yue">
+            
+              <p class="site-author-name" itemprop="name">Mingyang Yue</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/yuemingyang7010" title="GitHub主页" target="_blank">GitHub主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/yuemingyang7010" title="CSDN主页" target="_blank">CSDN主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从尾到头打印链表"><span class="nav-number">2.</span> <span class="nav-text">从尾到头打印链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表中倒数第K个节点"><span class="nav-number">3.</span> <span class="nav-text">链表中倒数第K个节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并两个排序的链表"><span class="nav-number">4.</span> <span class="nav-text">合并两个排序的链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂链表的复制"><span class="nav-number">5.</span> <span class="nav-text">复杂链表的复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆圈中最后剩下的数"><span class="nav-number">6.</span> <span class="nav-text">圆圈中最后剩下的数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用两个栈实现队列-易"><span class="nav-number">7.</span> <span class="nav-text">用两个栈实现队列(易)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包含min函数的栈"><span class="nav-number">8.</span> <span class="nav-text">包含min函数的栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈的压入、弹出序列"><span class="nav-number">9.</span> <span class="nav-text">栈的压入、弹出序列</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingyang Yue</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+    <span class="site-uv">
+      本站访问数 <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人数
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量 <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'aKc2tU1wp20XlT9yQMdSn05x-gzGzoHsz',
+        appKey: 'twkLoqUVOTUyJgPUtk1myvof',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

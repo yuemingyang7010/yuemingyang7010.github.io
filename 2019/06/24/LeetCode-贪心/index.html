@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="LeetCode,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="总结目录   题目 难度 收获与总结    1.分饼干 易 首先对需求数组g[]和饼干大小数组s[]排序，然后循环遍历，知道其中某一个数组遍历完，循环结束。两个数组都从首元素开始遍历过程中，每次cookie加1，若能够满足其中一个孩子则child加1，遍历完成后，返回child值。   2.摇摆数列 中 画数字升降规律图和用状态机的方法，眼前一亮，方法值得学习借鉴。   3.移除K位数字 中 思路">
+<meta name="keywords" content="LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-贪心">
+<meta property="og:url" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/index.html">
+<meta property="og:site_name" content="yue">
+<meta property="og:description" content="总结目录   题目 难度 收获与总结    1.分饼干 易 首先对需求数组g[]和饼干大小数组s[]排序，然后循环遍历，知道其中某一个数组遍历完，循环结束。两个数组都从首元素开始遍历过程中，每次cookie加1，若能够满足其中一个孩子则child加1，遍历完成后，返回child值。   2.摇摆数列 中 画数字升降规律图和用状态机的方法，眼前一亮，方法值得学习借鉴。   3.移除K位数字 中 思路">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/04.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/05.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/06.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/07.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/08.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/09.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/10.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/11.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/12.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/13.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/14.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/15.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/16.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/17.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/18.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/19.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/20.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/21.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/22.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/23.png">
+<meta property="og:updated_time" content="2019-06-28T07:35:24.161Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode-贪心">
+<meta name="twitter:description" content="总结目录   题目 难度 收获与总结    1.分饼干 易 首先对需求数组g[]和饼干大小数组s[]排序，然后循环遍历，知道其中某一个数组遍历完，循环结束。两个数组都从首元素开始遍历过程中，每次cookie加1，若能够满足其中一个孩子则child加1，遍历完成后，返回child值。   2.摇摆数列 中 画数字升降规律图和用状态机的方法，眼前一亮，方法值得学习借鉴。   3.移除K位数字 中 思路">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/">
+
+
+
+
+
+  <title>LeetCode-贪心 | yue</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yue</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuemingyang7010.github.io/2019/06/24/LeetCode-贪心/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mingyang Yue">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LeetCode-贪心</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T13:52:09+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/24/LeetCode-贪心/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/24/LeetCode-贪心/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="总结目录"><a href="#总结目录" class="headerlink" title="总结目录"></a>总结目录</h2><table>
+<thead>
+<tr>
+<th>题目</th>
+<th>难度</th>
+<th>收获与总结</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.分饼干</td>
+<td>易</td>
+<td>首先<strong>对需求数组g[]和饼干大小数组s[]排序</strong>，然后循环遍历，知道其中某一个数组遍历完，循环结束。两个数组都从首元素开始遍历过程中，<strong>每次cookie加1，若能够满足其中一个孩子则child加1</strong>，遍历完成后，返回child值。</td>
+</tr>
+<tr>
+<td>2.摇摆数列</td>
+<td>中</td>
+<td>画<strong>数字升降规律图</strong>和用<strong>状态机</strong>的方法，眼前一亮，方法值得学习借鉴。</td>
+</tr>
+<tr>
+<td>3.移除K位数字</td>
+<td>中</td>
+<td>思路：从最高位向最低位遍历，<strong>当对应的数字比下一位数字大，并且在没有剔除完K位数时，则应该剔除该位数</strong>，这样才能保证最后的数最小，编程时可以借用<strong>栈</strong>来实现。此外还要考虑数的开头不能为0的情况，以及遍历完字符串后，仍然没有删除完K位数的情况。</td>
+</tr>
+<tr>
+<td>4.用最少的弓箭击爆气球</td>
+<td>中</td>
+<td>将<strong>所有气球区间的左端点从小到大排序</strong>，首先以第一个气球所在区间作为射击区间，遍历第二个气球的时候<strong>更新该区间</strong>，依次不断更新，当遍历到第i个气球时，气球区间左端点大于射击区间右端点，此时设定第二个射击区间，以此类推。</td>
+</tr>
+</tbody></table>
+<h2 id="Assign-Cookies-易"><a href="#Assign-Cookies-易" class="headerlink" title="Assign Cookies(易)"></a>Assign Cookies(易)</h2><ol start="455">
+<li>Assign Cookies</li>
+</ol>
+<p><strong>分发饼干</strong></p>
+<img src="/2019/06/24/LeetCode-贪心/01.png">
+
+<p>Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie. Each child i has a greed factor gi, which is the minimum size of a cookie that the child will be content with; and each cookie j has a size sj. If sj &gt;= gi, we can assign the cookie j to the child i, and the child i will be content. Your goal is to maximize the number of your content children and output the maximum number.</p>
+<p><strong>Note:</strong></p>
+<p>You may assume the greed factor is always positive. </p>
+<p>You cannot assign more than one cookie to one child.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> [1,2,3], [1,1]  </p>
+<p><strong>Output:</strong> 1  </p>
+<p><strong>Explanation:</strong> You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3.  And even though you have 2 cookies, since their size is both 1, you could only make the child whose greed factor is 1 content. You need to output 1. </p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> [1,2], [1,2,3]  </p>
+<p><strong>Output:</strong> 2  </p>
+<p><strong>Explanation:</strong> You have 2 children and 3 cookies. The greed factors of 2 children are 1, 2.  You have 3 cookies and their sizes are big enough to gratify all of the children,  You need to output 2.</p>
+<img src="/2019/06/24/LeetCode-贪心/02.png">
+
+<img src="/2019/06/24/LeetCode-贪心/03.png">
+
+<img src="/2019/06/24/LeetCode-贪心/04.png">
+
+<img src="/2019/06/24/LeetCode-贪心/05.png">
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findContentChildren</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; g, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::sort(g.begin(),g.end());</span><br><span class="line">        <span class="built_in">std</span>::sort(s.begin(),s.end());</span><br><span class="line">        <span class="keyword">int</span> child = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cookie = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(child &lt; g.size() &amp;&amp; cookie &lt; s.size())&#123;</span><br><span class="line">            <span class="keyword">if</span>(g[child]&lt;=s[cookie])&#123;</span><br><span class="line">                child++;</span><br><span class="line">            &#125;</span><br><span class="line">            cookie++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> child;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Wiggle-Subsequence-中"><a href="#Wiggle-Subsequence-中" class="headerlink" title="Wiggle Subsequence(中)"></a>Wiggle Subsequence(中)</h2><p>摇摆序列</p>
+<ol start="376">
+<li>Wiggle Subsequence</li>
+</ol>
+<img src="/2019/06/24/LeetCode-贪心/06.png">
+
+<p>A sequence of numbers is called a <strong>wiggle sequence</strong> if the differences between successive numbers strictly alternate between positive and negative. The first difference (if one exists) may be either positive or negative. A sequence with fewer than two elements is trivially a wiggle sequence.</p>
+<p>For example, <strong>[1,7,4,9,2,5]</strong> is a wiggle sequence because the differences (6,-3,5,-7,3) are alternately positive and negative. In contrast, [1,4,7,2,5] and [1,7,4,5,5] are not wiggle sequences, the first because its first two differences are positive and the second because its last difference is zero.</p>
+<p>Given a sequence of integers, return the length of the longest subsequence that is a wiggle sequence. A subsequence is obtained by deleting some number of elements (eventually, also zero) from the original sequence, leaving the remaining elements in their original order.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> [1,7,4,9,2,5] </p>
+<p><strong>Output:</strong> 6</p>
+<p> <strong>Explanation:</strong> The entire sequence is a wiggle sequence.</p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> [1,17,5,10,13,15,10,5,16,8] </p>
+<p><strong>Output:</strong> 7 </p>
+<p><strong>Explanation:</strong> There are several subsequences that achieve this length. One is [1,17,10,13,10,16,8].</p>
+<p><strong>Example 3:</strong></p>
+<p><strong>Input:</strong> [1,2,3,4,5,6,7,8,9] </p>
+<p><strong>Output:</strong> 2</p>
+<p><strong>Follow up:</strong></p>
+<p>Can you do it in O(<em>n</em>) time?</p>
+<img src="/2019/06/24/LeetCode-贪心/07.png">
+
+<img src="/2019/06/24/LeetCode-贪心/08.png">
+
+<img src="/2019/06/24/LeetCode-贪心/09.png">
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">wiggleMaxLength</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.size() &lt; <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> nums.size();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> BEGIN = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> UP = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> DOWN = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> STATE = BEGIN;</span><br><span class="line">        <span class="keyword">int</span> maxLength = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;nums.size();i++)&#123;</span><br><span class="line">            <span class="keyword">switch</span>(STATE)&#123;</span><br><span class="line">                <span class="keyword">case</span> BEGIN:</span><br><span class="line">                    <span class="keyword">if</span>(nums[i]&gt;nums[i<span class="number">-1</span>])&#123;</span><br><span class="line">                        STATE = UP;</span><br><span class="line">                        maxLength++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(nums[i]&lt;nums[i<span class="number">-1</span>])&#123;</span><br><span class="line">                        STATE = DOWN;</span><br><span class="line">                        maxLength++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> UP:</span><br><span class="line">                    <span class="keyword">if</span>(nums[i]&lt;nums[i<span class="number">-1</span>])&#123;</span><br><span class="line">                        STATE = DOWN;</span><br><span class="line">                        maxLength++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> DOWN:</span><br><span class="line">                    <span class="keyword">if</span>(nums[i]&gt;nums[i<span class="number">-1</span>])&#123;</span><br><span class="line">                        STATE = UP;</span><br><span class="line">                        maxLength++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxLength;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Remove-K-Digits-中"><a href="#Remove-K-Digits-中" class="headerlink" title="Remove K Digits(中)"></a>Remove K Digits(中)</h2><p>移掉K位数字</p>
+<ol start="402">
+<li>Remove K Digits</li>
+</ol>
+<img src="/2019/06/24/LeetCode-贪心/10.png">
+
+<p>Given a non-negative integer <em>num</em> represented as a string, remove <em>k</em> digits from the number so that the new number is the smallest possible.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>The length of <em>num</em> is less than 10002 and will be ≥ <em>k</em>.</li>
+<li>The given <em>num</em> does not contain any leading zero.</li>
+</ul>
+<p><strong>Example 1:</strong></p>
+<p>Input: num = “1432219”, k = 3 </p>
+<p>Output: “1219” </p>
+<p>Explanation: Remove the three digits 4, 3, and 2 to form the new number 1219 which is the smallest. </p>
+<p><strong>Example 2:</strong></p>
+<p>Input: num = “10200”, k = 1 </p>
+<p>Output: “200” </p>
+<p>Explanation: Remove the leading 1 and the number is 200. Note that the output must not contain leading zeroes. </p>
+<p><strong>Example 3:</strong></p>
+<p>Input: num = “10”, k = 2 </p>
+<p>Output: “0” </p>
+<p>Explanation: Remove all the digits from the number and it is left with nothing which is 0.</p>
+<img src="/2019/06/24/LeetCode-贪心/11.png">
+
+<img src="/2019/06/24/LeetCode-贪心/12.png">
+
+<img src="/2019/06/24/LeetCode-贪心/13.png">
+
+<img src="/2019/06/24/LeetCode-贪心/14.png">
+
+<img src="/2019/06/24/LeetCode-贪心/15.png">
+
+<img src="/2019/06/24/LeetCode-贪心/16.png">
+
+<p>自己实现的代码比上述截图稍微简洁点。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeKdigits</span><span class="params">(<span class="built_in">string</span> num, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">char</span>&gt; mStack;</span><br><span class="line">        <span class="built_in">string</span> ans = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;num.length();i++)&#123;    </span><br><span class="line">            <span class="comment">//当栈不空，且要压入的数字比栈顶数字小，且仍然可以删除数字的时候，while循环继续</span></span><br><span class="line">            <span class="keyword">while</span>((!mStack.empty()) &amp;&amp; num[i] &lt; mStack.top() &amp;&amp;  k&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                mStack.pop();</span><br><span class="line">                k--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(num[i] != <span class="string">'0'</span> || (!mStack.empty()))&#123; <span class="comment">//防止出现数字字符串以0开头</span></span><br><span class="line">               mStack.push(num[i]); </span><br><span class="line">            &#125;                     </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//解决当字符串从头遍历到尾，k仍然大于0，如nums= "12345" k=3时，此时弹出末尾比较大的数</span></span><br><span class="line">        <span class="keyword">while</span>((!mStack.empty()) &amp;&amp; k&gt;<span class="number">0</span>)&#123; <span class="comment">//如果栈不空，且仍然可以删除数字</span></span><br><span class="line">            mStack.pop();</span><br><span class="line">            k--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!mStack.empty())&#123;   <span class="comment">//将栈中的每一个char型字符连接为字符串</span></span><br><span class="line">            ans = mStack.top() + ans;</span><br><span class="line">            mStack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(ans == <span class="string">""</span>)&#123;   <span class="comment">//根据题目要求，当ans为空字符串时候，返回“0”</span></span><br><span class="line">            ans = <span class="string">"0"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">LeetCode优秀解答，没有用到额外的数据结构，但是纯用数组比较绕！！！</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeKdigits</span><span class="params">(<span class="built_in">string</span> num, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (num.size()&lt;=k)<span class="keyword">return</span> <span class="string">"0"</span>;</span><br><span class="line">        <span class="keyword">int</span> top=<span class="number">0</span>,count=<span class="number">0</span>,n=num.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">while</span> (top&gt;<span class="number">0</span>&amp;&amp;count&lt;k&amp;&amp;num[top<span class="number">-1</span>]&gt;num[i])&#123;</span><br><span class="line">                top--;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">            num[top++]=num[i];</span><br><span class="line">        &#125;</span><br><span class="line">        top=min(top,n-k);</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (;i&lt;top;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (num[i]!=<span class="string">'0'</span>)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (i==top)<span class="keyword">return</span> <span class="string">"0"</span>;</span><br><span class="line">        <span class="built_in">string</span> res=<span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (;i&lt;top;i++)</span><br><span class="line">            res+=num[i];</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Minimum-Number"><a href="#Minimum-Number" class="headerlink" title="Minimum Number"></a>Minimum Number</h2><ol start="452">
+<li>Minimum Number of Arrows to Burst Balloons</li>
+</ol>
+<img src="/2019/06/24/LeetCode-贪心/17.png">
+
+<p>There are a number of spherical balloons spread in two-dimensional space. For each balloon, provided input is the start and end coordinates of the horizontal diameter. Since it’s horizontal, y-coordinates don’t matter and hence the x-coordinates of start and end of the diameter suffice. Start is always smaller than end. There will be at most 104 balloons.</p>
+<p>An arrow can be shot up exactly vertically from different points along the x-axis. A balloon with xstart and xend bursts by an arrow shot at x if xstart ≤ x ≤ xend. There is no limit to the number of arrows that can be shot. An arrow once shot keeps travelling up infinitely. The problem is to find the minimum number of arrows that must be shot to burst all balloons.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Input:</strong> [[10,16], [2,8], [1,6], [7,12]]  </p>
+<p><strong>Output:</strong> 2  </p>
+<p><strong>Explanation:</strong> One way is to shoot one arrow for example at x = 6 (bursting the balloons [2,8] and [1,6]) and another arrow at x = 11 (bursting the other two balloons). </p>
+<img src="/2019/06/24/LeetCode-贪心/18.png">
+
+<img src="/2019/06/24/LeetCode-贪心/19.png">
+
+<img src="/2019/06/24/LeetCode-贪心/20.png">
+
+<img src="/2019/06/24/LeetCode-贪心/21.png">
+
+<img src="/2019/06/24/LeetCode-贪心/22.png">
+
+<img src="/2019/06/24/LeetCode-贪心/23.png">
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">comp</span><span class="params">(<span class="keyword">const</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&amp; a,<span class="keyword">const</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&amp; b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.first &lt; b.first;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findMinArrowShots</span><span class="params">(<span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;&amp; points)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(points.size() == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">std</span>::sort(points.begin(),points.end(),comp);</span><br><span class="line">        <span class="keyword">int</span> arrowNum = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> begin = points[<span class="number">0</span>].first;</span><br><span class="line">        <span class="keyword">int</span> end = points[<span class="number">0</span>].second;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;points.size();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(points[i].first &lt;= end)&#123;</span><br><span class="line">                begin = points[i].first;</span><br><span class="line">                <span class="keyword">if</span>(points[i].second &lt; end)&#123;</span><br><span class="line">                    end = points[i].second;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                arrowNum++;</span><br><span class="line">                begin = points[i].first;</span><br><span class="line">                end = points[i].second;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arrowNum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>夏天来块儿冰西瓜!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mingyang Yue 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/23/LeetCode-栈与队列/" rel="next" title="LeetCode-栈与队列">
+                <i class="fa fa-chevron-left"></i> LeetCode-栈与队列
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/25/LeetCode-递归、回溯与分治/" rel="prev" title="LeetCode-递归、回溯与分治">
+                LeetCode-递归、回溯与分治 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg" alt="Mingyang Yue">
+            
+              <p class="site-author-name" itemprop="name">Mingyang Yue</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/yuemingyang7010" title="GitHub主页" target="_blank">GitHub主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/yuemingyang7010" title="CSDN主页" target="_blank">CSDN主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结目录"><span class="nav-number">1.</span> <span class="nav-text">总结目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Assign-Cookies-易"><span class="nav-number">2.</span> <span class="nav-text">Assign Cookies(易)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wiggle-Subsequence-中"><span class="nav-number">3.</span> <span class="nav-text">Wiggle Subsequence(中)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Remove-K-Digits-中"><span class="nav-number">4.</span> <span class="nav-text">Remove K Digits(中)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Minimum-Number"><span class="nav-number">5.</span> <span class="nav-text">Minimum Number</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingyang Yue</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+    <span class="site-uv">
+      本站访问数 <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人数
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量 <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'aKc2tU1wp20XlT9yQMdSn05x-gzGzoHsz',
+        appKey: 'twkLoqUVOTUyJgPUtk1myvof',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

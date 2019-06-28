@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="重建二叉树题目描述 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。 解题思路：采用递归方法   1234567891011121314151617181920212223242526272829/** * De">
+<meta name="description" content="目录   题目 难度     7.重建二叉树.note ☆☆☆ 采用递归的方式不断找出根节点和左右子树   树的子结构.note ☆☆☆☆ 第一步在树A中找到和B的根结点的值一样的结点R,第二步再判断树A中以R为根节点的子树是不是包含和树B一样的结构。   二叉树的镜像.note ☆☆ 先交换根节点的左右子节点，再将子节点作为根节点进行递归镜像操作。   从上往下打印二叉树.note ☆ 根节点入">
 <meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指offer-树">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/06/19/剑指offer-树/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="重建二叉树题目描述 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。 解题思路：采用递归方法   1234567891011121314151617181920212223242526272829/** * De">
+<meta property="og:description" content="目录   题目 难度     7.重建二叉树.note ☆☆☆ 采用递归的方式不断找出根节点和左右子树   树的子结构.note ☆☆☆☆ 第一步在树A中找到和B的根结点的值一样的结点R,第二步再判断树A中以R为根节点的子树是不是包含和树B一样的结构。   二叉树的镜像.note ☆☆ 先交换根节点的左右子节点，再将子节点作为根节点进行递归镜像操作。   从上往下打印二叉树.note ☆ 根节点入">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/19/剑指offer-树/01.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/19/剑指offer-树/02.png">
-<meta property="og:updated_time" content="2019-06-28T03:22:13.474Z">
+<meta property="og:updated_time" content="2019-06-28T06:28:12.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer-树">
-<meta name="twitter:description" content="重建二叉树题目描述 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。 解题思路：采用递归方法   1234567891011121314151617181920212223242526272829/** * De">
+<meta name="twitter:description" content="目录   题目 难度     7.重建二叉树.note ☆☆☆ 采用递归的方式不断找出根节点和左右子树   树的子结构.note ☆☆☆☆ 第一步在树A中找到和B的根结点的值一样的结点R,第二步再判断树A中以R为根节点的子树是不是包含和树B一样的结构。   二叉树的镜像.note ☆☆ 先交换根节点的左右子节点，再将子节点作为根节点进行递归镜像操作。   从上往下打印二叉树.note ☆ 根节点入">
 <meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/06/19/剑指offer-树/01.png">
 
 
@@ -413,7 +413,61 @@
       
 
       
-        <h2 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h2><p><strong>题目描述</strong></p>
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><table>
+<thead>
+<tr>
+<th>题目</th>
+<th>难度</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="note://8DDF3522701B494690B73B66DAD632FD" target="_blank" rel="noopener">7.重建二叉树.note</a></td>
+<td>☆☆☆</td>
+<td>采用递归的方式不断找出根节点和左右子树</td>
+</tr>
+<tr>
+<td><a href="note://053AB99ED0AE4E2BB8B2998BD0231A5C" target="_blank" rel="noopener">树的子结构.note</a></td>
+<td>☆☆☆☆</td>
+<td>第一步在树A中找到和B的根结点的值一样的结点R,第二步再判断树A中以R为根节点的子树是不是包含和树B一样的结构。</td>
+</tr>
+<tr>
+<td><a href="note://BB74C82F4C8142CC98BD69937C0185AD" target="_blank" rel="noopener">二叉树的镜像.note</a></td>
+<td>☆☆</td>
+<td>先交换根节点的左右子节点，再将子节点作为根节点进行递归镜像操作。</td>
+</tr>
+<tr>
+<td><a href="note://604E14887ACB4A54B2DB840DF409A161" target="_blank" rel="noopener">从上往下打印二叉树.note</a></td>
+<td>☆</td>
+<td>根节点入队列，然后出队列，出队时将其左右孩子入队，循环操作进行队列出队，每次出队将其左右孩子入队。当队列为空时，整棵树层序遍历完毕。</td>
+</tr>
+<tr>
+<td><a href="note://3FE09CB0553C4995AD5C56B1C18156BD" target="_blank" rel="noopener">二叉搜索树的后序遍历序列.note</a></td>
+<td>☆☆</td>
+<td><strong>BST的后序序列的合法序列</strong>是，对于一个序列S，最后一个元素是x （也就是根），如果去掉最后一个元素的序列为T，那么T满足：T可以分成两段，前一段（左子树）小于x，后一段（右子树）大于x，且这两段（子树）都是合法的后序序列。完美的递归定义。</td>
+</tr>
+<tr>
+<td><a href="note://D0DBBA55ED06432BA749C0EAAF85AFBA" target="_blank" rel="noopener">36.二叉搜索树与双向链表.note</a></td>
+<td>☆☆</td>
+<td>改造中序遍历，设置一个pre和cur，将中序遍历打印的过程替换为前后连接pre和cur</td>
+</tr>
+<tr>
+<td><a href="note://1A9A17C46DAF4E429528B2BA288CEBC1" target="_blank" rel="noopener">二叉树深度.note</a></td>
+<td>☆</td>
+<td>采用尾递归的方式</td>
+</tr>
+<tr>
+<td><a href="note://5138177E05AC400A82052CE734DB2196" target="_blank" rel="noopener">55.判断树是否为平衡二叉树.note</a></td>
+<td>☆☆</td>
+<td>性质：是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。  <strong>因此递归函数每次要计算出子树的高度。</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h2><p><strong>题目描述</strong></p>
 <p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。</p>
 <p><strong>解题思路：采用递归方法</strong></p>
 <img src="/2019/06/19/剑指offer-树/01.png">
@@ -548,7 +602,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/19/剑指offer-链表、队列与栈/" rel="prev" title="剑指offer-链表、队列与栈">
+              <a href="/2019/06/20/剑指offer-链表、队列与栈/" rel="prev" title="剑指offer-链表、队列与栈">
                 剑指offer-链表、队列与栈 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -634,7 +688,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -645,7 +699,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -707,7 +761,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重建二叉树"><span class="nav-number">1.</span> <span class="nav-text">重建二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树的子结构"><span class="nav-number">2.</span> <span class="nav-text">树的子结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树的镜像"><span class="nav-number">3.</span> <span class="nav-text">二叉树的镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从上往下打印二叉树"><span class="nav-number">4.</span> <span class="nav-text">从上往下打印二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉搜索树的后序遍历序列"><span class="nav-number">5.</span> <span class="nav-text">二叉搜索树的后序遍历序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉搜索树与双向链表"><span class="nav-number">6.</span> <span class="nav-text">二叉搜索树与双向链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树深度"><span class="nav-number">7.</span> <span class="nav-text">二叉树深度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断树是否为平衡二叉树"><span class="nav-number">8.</span> <span class="nav-text">判断树是否为平衡二叉树</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重建二叉树"><span class="nav-number">2.</span> <span class="nav-text">重建二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树的子结构"><span class="nav-number">3.</span> <span class="nav-text">树的子结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树的镜像"><span class="nav-number">4.</span> <span class="nav-text">二叉树的镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从上往下打印二叉树"><span class="nav-number">5.</span> <span class="nav-text">从上往下打印二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉搜索树的后序遍历序列"><span class="nav-number">6.</span> <span class="nav-text">二叉搜索树的后序遍历序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉搜索树与双向链表"><span class="nav-number">7.</span> <span class="nav-text">二叉搜索树与双向链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树深度"><span class="nav-number">8.</span> <span class="nav-text">二叉树深度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断树是否为平衡二叉树"><span class="nav-number">9.</span> <span class="nav-text">判断树是否为平衡二叉树</span></a></li></ol></div>
             
 
           </div>

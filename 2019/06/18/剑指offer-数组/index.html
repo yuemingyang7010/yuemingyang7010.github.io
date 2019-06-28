@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="二维数组中的查找题目描述 在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。 解题思路： 首先选取数组中右上角的数字， 【1】如果该数字等于要查的数字，则查找结束； 【2】如果该数字大于要查找的数字，则剔除该数字所在的列,如(a)； 【3】如果该数字小于要查">
+<meta name="description" content="目录   题目 难度     1.二维数组中的查找(..).note ☆ 从右上角到左下角进行查找   11.旋转数组的最小数字.note ☆☆☆ 采用分治的思想，递归地将数组进行二分区，然后找到最小的数（时间复杂度logn   顺序查找O(n)）   10.斐波那契数列.note ☆ 很简单，考虑节省空间复杂度，用循环代替递归。   21.调整数组顺序使奇数位于偶数前面.note ☆ 用两个指针">
 <meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指offer-数组">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="二维数组中的查找题目描述 在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。 解题思路： 首先选取数组中右上角的数字， 【1】如果该数字等于要查的数字，则查找结束； 【2】如果该数字大于要查找的数字，则剔除该数字所在的列,如(a)； 【3】如果该数字小于要查">
+<meta property="og:description" content="目录   题目 难度     1.二维数组中的查找(..).note ☆ 从右上角到左下角进行查找   11.旋转数组的最小数字.note ☆☆☆ 采用分治的思想，递归地将数组进行二分区，然后找到最小的数（时间复杂度logn   顺序查找O(n)）   10.斐波那契数列.note ☆ 很简单，考虑节省空间复杂度，用循环代替递归。   21.调整数组顺序使奇数位于偶数前面.note ☆ 用两个指针">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/01.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/02.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/03.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/04.png">
-<meta property="og:updated_time" content="2019-06-27T15:40:29.864Z">
+<meta property="og:updated_time" content="2019-06-28T06:27:36.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer-数组">
-<meta name="twitter:description" content="二维数组中的查找题目描述 在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。 解题思路： 首先选取数组中右上角的数字， 【1】如果该数字等于要查的数字，则查找结束； 【2】如果该数字大于要查找的数字，则剔除该数字所在的列,如(a)； 【3】如果该数字小于要查">
+<meta name="twitter:description" content="目录   题目 难度     1.二维数组中的查找(..).note ☆ 从右上角到左下角进行查找   11.旋转数组的最小数字.note ☆☆☆ 采用分治的思想，递归地将数组进行二分区，然后找到最小的数（时间复杂度logn   顺序查找O(n)）   10.斐波那契数列.note ☆ 很简单，考虑节省空间复杂度，用循环代替递归。   21.调整数组顺序使奇数位于偶数前面.note ☆ 用两个指针">
 <meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/01.png">
 
 
@@ -415,7 +415,96 @@
       
 
       
-        <h2 id="二维数组中的查找"><a href="#二维数组中的查找" class="headerlink" title="二维数组中的查找"></a>二维数组中的查找</h2><p><strong>题目描述</strong></p>
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><table>
+<thead>
+<tr>
+<th>题目</th>
+<th>难度</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="note://93AEF8BA6AA7487889D90A38FEFB6EFB" target="_blank" rel="noopener">1.二维数组中的查找(..).note</a></td>
+<td>☆</td>
+<td>从右上角到左下角进行查找</td>
+</tr>
+<tr>
+<td><a href="note://9934046F6A364AF2AB3F9E2001172611" target="_blank" rel="noopener">11.旋转数组的最小数字.note</a></td>
+<td>☆☆☆</td>
+<td>采用分治的思想，递归地将数组进行二分区，然后找到最小的数（时间复杂度logn   顺序查找O(n)）</td>
+</tr>
+<tr>
+<td><a href="note://1D28A716E2644F2896A9783B4422806D" target="_blank" rel="noopener">10.斐波那契数列.note</a></td>
+<td>☆</td>
+<td>很简单，考虑节省空间复杂度，用循环代替递归。</td>
+</tr>
+<tr>
+<td><a href="note://74A9846762214F99B65C28886B2F5886" target="_blank" rel="noopener">21.调整数组顺序使奇数位于偶数前面.note</a></td>
+<td>☆</td>
+<td>用两个指针，一个遍历数组，一个指向存放奇数的位置，都从0开始，偶数暂时放在另一个vector中，先将奇数存放在奇数指针指向的位置，最后再存偶数。</td>
+</tr>
+<tr>
+<td><a href="note://04273EDFA38342CF8F045D9929092182" target="_blank" rel="noopener">顺时针打印矩阵.note</a></td>
+<td>☆☆</td>
+<td>考虑全面：m×n,m×1,1×n,1×1几种情况都要考虑；流程控制采用top、down、left、right四个变量来控制。</td>
+</tr>
+<tr>
+<td><a href="note://54E9B5A378AF4CAA89BAAA4B51CC98F6" target="_blank" rel="noopener">39.数组中出现次数超过一半的数字.note</a></td>
+<td>☆☆</td>
+<td>在遍历数组时保存两个值：一是数组中一个数字，一是次数。遍历下一个数字时，若它与之前保存的数字相同，则次数加1，否则次数减1；若次数为0，则保存下一个数字，并将次数置为1。遍历结束后，所保存的数字即为所求。</td>
+</tr>
+<tr>
+<td><a href="note://40706EC19933414FAD962C18B084C1EA" target="_blank" rel="noopener">40.最小的K个数.note</a></td>
+<td>☆</td>
+<td>TOPk问题</td>
+</tr>
+<tr>
+<td><a href="note://AB0F15EF819F450B8CE63334ADC3170F" target="_blank" rel="noopener">52.在排序数组中查找数字.note</a></td>
+<td>☆☆</td>
+<td>考虑查找效率，总体思路是找到第一个K位置和最后一个K的位置，作差加一求出个数。可以采取递归方式二分查找，也可直接通过循环二分查找，不过大神的<strong>通过查找K-0.5和K+0.5更加简洁高效。</strong></td>
+</tr>
+<tr>
+<td><a href="note://533C7FFFB40C4CB49945680548E9F990" target="_blank" rel="noopener">56.数组中只出现一次的两个数字.note</a></td>
+<td>☆☆</td>
+<td>先将所有数依次异或，结果和两个单一数异或相同，从右开始找到结果中第一个为1的位，以此为标准将数分成两类，再将两类分别异或，得到的就是两个单数。<strong>注意大坑！！！ a &amp; flag != 0;和(a &amp; flag) !=0;结果不同。</strong></td>
+</tr>
+<tr>
+<td><a href="note://3D914AA5A5E54B25B59FD5140A85343E" target="_blank" rel="noopener">57(2).和为S的连续正数序列.note</a></td>
+<td>☆☆</td>
+<td>用两个数small和big分别表示序列的最小值和最大值。首先把small初始化为1，big初始化为2。如果从small到big的序列的和大于s，则可以从序列中去掉较小的值，也就是增大small的值。如果从small到big的序列的和小于s，则可以增大big，让这个序列包含更多的数字。因为这个序列至少要有两个数字，我们一直增加small到（1+s）/2为止。</td>
+</tr>
+<tr>
+<td><a href="note://2266DA7FAFA247DC85E399041FA1EEDB" target="_blank" rel="noopener">57(1).和为S的两个数字.note</a></td>
+<td>☆☆</td>
+<td>类似与<a href="note://3D914AA5A5E54B25B59FD5140A85343E" target="_blank" rel="noopener">57(2).和为S的连续正数序列.note</a>做法，只不过，只不过本题左指针开始指向数组最左端，右指针指向最右端。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="note://1222CD0B205943C898C7F5CE8FD72F1B" target="_blank" rel="noopener">扑克牌顺子.note</a></td>
+<td>☆☆</td>
+<td>第一步：排序；第二步：统计0的个数，统计间隙的个数；第三步:间隙数大于0个数返回false，间隙数小于0的个数，更新0的个数，继续统计后面的数字是否有间隙。同时在此过程中也要统计前后两个数是否有重复情况，重复返回false。</td>
+</tr>
+<tr>
+<td><a href="note://8912A6F7345E4239A3BACA1DBBB3E926" target="_blank" rel="noopener">2.数组中重复的数字.note</a></td>
+<td>☆☆</td>
+<td>从头到尾依次扫描数组元素，当扫描到第i个元素m时，当m等于i时，继续遍历下一元素，当不等于i时，则拿他与第m个数n比较，如果m=n，则找到重复元素，返回true,否则交换两元素…</td>
+</tr>
+<tr>
+<td><a href="note://637AF30B91D443ADB65E4DE36FD82A10" target="_blank" rel="noopener">3.构建乘积数组.note</a></td>
+<td>☆☆</td>
+<td>求B[i]的时候分为两步，先求左侧所有的A相乘，再求右侧的所有的A相乘，最终将两者相乘即得相应的B。具体通过两次循环，累乘得到不同的B[i]</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="二维数组中的查找"><a href="#二维数组中的查找" class="headerlink" title="二维数组中的查找"></a>二维数组中的查找</h2><p><strong>题目描述</strong></p>
 <p>在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
 <p><strong>解题思路：</strong></p>
 <p>首先选取数组中<strong>右上角的数字</strong>，</p>
@@ -621,8 +710,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/17/剑指offer-复杂链表的复制/" rel="next" title="[剑指offer]-复杂链表的复制">
-                <i class="fa fa-chevron-left"></i> [剑指offer]-复杂链表的复制
+              <a href="/2019/06/17/剑指offer-字符串与数字/" rel="next" title="剑指offer-字符串与数字">
+                <i class="fa fa-chevron-left"></i> 剑指offer-字符串与数字
               </a>
             
           </div>
@@ -717,7 +806,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -728,7 +817,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -790,7 +879,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组中的查找"><span class="nav-number">1.</span> <span class="nav-text">二维数组中的查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#旋转数组的最小数字"><span class="nav-number">2.</span> <span class="nav-text">旋转数组的最小数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">3.</span> <span class="nav-text">斐波那契数列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调整数组顺序使奇数位于偶数前面"><span class="nav-number">4.</span> <span class="nav-text">调整数组顺序使奇数位于偶数前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顺时针打印矩阵"><span class="nav-number">5.</span> <span class="nav-text">顺时针打印矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中出现次数超过一半的数字"><span class="nav-number">6.</span> <span class="nav-text">数组中出现次数超过一半的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小的K个数"><span class="nav-number">7.</span> <span class="nav-text">最小的K个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在排序数组中查找数字"><span class="nav-number">8.</span> <span class="nav-text">在排序数组中查找数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中只出现一次的两个数字"><span class="nav-number">9.</span> <span class="nav-text">数组中只出现一次的两个数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和为S的连续正数序列"><span class="nav-number">10.</span> <span class="nav-text">和为S的连续正数序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和为S的两个数字"><span class="nav-number">11.</span> <span class="nav-text">和为S的两个数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扑克牌顺子"><span class="nav-number">12.</span> <span class="nav-text">扑克牌顺子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中重复的数字"><span class="nav-number">13.</span> <span class="nav-text">数组中重复的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建乘积数组"><span class="nav-number">14.</span> <span class="nav-text">构建乘积数组</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组中的查找"><span class="nav-number">2.</span> <span class="nav-text">二维数组中的查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#旋转数组的最小数字"><span class="nav-number">3.</span> <span class="nav-text">旋转数组的最小数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">4.</span> <span class="nav-text">斐波那契数列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调整数组顺序使奇数位于偶数前面"><span class="nav-number">5.</span> <span class="nav-text">调整数组顺序使奇数位于偶数前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顺时针打印矩阵"><span class="nav-number">6.</span> <span class="nav-text">顺时针打印矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中出现次数超过一半的数字"><span class="nav-number">7.</span> <span class="nav-text">数组中出现次数超过一半的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小的K个数"><span class="nav-number">8.</span> <span class="nav-text">最小的K个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在排序数组中查找数字"><span class="nav-number">9.</span> <span class="nav-text">在排序数组中查找数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中只出现一次的两个数字"><span class="nav-number">10.</span> <span class="nav-text">数组中只出现一次的两个数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和为S的连续正数序列"><span class="nav-number">11.</span> <span class="nav-text">和为S的连续正数序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和为S的两个数字"><span class="nav-number">12.</span> <span class="nav-text">和为S的两个数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扑克牌顺子"><span class="nav-number">13.</span> <span class="nav-text">扑克牌顺子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中重复的数字"><span class="nav-number">14.</span> <span class="nav-text">数组中重复的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建乘积数组"><span class="nav-number">15.</span> <span class="nav-text">构建乘积数组</span></a></li></ol></div>
             
 
           </div>
