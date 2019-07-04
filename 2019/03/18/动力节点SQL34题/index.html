@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据库,数据库刷题,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="0 练习数据sql脚本文件： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970drop table if exists dept;drop table if exists salgrad">
+<meta name="keywords" content="数据库,数据库刷题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动力节点SQL34题">
+<meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/18/动力节点SQL34题/index.html">
+<meta property="og:site_name" content="yue">
+<meta property="og:description" content="0 练习数据sql脚本文件： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970drop table if exists dept;drop table if exists salgrad">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-04T04:32:56.863Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动力节点SQL34题">
+<meta name="twitter:description" content="0 练习数据sql脚本文件： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970drop table if exists dept;drop table if exists salgrad">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuemingyang7010.github.io/2019/03/18/动力节点SQL34题/">
+
+
+
+
+
+  <title>动力节点SQL34题 | yue</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yue</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuemingyang7010.github.io/2019/03/18/动力节点SQL34题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mingyang Yue">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">动力节点SQL34题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T13:52:09+08:00">
+                2019-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/数据库刷题/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库刷题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/18/动力节点SQL34题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/18/动力节点SQL34题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="0-练习数据"><a href="#0-练习数据" class="headerlink" title="0 练习数据"></a>0 练习数据</h2><p>sql脚本文件：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">exists</span> dept;</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">exists</span> salgrade;</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">exists</span> emp;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> dept(</span><br><span class="line">		deptno <span class="built_in">int</span>(<span class="number">10</span>) primary <span class="keyword">key</span>,</span><br><span class="line">		dname <span class="built_in">varchar</span>(<span class="number">14</span>),</span><br><span class="line">		loc <span class="built_in">varchar</span>(<span class="number">13</span>)</span><br><span class="line">		);</span><br><span class="line">		</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> salgrade(</span><br><span class="line">		grade <span class="built_in">int</span>(<span class="number">11</span>),</span><br><span class="line">		losal <span class="built_in">int</span>(<span class="number">11</span>),</span><br><span class="line">		hisal <span class="built_in">int</span>(<span class="number">11</span>)</span><br><span class="line">		);</span><br><span class="line">		</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> emp(</span><br><span class="line">		empno <span class="built_in">int</span>(<span class="number">4</span>) primary <span class="keyword">key</span>,</span><br><span class="line">		ename <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">		job <span class="built_in">varchar</span>(<span class="number">9</span>),</span><br><span class="line">		mgr <span class="built_in">int</span>(<span class="number">4</span>),</span><br><span class="line">		hiredate <span class="built_in">date</span>,</span><br><span class="line">		sal <span class="keyword">double</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">		comm <span class="keyword">double</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">		deptno <span class="built_in">int</span>(<span class="number">2</span>)</span><br><span class="line">		);</span><br><span class="line">		</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dept(deptno,dname,loc) <span class="keyword">values</span>(<span class="number">10</span>,<span class="string">'ACCOUNTING'</span>,<span class="string">'NEW YORK'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dept(deptno,dname,loc) <span class="keyword">values</span>(<span class="number">20</span>,<span class="string">'RESEARCHING'</span>,<span class="string">'DALLAS'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dept(deptno,dname,loc) <span class="keyword">values</span>(<span class="number">30</span>,<span class="string">'SALES'</span>,<span class="string">'CHICAGO'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dept(deptno,dname,loc) <span class="keyword">values</span>(<span class="number">40</span>,<span class="string">'OPERATIONS'</span>,<span class="string">'BOSTON'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> salgrade(grade,losal,hisal) <span class="keyword">values</span>(<span class="number">1</span>,<span class="number">700</span>,<span class="number">1200</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> salgrade(grade,losal,hisal) <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">1201</span>,<span class="number">1400</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> salgrade(grade,losal,hisal) <span class="keyword">values</span>(<span class="number">3</span>,<span class="number">1401</span>,<span class="number">2000</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> salgrade(grade,losal,hisal) <span class="keyword">values</span>(<span class="number">4</span>,<span class="number">2001</span>,<span class="number">3000</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> salgrade(grade,losal,hisal) <span class="keyword">values</span>(<span class="number">5</span>,<span class="number">3001</span>,<span class="number">5000</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7369</span>,<span class="string">'SIMITH'</span>,<span class="string">'CLERK'</span>,<span class="number">7902</span>,<span class="string">'1980-12-17'</span>,<span class="number">800</span>,<span class="literal">null</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7499</span>,<span class="string">'ALLEN'</span>,<span class="string">'SALESMAN'</span>,<span class="number">7698</span>,<span class="string">'1981-02-20'</span>,<span class="number">1600</span>,<span class="number">300</span>,<span class="number">30</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7521</span>,<span class="string">'WARD'</span>,<span class="string">'SALESMAN'</span>,<span class="number">7698</span>,<span class="string">'1981-02-22'</span>,<span class="number">1250</span>,<span class="number">500</span>,<span class="number">30</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7566</span>,<span class="string">'JONES'</span>,<span class="string">'MANAGER'</span>,<span class="number">7839</span>,<span class="string">'1981-04-02'</span>,<span class="number">2975</span>,<span class="literal">null</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7654</span>,<span class="string">'MARTIN'</span>,<span class="string">'SALESMAN'</span>,<span class="number">7698</span>,<span class="string">'1981-09-28'</span>,<span class="number">1250</span>,<span class="number">1400</span>,<span class="number">30</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7698</span>,<span class="string">'BLAKE'</span>,<span class="string">'MANAGER'</span>,<span class="number">7839</span>,<span class="string">'1981-05-01'</span>,<span class="number">2850</span>,<span class="literal">null</span>,<span class="number">30</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7782</span>,<span class="string">'CLARK'</span>,<span class="string">'MANAGER'</span>,<span class="number">7839</span>,<span class="string">'1981-06-09'</span>,<span class="number">2450</span>,<span class="literal">null</span>,<span class="number">10</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7788</span>,<span class="string">'SCOTT'</span>,<span class="string">'ANALYST'</span>,<span class="number">7566</span>,<span class="string">'1987-04-19'</span>,<span class="number">3000</span>,<span class="literal">null</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7839</span>,<span class="string">'KING'</span>,<span class="string">'PRESIDENT'</span>,<span class="literal">null</span>,<span class="string">'1981-11-17'</span>,<span class="number">5000</span>,<span class="literal">null</span>,<span class="number">10</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7844</span>,<span class="string">'TURNER'</span>,<span class="string">'SALESMAN'</span>,<span class="number">7698</span>,<span class="string">'1981-09-08'</span>,<span class="number">1500</span>,<span class="literal">null</span>,<span class="number">30</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7876</span>,<span class="string">'ADAMS'</span>,<span class="string">'CLERK'</span>,<span class="number">7788</span>,<span class="string">'1987-05-23'</span>,<span class="number">1100</span>,<span class="literal">null</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7900</span>,<span class="string">'JAMES'</span>,<span class="string">'CLERK'</span>,<span class="number">7698</span>,<span class="string">'1981-12-03'</span>,<span class="number">950</span>,<span class="literal">null</span>,<span class="number">30</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7902</span>,<span class="string">'FORD'</span>,<span class="string">'ANALYST'</span>,<span class="number">7566</span>,<span class="string">'1981-12-03'</span>,<span class="number">3000</span>,<span class="literal">null</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(empno,ename,job,mgr,hiredate,sal,comm,deptno)</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">7934</span>,<span class="string">'MILLER'</span>,<span class="string">'CLERK'</span>,<span class="number">7782</span>,<span class="string">'1982-01-23'</span>,<span class="number">1300</span>,<span class="literal">null</span>,<span class="number">10</span>);</span><br><span class="line">	</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> dept;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> salgrade;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp;</span><br></pre></td></tr></table></figure>
+
+<p>dept表格</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from dept;</span><br><span class="line">+<span class="comment">--------+-------------+----------+</span></span><br><span class="line">| deptno | dname       | loc      |</span><br><span class="line">+<span class="comment">--------+-------------+----------+</span></span><br><span class="line">|     10 | ACCOUNTING  | NEW YORK |</span><br><span class="line">|     20 | RESEARCHING | DALLAS   |</span><br><span class="line">|     30 | SALES       | CHICAGO  |</span><br><span class="line">|     40 | OPERATIONS  | BOSTON   |</span><br><span class="line">+<span class="comment">--------+-------------+----------+</span></span><br></pre></td></tr></table></figure>
+
+<p>salgrade表格</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from salgrade;</span><br><span class="line">+<span class="comment">-------+-------+-------+</span></span><br><span class="line">| grade | losal | hisal |</span><br><span class="line">+<span class="comment">-------+-------+-------+</span></span><br><span class="line">|     1 |   700 |  1200 |</span><br><span class="line">|     2 |  1201 |  1400 |</span><br><span class="line">|     3 |  1401 |  2000 |</span><br><span class="line">|     4 |  2001 |  3000 |</span><br><span class="line">|     5 |  3001 |  5000 |</span><br><span class="line">+<span class="comment">-------+-------+-------+</span></span><br></pre></td></tr></table></figure>
+
+<p>emp表格</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from emp;</span><br><span class="line">+<span class="comment">-------+--------+-----------+------+------------+---------+---------+--------+</span></span><br><span class="line">| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |</span><br><span class="line">+<span class="comment">-------+--------+-----------+------+------------+---------+---------+--------+</span></span><br><span class="line">|  7369 | SIMITH | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |</span><br><span class="line">|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |</span><br><span class="line">|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |</span><br><span class="line">|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |</span><br><span class="line">|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |</span><br><span class="line">|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |</span><br><span class="line">|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |</span><br><span class="line">|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |</span><br><span class="line">|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |</span><br><span class="line">|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    NULL |     30 |</span><br><span class="line">|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |</span><br><span class="line">|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |</span><br><span class="line">|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |</span><br><span class="line">|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |</span><br><span class="line">+<span class="comment">-------+--------+-----------+------+------------+---------+---------+--------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-取得每个部门最高薪水的人员名称"><a href="#1-取得每个部门最高薪水的人员名称" class="headerlink" title="1 取得每个部门最高薪水的人员名称"></a>1 取得每个部门最高薪水的人员名称</h2><p>先取得每个部门的最高薪水，然后找出和此薪水和部门编号相同的人。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select deptno,max(sal) as maxsal from emp group by deptno;</span><br><span class="line">+<span class="comment">--------+---------+</span></span><br><span class="line">| deptno | maxsal  |</span><br><span class="line">+<span class="comment">--------+---------+</span></span><br><span class="line">|     20 | 3000.00 |</span><br><span class="line">|     30 | 2850.00 |</span><br><span class="line">|     10 | 5000.00 |</span><br><span class="line">+<span class="comment">--------+---------+</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select a.ename,a.deptno,a.sal from emp a join(select deptno,max(sal) as maxsal from emp group by deptno) b on a.sal=b.maxsal and a.deptno=b.deptno;</span><br><span class="line">+<span class="comment">-------+--------+---------+</span></span><br><span class="line">| ename | deptno | sal     |</span><br><span class="line">+<span class="comment">-------+--------+---------+</span></span><br><span class="line">| BLAKE |     30 | 2850.00 |</span><br><span class="line">| SCOTT |     20 | 3000.00 |</span><br><span class="line">| KING  |     10 | 5000.00 |</span><br><span class="line">| FORD  |     20 | 3000.00 |</span><br><span class="line">+<span class="comment">-------+--------+---------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-哪些人的薪水在部门平均薪水之上"><a href="#2-哪些人的薪水在部门平均薪水之上" class="headerlink" title="2 哪些人的薪水在部门平均薪水之上"></a>2 哪些人的薪水在部门平均薪水之上</h2><p>先求出每个部门的平均薪水</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select deptno,avg(sal) from emp group by deptno;</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br><span class="line">| deptno | avg(sal)    |</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br><span class="line">|     20 | 2175.000000 |</span><br><span class="line">|     30 | 1566.666667 |</span><br><span class="line">|     10 | 2916.666667 |</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br></pre></td></tr></table></figure>
+
+<p>然后找出部门中大于其平均薪水的人</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select a.deptno,a.ename,a.sal,b.avgsal from emp a join (select deptno,avg(sal) as avgsal from emp group by deptno) b on a.sal&gt;b.avgsal and a.deptno=b.deptno;</span><br><span class="line">+<span class="comment">--------+-------+---------+-------------+</span></span><br><span class="line">| deptno | ename | sal     | avgsal      |</span><br><span class="line">+<span class="comment">--------+-------+---------+-------------+</span></span><br><span class="line">|     30 | ALLEN | 1600.00 | 1566.666667 |</span><br><span class="line">|     20 | JONES | 2975.00 | 2175.000000 |</span><br><span class="line">|     30 | BLAKE | 2850.00 | 1566.666667 |</span><br><span class="line">|     20 | SCOTT | 3000.00 | 2175.000000 |</span><br><span class="line">|     10 | KING  | 5000.00 | 2916.666667 |</span><br><span class="line">|     20 | FORD  | 3000.00 | 2175.000000 |</span><br><span class="line">+<span class="comment">--------+-------+---------+-------------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-取得部门中所有人的平均的薪水等级"><a href="#3-取得部门中所有人的平均的薪水等级" class="headerlink" title="3 取得部门中所有人的平均的薪水等级"></a>3 取得部门中所有人的平均的薪水等级</h2><p>先计算每个人的薪水等级</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select a.deptno,a.ename,a.sal,b.grade from emp a join salgrade b on a.sal between b.losal and b.hisal order by a.deptno;</span><br><span class="line">+<span class="comment">--------+--------+---------+-------+</span></span><br><span class="line">| deptno | ename  | sal     | grade |</span><br><span class="line">+<span class="comment">--------+--------+---------+-------+</span></span><br><span class="line">|     10 | MILLER | 1300.00 |     2 |</span><br><span class="line">|     10 | CLARK  | 2450.00 |     4 |</span><br><span class="line">|     10 | KING   | 5000.00 |     5 |</span><br><span class="line">|     20 | SCOTT  | 3000.00 |     4 |</span><br><span class="line">|     20 | SIMITH |  800.00 |     1 |</span><br><span class="line">|     20 | ADAMS  | 1100.00 |     1 |</span><br><span class="line">|     20 | JONES  | 2975.00 |     4 |</span><br><span class="line">|     20 | FORD   | 3000.00 |     4 |</span><br><span class="line">|     30 | BLAKE  | 2850.00 |     4 |</span><br><span class="line">|     30 | ALLEN  | 1600.00 |     3 |</span><br><span class="line">|     30 | TURNER | 1500.00 |     3 |</span><br><span class="line">|     30 | WARD   | 1250.00 |     2 |</span><br><span class="line">|     30 | JAMES  |  950.00 |     1 |</span><br><span class="line">|     30 | MARTIN | 1250.00 |     2 |</span><br><span class="line">+<span class="comment">--------+--------+---------+-------+</span></span><br></pre></td></tr></table></figure>
+
+<p>然后根据部门分组，由于使用了分组函数，所以只能显示参加分组的字段和分组函数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select a.deptno,avg(grade) as AvgSalGrade from emp a join salgrade b on a.sal between b.losal and b.hisal group by a.deptno;</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br><span class="line">| deptno | AvgSalGrade |</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br><span class="line">|     20 |      2.8000 |</span><br><span class="line">|     30 |      2.5000 |</span><br><span class="line">|     10 |      3.6667 |</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-不准使用组函数Max，给出最高薪水（给出两种解决方案）"><a href="#4-不准使用组函数Max，给出最高薪水（给出两种解决方案）" class="headerlink" title="4 不准使用组函数Max，给出最高薪水（给出两种解决方案）"></a>4 不准使用组函数Max，给出最高薪水（给出两种解决方案）</h2><p>方案一，按照薪水降序排列，取第一个</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select ename,sal from emp order by sal desc limit 1;</span><br><span class="line">+<span class="comment">-------+---------+</span></span><br><span class="line">| ename | sal     |</span><br><span class="line">+<span class="comment">-------+---------+</span></span><br><span class="line">| KING  | 5000.00 |</span><br><span class="line">+<span class="comment">-------+---------+</span></span><br></pre></td></tr></table></figure>
+
+<p>方案二，使用自连接。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select ename,sal from emp where sal not in </span><br><span class="line">(<span class="keyword">select</span> a.sal <span class="keyword">from</span> emp a <span class="keyword">join</span> emp b <span class="keyword">on</span> a.sal&lt;b.sal);<span class="comment">#最大值不小于表中任何一个工资，所以不会出现在此临时表中</span></span><br><span class="line">+<span class="comment">-------+---------+</span></span><br><span class="line">| ename | sal     |</span><br><span class="line">+<span class="comment">-------+---------+</span></span><br><span class="line">| KING  | 5000.00 |</span><br><span class="line">+<span class="comment">-------+---------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-取得平均薪水最高的部门和部门编号"><a href="#5-取得平均薪水最高的部门和部门编号" class="headerlink" title="5 取得平均薪水最高的部门和部门编号"></a>5 取得平均薪水最高的部门和部门编号</h2><p>方案一：先取得每个部门的平均薪水</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select deptno, avg(sal) as avgsal from emp group by deptno;</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br><span class="line">| deptno | avgsal      |</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br><span class="line">|     20 | 2175.000000 |</span><br><span class="line">|     30 | 1566.666667 |</span><br><span class="line">|     10 | 2916.666667 |</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br></pre></td></tr></table></figure>
+
+<p>再取得最高的平均薪水</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select avg(sal) as avgsal from emp group by deptno order by avgsal desc limit 1; </span><br><span class="line">+<span class="comment">-------------+</span></span><br><span class="line">| avgsal      |</span><br><span class="line">+<span class="comment">-------------+</span></span><br><span class="line">| 2916.666667 |</span><br><span class="line">+<span class="comment">-------------+</span></span><br></pre></td></tr></table></figure>
+
+<p>然后取得和最高平均薪水相同的部门（因为可能有多个部门并列最高）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select deptno,avg(sal) as avgsal from emp group by deptno having avgsal=</span><br><span class="line">    -&gt; (select avg(sal) as avgsal from emp group by deptno order by avgsal desc limit 1);</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br><span class="line">| deptno | avgsal      |</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br><span class="line">|     10 | 2916.666667 |</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br></pre></td></tr></table></figure>
+
+<p>方案二：与方案一类似，用max取得最高平均薪水</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select deptno,avg(sal) as avgsal </span><br><span class="line">from emp group by deptno having avgsal=(<span class="keyword">select</span> <span class="keyword">max</span>(t.avgsal) <span class="keyword">from</span> (<span class="keyword">select</span> <span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgsal <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) t);</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br><span class="line">| deptno | avgsal      |</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br><span class="line">|     10 | 2916.666667 |</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-取得平均薪水最高的部门名称"><a href="#6-取得平均薪水最高的部门名称" class="headerlink" title="6 取得平均薪水最高的部门名称"></a>6 取得平均薪水最高的部门名称</h2><p>类似上题</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> d.dname,t.avgsal <span class="keyword">FROM</span> dept d <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> deptno,<span class="keyword">AVG</span>(sal) <span class="keyword">AS</span> avgsal <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> deptno <span class="keyword">ORDER</span> <span class="keyword">BY</span> avgsal <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">1</span>) t <span class="keyword">ON</span> d.deptno=t.deptno;</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br><span class="line">| deptno | avgsal      |</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br><span class="line">|     10 | 2916.666667 |</span><br><span class="line">+<span class="comment">--------+-------------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="7-求平均薪水的等级最高的部门的部门名称"><a href="#7-求平均薪水的等级最高的部门的部门名称" class="headerlink" title="#7 求平均薪水的等级最高的部门的部门名称"></a>#7 求平均薪水的等级最高的部门的部门名称</h2><p>先求各部门平均薪水的等级</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.deptno,a.avgsal,b.grade <span class="keyword">from</span> (<span class="keyword">select</span> deptno,<span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgsal <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) a <span class="keyword">join</span> salgrade b <span class="keyword">on</span> avgsal <span class="keyword">between</span> losal <span class="keyword">and</span> hisal;</span><br><span class="line">+<span class="comment">--------+-------------+-------+</span></span><br><span class="line">| deptno | avgsal      | grade |</span><br><span class="line">+<span class="comment">--------+-------------+-------+</span></span><br><span class="line">|     20 | 2175.000000 |     4 |</span><br><span class="line">|     30 | 1566.666667 |     3 |</span><br><span class="line">|     10 | 2916.666667 |     4 |</span><br><span class="line">+<span class="comment">--------+-------------+-------+</span></span><br></pre></td></tr></table></figure>
+
+<p>取得最高的等级</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select b.grade from (select deptno,avg(sal) as avgsal from emp group by deptno) a join salgrade b on avgsal between losal and hisal order by b.grade desc limit 1;</span><br><span class="line">+<span class="comment">-------+</span></span><br><span class="line">| grade |</span><br><span class="line">+<span class="comment">-------+</span></span><br><span class="line">|     4 |</span><br><span class="line">+<span class="comment">-------+</span></span><br></pre></td></tr></table></figure>
+
+<p>显示平均薪水等级等于最高等级的部门名称</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select d.dname,c.avgsal,c.grade</span><br><span class="line">from</span><br><span class="line">	(<span class="keyword">select</span> a.deptno,a.avgsal,b.grade</span><br><span class="line">     	<span class="keyword">from</span></span><br><span class="line">     		(<span class="keyword">select</span> deptno,<span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgsal <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) a</span><br><span class="line">     	<span class="keyword">join</span></span><br><span class="line">     		salgrade b</span><br><span class="line">     	<span class="keyword">on</span></span><br><span class="line">     		avgsal <span class="keyword">between</span> losal <span class="keyword">and</span> hisal) c</span><br><span class="line"><span class="keyword">join</span></span><br><span class="line">	dept d</span><br><span class="line"><span class="keyword">on</span></span><br><span class="line">	c.deptno=d.deptno <span class="keyword">and</span> c.grade=</span><br><span class="line">	<span class="comment">#最高等级为4</span></span><br><span class="line">		(<span class="keyword">select</span> b.grade <span class="keyword">from</span> (<span class="keyword">select</span> deptno,<span class="keyword">avg</span>(sal) <span class="keyword">as</span> avgsal <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno) a <span class="keyword">join</span> salgrade b <span class="keyword">on</span> avgsal <span class="keyword">between</span> losal <span class="keyword">and</span> hisal <span class="keyword">order</span> <span class="keyword">by</span> b.grade <span class="keyword">desc</span> <span class="keyword">limit</span> <span class="number">1</span>);</span><br><span class="line">+<span class="comment">-------------+-------------+-------+</span></span><br><span class="line">| dname       | avgsal      | grade |</span><br><span class="line">+<span class="comment">-------------+-------------+-------+</span></span><br><span class="line">| ACCOUNTING  | 2916.666667 |     4 |</span><br><span class="line">| RESEARCHING | 2175.000000 |     4 |</span><br><span class="line">+<span class="comment">-------------+-------------+-------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8-取得比普通员工（员工代码没在mgr字段出现的）最高薪水更高的领导人姓名"><a href="#8-取得比普通员工（员工代码没在mgr字段出现的）最高薪水更高的领导人姓名" class="headerlink" title="##8 取得比普通员工（员工代码没在mgr字段出现的）最高薪水更高的领导人姓名"></a>##8 取得比普通员工（员工代码没在mgr字段出现的）最高薪水更高的领导人姓名</h2><p>先取出普通员工的最高薪水，注意mgr字段里有null，不能直接使用not in 语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select max(sal) as cmsal from emp where empno not in (select distinct mgr from emp where mgr is not null);</span><br><span class="line">+<span class="comment">---------+</span></span><br><span class="line">| cmsal   |</span><br><span class="line">+<span class="comment">---------+</span></span><br><span class="line">| 1600.00 |</span><br><span class="line">+<span class="comment">---------+</span></span><br></pre></td></tr></table></figure>
+
+<p>取得所有领导人的姓名和薪水</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select ename,sal from emp where empno in (select distinct mgr from emp);</span><br><span class="line">+<span class="comment">-------+---------+</span></span><br><span class="line">| ename | sal     |</span><br><span class="line">+<span class="comment">-------+---------+</span></span><br><span class="line">| FORD  | 3000.00 |</span><br><span class="line">| BLAKE | 2850.00 |</span><br><span class="line">| KING  | 5000.00 |</span><br><span class="line">| JONES | 2975.00 |</span><br><span class="line">| SCOTT | 3000.00 |</span><br><span class="line">| CLARK | 2450.00 |</span><br><span class="line">+<span class="comment">-------+---------+</span></span><br></pre></td></tr></table></figure>
+
+<p>然后取得结果</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select ename,sal from emp where empno in (select distinct mgr from emp) and sal&gt;(select max(sal) as cmsal from emp where empno not in (select distinct mgr from emp where mgr is not null));</span><br><span class="line">+<span class="comment">-------+---------+</span></span><br><span class="line">| ename | sal     |</span><br><span class="line">+<span class="comment">-------+---------+</span></span><br><span class="line">| JONES | 2975.00 |</span><br><span class="line">| BLAKE | 2850.00 |</span><br><span class="line">| CLARK | 2450.00 |</span><br><span class="line">| SCOTT | 3000.00 |</span><br><span class="line">| KING  | 5000.00 |</span><br><span class="line">| FORD  | 3000.00 |</span><br><span class="line">+<span class="comment">-------+---------+</span></span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<h2 id="13-面试题"><a href="#13-面试题" class="headerlink" title="13 面试题"></a>13 面试题</h2><p>三张表：</p>
+<ul>
+<li>学生表S：学号SNO，姓名SNAME</li>
+<li>课程表C：课号CNO，课程名CNAME，课程老师CTEACHER</li>
+<li>选课表SC：学号SNO，课号CNO，分数SCGRADE</li>
+</ul>
+<p>1.显示没选”黎明“老师课的学生</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#”黎明“老师的课号</span></span><br><span class="line"><span class="keyword">select</span> cno <span class="keyword">from</span> c <span class="keyword">where</span> cteacher=<span class="string">'黎明'</span>;</span><br><span class="line"><span class="comment">#没选其课学生的学号</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> sno <span class="keyword">from</span> sc <span class="keyword">where</span> sno <span class="keyword">not</span> <span class="keyword">in</span> (<span class="keyword">select</span> cno <span class="keyword">from</span> c <span class="keyword">where</span> cteacher=<span class="string">'黎明'</span>);</span><br><span class="line"><span class="comment">#没选课学生的姓名</span></span><br><span class="line"><span class="keyword">select</span> sname <span class="keyword">from</span> s <span class="keyword">where</span> sno <span class="keyword">in</span> (<span class="keyword">select</span> <span class="keyword">distinct</span> sno <span class="keyword">from</span> sc <span class="keyword">where</span> sno <span class="keyword">not</span> <span class="keyword">in</span> (<span class="keyword">select</span> cno <span class="keyword">from</span> c <span class="keyword">where</span> cteacher=<span class="string">'黎明'</span>));</span><br></pre></td></tr></table></figure>
+
+<p>2.列出2门以上（含2门）不及格学生姓名及平均成绩</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#2门及以上不及格学生的学号</span></span><br><span class="line"><span class="keyword">select</span> sno <span class="keyword">from</span> sc <span class="keyword">where</span> scgrade&lt;<span class="number">60</span> <span class="keyword">group</span> <span class="keyword">by</span> sno <span class="keyword">having</span> <span class="keyword">count</span>(*)&gt;=<span class="number">2</span>;</span><br><span class="line"><span class="comment">#不及格学生姓名</span></span><br><span class="line"><span class="keyword">select</span> sname,sno <span class="keyword">from</span> s <span class="keyword">where</span> sno <span class="keyword">in</span> (<span class="keyword">select</span> sno <span class="keyword">from</span> sc <span class="keyword">where</span> scgrade&lt;<span class="number">60</span> <span class="keyword">group</span> <span class="keyword">by</span> sno <span class="keyword">having</span> <span class="keyword">count</span>(*)&gt;=<span class="number">2</span>);</span><br><span class="line"><span class="comment">#学生的平均成绩</span></span><br><span class="line"><span class="keyword">select</span> sno,<span class="keyword">avg</span>(scgrade) avggrade <span class="keyword">from</span> sc <span class="keyword">group</span> <span class="keyword">by</span> sno;</span><br><span class="line"><span class="comment">#联合姓名和平均成绩</span></span><br><span class="line"><span class="keyword">select</span> a.sno,a.sname,b.avggrade </span><br><span class="line"><span class="keyword">from</span> (<span class="keyword">select</span> sname,sno <span class="keyword">from</span> s <span class="keyword">where</span> sno <span class="keyword">in</span> (<span class="keyword">select</span> sno <span class="keyword">from</span> sc <span class="keyword">where</span> scgrade&lt;<span class="number">60</span> <span class="keyword">group</span> <span class="keyword">by</span> sno <span class="keyword">having</span> <span class="keyword">count</span>(*)&gt;=<span class="number">2</span>)) a </span><br><span class="line"><span class="keyword">join</span> (<span class="keyword">select</span> sno,<span class="keyword">avg</span>(scgrade) avggrade <span class="keyword">from</span> sc <span class="keyword">group</span> <span class="keyword">by</span> sno) b </span><br><span class="line"><span class="keyword">on</span> a.sno=b.sno;</span><br></pre></td></tr></table></figure>
+
+<p>3.学过1号课程和2号课程的所有学生的姓名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#选过1号课程和2号课程的学生学号</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> sno <span class="keyword">from</span> sc <span class="keyword">where</span> cno=<span class="number">1</span> <span class="keyword">or</span> cno=<span class="number">2</span>;</span><br><span class="line"><span class="comment">#从s表中取出其姓名</span></span><br><span class="line"><span class="keyword">select</span> sno,sname <span class="keyword">from</span> s <span class="keyword">where</span> sno <span class="keyword">in</span> (<span class="keyword">select</span> <span class="keyword">distinct</span> sno <span class="keyword">from</span> sc <span class="keyword">where</span> cno=<span class="number">1</span> <span class="keyword">or</span> cno=<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<p>最后补充根据视频数据编写的sql文件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> c(</span><br><span class="line">	cno <span class="built_in">int</span>(<span class="number">2</span>) primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">	cname <span class="built_in">varchar</span>(<span class="number">32</span>),</span><br><span class="line">	cteacher <span class="built_in">varchar</span>(<span class="number">16</span>)</span><br><span class="line">	);</span><br><span class="line">	</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> s(</span><br><span class="line">	sno <span class="built_in">int</span>(<span class="number">2</span>) primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">	sname <span class="built_in">varchar</span>(<span class="number">16</span>)</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> sc(</span><br><span class="line">	sno <span class="built_in">int</span>(<span class="number">2</span>),</span><br><span class="line">	cno <span class="built_in">int</span>(<span class="number">2</span>),</span><br><span class="line">	scgrade <span class="built_in">int</span>(<span class="number">3</span>),</span><br><span class="line">	primary <span class="keyword">key</span>(sno,cno)</span><br><span class="line">	);</span><br><span class="line">	</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> c(cname,cteacher)<span class="keyword">values</span>(<span class="string">'语文'</span>,<span class="string">'张老师'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> c(cname,cteacher)<span class="keyword">values</span>(<span class="string">'政治'</span>,<span class="string">'王老师'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> c(cname,cteacher)<span class="keyword">values</span>(<span class="string">'英语'</span>,<span class="string">'李老师'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> c(cname,cteacher)<span class="keyword">values</span>(<span class="string">'数学'</span>,<span class="string">'赵老师'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> c(cname,cteacher)<span class="keyword">values</span>(<span class="string">'物理'</span>,<span class="string">'黎明'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> s(sname)<span class="keyword">values</span>(<span class="string">'学生1'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> s(sname)<span class="keyword">values</span>(<span class="string">'学生2'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> s(sname)<span class="keyword">values</span>(<span class="string">'学生3'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> s(sname)<span class="keyword">values</span>(<span class="string">'学生4'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc(sno,cno,scgrade)<span class="keyword">values</span>(<span class="number">1</span>,<span class="number">1</span>,<span class="number">40</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc(sno,cno,scgrade)<span class="keyword">values</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">30</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc(sno,cno,scgrade)<span class="keyword">values</span>(<span class="number">1</span>,<span class="number">3</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc(sno,cno,scgrade)<span class="keyword">values</span>(<span class="number">1</span>,<span class="number">4</span>,<span class="number">80</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc(sno,cno,scgrade)<span class="keyword">values</span>(<span class="number">1</span>,<span class="number">5</span>,<span class="number">60</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc(sno,cno,scgrade)<span class="keyword">values</span>(<span class="number">2</span>,<span class="number">1</span>,<span class="number">60</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc(sno,cno,scgrade)<span class="keyword">values</span>(<span class="number">2</span>,<span class="number">2</span>,<span class="number">60</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc(sno,cno,scgrade)<span class="keyword">values</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="number">60</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc(sno,cno,scgrade)<span class="keyword">values</span>(<span class="number">2</span>,<span class="number">4</span>,<span class="number">60</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc(sno,cno,scgrade)<span class="keyword">values</span>(<span class="number">2</span>,<span class="number">5</span>,<span class="number">40</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc(sno,cno,scgrade)<span class="keyword">values</span>(<span class="number">3</span>,<span class="number">1</span>,<span class="number">60</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc(sno,cno,scgrade)<span class="keyword">values</span>(<span class="number">3</span>,<span class="number">2</span>,<span class="number">80</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="14-列出所有员工及领导的姓名"><a href="#14-列出所有员工及领导的姓名" class="headerlink" title="14 列出所有员工及领导的姓名"></a>14 列出所有员工及领导的姓名</h2><p>最高的领导的领导为null，因此需要使用左连接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select a.ename as empname,b.ename as leadname from emp a left join emp b on a.mgr=b.empno;</span><br><span class="line">+<span class="comment">---------+----------+</span></span><br><span class="line">| empname | leadname |</span><br><span class="line">+<span class="comment">---------+----------+</span></span><br><span class="line">| SIMITH  | FORD     |</span><br><span class="line">| ALLEN   | BLAKE    |</span><br><span class="line">| WARD    | BLAKE    |</span><br><span class="line">| JONES   | KING     |</span><br><span class="line">| MARTIN  | BLAKE    |</span><br><span class="line">| BLAKE   | KING     |</span><br><span class="line">| CLARK   | KING     |</span><br><span class="line">| SCOTT   | JONES    |</span><br><span class="line">| KING    | NULL     |</span><br><span class="line">| TURNER  | BLAKE    |</span><br><span class="line">| ADAMS   | SCOTT    |</span><br><span class="line">| JAMES   | BLAKE    |</span><br><span class="line">| FORD    | JONES    |</span><br><span class="line">| MILLER  | CLARK    |</span><br><span class="line">+<span class="comment">---------+----------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="15-列出受雇日期早于其上级的所有员工的编号、姓名、部门名称"><a href="#15-列出受雇日期早于其上级的所有员工的编号、姓名、部门名称" class="headerlink" title="15 列出受雇日期早于其上级的所有员工的编号、姓名、部门名称"></a>15 列出受雇日期早于其上级的所有员工的编号、姓名、部门名称</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select e.empno,e.ename,e.hiredate,l.ename,l.hiredate from emp e join emp l on e.mgr=l.empno and e.hiredate&lt;l.hiredate;</span><br><span class="line">+<span class="comment">-------+--------+------------+-------+------------+</span></span><br><span class="line">| empno | ename  | hiredate   | ename | hiredate   |</span><br><span class="line">+<span class="comment">-------+--------+------------+-------+------------+</span></span><br><span class="line">|  7369 | SIMITH | 1980-12-17 | FORD  | 1981-12-03 |</span><br><span class="line">|  7499 | ALLEN  | 1981-02-20 | BLAKE | 1981-05-01 |</span><br><span class="line">|  7521 | WARD   | 1981-02-22 | BLAKE | 1981-05-01 |</span><br><span class="line">|  7566 | JONES  | 1981-04-02 | KING  | 1981-11-17 |</span><br><span class="line">|  7698 | BLAKE  | 1981-05-01 | KING  | 1981-11-17 |</span><br><span class="line">|  7782 | CLARK  | 1981-06-09 | KING  | 1981-11-17 |</span><br><span class="line">+<span class="comment">-------+--------+------------+-------+------------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="16-列出部门名称和这些部门的员工信息，同时列出没有员工的部门"><a href="#16-列出部门名称和这些部门的员工信息，同时列出没有员工的部门" class="headerlink" title="16 列出部门名称和这些部门的员工信息，同时列出没有员工的部门"></a>16 列出部门名称和这些部门的员工信息，同时列出没有员工的部门</h2><p>有部门没有员工，所以需要使用左连接或右连接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select d.dname,e.* from dept d left join emp e on d.deptno=e.deptno;</span><br><span class="line">+<span class="comment">-------------+-------+--------+-----------+------+------------+---------+---------+--------+</span></span><br><span class="line">| dname       | empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |</span><br><span class="line">+<span class="comment">-------------+-------+--------+-----------+------+------------+---------+---------+--------+</span></span><br><span class="line">| RESEARCHING |  7369 | SIMITH | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |</span><br><span class="line">| SALES       |  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |</span><br><span class="line">| SALES       |  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |</span><br><span class="line">| RESEARCHING |  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |</span><br><span class="line">| SALES       |  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |</span><br><span class="line">| SALES       |  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |</span><br><span class="line">| ACCOUNTING  |  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |</span><br><span class="line">| RESEARCHING |  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |</span><br><span class="line">| ACCOUNTING  |  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |</span><br><span class="line">| SALES       |  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    NULL |     30 |</span><br><span class="line">| RESEARCHING |  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |</span><br><span class="line">| SALES       |  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |</span><br><span class="line">| RESEARCHING |  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |</span><br><span class="line">| ACCOUNTING  |  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |</span><br><span class="line">| OPERATIONS  |  NULL | NULL   | NULL      | NULL | NULL       |    NULL |    NULL |   NULL |</span><br><span class="line">+<span class="comment">-------------+-------+--------+-----------+------+------------+---------+---------+--------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="17-列出至少有5名员工的所有部门"><a href="#17-列出至少有5名员工的所有部门" class="headerlink" title="17 列出至少有5名员工的所有部门"></a>17 列出至少有5名员工的所有部门</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select d.dname,count(e.empno) as number from dept d join emp e on d.deptno=e.deptno group by d.deptno having number&gt;=5;</span><br><span class="line">+<span class="comment">-------------+--------+</span></span><br><span class="line">| dname       | number |</span><br><span class="line">+<span class="comment">-------------+--------+</span></span><br><span class="line">| RESEARCHING |      5 |</span><br><span class="line">| SALES       |      6 |</span><br><span class="line">+<span class="comment">-------------+--------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="18-列出薪水比simith多的所有员工信息"><a href="#18-列出薪水比simith多的所有员工信息" class="headerlink" title="18 列出薪水比simith多的所有员工信息"></a>18 列出薪水比simith多的所有员工信息</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from emp where sal&gt;(select sal from emp where ename='simith');</span><br><span class="line">+<span class="comment">-------+--------+-----------+------+------------+---------+---------+--------+</span></span><br><span class="line">| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |</span><br><span class="line">+<span class="comment">-------+--------+-----------+------+------------+---------+---------+--------+</span></span><br><span class="line">|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |</span><br><span class="line">|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |</span><br><span class="line">|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |</span><br><span class="line">|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |</span><br><span class="line">|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |</span><br><span class="line">|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |</span><br><span class="line">|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |</span><br><span class="line">|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |</span><br><span class="line">|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    NULL |     30 |</span><br><span class="line">|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |</span><br><span class="line">|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |</span><br><span class="line">|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |</span><br><span class="line">|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |</span><br><span class="line">+<span class="comment">-------+--------+-----------+------+------------+---------+---------+--------+</span></span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>夏天来块儿冰西瓜!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mingyang Yue 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+            <a href="/tags/数据库刷题/" rel="tag"># 数据库刷题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/18/计算机网络-应用层/" rel="next" title="计算机网络-应用层">
+                <i class="fa fa-chevron-left"></i> 计算机网络-应用层
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/19/计算机网络-传输层/" rel="prev" title="计算机网络-传输层">
+                计算机网络-传输层 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg" alt="Mingyang Yue">
+            
+              <p class="site-author-name" itemprop="name">Mingyang Yue</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/yuemingyang7010" title="GitHub主页" target="_blank">GitHub主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/yuemingyang7010" title="CSDN主页" target="_blank">CSDN主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-练习数据"><span class="nav-number">1.</span> <span class="nav-text">0 练习数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-取得每个部门最高薪水的人员名称"><span class="nav-number">2.</span> <span class="nav-text">1 取得每个部门最高薪水的人员名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-哪些人的薪水在部门平均薪水之上"><span class="nav-number">3.</span> <span class="nav-text">2 哪些人的薪水在部门平均薪水之上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-取得部门中所有人的平均的薪水等级"><span class="nav-number">4.</span> <span class="nav-text">3 取得部门中所有人的平均的薪水等级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-不准使用组函数Max，给出最高薪水（给出两种解决方案）"><span class="nav-number">5.</span> <span class="nav-text">4 不准使用组函数Max，给出最高薪水（给出两种解决方案）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-取得平均薪水最高的部门和部门编号"><span class="nav-number">6.</span> <span class="nav-text">5 取得平均薪水最高的部门和部门编号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-取得平均薪水最高的部门名称"><span class="nav-number">7.</span> <span class="nav-text">6 取得平均薪水最高的部门名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-求平均薪水的等级最高的部门的部门名称"><span class="nav-number">8.</span> <span class="nav-text">#7 求平均薪水的等级最高的部门的部门名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-取得比普通员工（员工代码没在mgr字段出现的）最高薪水更高的领导人姓名"><span class="nav-number">9.</span> <span class="nav-text">##8 取得比普通员工（员工代码没在mgr字段出现的）最高薪水更高的领导人姓名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-面试题"><span class="nav-number">10.</span> <span class="nav-text">13 面试题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-列出所有员工及领导的姓名"><span class="nav-number">11.</span> <span class="nav-text">14 列出所有员工及领导的姓名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-列出受雇日期早于其上级的所有员工的编号、姓名、部门名称"><span class="nav-number">12.</span> <span class="nav-text">15 列出受雇日期早于其上级的所有员工的编号、姓名、部门名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-列出部门名称和这些部门的员工信息，同时列出没有员工的部门"><span class="nav-number">13.</span> <span class="nav-text">16 列出部门名称和这些部门的员工信息，同时列出没有员工的部门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-列出至少有5名员工的所有部门"><span class="nav-number">14.</span> <span class="nav-text">17 列出至少有5名员工的所有部门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-列出薪水比simith多的所有员工信息"><span class="nav-number">15.</span> <span class="nav-text">18 列出薪水比simith多的所有员工信息</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingyang Yue</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+    <span class="site-uv">
+      本站访问数 <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人数
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量 <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'aKc2tU1wp20XlT9yQMdSn05x-gzGzoHsz',
+        appKey: 'twkLoqUVOTUyJgPUtk1myvof',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

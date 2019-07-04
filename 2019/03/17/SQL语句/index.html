@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="● 常用SQL语句（DDL,DML,DCL,TCL）数据查询语言(DQL-Data Query Language)  代表关键字:select 数据操纵语言(DML-Data Manipulation Language)   增删改，针对表的数据 代表关键字:insert,delete,update 数据定义语言(DDL-Data Definition Language)  增删改，针对表的结构">
+<meta name="description" content="●基础1.连接数据库 1mysql -uroot -p  然后输入密码 2。创建“bjpowernode”数据库 1mysql&amp;gt; create database bjpowernode;  3.选择数据库 1mysql&amp;gt; use bjpowernode  4.导入数据 1mysql&amp;gt;source  D:\ bjpowernode.sql   删除数据库  1mysql&amp;gt; d">
 <meta name="keywords" content="数据库,SQL语句">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL语句">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="● 常用SQL语句（DDL,DML,DCL,TCL）数据查询语言(DQL-Data Query Language)  代表关键字:select 数据操纵语言(DML-Data Manipulation Language)   增删改，针对表的数据 代表关键字:insert,delete,update 数据定义语言(DDL-Data Definition Language)  增删改，针对表的结构">
+<meta property="og:description" content="●基础1.连接数据库 1mysql -uroot -p  然后输入密码 2。创建“bjpowernode”数据库 1mysql&amp;gt; create database bjpowernode;  3.选择数据库 1mysql&amp;gt; use bjpowernode  4.导入数据 1mysql&amp;gt;source  D:\ bjpowernode.sql   删除数据库  1mysql&amp;gt; d">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/01.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/02.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/03.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/04.png">
-<meta property="og:updated_time" content="2019-06-22T16:43:23.385Z">
+<meta property="og:updated_time" content="2019-07-02T07:19:47.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL语句">
-<meta name="twitter:description" content="● 常用SQL语句（DDL,DML,DCL,TCL）数据查询语言(DQL-Data Query Language)  代表关键字:select 数据操纵语言(DML-Data Manipulation Language)   增删改，针对表的数据 代表关键字:insert,delete,update 数据定义语言(DDL-Data Definition Language)  增删改，针对表的结构">
+<meta name="twitter:description" content="●基础1.连接数据库 1mysql -uroot -p  然后输入密码 2。创建“bjpowernode”数据库 1mysql&amp;gt; create database bjpowernode;  3.选择数据库 1mysql&amp;gt; use bjpowernode  4.导入数据 1mysql&amp;gt;source  D:\ bjpowernode.sql   删除数据库  1mysql&amp;gt; d">
 <meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/01.png">
 
 
@@ -415,7 +415,25 @@
       
 
       
-        <h1 id="●-常用SQL语句（DDL-DML-DCL-TCL）"><a href="#●-常用SQL语句（DDL-DML-DCL-TCL）" class="headerlink" title="● 常用SQL语句（DDL,DML,DCL,TCL）"></a><strong>●</strong> <strong>常用SQL语句（DDL,DML,DCL,TCL）</strong></h1><p>数据查询语言(DQL-Data Query Language) </p>
+        <h1 id="●基础"><a href="#●基础" class="headerlink" title="●基础"></a>●基础</h1><p>1.连接数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
+
+<p>然后输入密码</p>
+<p>2。创建“bjpowernode”数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database bjpowernode;</span><br></pre></td></tr></table></figure>
+
+<p>3.选择数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use bjpowernode</span><br></pre></td></tr></table></figure>
+
+<p>4.导入数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;source  D:\ bjpowernode.sql</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>删除数据库</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database bjpowernode;</span><br></pre></td></tr></table></figure>
+
+<h1 id="●-常用SQL语句（DDL-DML-DCL-TCL）"><a href="#●-常用SQL语句（DDL-DML-DCL-TCL）" class="headerlink" title="● 常用SQL语句（DDL,DML,DCL,TCL）"></a><strong>●</strong> <strong>常用SQL语句（DDL,DML,DCL,TCL）</strong></h1><p>数据查询语言(DQL-Data Query Language) </p>
 <p>代表关键字:select</p>
 <p>数据操纵语言(DML-Data Manipulation Language)   <strong>增删改，针对表的数据</strong></p>
 <p>代表关键字:insert,delete,update</p>
@@ -612,8 +630,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/15/Redis/" rel="next" title="Redis">
-                <i class="fa fa-chevron-left"></i> Redis
+              <a href="/2019/03/17/计算机网络-概述/" rel="next" title="计算机网络-概述">
+                <i class="fa fa-chevron-left"></i> 计算机网络-概述
               </a>
             
           </div>
@@ -622,8 +640,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/17/计算机网络-概述/" rel="prev" title="计算机网络-概述">
-                计算机网络-概述 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/17/数据库原理/" rel="prev" title="数据库原理">
+                数据库原理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -708,7 +726,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -781,7 +799,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#●-常用SQL语句（DDL-DML-DCL-TCL）"><span class="nav-number">1.</span> <span class="nav-text">● 常用SQL语句（DDL,DML,DCL,TCL）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据定义语句-create、drop、alter"><span class="nav-number">1.1.</span> <span class="nav-text">●数据定义语句(create、drop、alter)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据查询-select"><span class="nav-number">1.2.</span> <span class="nav-text">●数据查询(select)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据操纵-insert-delete-update"><span class="nav-number">1.3.</span> <span class="nav-text">●数据操纵(insert,delete,update)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#●基础"><span class="nav-number">1.</span> <span class="nav-text">●基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#●-常用SQL语句（DDL-DML-DCL-TCL）"><span class="nav-number">2.</span> <span class="nav-text">● 常用SQL语句（DDL,DML,DCL,TCL）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据定义语句-create、drop、alter"><span class="nav-number">2.1.</span> <span class="nav-text">●数据定义语句(create、drop、alter)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据查询-select"><span class="nav-number">2.2.</span> <span class="nav-text">●数据查询(select)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据操纵-insert-delete-update"><span class="nav-number">2.3.</span> <span class="nav-text">●数据操纵(insert,delete,update)</span></a></li></ol></li></ol></div>
             
 
           </div>
