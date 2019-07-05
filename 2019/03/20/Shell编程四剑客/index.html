@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="操作系统,Shell,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Shell编程四剑客之Find通过如上基础语法的学习，读者对Shell编程有了更近一步的理解，Shell编程不再是简单命令的堆积，而是演变成了各种特殊的语句、各种语法、编程工具、各种命令的集合。 在Shell编程工具中，四剑客工具的使用更加的广泛，Shell编程四剑客包括：find、sed、grep、awk，熟练掌握四剑客会对Shell编程能力极大的提升。 四剑客之Find工具实战，Find工具主">
+<meta name="keywords" content="操作系统,Shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell编程四剑客">
+<meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/20/Shell编程四剑客/index.html">
+<meta property="og:site_name" content="yue">
+<meta property="og:description" content="Shell编程四剑客之Find通过如上基础语法的学习，读者对Shell编程有了更近一步的理解，Shell编程不再是简单命令的堆积，而是演变成了各种特殊的语句、各种语法、编程工具、各种命令的集合。 在Shell编程工具中，四剑客工具的使用更加的广泛，Shell编程四剑客包括：find、sed、grep、awk，熟练掌握四剑客会对Shell编程能力极大的提升。 四剑客之Find工具实战，Find工具主">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-05T03:50:11.639Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shell编程四剑客">
+<meta name="twitter:description" content="Shell编程四剑客之Find通过如上基础语法的学习，读者对Shell编程有了更近一步的理解，Shell编程不再是简单命令的堆积，而是演变成了各种特殊的语句、各种语法、编程工具、各种命令的集合。 在Shell编程工具中，四剑客工具的使用更加的广泛，Shell编程四剑客包括：find、sed、grep、awk，熟练掌握四剑客会对Shell编程能力极大的提升。 四剑客之Find工具实战，Find工具主">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuemingyang7010.github.io/2019/03/20/Shell编程四剑客/">
+
+
+
+
+
+  <title>Shell编程四剑客 | yue</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yue</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuemingyang7010.github.io/2019/03/20/Shell编程四剑客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mingyang Yue">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Shell编程四剑客</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T13:52:09+08:00">
+                2019-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/Shell/" itemprop="url" rel="index">
+                    <span itemprop="name">Shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/20/Shell编程四剑客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/20/Shell编程四剑客/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Shell编程四剑客之Find"><a href="#Shell编程四剑客之Find" class="headerlink" title="Shell编程四剑客之Find"></a><strong>Shell编程四剑客之Find</strong></h2><p>通过如上基础语法的学习，读者对Shell编程有了更近一步的理解，Shell编程不再是简单命令的堆积，而是演变成了各种特殊的语句、各种语法、编程工具、各种命令的集合。</p>
+<p>在Shell编程工具中，四剑客工具的使用更加的广泛，Shell编程四剑客包括：find、sed、grep、awk，熟练掌握四剑客会对Shell编程能力极大的提升。</p>
+<p>四剑客之Find工具实战，Find工具主要用于操作系统文件、目录的查找，其语法参数格式为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find path -option [ -<span class="built_in">print</span> ] [ -<span class="built_in">exec</span> -ok <span class="built_in">command</span> ] &#123; &#125; \；</span><br></pre></td></tr></table></figure>
+
+<h4 id="其option常用参数详解如下："><a href="#其option常用参数详解如下：" class="headerlink" title="其option常用参数详解如下："></a>其option常用参数详解如下：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-name filename <span class="comment">#查找名为filename的文件；</span></span><br><span class="line">-<span class="built_in">type</span> b/d/c/p/l/f <span class="comment">#查是块设备、目录、字符设备、管道、符号链接、普通文件；</span></span><br><span class="line">-size n[c] <span class="comment">#查长度为n块[或n字节]的文件；</span></span><br><span class="line">-perm <span class="comment">#按执行权限来查找；</span></span><br><span class="line">-user username <span class="comment">#按文件属主来查找；</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Find工具-name参数案列："><a href="#Find工具-name参数案列：" class="headerlink" title="Find工具-name参数案列："></a>Find工具-name参数案列：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find /data/ -name “*.txt” <span class="comment">#查找/data/目录以.txt结尾的文件；</span></span><br><span class="line">find /data/ -name “[A-Z]*” <span class="comment">#查找/data/目录以大写字母开头的文件；</span></span><br><span class="line">find /data/ -name “<span class="built_in">test</span>*” <span class="comment">#查找/data/目录以test开头的文件；</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Find工具-type参数案列："><a href="#Find工具-type参数案列：" class="headerlink" title="Find工具-type参数案列："></a>Find工具-type参数案列：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">find /data/ -<span class="built_in">type</span> d <span class="comment">#查找/data/目录下的文件夹；</span></span><br><span class="line">find /data/ ! -<span class="built_in">type</span> d <span class="comment">#查找/data/目录下的非文件夹；</span></span><br><span class="line">find /data/ -<span class="built_in">type</span> l <span class="comment">#查找/data/目录下的链接文件。</span></span><br><span class="line">find /data/ -<span class="built_in">type</span> d|xargs chmod 755 -R <span class="comment">#查目录类型并将权限设置为755；</span></span><br><span class="line">find /data/ -<span class="built_in">type</span> f|xargs chmod 644 -R <span class="comment">#查文件类型并将权限设置为644；</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Find工具-size参数案列："><a href="#Find工具-size参数案列：" class="headerlink" title="Find工具-size参数案列："></a>Find工具-size参数案列：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find /data/ -size +1M <span class="comment">#查文件大小大于1Mb的文件；</span></span><br><span class="line">find /data/ -size 10M <span class="comment">#查文件大小为10M的文件；</span></span><br><span class="line">find /data/ -size -1M <span class="comment">#查文件大小小于1Mb的文件；</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Shell编程四剑客之SED"><a href="#Shell编程四剑客之SED" class="headerlink" title="Shell编程四剑客之SED"></a><strong>Shell编程四剑客之SED</strong></h2><p>SED是一个非交互式文本编辑器，它可对文本文件和标准输入进行编辑，标准输入可以来自键盘输入、文本重定向、字符串、变量，甚至来自于管道的文本，与VIM编辑器类似，它一次处理一行内容，Sed可以编辑一个或多个文件，简化对文件的反复操作、编写转换程序等。</p>
+<p>在处理文本时把当前处理的行存储在临时缓冲区中，称为“模式空间”（pattern space），紧接着用SED命令处理缓冲区中的内容，处理完成后把缓冲区的内容输出至屏幕或者写入文件。</p>
+<p>逐行处理直到文件末尾，然而如果打印在屏幕上，实质文件内容并没有改变，除非你使用重定向存储输出或者写入文件。其语法参数格式为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sed [-Options] [‘Commands’] filename；</span><br><span class="line"></span><br><span class="line">sed工具默认处理文本，文本内容输出屏幕已经修改，但是文件内容其实没有修改，需要加-i参数即对文件彻底修改；</span><br><span class="line">x <span class="comment">#x为指定行号；</span></span><br><span class="line">x,y <span class="comment">#指定从x到y的行号范围；</span></span><br><span class="line">/pattern/ <span class="comment">#查询包含模式的行；</span></span><br><span class="line">/pattern/pattern/ <span class="comment">#查询包含两个模式的行；</span></span><br><span class="line">/pattern/,x <span class="comment">#从与pattern的匹配行到x号行之间的行；</span></span><br><span class="line">x,/pattern/ <span class="comment">#从x号行到与pattern的匹配行之间的行；</span></span><br><span class="line">x,y! <span class="comment">#查询不包括x和y行号的行；</span></span><br><span class="line">r <span class="comment">#从另一个文件中读文件；</span></span><br><span class="line">w <span class="comment">#将文本写入到一个文件；</span></span><br><span class="line">y <span class="comment">#变换字符；</span></span><br><span class="line">q <span class="comment">#第一个模式匹配完成后退出；</span></span><br><span class="line">l <span class="comment">#显示与八进制ASCII码等价的控制字符；</span></span><br></pre></td></tr></table></figure>
+
+<p>常用SED工具企业演练案列：</p>
+<p>替换jfedu.txt文本中old为new：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ‘s/old/new/g’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>打印jfedu.txt文本第一行至第三行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n ‘1,3p’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>打印jfedu.txt文本中第一行与最后一行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n ‘1p；<span class="variable">$p</span>’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>删除jfedu.txt第一行至第三行、删除匹配行至最后一行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘1,3d’ jfedu.txt</span><br><span class="line">sed ‘/jfedu/,<span class="variable">$d</span>’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>删除jfedu.txt最后6行及删除最后一行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 6`；<span class="keyword">do</span> sed -i ‘<span class="variable">$d</span>’ jfedu.txt ；<span class="keyword">done</span></span><br><span class="line">sed ‘<span class="variable">$d</span>’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>删除jfedu.txt最后一行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ‘<span class="variable">$d</span>’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>通常而言，SED将待处理的行读入模式空间，脚本中的命令逐行进行处理，直到脚本执行完毕，然后该行被输出，模式空间请空；然后重复刚才的动作，文件中的新的一行被读入，直到文件处理完备。</p>
+<p>如果用户希望在某个条件下脚本中的某个命令被执行，或者希望模式空间得到保留以便下一次的处理，都有可能使得sed在处理文件的时候不按照正常的流程来进行。这时可以使用SED高级语法来满足用户需求。总的来说，SED高级命令可以分为三种功能：</p>
+<p><strong>N、D、P：处理多行模式空间的问题；</strong></p>
+<p><strong>H、h、G、g、x：将模式空间的内容放入存储空间以便接下来的编辑；</strong></p>
+<p><strong>:、b、t：在脚本中实现分支与条件结构。</strong></p>
+<p>在jfedu.txt每行后加入空行，也即每行占永两行空间，每一行后边插入一行空行、两行空行及前三行每行后插入空行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed ‘/^$/d；G’ jfedu.txt</span><br><span class="line">sed ‘/^$/d；G；G’ jfedu.txt</span><br><span class="line">sed ‘/^$/d；1,3G；’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>将jfedu.txt偶数行删除及隔两行删除一行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘n；d’ jfedu.txt</span><br><span class="line">sed ‘n；n；d’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>在jfedu.txt匹配行前一行、后一行插入空行以及同时在匹配前后插入空行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed ‘/jfedu/&#123;x；p；x；&#125;’ jfedu.txt</span><br><span class="line">sed ‘/jfedu/G’ jfedu.txt</span><br><span class="line">sed ‘/jfedu/&#123;x；p；x；G；&#125;’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>在jfedu.txt每行后加入空行，也即每行占永两行空间，每一行后边插入空行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ‘/^$/d；G’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>在jfedu.txt每行后加入空行，也即每行占永两行空间，每一行后边插入空行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ‘/^$/d；G’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>在jfedu.txt每行前加入顺序数字序号、加上制表符\t及.符号：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed = jfedu.txt| sed ‘N；s/\n/ /’</span><br><span class="line">sed = jfedu.txt| sed ‘N；s/\n/\t/’</span><br><span class="line">sed = jfedu.txt| sed ‘N；s/\n/\./’</span><br></pre></td></tr></table></figure>
+
+<p>删除jfedu.txt行前和行尾的任意空格：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ‘s/^[ \t]*//；s/[ \t]*$//’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>打印jfedu.txt关键词old与new之间的内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n ‘/old/,/new/’p jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>打印及删除jfedu.txt最后两行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘$!N；$!D’ jfedu.txt</span><br><span class="line">sed ‘N；$!P；$!D；<span class="variable">$d</span>’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>合并上下两行，也即两行合并：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘$!N；s/\n/ /’ jfedu.txt</span><br><span class="line">sed ‘N；s/\n/ /’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="Shell编程四剑客之AWK"><a href="#Shell编程四剑客之AWK" class="headerlink" title="Shell编程四剑客之AWK"></a>Shell编程四剑客之AWK</h2><p>AWK是一个优良的文本处理工具，Linux及Unix环境中现有的功能最强大的数据处理引擎之一，以Aho、Weinberger、Kernighan三位发明者名字首字母命名为AWK，AWK是一个行级文本高效处理工具，AWK经过改进生成的新的版本有Nawk、Gawk，一般Linux默认为Gawk，Gawk是 AWK的GNU开源免费版本。</p>
+<p>AWK基本原理是逐行处理文件中的数据，查找与命令行中所给定内容相匹配的模式，如果发现匹配内容，则进行下一个编程步骤，如果找不到匹配内容，则 继续处理下一行。其语法参数格式为，AWK常用参数、变量、函数详解如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk ‘pattern + &#123;action&#125;’ file</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong>AWK基本语法参数详解：</strong></li>
+</ol>
+<ul>
+<li><strong>单引号’ ‘是为了和shell命令区分开；</strong></li>
+<li><strong>大括号{ }表示一个命令分组；</strong></li>
+<li><strong>pattern是一个过滤器，表示匹配pattern条件的行才进行Action处理；</strong></li>
+<li><strong>action是处理动作，常见动作为Print；</strong></li>
+<li><strong>使用#作为注释，pattern和action可以只有其一，但不能两者都没有。</strong></li>
+</ul>
+<ol>
+<li><strong>AWK内置变量详解：</strong></li>
+</ol>
+<ul>
+<li><p><strong>FS 分隔符，默认是空格；</strong></p>
+</li>
+<li><p><strong>OFS 输出分隔符；</strong></p>
+</li>
+<li><p><strong>NR 当前行数，从1开始；</strong></p>
+</li>
+<li><p><strong>NF 当前记录字段个数；</strong></p>
+</li>
+<li><p><strong>$0 当前记录；</strong></p>
+</li>
+<li><p><strong>$1~$n 当前记录第n个字段（列）。</strong></p>
+</li>
+</ul>
+<h4 id="常用AWK工具企业演练案列："><a href="#常用AWK工具企业演练案列：" class="headerlink" title="常用AWK工具企业演练案列："></a>常用AWK工具企业演练案列：</h4><p>  AWK打印硬盘设备名称，默认以空格为分割：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h|awk ‘&#123;<span class="built_in">print</span> <span class="variable">$1</span>&#125;’</span><br></pre></td></tr></table></figure>
+
+<p>AWK以空格、冒号、\t、分号为分割：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F ‘[ :\t；]’ ‘&#123;<span class="built_in">print</span> <span class="variable">$1</span>&#125;’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>AWK以冒号分割，打印第一列，同时将内容追加到/tmp/awk.log下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F: ‘&#123;<span class="built_in">print</span> <span class="variable">$1</span> &gt;&gt;”/tmp/awk.log”&#125;’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>打印jfedu.txt文件中的第3行至第5行，NR表示打印行，$0表示文本所有域：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk ‘NR==3,NR==5 &#123;<span class="built_in">print</span>&#125;’ jfedu.txt</span><br><span class="line">awk ‘NR==3,NR==5 &#123;<span class="built_in">print</span> <span class="variable">$0</span>&#125;’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>打印jfedu.txt文件中，长度大于80的行号：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk ‘length(<span class="variable">$0</span>)&gt;80 &#123;<span class="built_in">print</span> NR&#125;’ jfedu.txt</span><br></pre></td></tr></table></figure>
+
+<p>AWK引用Shell变量，使用-v或者双引号+单引号即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk -v STR=hello ‘&#123;<span class="built_in">print</span> STR,<span class="variable">$NF</span>&#125;’ jfedu.txt</span><br><span class="line">STR=”hello”；<span class="built_in">echo</span>| awk ‘&#123;<span class="built_in">print</span> “‘<span class="variable">$&#123;STR&#125;</span><span class="string">'”；&#125;’</span></span><br></pre></td></tr></table></figure>
+
+<p>Awk统计服务器状态连接数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -an | awk ‘/tcp/ &#123;s[<span class="variable">$NF</span>]++&#125; END &#123;<span class="keyword">for</span>(a <span class="keyword">in</span> s) &#123;<span class="built_in">print</span> a,s[a]&#125;&#125;’</span><br><span class="line">netstat -an | awk ‘/tcp/ &#123;<span class="built_in">print</span> <span class="variable">$NF</span>&#125;’ | sort | uniq -c</span><br></pre></td></tr></table></figure>
+
+<h2 id="Shell编程四剑客之GREP"><a href="#Shell编程四剑客之GREP" class="headerlink" title="Shell编程四剑客之GREP"></a>Shell编程四剑客之GREP</h2><p>全面搜索正则表达式（Global search regular expression(RE) ，GREP）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。</p>
+<p>Unix/Linux的grep家族包括grep、egrep和fgrep，其中egrep和fgrep的命令跟grep有细微的区别，egrep是grep的扩展，支持更多的re元字符， fgrep是fixed grep或fast grep简写，它们把所有的字母都看作单词，正则表达式中的元字符表示其自身的字面意义，不再有其他特殊的含义，一般使用比较少。</p>
+<p>目前Linux操作系统默认使用GNU版本的grep。它功能更强，可以通过-G、-E、-F命令行选项来使用egrep和fgrep的功能。其语法格式及常用参数详解如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -[acinv]   ‘word’   Filename</span><br></pre></td></tr></table></figure>
+
+<p>Grep常用参数详解如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-a 以文本文件方式搜索；</span><br><span class="line">-c 计算找到的符合行的次数；</span><br><span class="line">-i 忽略大小写；</span><br><span class="line">-n 顺便输出行号；</span><br></pre></td></tr></table></figure>
+
+<p>学习Grep时，需要了解通配符、正则表达式两个概念，很多读者容易把彼此搞混淆，通配符主要用在Linux的Shell命令中，常用于文件或者文件名称的操作，而正则表达式用于文本内容中的字符串搜索和替换，常用在AWK、GREP、SED、VIM工具中对文本的操作。</p>
+<p>通配符类型详解：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* 0个或者多个字符、数字；</span><br><span class="line">? 匹配任意一个字符；</span><br><span class="line"><span class="comment"># 表示注解；</span></span><br><span class="line">| 管道符号；</span><br><span class="line">；多个命令连续执行；</span><br></pre></td></tr></table></figure>
+
+<p>正则表达式详解：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 前一个字符匹配0次或多次；</span><br><span class="line">. 匹配除了换行符以外任意一个字符；</span><br><span class="line">.* 代表任意字符；</span><br><span class="line">^ 匹配行首，即以某个字符开头；</span><br><span class="line">$ 匹配行尾，即以某个字符结尾；</span><br><span class="line">\(..\) 标记匹配字符；</span><br><span class="line">[] 匹配中括号里的任意指定字符，但只匹配一个字符；</span><br><span class="line">[^] 匹配除中括号以外的任意一个字符；</span><br></pre></td></tr></table></figure>
+
+<p>常用GREP工具企业演练案列：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">grep -c “<span class="built_in">test</span>” jfedu.txt 统计<span class="built_in">test</span>字符总行数；</span><br><span class="line">grep -i “TEST” jfedu.txt 不区分大小写查找TEST所有的行；</span><br><span class="line">grep -n “<span class="built_in">test</span>” jfedu.txt 打印<span class="built_in">test</span>的行及行号；</span><br><span class="line">grep -v “<span class="built_in">test</span>” jfedu.txt 不打印<span class="built_in">test</span>的行；</span><br><span class="line">grep “<span class="built_in">test</span>[53]” jfedu.txt 以字符<span class="built_in">test</span>开头，接5或者3的行；</span><br><span class="line">grep “^[^<span class="built_in">test</span>]” jfedu.txt 显示输出行首不是<span class="built_in">test</span>的行；</span><br><span class="line">grep “[Mm]ay” jfedu.txt 匹配M或m开头的行；</span><br><span class="line">grep “K…D” jfedu.txt 匹配K，三个任意字符，紧接D的行；</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>夏天来块儿冰西瓜!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mingyang Yue 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/操作系统/" rel="tag"># 操作系统</a>
+          
+            <a href="/tags/Shell/" rel="tag"># Shell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/19/Shell/" rel="next" title="Shell">
+                <i class="fa fa-chevron-left"></i> Shell
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/20/Linux/" rel="prev" title="Linux">
+                Linux <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg" alt="Mingyang Yue">
+            
+              <p class="site-author-name" itemprop="name">Mingyang Yue</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/yuemingyang7010" title="GitHub主页" target="_blank">GitHub主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/yuemingyang7010" title="CSDN主页" target="_blank">CSDN主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell编程四剑客之Find"><span class="nav-number">1.</span> <span class="nav-text">Shell编程四剑客之Find</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#其option常用参数详解如下："><span class="nav-number">1.0.1.</span> <span class="nav-text">其option常用参数详解如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Find工具-name参数案列："><span class="nav-number">1.0.2.</span> <span class="nav-text">Find工具-name参数案列：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Find工具-type参数案列："><span class="nav-number">1.0.3.</span> <span class="nav-text">Find工具-type参数案列：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Find工具-size参数案列："><span class="nav-number">1.0.4.</span> <span class="nav-text">Find工具-size参数案列：</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell编程四剑客之SED"><span class="nav-number">2.</span> <span class="nav-text">Shell编程四剑客之SED</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell编程四剑客之AWK"><span class="nav-number">3.</span> <span class="nav-text">Shell编程四剑客之AWK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用AWK工具企业演练案列："><span class="nav-number">3.0.1.</span> <span class="nav-text">常用AWK工具企业演练案列：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell编程四剑客之GREP"><span class="nav-number">4.</span> <span class="nav-text">Shell编程四剑客之GREP</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingyang Yue</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+    <span class="site-uv">
+      本站访问数 <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人数
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量 <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'aKc2tU1wp20XlT9yQMdSn05x-gzGzoHsz',
+        appKey: 'twkLoqUVOTUyJgPUtk1myvof',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

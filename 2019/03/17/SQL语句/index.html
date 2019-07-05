@@ -90,8 +90,7 @@
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/01.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/02.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/03.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/04.png">
-<meta property="og:updated_time" content="2019-07-02T07:19:47.101Z">
+<meta property="og:updated_time" content="2019-07-04T15:08:21.819Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL语句">
 <meta name="twitter:description" content="●基础1.连接数据库 1mysql -uroot -p  然后输入密码 2。创建“bjpowernode”数据库 1mysql&amp;gt; create database bjpowernode;  3.选择数据库 1mysql&amp;gt; use bjpowernode  4.导入数据 1mysql&amp;gt;source  D:\ bjpowernode.sql   删除数据库  1mysql&amp;gt; d">
@@ -473,12 +472,24 @@
 <p>若选择CASCADE，则该表的删除没有限制条件。在删除该表的同时，相关的依赖对象，例如视图，都将被一起删除。删除Student表：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> Student <span class="keyword">CASCADE</span>；</span><br></pre></td></tr></table></figure>
 
-<h2 id="●数据查询-select"><a href="#●数据查询-select" class="headerlink" title="●数据查询(select)"></a><strong>●数据查询(select)</strong></h2><img src="/2019/03/17/SQL语句/04.png">
+<h2 id="●数据查询-select"><a href="#●数据查询-select" class="headerlink" title="●数据查询(select)"></a><strong>●数据查询(select)</strong></h2><p>一个完整的select语句格式如下:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>      <span class="comment">#字段</span></span><br><span class="line"><span class="keyword">from</span>       <span class="comment">#表名</span></span><br><span class="line"><span class="keyword">where</span>     <span class="comment"># …….</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span>   <span class="comment">#……..</span></span><br><span class="line"><span class="keyword">having</span>     <span class="comment">#……. (就是为了过滤分组后的数据而存在的—不可以单独的出现)</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span>   <span class="comment">#……..</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>整个SELECT语句的含义是：</strong>根据WHERE子句的条件表达式，从FROM子句指定的基本表或视图中找出满足条件的元组，再按SELECT子句中的目标列表达式，选出元组中的属性值形成结果表。</p>
-<p>如果有GROUP BY子句，则将结果按&lt;列名1&gt;的值进行分组，该属性列值相等的元组为一个组。</p>
-<p><strong>通常会在每组中作用聚集函数。</strong>如果GROUPBY子句带<strong>HAVING</strong>子句，则只有满足指定条件的组才予以输出。如果有ORDER BY子句，则结果表还要按&lt;列名2&gt;的值的升序或降序排序。</p>
-<p><strong>1.选择表中的若干列</strong></p>
+<p>以上语句的执行顺序</p>
+<ol>
+<li><p><strong>首先执行where语句过滤原始数据</strong></p>
+</li>
+<li><p><strong>执行group by进行分组</strong></p>
+</li>
+<li><p><strong>执行having对分组数据进行操作</strong></p>
+</li>
+<li><p><strong>执行select选出数据</strong></p>
+</li>
+<li><p><strong>执行order by排序</strong> </p>
+</li>
+</ol>
+<p>原则：能在where中过滤的数据，尽量在where中过滤，效率较高。having的过滤是专门对分组之后的数据进行过滤的。</p>
+<p><strong>1.简单查询</strong></p>
 <p>假设在表Student（1.2.1节中已定义）中，查询名为BilGates的学生信息，你可以使用下面的查询：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>*<span class="keyword">from</span> Student <span class="keyword">WHERE</span> Sname=<span class="string">'Bill Gates'</span>；</span><br></pre></td></tr></table></figure>
 
@@ -498,16 +509,62 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sage <span class="keyword">IS</span> <span class="literal">NULL</span>；</span><br></pre></td></tr></table></figure>
 
 <p><strong>注意这里的“IS”不能被等号代替。</strong></p>
-<p><strong>2.ORDER BY子句</strong></p>
-<p>用户可以用order by子句对查询的结果按照<strong>一个或多个属性</strong>列的升序（ASC）或降序（DESC）排列，默认值为升序。</p>
+<h4 id="2-分组函数-聚合函数-多行处理函数"><a href="#2-分组函数-聚合函数-多行处理函数" class="headerlink" title="2.分组函数/聚合函数/多行处理函数"></a><strong>2.分组函数/聚合函数/多行处理函数</strong></h4><table>
+<thead>
+<tr>
+<th>count</th>
+<th>取得记录数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sum</td>
+<td>求和</td>
+</tr>
+<tr>
+<td>avg</td>
+<td>取平均</td>
+</tr>
+<tr>
+<td>max</td>
+<td>取最大的数</td>
+</tr>
+<tr>
+<td>min</td>
+<td>取最小的数</td>
+</tr>
+</tbody></table>
+<p><strong>注意：分组函数自动忽略空值，不需要手动的加where**</strong>条件排除空值。**</p>
+<p><strong>select count(*) from emp where xxx;</strong>                   <strong>符合条件的所有记录总数。</strong></p>
+<p><strong>select count(comm) from emp;         comm**</strong>这个字段中不为空的元素总数。**</p>
+<p>注意：分组函数不能直接使用在where关键字后面。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select ename,sal from emp where sal &gt; avg(sal);</span><br><span class="line">ERROR 1111 (HY000): Invalid <span class="keyword">use</span> <span class="keyword">of</span> <span class="keyword">group</span> <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
+
+<p>例1：在SQL中，用于聚集查询的函数有哪些？（2012·搜狗）</p>
+<p>解答：count，sum，avg，max，min。</p>
+<h4 id="3-分组查询"><a href="#3-分组查询" class="headerlink" title="3.分组查询"></a><strong>3.分组查询</strong></h4><p><strong>3.1 group by</strong></p>
+<p>GROUP BY子句<strong>根据一个或多个属性的值来对元组进行分组，值相等的为一组。</strong></p>
+<p>对查询结果分组的目的是为了细化聚集函数的作用对象，分组后聚集函数将作用于每一个组，即每一组都有一个函数值，如下列语句为查询Student 表中具有相同年龄的每个组的人数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sage，<span class="keyword">count</span>（*）<span class="keyword">from</span> Student <span class="keyword">group</span> <span class="keyword">by</span> Sage；</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果使用了order by，order by必须放到group by后面</strong></p>
+<p><strong>易错注意：！！！</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select empno,deptno,avg(sal) from emp group by deptno;</span><br><span class="line"></span><br><span class="line">+<span class="comment">-------+--------+-------------+</span></span><br><span class="line">| empno | deptno | avg(sal)    |</span><br><span class="line">+<span class="comment">-------+--------+-------------+</span></span><br><span class="line">|  7782 |     10 | 2916.666667 |</span><br><span class="line">|  7369 |     20 | 2175.000000 |</span><br><span class="line">|  7499 |     30 | 1566.666667 |</span><br><span class="line">+<span class="comment">-------+--------+-------------+</span></span><br></pre></td></tr></table></figure>
+
+<p>以上SQL语句在Oracle数据库中无法执行，执行报错。</p>
+<p>以上SQL语句在Mysql数据库中可以执行，但是执行结果矛盾。</p>
+<p>在SQL语句中若有group by 语句，那么在select语句后面只能跟<strong>分组函数（分组函数参数不一定是参与分组的字段）</strong>+<strong>参与分组的字段</strong>。</p>
+<p><strong>3.2 having</strong></p>
+<p>如果想对分组数据再进行过滤需要使用having子句，例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sage，<span class="keyword">count</span>（*）<span class="keyword">from</span> Student <span class="keyword">group</span> <span class="keyword">by</span> Sage <span class="keyword">having</span> <span class="keyword">count</span>（*）&gt;<span class="number">1</span>；</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-ORDER-BY子句"><a href="#4-ORDER-BY子句" class="headerlink" title="4.ORDER BY子句"></a><strong>4.ORDER BY子句</strong></h4><p>用户可以用order by子句对查询的结果按照<strong>一个或多个属性</strong>列的升序（ASC）或降序（DESC）排列，默认值为升序。</p>
 <p>例如在表Student中，按学生的年龄值升序检索出全部学生的信息：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Student <span class="keyword">ORDER</span> <span class="keyword">BY</span> Sage；</span><br></pre></td></tr></table></figure>
 
 <p>在表Student中，先按专业升序排序，然后同一专业的学生再按年龄降序排序，并输出全部学生信息：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Student <span class="keyword">ORDER</span> <span class="keyword">BY</span> Sdept，Sage <span class="keyword">desc</span>；</span><br></pre></td></tr></table></figure>
 
-<p><strong>3.LIMIT子句</strong></p>
-<p>LIMIT主要是用于查询之后要显示返回的前几条或者中间某几行数据。</p>
+<h4 id="5-LIMIT子句"><a href="#5-LIMIT子句" class="headerlink" title="5.LIMIT子句"></a><strong>5.LIMIT子句</strong></h4><p>LIMIT主要是用于查询之后要显示返回的前几条或者中间某几行数据。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">LIMIT</span>[<span class="keyword">offset</span>，]<span class="keyword">rows</span> I <span class="keyword">rows</span> <span class="keyword">OFFSET</span> <span class="keyword">offset</span></span><br></pre></td></tr></table></figure>
 
 <p>LIMIT子句可以被用于强制SELECT 语句返回指定的记录数。LIMIT接受一个或两个数字参数。参数必须是一个整数常量。如果给定两个参数，第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目。<strong>初始记录行的偏移量是0（而不是1）。</strong>如：</p>
@@ -521,31 +578,71 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title <span class="keyword">FROM</span> post ? create_time <span class="keyword">DESC</span> ? <span class="number">0</span>，<span class="number">20</span>；</span><br></pre></td></tr></table></figure>
 
 <p>解答：order by，limit。</p>
-<p><strong>4.聚集函数</strong></p>
-<p>SQL 语句中常用的聚集函数有以下几种：count，sum，avg，max，min。用法如下：</p>
-<p>总数：select count（*）as totalcount from table1；</p>
-<p>求和：select sum（field1）as sumvalue from table1；</p>
-<p>平均：select avg（field1）as avgvalue from table1；</p>
-<p>最大：select max（field1）as maxvalue from table1；</p>
-<p>最小：select min（field1）as minvalue from table1；</p>
-<p>例1：在SQL中，用于聚集查询的函数有哪些？（2012·搜狗）</p>
-<p>解答：count，sum，avg，max，min。</p>
-<p><strong>5.GROUP BY子句</strong></p>
-<p>GROUP BY子句<strong>根据一个或多个属性的值来对元组进行分组，值相等的为一组。</strong></p>
-<p>对查询结果分组的目的是为了细化聚集函数的作用对象，分组后聚集函数将作用于每一个组，即每一组都有一个函数值，如下列语句为查询Student 表中具有相同年龄的每个组的人数：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sage，<span class="keyword">count</span>（*）<span class="keyword">from</span> Student <span class="keyword">group</span> <span class="keyword">by</span> Sage；</span><br></pre></td></tr></table></figure>
+<h4 id="6-数据处理函数-单行处理函数"><a href="#6-数据处理函数-单行处理函数" class="headerlink" title="6.数据处理函数/单行处理函数"></a><strong>6.数据处理函数/单行处理函数</strong></h4><table>
+<thead>
+<tr>
+<th><strong>Lower</strong></th>
+<th>转换小写</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>upper</td>
+<td>转换大写</td>
+</tr>
+<tr>
+<td><strong>substr</strong></td>
+<td>取子串（<strong>substr(**</strong>被截取的字符串,<strong><strong>起始位置（从1</strong></strong>开始）,<strong>**截取的长度)</strong>）</td>
+</tr>
+<tr>
+<td>length</td>
+<td>取长度</td>
+</tr>
+<tr>
+<td><strong>trim</strong></td>
+<td>去空格</td>
+</tr>
+<tr>
+<td>str_to_date</td>
+<td>将字符串转换成日期</td>
+</tr>
+<tr>
+<td>date_format</td>
+<td>格式化日期</td>
+</tr>
+<tr>
+<td>format</td>
+<td>设置千分位</td>
+</tr>
+<tr>
+<td>round</td>
+<td>四舍五入</td>
+</tr>
+<tr>
+<td>rand()</td>
+<td>生成随机数</td>
+</tr>
+<tr>
+<td><strong>Ifnull</strong></td>
+<td>可以将null转换成一个具体值</td>
+</tr>
+</tbody></table>
+<p><strong>substr</strong>  </p>
+<p>查询姓名以M开头所有的员工</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> <span class="keyword">substr</span>(ename, <span class="number">1</span>, <span class="number">1</span>)=<span class="keyword">upper</span>(<span class="string">'m'</span>);</span><br></pre></td></tr></table></figure>
 
-<p>如果分组后还要求按一定的条件对这些组进行筛选，最终只输出满足指定条件的组，则<strong>使用HAVING短语指定筛选条件。</strong></p>
-<p>通常，HAVING子句只用在GROUPBY子句的SQL语句中，用来选取符合指定条件的分组。例如：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sage，<span class="keyword">count</span>（*）<span class="keyword">from</span> Student <span class="keyword">group</span> <span class="keyword">by</span> Sage <span class="keyword">having</span> <span class="keyword">count</span>（*）&gt;<span class="number">1</span>；</span><br></pre></td></tr></table></figure>
+<p><strong>trim</strong></p>
+<p>trim会去首尾空格，不会去除中间的空格</p>
+<p>取得工作岗位为manager的所有员工</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> job=<span class="keyword">trim</span>(<span class="keyword">upper</span>(<span class="string">'manager  '</span>));</span><br></pre></td></tr></table></figure>
 
-<p><u><strong>6.连接查询</strong></u></p>
-<p>前面的查询都是针对一个表进行的。若一个查询同时涉及两个以上的表，则称之为<strong>连接查询</strong>。若有表Student（学生信息表）、SC（选课表），要求查询每个学生及其选修课程的情况：</p>
+<h4 id="7-连接查询"><a href="#7-连接查询" class="headerlink" title="7.连接查询"></a><u><strong>7.连接查询</strong></u></h4><p>连接查询：也可以叫跨表查询，需要关联多个表进行查询：</p>
+<p><strong>内连接：</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Student.*，SC.* <span class="keyword">FROM</span> Student，SC  <span class="keyword">WHERE</span> Student.Sno=SC.Sno；</span><br></pre></td></tr></table></figure>
 
 <p>在以上的连接操作中，只有满足条件的元组才能作为结果输出。若表Student中某些学生没有选课，则在SC表中没有相应的元组，造成最终结果中舍弃掉了这些学生的信息。</p>
-<p>上述连接称为自然连接、内连接。</p>
-<p>有时想以Student表为主体列出每个学生的基本情况及其选课情况。若某个学生没有选课，依然将其保存到结果中（在SC表的属性上填空值），这时就需要使用外连接。</p>
+<p>上述连接称为自然连接、<strong>内连接</strong>。</p>
+<p><strong>外连接：</strong></p>
+<p>有时想以Student表为主体列出每个学生的基本情况及其选课情况。若某个学生没有选课，依然将其保存到结果中（在SC表的属性上填空值），这时就需要使用<strong>外连接</strong>。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Student.*，SC.* <span class="keyword">FROM</span> Student <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> SC <span class="keyword">ON</span>（Student.Sno=SC.Sno）;</span><br></pre></td></tr></table></figure>
 
 <p><strong>以上是左外连接，左外连接列出左边表（本例为Student表）中的所有元组，右外连接列出右表关系中所有的元组。</strong></p>
@@ -630,8 +727,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/17/计算机网络-概述/" rel="next" title="计算机网络-概述">
-                <i class="fa fa-chevron-left"></i> 计算机网络-概述
+              <a href="/2019/03/17/设计模式/" rel="next" title="设计模式">
+                <i class="fa fa-chevron-left"></i> 设计模式
               </a>
             
           </div>
@@ -640,8 +737,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/17/数据库原理/" rel="prev" title="数据库原理">
-                数据库原理 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/17/Leetcode-Database 题解/" rel="prev" title="Leetcode数据库题解">
+                Leetcode数据库题解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -726,7 +823,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -799,7 +896,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#●基础"><span class="nav-number">1.</span> <span class="nav-text">●基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#●-常用SQL语句（DDL-DML-DCL-TCL）"><span class="nav-number">2.</span> <span class="nav-text">● 常用SQL语句（DDL,DML,DCL,TCL）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据定义语句-create、drop、alter"><span class="nav-number">2.1.</span> <span class="nav-text">●数据定义语句(create、drop、alter)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据查询-select"><span class="nav-number">2.2.</span> <span class="nav-text">●数据查询(select)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据操纵-insert-delete-update"><span class="nav-number">2.3.</span> <span class="nav-text">●数据操纵(insert,delete,update)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#●基础"><span class="nav-number">1.</span> <span class="nav-text">●基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#●-常用SQL语句（DDL-DML-DCL-TCL）"><span class="nav-number">2.</span> <span class="nav-text">● 常用SQL语句（DDL,DML,DCL,TCL）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据定义语句-create、drop、alter"><span class="nav-number">2.1.</span> <span class="nav-text">●数据定义语句(create、drop、alter)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据查询-select"><span class="nav-number">2.2.</span> <span class="nav-text">●数据查询(select)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-分组函数-聚合函数-多行处理函数"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">2.分组函数/聚合函数/多行处理函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-分组查询"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">3.分组查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-ORDER-BY子句"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">4.ORDER BY子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-LIMIT子句"><span class="nav-number">2.2.0.4.</span> <span class="nav-text">5.LIMIT子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-数据处理函数-单行处理函数"><span class="nav-number">2.2.0.5.</span> <span class="nav-text">6.数据处理函数/单行处理函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-连接查询"><span class="nav-number">2.2.0.6.</span> <span class="nav-text">7.连接查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#●数据操纵-insert-delete-update"><span class="nav-number">2.3.</span> <span class="nav-text">●数据操纵(insert,delete,update)</span></a></li></ol></div>
             
 
           </div>
