@@ -94,8 +94,15 @@
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/5/1646955be781daaa?w=589&h=228&f=png&s=16360">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/5/16469565b6951791?w=489&h=209&f=png&s=39791">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/5/164697447dc6ecac?w=525&h=246&f=png&s=12362">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/12.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/13.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/14.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/15.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/16.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/17.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/18.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/11.png">
-<meta property="og:updated_time" content="2019-06-24T03:13:50.375Z">
+<meta property="og:updated_time" content="2019-07-05T08:50:24.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux">
 <meta name="twitter:description" content="一 从认识操作系统开始1.1 操作系统简介我通过以下四点介绍什么操作系统：  操作系统（Operation System，简称OS）是管理计算机硬件与软件资源的程序，是计算机系统的内核与基石； 操作系统本质上是运行在计算机上的软件程序 ； 为用户提供一个与系统交互的操作界面 ； 操作系统分内核与外壳（我们可以把外壳理解成围绕着内核的应用程序，而内核就是能操作硬件的程序）。   1.2 操作系统简单">
@@ -480,32 +487,45 @@
 <li><strong><code>cd -</code>：</strong>   切换到上一个操作所在目录</li>
 </ul>
 <h3 id="4-2-目录的操作命令-增删改查"><a href="#4-2-目录的操作命令-增删改查" class="headerlink" title="4.2 目录的操作命令(增删改查)"></a>4.2 目录的操作命令(增删改查)</h3><ol>
-<li><p><strong><code>mkdir 目录名称</code>：</strong> 增加目录</p>
-</li>
-<li><p><strong><code>ls或者ll</code></strong>（ll是ls -l的别名，ll命令可以看到该目录下的所有目录和文件的详细信息）：查看目录信息</p>
-</li>
-<li><p><strong><code>find 目录 参数</code>：</strong> 寻找目录（查）</p>
-<p> 示例：</p>
-<ul>
-<li>列出当前目录及子目录下所有文件和文件夹: <code>find .</code></li>
-<li>在<code>/home</code>目录下查找以.txt结尾的文件名:<code>find /home -name &quot;*.txt&quot;</code></li>
-<li>同上，但忽略大小写: <code>find /home -iname &quot;*.txt&quot;</code></li>
-<li>当前目录及子目录下查找所有以.txt和.pdf结尾的文件:<code>find . \( -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot; \)</code>或<code>find . -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot;</code></li>
-</ul>
-</li>
-<li><p><strong><code>mv 目录名称 新目录名称</code>：</strong> 修改目录的名称（改）</p>
-<p>注意：mv的语法不仅可以对目录进行重命名而且也可以对各种文件，压缩包等进行  重命名的操作。mv命令用来对文件或目录重新命名，或者将文件从一个目录移到另一个目录中。后面会介绍到mv命令的另一个用法。</p>
-</li>
-<li><p><strong><code>mv 目录名称 目录的新位置</code>：</strong>  移动目录的位置—剪切（改）</p>
-<p> 注意：mv语法不仅可以对目录进行剪切操作，对文件和压缩包等都可执行剪切操作。另外mv与cp的结果不同，mv好像文件“搬家”，文件个数并未增加。而cp对文件进行复制，文件个数增加了。</p>
-</li>
-<li><p><strong><code>cp -r 目录名称 目录拷贝的目标位置</code>：</strong> 拷贝目录（改），-r代表递归拷贝 </p>
-<p> 注意：cp命令不仅可以拷贝目录还可以拷贝文件，压缩包等，拷贝文件和压缩包时不  用写-r递归</p>
-</li>
-<li><p><strong><code>rm [-rf] 目录</code>:</strong> 删除目录（删）</p>
-<p> 注意：rm不仅可以删除目录，也可以删除其他文件或压缩包，为了增强大家的记忆，  无论删除任何目录或文件，都直接使用<code>rm -rf</code> 目录/文件/压缩包</p>
-</li>
+<li><strong><code>mkdir 目录名称</code>：</strong> 直接mkdir会在当前文件夹中创建一个文件夹，但是要保证上级文件夹存在，加上参数 -p ，可以连同上级文件夹一起创建：</li>
 </ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /home/yue/a/b/c</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>ls或者ll</code></strong>（ll是ls -l的别名，ll命令可以看到该目录下的所有目录和文件的详细信息）：查看目录信息</p>
+<p>2.rm [-rf] 目录`:** 删除目录（删）</p>
+<p>注意：rm不仅可以删除目录，也可以删除其他文件或压缩包，但是默认只能删除文件，为了增强大家的记忆，  无论删除任何目录或文件，都直接使用<code>rm -rf</code> 目录/文件/压缩包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /home/yue/a/b   <span class="comment">#文件夹b和子文件夹c一块儿删除了</span></span><br></pre></td></tr></table></figure>
+
+<p>3.<strong>find 目录 参数`：</strong> 寻找目录（查）</p>
+<p>示例：</p>
+<ul>
+<li><p>列出当前目录及子目录下所有文件和文件夹: <code>find .</code></p>
+</li>
+<li><p>在<code>/home</code>目录下查找以.txt结尾的文件名:<code>find /home -name &quot;*.txt&quot;</code></p>
+</li>
+<li><p>同上，但忽略大小写: <code>find /home -iname &quot;*.txt&quot;</code></p>
+</li>
+<li><p>当前目录及子目录下查找所有以.txt和.pdf结尾的文件:<code>find . \( -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot; \)</code>或<code>find . -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot;</code></p>
+</li>
+</ul>
+<p>4.<strong><code>mv 目录名称 新目录名称</code>：</strong> 修改目录的名称 –<strong>重命名</strong>（改）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /home/<span class="built_in">test</span> /home/test2  <span class="comment">#将test文件夹重命名为test2</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：mv的语法不仅可以对目录进行重命名而且也可以对各种文件，压缩包等进行  重命名的操作。mv命令用来对文件或目录重新命名，或者将文件从一个目录移到另一个目录中。后面会介绍到mv命令的另一个用法。</p>
+<p><strong><code>mv 目录名称 目录的新位置</code>：</strong>  移动目录的位置—<strong>剪切</strong>（改）</p>
+<p>注意：mv语法不仅可以对目录进行剪切操作，对文件和压缩包等都可执行剪切操作。另外mv与cp的结果不同，mv好像文件“搬家”，文件个数并未增加。而cp对文件进行复制，文件个数增加了。</p>
+<p><strong>5.cp</strong> </p>
+<p>注意：<strong>cp命令不仅可以拷贝目录还可以拷贝文件，压缩包等</strong>，<strong>拷贝文件和压缩包时不  用写-r递归</strong></p>
+<p>如将当前目录下的aaa文件复制到/tmp下，并命名为bbb：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ./aaa /tmp/bbb</span><br></pre></td></tr></table></figure>
+
+<p>复制目录要用-r，如复制/etc/这个目录下所有内容到/tem下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -r /etc/ /tmp</span><br></pre></td></tr></table></figure>
+
+<p>6.<strong><code>rm [-rf] 目录</code>:</strong> 删除目录（删）</p>
+<p>注意：rm不仅可以删除目录，也可以删除其他文件或压缩包，但是默认只能删除文件，为了增强大家的记忆，  无论删除任何目录或文件，都直接使用<code>rm -rf</code> 目录/文件/压缩包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /home/yue/a/b   <span class="comment">#文件夹b和子文件夹c一块儿删除了</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="4-3-文件的操作命令-增删改查"><a href="#4-3-文件的操作命令-增删改查" class="headerlink" title="4.3 文件的操作命令(增删改查)"></a>4.3 文件的操作命令(增删改查)</h3><ol>
 <li><p><strong><code>touch 文件名称</code>:</strong>  文件的创建（增）</p>
 </li>
@@ -680,7 +700,7 @@
 <li><p><strong><code>reboot</code>：</strong>  <strong><code>reboot</code>：</strong>  重开机。<strong><code>reboot -w</code>：</strong> 做个重开机的模拟（只有纪录并不会真的重开机）。</p>
 </li>
 </ul>
-<h1 id="四、进程管理"><a href="#四、进程管理" class="headerlink" title="四、进程管理"></a>四、进程管理</h1><h2 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h2><h3 id="1-ps"><a href="#1-ps" class="headerlink" title="1. ps"></a>1. ps</h3><p>查看某个时间点的进程信息。</p>
+<h1 id="四、进程管理"><a href="#四、进程管理" class="headerlink" title="四、进程管理"></a>四、进程管理</h1><h2 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h2><h3 id="1-ps"><a href="#1-ps" class="headerlink" title="1. ps"></a>1. ps</h3><p><strong>查看某个时间点的进程信息。</strong>信息相对于top较少，且不是动态的</p>
 <p>示例一：查看自己的进程</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -l</span></span><br></pre></td></tr></table></figure>
 
@@ -694,11 +714,27 @@
 <p>示例：查看所有进程树</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pstree -A</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="3-top"><a href="#3-top" class="headerlink" title="3. top"></a>3. top</h3><p>实时显示进程信息。</p>
+<h3 id="3-top（重点）"><a href="#3-top（重点）" class="headerlink" title="3. top（重点）"></a>3. top（重点）</h3><p><strong>实时显示进程信息。</strong></p>
 <p>示例：两秒钟刷新一次</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># top -d 2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># top -d 2    可以直接top命令，采用系统默认刷新时间</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="4-netstat"><a href="#4-netstat" class="headerlink" title="4. netstat"></a>4. netstat</h3><p>查看占用端口的进程</p>
+<p>Linux系统可以通过top命令查看系统的CPU、内存、运行时间、交换分区、执行的线程等信息。通过top命令可以有效的发现系统的缺陷出在哪里。<strong>是内存不够、CPU处理能力不够、IO读写过高</strong>。</p>
+<img src="/2019/03/20/Linux/12.png">
+
+<img src="/2019/03/20/Linux/13.png">
+
+<img src="/2019/03/20/Linux/14.png">
+
+<img src="/2019/03/20/Linux/15.png">
+
+<img src="/2019/03/20/Linux/16.png">
+
+<img src="/2019/03/20/Linux/17.png">
+
+<img src="/2019/03/20/Linux/18.png">
+
+<h3 id="4-df"><a href="#4-df" class="headerlink" title="4.df"></a>4.df</h3><p>列出文件系统的整体磁盘使用量</p>
+<h3 id="5-netstat"><a href="#5-netstat" class="headerlink" title="5. netstat"></a>5. netstat</h3><p>查看占用端口的进程</p>
 <p>示例：查看特定端口的进程</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># netstat -anp | grep port</span></span><br></pre></td></tr></table></figure>
 
@@ -817,8 +853,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/20/Shell编程四剑客/" rel="next" title="Shell编程四剑客">
-                <i class="fa fa-chevron-left"></i> Shell编程四剑客
+              <a href="/2019/03/20/操作系统-进程管理/" rel="next" title="操作系统-进程管理">
+                <i class="fa fa-chevron-left"></i> 操作系统-进程管理
               </a>
             
           </div>
@@ -827,8 +863,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/20/操作系统-进程管理/" rel="prev" title="操作系统-进程管理">
-                操作系统-进程管理 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/21/操作系统-死锁/" rel="prev" title="操作系统-死锁">
+                操作系统-死锁 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -913,7 +949,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -924,7 +960,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -935,7 +971,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -986,7 +1022,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-从认识操作系统开始"><span class="nav-number">1.</span> <span class="nav-text">一 从认识操作系统开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-操作系统简介"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 操作系统简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-操作系统简单分类"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 操作系统简单分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-初探Linux"><span class="nav-number">2.</span> <span class="nav-text">二 初探Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Linux简介"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Linux简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Linux诞生简介"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Linux诞生简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Linux的分类"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Linux的分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-Linux文件系统概览"><span class="nav-number">3.</span> <span class="nav-text">三 Linux文件系统概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Linux文件系统简介"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Linux文件系统简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-文件类型与目录结构"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 文件类型与目录结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-Linux基本命令"><span class="nav-number">4.</span> <span class="nav-text">四 Linux基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-目录切换命令"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 目录切换命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-目录的操作命令-增删改查"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 目录的操作命令(增删改查)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-文件的操作命令-增删改查"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 文件的操作命令(增删改查)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-压缩文件的操作命令"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 压缩文件的操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-Linux的权限命令"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 Linux的权限命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-Linux-用户管理"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 Linux 用户管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-Linux系统用户组的管理"><span class="nav-number">4.7.</span> <span class="nav-text">4.7 Linux系统用户组的管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-8-其他常用命令"><span class="nav-number">4.8.</span> <span class="nav-text">4.8 其他常用命令</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#四、进程管理"><span class="nav-number"></span> <span class="nav-text">四、进程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看进程"><span class="nav-number">1.</span> <span class="nav-text">查看进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ps"><span class="nav-number">1.1.</span> <span class="nav-text">1. ps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-pstree"><span class="nav-number">1.2.</span> <span class="nav-text">2. pstree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-top"><span class="nav-number">1.3.</span> <span class="nav-text">3. top</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-netstat"><span class="nav-number">1.4.</span> <span class="nav-text">4. netstat</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程状态"><span class="nav-number">2.</span> <span class="nav-text">进程状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SIGCHLD"><span class="nav-number">3.</span> <span class="nav-text">SIGCHLD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wait"><span class="nav-number">4.</span> <span class="nav-text">wait()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#waitpid"><span class="nav-number">5.</span> <span class="nav-text">waitpid()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#孤儿进程"><span class="nav-number">6.</span> <span class="nav-text">孤儿进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#僵尸进程"><span class="nav-number">7.</span> <span class="nav-text">僵尸进程</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-从认识操作系统开始"><span class="nav-number">1.</span> <span class="nav-text">一 从认识操作系统开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-操作系统简介"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 操作系统简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-操作系统简单分类"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 操作系统简单分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-初探Linux"><span class="nav-number">2.</span> <span class="nav-text">二 初探Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Linux简介"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Linux简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Linux诞生简介"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Linux诞生简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Linux的分类"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Linux的分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-Linux文件系统概览"><span class="nav-number">3.</span> <span class="nav-text">三 Linux文件系统概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Linux文件系统简介"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Linux文件系统简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-文件类型与目录结构"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 文件类型与目录结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-Linux基本命令"><span class="nav-number">4.</span> <span class="nav-text">四 Linux基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-目录切换命令"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 目录切换命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-目录的操作命令-增删改查"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 目录的操作命令(增删改查)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-文件的操作命令-增删改查"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 文件的操作命令(增删改查)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-压缩文件的操作命令"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 压缩文件的操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-Linux的权限命令"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 Linux的权限命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-Linux-用户管理"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 Linux 用户管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-Linux系统用户组的管理"><span class="nav-number">4.7.</span> <span class="nav-text">4.7 Linux系统用户组的管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-8-其他常用命令"><span class="nav-number">4.8.</span> <span class="nav-text">4.8 其他常用命令</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#四、进程管理"><span class="nav-number"></span> <span class="nav-text">四、进程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看进程"><span class="nav-number">1.</span> <span class="nav-text">查看进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ps"><span class="nav-number">1.1.</span> <span class="nav-text">1. ps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-pstree"><span class="nav-number">1.2.</span> <span class="nav-text">2. pstree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-top（重点）"><span class="nav-number">1.3.</span> <span class="nav-text">3. top（重点）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-df"><span class="nav-number">1.4.</span> <span class="nav-text">4.df</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-netstat"><span class="nav-number">1.5.</span> <span class="nav-text">5. netstat</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程状态"><span class="nav-number">2.</span> <span class="nav-text">进程状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SIGCHLD"><span class="nav-number">3.</span> <span class="nav-text">SIGCHLD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wait"><span class="nav-number">4.</span> <span class="nav-text">wait()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#waitpid"><span class="nav-number">5.</span> <span class="nav-text">waitpid()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#孤儿进程"><span class="nav-number">6.</span> <span class="nav-text">孤儿进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#僵尸进程"><span class="nav-number">7.</span> <span class="nav-text">僵尸进程</span></a></li></ol></li></div>
             
 
           </div>
