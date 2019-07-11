@@ -82,15 +82,26 @@
 <meta name="description" content="一、Redis1.什么是Redis？Redis 是Remote Dictionary Server（远程数据服务）的缩写由意大利人antirez（Salvatore Sanfilippo）开发的一款内存高速缓存数据库该软件使用C语言编写，它的数据模型为key-value，它支持丰富的数据结构（类型），比如String list hash set sorted set。可持久化，保证了数据安全。 使">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis指令与持久化">
+<meta property="og:title" content="redis指令及部分基础">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/15/redis指令与持久化/index.html">
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="一、Redis1.什么是Redis？Redis 是Remote Dictionary Server（远程数据服务）的缩写由意大利人antirez（Salvatore Sanfilippo）开发的一款内存高速缓存数据库该软件使用C语言编写，它的数据模型为key-value，它支持丰富的数据结构（类型），比如String list hash set sorted set。可持久化，保证了数据安全。 使">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-10T15:41:52.947Z">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/redis指令与持久化/01.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/redis指令与持久化/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/redis指令与持久化/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/redis指令与持久化/04.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/redis指令与持久化/05.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/redis指令与持久化/06.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/redis指令与持久化/07.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/redis指令与持久化/08.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/redis指令与持久化/09.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/redis指令与持久化/10.png">
+<meta property="og:updated_time" content="2019-07-11T00:37:24.098Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis指令与持久化">
+<meta name="twitter:title" content="redis指令及部分基础">
 <meta name="twitter:description" content="一、Redis1.什么是Redis？Redis 是Remote Dictionary Server（远程数据服务）的缩写由意大利人antirez（Salvatore Sanfilippo）开发的一款内存高速缓存数据库该软件使用C语言编写，它的数据模型为key-value，它支持丰富的数据结构（类型），比如String list hash set sorted set。可持久化，保证了数据安全。 使">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/15/redis指令与持久化/01.jpg">
 
 
 
@@ -126,7 +137,7 @@
 
 
 
-  <title>redis指令与持久化 | yue</title>
+  <title>redis指令及部分基础 | yue</title>
   
 
 
@@ -312,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">redis指令与持久化</h1>
+          <h1 class="post-title" itemprop="name headline">redis指令及部分基础</h1>
         
 
         <div class="post-meta">
@@ -427,15 +438,23 @@
 <p>　　(3)、使用底层模型不同</p>
 <p>　　　　它们之间底层实现方式 以及与客户端之间通信的应用协议不一样。</p>
 <p>　　　　Redis直接自己构建了VM 机制 ，因为一般的系统调用系统函数的话，会浪费一定的时间去移动和请求。</p>
-<p>{asset_img 01.jpg}</p>
+<img src="/2019/03/15/redis指令与持久化/01.jpg">
+
+
+
 <p><strong>3.安装Redis</strong></p>
 <p><a href="https://www.cnblogs.com/renzhicai/p/7773080.html" target="_blank" rel="noopener">安装Redis</a></p>
 <p>前端启动redis服务</p>
-<p>{asset_img 02.png}</p>
+<img src="/2019/03/15/redis指令与持久化/02.png">
+
 <p>安装成功后，后台启动redis</p>
-<p>{asset_img 03.png}</p>
+<img src="/2019/03/15/redis指令与持久化/03.png">
+
 <p>接着启动 redis-cli即可使用</p>
-<p>{asset_img 04.png}</p>
+<img src="/2019/03/15/redis指令与持久化/04.png">
+
+
+
 <h3 id="4-Redis与Memcached的选择"><a href="#4-Redis与Memcached的选择" class="headerlink" title="4.Redis与Memcached的选择"></a>4.Redis与Memcached的选择</h3><p><strong>终极策略：</strong> 使用Redis的String类型做的事，都可以用Memcached替换，以此换取更好的性能提升； 除此以外，优先考虑Redis；</p>
 <h3 id="5-使用redis有哪些好处？"><a href="#5-使用redis有哪些好处？" class="headerlink" title="5.使用redis有哪些好处？"></a>5.使用redis有哪些好处？</h3><p>(1) <strong>速度快</strong>，因为数据存在内存中，类似于HashMap，HashMap的优势就是查找和操作的时间复杂度都是O(1)</p>
 <p>(2)<strong>支持丰富数据类型</strong>，支持string，list，set，sorted set，hash</p>
@@ -521,7 +540,8 @@
 <p>该list链表类型应用场合：</p>
 <p>获得最新的10个登录用户信息：select*from user order by logintime desc limit 10；以上sql语句可以实现用户需求，但是数据多的时候，全部数据都要受到影响，对数据库的负载比较高。必要情况还需要给关键字段（id或logintime）设置索引，索引也比较耗费系统资源</p>
 <p>如果通过list链表实现以上功能，可以在ist链表中只保留最新的10个数据，每进来一个新数据进来就删除一个旧数据。每次就可以从链表中直接获得需要的数据。极大节省各方面资源消耗</p>
-<p>{asset_img 05.png}</p>
+<img src="/2019/03/15/redis指令与持久化/05.png">
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379[1]&gt; lpush login marry</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; lpush login jack</span><br><span class="line">(integer) 2</span><br><span class="line">127.0.0.1:6379[1]&gt; lpush login tom</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379[1]&gt; lpush login jane</span><br><span class="line">(integer) 4</span><br><span class="line">127.0.0.1:6379[1]&gt; lpush login yue</span><br><span class="line">(integer) 5</span><br><span class="line">127.0.0.1:6379[1]&gt; lpush login dian</span><br><span class="line">(integer) 6</span><br><span class="line">127.0.0.1:6379[1]&gt; rpop login</span><br><span class="line">&quot;marry&quot;</span><br><span class="line">127.0.0.1:6379[1]&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>list的一些相关操作:</strong></p>
@@ -544,7 +564,8 @@
 <p>该类型应用场合：qq好友推荐。</p>
 <p>tom朋友圈（与某某是好友）：aary jack xiaoming wang5 wang6</p>
 <p>linken 朋友圈（与某某是好友）：yuehan daxiong luce wang5 wang6</p>
-<p>{asset_img 06.png}</p>
+<img src="/2019/03/15/redis指令与持久化/06.png">
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//set类型操作</span><br><span class="line">sadd key member        //添加一个string 元素到key对应的set集合中，成功返回1，</span><br><span class="line">                       //如果元素已经在集合中返回0，key对应的set不存在返回错误</span><br><span class="line">srem key member[member]//从key 对应set 中移除给定元素，成功返回1</span><br><span class="line">smove p1 p2            //menber从p1对应set 中移除 nenber 并添加到p2对应set中返回set的元素个数</span><br><span class="line">sismember key nember     //判断 menber是否在set中</span><br><span class="line">sinter key1 key2-.-keyN  //返回所有给定key的交集</span><br><span class="line">sunion key1 key2.--keyN  //返回所有给定key 的并集</span><br><span class="line">sdiff key1 key2-.-keyN   //返回所有给定key的差集</span><br><span class="line">smembers key            //返回key对应set的所有元素，结果是无序的</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; sadd tom marry</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; sadd tom jack</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; sadd tom wang5</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; sadd tom wang6</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; sadd tom xiaoming</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; smembers tom</span><br><span class="line">1) &quot;jack&quot;</span><br><span class="line">2) &quot;marry&quot;</span><br><span class="line">3) &quot;wang5&quot;</span><br><span class="line">4) &quot;wang6&quot;</span><br><span class="line">5) &quot;xiaoming&quot;</span><br><span class="line">127.0.0.1:6379[1]&gt; sadd linken yuehan</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; sadd linken daxiong</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; sadd linken luce</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; sadd linken wang5</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; sadd linken wang6</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; smembers linken</span><br><span class="line">1) &quot;wang5&quot;</span><br><span class="line">2) &quot;luce&quot;</span><br><span class="line">3) &quot;daxiong&quot;</span><br><span class="line">4) &quot;yuehan&quot;</span><br><span class="line">5) &quot;wang6&quot;</span><br><span class="line">127.0.0.1:6379[1]&gt; sinter tom linken</span><br><span class="line">1) &quot;wang5&quot;</span><br><span class="line">2) &quot;wang6&quot;</span><br><span class="line">127.0.0.1:6379[1]&gt; sunion tom linken</span><br><span class="line">1) &quot;wang6&quot;</span><br><span class="line">2) &quot;xiaoming&quot;</span><br><span class="line">3) &quot;jack&quot;</span><br><span class="line">4) &quot;marry&quot;</span><br><span class="line">5) &quot;wang5&quot;</span><br><span class="line">6) &quot;luce&quot;</span><br><span class="line">7) &quot;daxiong&quot;</span><br><span class="line">8) &quot;yuehan&quot;</span><br><span class="line">127.0.0.1:6379[1]&gt; sdiff tom linken</span><br><span class="line">1) &quot;jack&quot;</span><br><span class="line">2) &quot;marry&quot;</span><br><span class="line">3) &quot;xiaoming&quot;</span><br><span class="line">127.0.0.1:6379[1]&gt; sdiff linken tom</span><br><span class="line">1) &quot;luce&quot;</span><br><span class="line">2) &quot;daxiong&quot;</span><br><span class="line">3) &quot;yuehan&quot;</span><br><span class="line">127.0.0.1:6379[1]&gt;</span><br></pre></td></tr></table></figure>
@@ -553,10 +574,12 @@
 <p>获得热门帖子（回复量）信息：select*from message order by backnum desclimit 5；</p>
 <p>（以上需求可以通过简单sql语句实现，但是sgl语句比较耗费mysql数据库资源）</p>
 <p>【案例】利用sort set 实现获取最热门的前5帖子信息</p>
-<p>{asset_img 07.png}</p>
+<img src="/2019/03/15/redis指令与持久化/07.png">
+
 <p>排序集合中的每个元素都是值、权的组合</p>
 <p>（之前的set集合类型每个元素就只是一个值）</p>
-<p>{asset_img 08.png}</p>
+<img src="/2019/03/15/redis指令与持久化/08.png">
+
 <p><strong>相关指令：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//sorted set排序类型</span><br><span class="line">zadd key score member     //添加元素到集合，元素在集合中存在则更新对应 score</span><br><span class="line">zrem key nember           //除指定元素，1表示成功，如果元素不存在返回0</span><br><span class="line">zincrby key incr member   //按照incr 幅度增加对应 nember的score值，返回 score值</span><br><span class="line">zrank key member          //返回指定元素在集合中的排名（下标），集合中元素是按 score从小到大排序的</span><br><span class="line">zrevrank key member       //同上，但是集合中元素是按 score 从大到小排序</span><br><span class="line">zrange key start end      //类似irange操作从集合中去指定区间的元素。返回的是有序结果</span><br><span class="line">zrevrange key start end   //同上，返回结果是按 score逆序的</span><br><span class="line">zcard key                 //返回集合中元素个数</span><br><span class="line">zscore key member       //返回给定元素对应的 score</span><br><span class="line">zrenrangebyrank key min max    //删除集合中排名在给定区间的元素</span><br></pre></td></tr></table></figure>
 
@@ -589,7 +612,8 @@
 <p>（同时可以修改备份文件的名字，默认是appendonly.aof和dump.rdb同级目录下）</p>
 <p>打开配置文件redis.conf,将appendonly no改为appendonly yes。</p>
 <p>配置文件被修改，需要删除旧进程，再根据新的配置文件启动新进程：</p>
-<p>{asset_img 09.png}</p>
+<img src="/2019/03/15/redis指令与持久化/09.png">
+
 <p>AOF追加持久化的备份频率(在redis.conf文件中)：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#appendfsync always     #这种方式每次添加、修改和删除都更新，但性能最低</span><br><span class="line">appendfsync everysec    #每秒更新一次，性能折衷，推荐</span><br><span class="line">#appendfsync no         #更新频率看服务器心情，性能富裕更新得快，由OS决定，持久化无保障，</span><br></pre></td></tr></table></figure>
 
@@ -603,8 +627,7 @@
 
 <p><strong>四、redis的主从模式</strong></p>
 <p>为了降低每个redis服务器的负载，可以多设置几个，并做主从模式一个服务器负载“写”数据，其他服务器负载“读”数据主服务器数据会“自动”同步给从服务器</p>
-<p>{asset_img 10.png}</p>
-
+<img src="/2019/03/15/redis指令与持久化/10.png">
       
     </div>
     
