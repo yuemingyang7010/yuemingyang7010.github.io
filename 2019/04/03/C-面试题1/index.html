@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C++基础,面试题,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.为什么标准头文件都有类似以下的结构？12345678910#ifndef __INCvxWorksh#define __INCvxWorksh #ifdef __cplusplusextern &quot;C&quot; &amp;#123;#endif /*...*/ #ifdef __cplusplus&amp;#125;#endif #endif /* __INCvxWorksh */  头文件中的编译宏  #ifndef">
+<meta name="keywords" content="C++基础,面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++面试题(1)">
+<meta property="og:url" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/index.html">
+<meta property="og:site_name" content="yue">
+<meta property="og:description" content="1.为什么标准头文件都有类似以下的结构？12345678910#ifndef __INCvxWorksh#define __INCvxWorksh #ifdef __cplusplusextern &quot;C&quot; &amp;#123;#endif /*...*/ #ifdef __cplusplus&amp;#125;#endif #endif /* __INCvxWorksh */  头文件中的编译宏  #ifndef">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-12T09:43:51.765Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++面试题(1)">
+<meta name="twitter:description" content="1.为什么标准头文件都有类似以下的结构？12345678910#ifndef __INCvxWorksh#define __INCvxWorksh #ifdef __cplusplusextern &quot;C&quot; &amp;#123;#endif /*...*/ #ifdef __cplusplus&amp;#125;#endif #endif /* __INCvxWorksh */  头文件中的编译宏  #ifndef">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/">
+
+
+
+
+
+  <title>C++面试题(1) | yue</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yue</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mingyang Yue">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++面试题(1)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-03T13:52:09+08:00">
+                2019-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-基础/" itemprop="url" rel="index">
+                    <span itemprop="name">C++基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/03/C-面试题1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/03/C-面试题1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-为什么标准头文件都有类似以下的结构？"><a href="#1-为什么标准头文件都有类似以下的结构？" class="headerlink" title="1.为什么标准头文件都有类似以下的结构？"></a>1.为什么标准头文件都有类似以下的结构？</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __INCvxWorksh</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __INCvxWorksh </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> </span></span><br><span class="line"><span class="comment">/*...*/</span> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __INCvxWorksh */</span></span></span><br></pre></td></tr></table></figure>
+
+<p>头文件中的编译宏 </p>
+<p>#ifndef　INCvxWorksh</p>
+<p>#define　__INCvxWorksh</p>
+<p>#endif<br>的作用是防止被重复引用。 </p>
+<p>后的str仍然为NULL；<br>1：传入形参并不能真正改变形参的值，执行完之后为空；<br>2：在函数GetMemory中和Test中没有malloc对应的free，造成内存泄露</p>
+<h3 id="2-请写一个C函数，若处理器是Big-endian的，则返回0；若是Little-endian的，则返回1"><a href="#2-请写一个C函数，若处理器是Big-endian的，则返回0；若是Little-endian的，则返回1" class="headerlink" title="2.请写一个C函数，若处理器是Big_endian的，则返回0；若是Little_endian的，则返回1"></a>2.请写一个C函数，若处理器是Big_endian的，则返回0；若是Little_endian的，则返回1</h3><p>【解答】 </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">checkCPU</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">union</span> w&#123; </span><br><span class="line">		<span class="keyword">int</span> a;</span><br><span class="line">		<span class="keyword">char</span> b;</span><br><span class="line">	&#125; c;</span><br><span class="line">	c.a = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> (c.b == <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>【剖析】<br>嵌入式系统开发者应该对Little-endian和Big-endian模式非常了解。采用Little-endian模式的CPU对操作数的存放方式是从低字节到高字节，而Big-endian模式对操作数的存放方式是从高字节到低字节。</p>
+<p>32bit宽的数0x12345678在Little-endian模式CPU内存中的存放方式（假设从地址0x4000开始存放）为： </p>
+<table>
+<thead>
+<tr>
+<th>内存地址</th>
+<th>存放内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0x4000</td>
+<td>0x78</td>
+</tr>
+<tr>
+<td>0x4001</td>
+<td>0x56</td>
+</tr>
+<tr>
+<td>0x4002</td>
+<td>0x34</td>
+</tr>
+<tr>
+<td>0x4003</td>
+<td>0x12</td>
+</tr>
+</tbody></table>
+<p>结构体和共用体的区别在于：结构体的各个成员会占用不同的内存，互相之间没有影响；而共用体的所有成员占用同一段内存，修改一个成员会影响其余所有成员。</p>
+<p>结构体占用的内存大于等于所有成员占用的内存的总和（成员之间可能会存在缝隙），共用体占用的内存等于最长的成员占用的内存。共用体使用了内存覆盖技术，同一时刻只能保存一个成员的值，如果对新的成员赋值，就会把原来成员的值覆盖掉。</p>
+<p><strong>分析：</strong>共用体的各个成员是共用一段内存的。1 是数据的低位，如果 1 被存储在 data 的低字节，就是小端模式，这个时候 data.ch 的值也是 1。如果 1 被存储在 data 的高字节，就是大端模式，这个时候 data.ch 的值就是 0。</p>
+<h3 id="3-说一下C-和C的区别"><a href="#3-说一下C-和C的区别" class="headerlink" title="3.说一下C++和C的区别"></a>3.说一下C++和C的区别</h3><p>参考回答:</p>
+<p>设计思想上：<br>C++是面向对象的语言，而C是面向过程的结构化编程语言</p>
+<p>语法上：</p>
+<p>C++具有封装、继承和多态三种特性</p>
+<p>C++相比C，增加多许多类型安全的功能，比如强制类型转换、</p>
+<p>C++支持范式编程，比如模板类、函数模板等</p>
+<h3 id="4-说一说c-中四种cast转换"><a href="#4-说一说c-中四种cast转换" class="headerlink" title="4.说一说c++中四种cast转换"></a>4.说一说c++中四种cast转换</h3><p><a href="https://blog.csdn.net/xiaonan153/article/details/81381381" target="_blank" rel="noopener">参考1</a></p>
+<p><a href="https://www.cnblogs.com/cauchy007/p/4968707.html" target="_blank" rel="noopener">参考2</a></p>
+<p><strong>static_cast转换</strong></p>
+<p>　　1.基本用法：static_cast<type-id> expression</type-id></p>
+<p>　　2.使用场景：</p>
+<p>　　<strong>a、</strong>用于类层次结构中<strong>基类和派生类之间</strong>指针或引用的转换(<strong>不一定构成多态</strong>)</p>
+<p>　　上行转换（派生类—-&gt;基类）是安全的；</p>
+<p>　　下行转换（基类—-&gt;派生类）由于没有动态类型检查，所以是不安全的。</p>
+<p>　　b、用于<strong>基本数据类型之间</strong>的转换，如把int转换为char，这种带来安全性问题由程序员来保证</p>
+<p>　　c、把空指针转换成目标类型的空指针</p>
+<p>　　d、把任何类型的表达式转为void类型</p>
+<p>　　3.使用特点</p>
+<p>　　a、主要执行非多态的转换操作，用于代替C中通常的转换操作</p>
+<p>　　b、隐式转换都建议使用static_cast进行标明和替换</p>
+<p><strong>dynamic_cast转换</strong></p>
+<p>基本用法：dynamic_cast<type-id> expression<br>（1）其他三种都是编译时完成的，dynamic_cast是运行时处理的，<strong>运行时要进行类型检查。</strong><br>（2）不能用于内置的基本数据类型的强制转换。<br>（3）dynamic_cast转换如果成功的话返回的是指向类的指针或引用，转换失败的话则会返回NULL。<br>（4）<strong>使用dynamic_cast进行转换的，基类中一定要有虚函数，否则编译不通过。</strong><br>        需要检测有虚函数的原因：类中存在虚函数，就说明它有想要让基类指针或引用指向派生类对象的情况，此时转换才有意义。<br>        这是由于运行时类型检查需要运行时类型信息，而这个信息存储在类的虚函数表（关于虚函数表的概念，详细可见&lt;Inside c++ object model&gt;）中，<br>        只有定义了虚函数的类才有虚函数表。<br>（5） <strong>在类的转换时，在类层次间进行上行转换</strong>时，dynamic_cast和static_cast的效果是一样的。在进行下行转换 时，dynamic_cast具有类型检查的功能，比static_cast更安全。向上转换即为指向子类对象的向下转换，即将父类指针转化子类指针。向下转换的成功与否还与将要转换的类型有关，即要转换的指针指向的对象的实际类型与转换以后的对象类型一定要相同，否则转换失败。</type-id></p>
+<p><strong>const_cast转换</strong></p>
+<p>　　1.基本用法：const_cast<type-id>expression</type-id></p>
+<p>　　2.使用场景：<strong>const转非const</strong></p>
+<p>　　a、常量指针转换为非常量指针，并且仍然指向原来的对象</p>
+<p>　　b、常量引用被转换为非常量引用，并且仍然指向原来的对象</p>
+<p>　　3.使用特点：</p>
+<p>　　a、cosnt_cast是四种类型转换符中唯一可以对常量进行操作的转换符</p>
+<p>　　b、去除常量性是一个危险的动作，尽量避免使用。一个特定的场景是：类通过const提供重载时，一般都是非常量函数调用const_cast<const t>将参数转换为常量，然后调用常量函数，然后得到结果再调用const_cast <t>去除常量性。</t></const></p>
+<p><strong>reinterpret_cast转换</strong></p>
+<p>　　1.基本用法:reinterpret_cast<type-id>expression</type-id></p>
+<p>　　2.使用场景：<strong>不到万不得已，不用使用这个转换符，高危操作</strong></p>
+<p>　　3.使用特点：　　</p>
+<p>　　a、reinterpret_cast是从底层对数据进行重新解释，依赖具体的平台，可移植性差</p>
+<p>　　b、reinterpret_cast可以将整型转换为指针，也可以把指针转换为数组</p>
+<p>　　c、reinterpret_cast可以在指针和引用里进行肆无忌惮的转换</p>
+<p><strong>为什么不使用C的强制转换？</strong></p>
+<p>C的强制转换表面上看起来功能强大什么都能转，但是转化不够明确，不能进行错误检查，容易出错。</p>
+<h3 id="5-请说一下C-C-中指针和引用的区别？"><a href="#5-请说一下C-C-中指针和引用的区别？" class="headerlink" title="5.请说一下C/C++ 中指针和引用的区别？"></a>5.请说一下C/C++ 中指针和引用的区别？</h3><p>参考回答:</p>
+<p>1.指针有自己的一块空间，而引用只是一个别名；</p>
+<p>2.使用sizeof看一个指针的大小是4，而引用则是被引用对象的大小；</p>
+<p>3.指针可以被初始化为NULL，而引用必须被初始化且必须是一个已有对象 的引用；</p>
+<p>4.作为参数传递时，指针需要被解引用才可以对对象进行操作，而直接对引 用的修改都会改变引用所指向的对象；</p>
+<p>5.可以有const指针，但是没有const引用；</p>
+<p>6.指针在使用中可以指向其它对象，但是引用只能是一个对象的引用，不能 被改变；</p>
+<p>7.指针可以有多级指针（**p），而引用至于一级；</p>
+<p>8.指针和引用使用++运算符的意义不一样；</p>
+<p>9.如果返回动态内存分配的对象或者内存，必须使用指针，引用可能引起内存泄露。</p>
+<h3 id="6-简述智能指针原理"><a href="#6-简述智能指针原理" class="headerlink" title="6.简述智能指针原理"></a>6.简述智能指针原理</h3><p><a href="https://mp.weixin.qq.com/s/x--v5kPtrA8NQpzAmhj_Yw" target="_blank" rel="noopener">参考1</a></p>
+<p><a href="https://www.cnblogs.com/lanxuezaipiao/p/4132096.html" target="_blank" rel="noopener">参考2</a></p>
+<p><a href="https://www.cnblogs.com/wxquare/p/4759020.html" target="_blank" rel="noopener">参考3</a></p>
+<p><strong>【1】为什么提出智能指针</strong></p>
+<p>在智能指针出现以前，我们通常使用 new 和 delete 来管理动态分配的内存，但这种方式存在几个常见的问题：</p>
+<p><strong>(1)忘记 delete 内存：</strong>会导致内存泄漏问题，且除非是内存耗尽否则很难检测到这种错误。</p>
+<p><strong>(2)使用已经释放掉的对象：</strong>如果能够记得在释放掉内存后将指针置空并在下次使用前判空，尚可避免这种错误。</p>
+<p><strong>(3)同一块内存释放两次：</strong>如果有两个指针指向相同的动态分配对象，则很容易发生这种错误。</p>
+<p><strong>(4)发生异常时的内存泄漏：</strong>若在 new 和 delete 之间发生异常，则会导致内存泄漏。</p>
+<p><strong>【2】智能指针的设计思想</strong></p>
+<p>简单的总结下就是：<strong>将基本类型指针封装为类对象指针（这个类肯定是个模板，以适应不同基本类型的需求），并在析构函数里编写delete语句删除指针指向的内存空间。</strong></p>
+<p><strong>【3】智能指针的使用</strong></p>
+<p>C++里面的四个智能指针: auto_ptr, shared_ptr, weak_ptr, unique_ptr 其中后三个是c++11支持，并且第一个已经被11弃用。</p>
+<p>为什么要使用智能指针：</p>
+<p>智能指针的作用是管理一个指针，因为存在以下这种情况：申请的空间在函数结束时忘记释放，造成内存泄漏。使用智能指针可以很大程度上的避免这个问题，因为智能指针就是一个类，当超出了类的作用域是，类会自动调用析构函数，析构函数会自动释放资源。所以智能指针的作用原理就是在函数结束时自动释放内存空间，不需要手动释放内存空间。</p>
+<ol>
+<li><strong>auto_ptr（c++98的方案，cpp11已经抛弃）</strong></li>
+</ol>
+<p>采用所有权模式。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">auto_ptr</span>&lt; <span class="built_in">string</span>&gt; p1 (<span class="keyword">new</span> <span class="built_in">string</span> (<span class="string">"I reigned lonely as a cloud.”));</span></span><br><span class="line"><span class="string">auto_ptr&lt;string&gt; p2;</span></span><br><span class="line"><span class="string">p2 = p1; //auto_ptr不会报错.</span></span><br></pre></td></tr></table></figure>
+
+<p>此时不会报错，p2剥夺了p1的所有权，但是当程序运行时访问p1将会报错。所以auto_ptr的缺点是：存在潜在的内存崩溃问题！</p>
+<ol start="2">
+<li><strong>unique_ptr（替换auto_ptr）</strong></li>
+</ol>
+<p>unique_ptr实现独占式拥有或严格拥有概念，<strong>保证同一时间内只有一个智能指针可以指向该对象</strong>。它对于避免资源泄露(例如“以new创建对象后因为发生异常而忘记调用delete”)特别有用。</p>
+<p>采用所有权模式，还是上面那个例子</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`<span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; p3 (``<span class="keyword">new</span>` `<span class="built_in">string</span> (``<span class="string">"auto"</span>``));   ``<span class="comment">//#4``unique_ptr&lt;string&gt; p4；                       ``//#5``p4 = p3;``//此时会报错！！`</span></span><br></pre></td></tr></table></figure>
+
+<p>编译器认为p4=p3非法，避免了p3不再指向有效数据的问题。因此，unique_ptr比auto_ptr更安全。</p>
+<p>另外unique_ptr还有更聪明的地方：当程序试图将一个 unique_ptr 赋值给另一个时，如果源 unique_ptr 是个临时右值，编译器允许这么做；如果源 unique_ptr 将存在一段时间，编译器将禁止这么做，比如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; pu1(<span class="keyword">new</span> <span class="built_in">string</span> (<span class="string">"hello world"</span>));</span><br><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; pu2;</span><br><span class="line">pu2 = pu1;                                      <span class="comment">// #1 not allowed</span></span><br><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; pu3;</span><br><span class="line">pu3 = <span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt;(<span class="keyword">new</span> <span class="built_in">string</span> (<span class="string">"You"</span>));   <span class="comment">// #2 allowed</span></span><br></pre></td></tr></table></figure>
+
+<p>其中#1留下悬挂的unique_ptr(pu1)，这可能导致危害。而#2不会留下悬挂的unique_ptr，因为它调用 unique_ptr 的构造函数，该构造函数创建的临时对象在其所有权让给 pu3 后就会被销毁。这种随情况而已的行为表明，unique_ptr 优于允许两种赋值的auto_ptr 。</p>
+<p>注：如果确实想执行类似与#1的操作，要安全的重用这种指针，可给它赋新值。C++有一个标准库函数std::move()，让你能够将一个unique_ptr赋给另一个。例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; ps1, ps2;</span><br><span class="line">ps1 = demo(<span class="string">"hello"</span>);</span><br><span class="line">ps2 = move(ps1);</span><br><span class="line">ps1 = demo(<span class="string">"alexia"</span>);</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; *ps2 &lt;&lt; *ps1 &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>shared_ptr</strong></li>
+</ol>
+<p>shared_ptr实现共享式拥有概念。<strong>多个智能指针可以指向相同对象，该对象和其相关资源会在“最后一个引用被销毁”时候释放。</strong>从名字share就可以看出了资源可以被多个指针共享，它使用计数机制来表明资源被几个指针共享。可以通过成员函数use_count()来查看资源的所有者个数。除了可以通过new来构造，还可以通过传入auto_ptr, unique_ptr,weak_ptr来构造。当我们调用release()时，当前指针会释放资源所有权，计数减一。当计数等于0时，资源会被释放。</p>
+<p>shared_ptr 是为了解决 auto_ptr 在对象所有权上的局限性(auto_ptr 是独占的), 在使用引用计数的机制上提供了可以共享所有权的智能指针。</p>
+<p>成员函数：</p>
+<p>use_count 返回引用计数的个数</p>
+<p>unique 返回是否是独占所有权( use_count 为 1)</p>
+<p>swap 交换两个 shared_ptr 对象(即交换所拥有的对象)</p>
+<p>reset 放弃内部对象的所有权或拥有对象的变更, 会引起原有对象的引用计数的减少</p>
+<p>get 返回内部对象(指针), 由于已经重载了()方法, 因此和直接使用对象是一样的.如 shared_ptr<int> sp(new int(1)); sp 与 sp.get()是等价的</int></p>
+<ol start="4">
+<li><strong>weak_ptr</strong>（解决shared_ptr循环引用引出的）</li>
+</ol>
+<p>weak_ptr 是一种不控制对象生命周期的智能指针, 它指向一个 shared_ptr 管理的对象. 进行该对象的内存管理的是那个强引用的 shared_ptr. weak_ptr只是提供了对管理对象的一个访问手段。weak_ptr 设计的目的是为配合 shared_ptr 而引入的一种智能指针来协助 shared_ptr 工作, 它只可以从一个 shared_ptr 或另一个 weak_ptr 对象构造, 它的构造和析构不会引起引用记数的增加或减少。<strong>weak_ptr是用来解决shared_ptr相互引用时的死锁问题,如果说两个shared_ptr相互引用,那么这两个指针的引用计数永远不可能下降为0,资源永远不会释放。</strong>它是对对象的一种弱引用，不会增加对象的引用计数，和shared_ptr之间可以相互转化，shared_ptr可以直接赋值给它，它可以通过调用lock函数来获得shared_ptr。</p>
+<p>以下实例为智能指针的循环引用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">shared_ptr</span>&lt;B&gt; pb_;  <span class="comment">//只是定义了指针，并没有资源</span></span><br><span class="line">	~A()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"A delete\n"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">shared_ptr</span>&lt;A&gt; pa_; <span class="comment">//只是定义了指针，并没有资源</span></span><br><span class="line">	~B()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"B delete\n"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">shared_ptr</span>&lt;B&gt; pb(<span class="keyword">new</span> B());   </span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; pb.use_count() &lt;&lt; <span class="built_in">endl</span>;      <span class="comment">//pb占用了new出来的资源  输出1</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; pb-&gt;pa_.use_count() &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//pb-&gt;pa_ 只是定义了指针，并没有资源  输出0</span></span><br><span class="line">	<span class="built_in">shared_ptr</span>&lt;A&gt; pa(<span class="keyword">new</span> A());</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; pb.use_count() &lt;&lt; <span class="built_in">endl</span>;      <span class="comment">//输出1</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; pa.use_count() &lt;&lt; <span class="built_in">endl</span>;      <span class="comment">//输出1</span></span><br><span class="line">	pb-&gt;pa_ = pa;</span><br><span class="line">	pa-&gt;pb_ = pb;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; pb.use_count() &lt;&lt; <span class="built_in">endl</span>;      <span class="comment">//输出2</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; pa.use_count() &lt;&lt; <span class="built_in">endl</span>;      <span class="comment">//输出2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	fun();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>结果：没析构</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-请你回答一下智能指针有没有内存泄露的情况"><a href="#7-请你回答一下智能指针有没有内存泄露的情况" class="headerlink" title="7.请你回答一下智能指针有没有内存泄露的情况"></a>7.请你回答一下智能指针有没有内存泄露的情况</h3><p>当两个对象相互使用一个shared_ptr成员变量指向对方，会造成循环引用，使引用计数失效，从而导致内存泄漏。例如：6中代码</p>
+<p>上述代码中，A有一个shared_ptr类型的成员指向B，而B也有一个shared_ptr类型的成员指向A。然后在创建A和B对象时也使用了智能指针pa和pb，随后将pa和pb分别又赋值给B的智能指针成员A和A的智能指针成员B。从而形成了一个循环引用：</p>
+<p>如何解决：</p>
+<p>为了解决循环引用导致的内存泄漏，引入了weak_ptr弱指针，weak_ptr的构造函数不会修改引用计数的值，从而不会对对象的内存进行管理，其类似一个普通指针，但不指向引用计数的共享内存，但是其可以检测到所管理的对象是否已经被释放，从而避免非法访问。</p>
+<p><strong>把类A中的share_ptr改成之后能析构掉资源：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">B delete</span><br><span class="line">A delete</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-请你来回答一下什么是memory-leak，也就是内存泄漏"><a href="#8-请你来回答一下什么是memory-leak，也就是内存泄漏" class="headerlink" title="8.请你来回答一下什么是memory leak，也就是内存泄漏"></a>8.请你来回答一下什么是memory leak，也就是内存泄漏</h3><p>参考回答:</p>
+<p>内存泄漏(memory leak)是指由于疏忽或错误造成了程序未能释放掉不再使用的内存的情况。内存泄漏并非指内存在物理上的消失，而是应用程序分配某段内存后，由于设计错误，<strong>失去了对该段内存的控制，因而造成了内存的浪费。</strong><br>内存泄漏的分类：</p>
+<ol>
+<li>堆内存泄漏 （Heap leak）。对内存指的是程序运行中根据需要分配通过<strong>malloc,realloc new</strong>等从堆中分配的一块内存，再是完成后必须通过调用对应的 <strong>free或者delete</strong> 删掉。如果程序的设计的错误导致这部分内存没有被释放，那么此后这块内存将不会被使用，就会产生Heap Leak.</li>
+<li>系统资源泄露（Resource Leak）。<strong>主要指程序使用系统分配的资源比如 Bitmap,handle ,SOCKET等没有使用相应的函数释放掉</strong>，导致系统资源的浪费，严重可导致系统效能降低，系统运行不稳定。</li>
+<li><strong>没有将基类的析构函数定义为虚函数。</strong>当基类指针指向子类对象时，如果基类的析构函数不是virtual，那么子类的析构函数将不会被调用，子类的资源没有正确是释放，因此造成内存泄露。</li>
+</ol>
+<h3 id="9-请你回答一下如何判断内存泄漏？"><a href="#9-请你回答一下如何判断内存泄漏？" class="headerlink" title="9.请你回答一下如何判断内存泄漏？"></a>9.请你回答一下如何判断内存泄漏？</h3><p>参考回答:</p>
+<p>内存泄漏通常是由于调用了malloc/new等内存申请的操作，但是缺少了对应的free/delete。为了判断内存是否泄露，我们一方面可以使用linux环境下的内存泄漏检查工具<strong>Valgrind</strong>(音标|‘vælgrind|),windows下由MicroSoft公司自己开发的一个工具——<strong>LeakDiag</strong>，另一方面我们在<strong>写代码时可以添加内存申请和释放的统计功能</strong>，统计当前申请和释放的内存是否一致，以此来判断内存是否泄露。（即在对象的构造函数,中对全局变量进行+1，在析函数中-1）</p>
+<h3 id="10-请回答一下数组和指针的区别"><a href="#10-请回答一下数组和指针的区别" class="headerlink" title="10.请回答一下数组和指针的区别"></a>10.请回答一下数组和指针的区别</h3><p>参考回答:</p>
+<p>指针和数组的主要区别如下：</p>
+<table>
+<thead>
+<tr>
+<th>指针</th>
+<th>数组</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>保存数据的地址</td>
+<td>保存数据</td>
+</tr>
+<tr>
+<td>间接访问数据，首先获得指针的内容，然后将其作为地址，从该地址中提取数据</td>
+<td>直接访问数据，</td>
+</tr>
+<tr>
+<td>通常用于动态的数据结构</td>
+<td>通常用于固定数目且数据类型相同的元素</td>
+</tr>
+<tr>
+<td>通过Malloc分配内存，free释放内存</td>
+<td>隐式的分配和删除</td>
+</tr>
+<tr>
+<td>通常指向匿名数据，操作匿名函数</td>
+<td>自身即为数据名</td>
+</tr>
+</tbody></table>
+<h3 id="11-请你回答一下野指针是什么？"><a href="#11-请你回答一下野指针是什么？" class="headerlink" title="11.请你回答一下野指针是什么？"></a>11.请你回答一下野指针是什么？</h3><p>参考回答:</p>
+<p>野指针就是指向一个已删除的对象或者未申请访问受限内存区域的指针</p>
+<h3 id="12-请你理解的c-中的引用和指针"><a href="#12-请你理解的c-中的引用和指针" class="headerlink" title="12.请你理解的c++中的引用和指针"></a>12.请你理解的c++中的引用和指针</h3><p><strong>定义：</strong><br>1、引用：</p>
+<p>C++是C语言的继承，它可进行过程化程序设计，又可以进行以抽象数据类型为特点的基于对象的程序设计，还可以进行以继承和多态为特点的面向对象的程序设计。引用就是C++对C语言的重要扩充。引用就是某一变量的一个别名，对引用的操作与对变量直接操作完全一样。引用的声明方法：类型标识符 &amp;引用名=目标变量名；引用引入了对象的一个同义词。定义引用的表示方法与定义指针相似，只是用&amp;代替了*。</p>
+<p>2、指针：</p>
+<p>指针利用地址，它的值直接指向存在电脑存储器中另一个地方的值。由于通过地址能找到所需的变量单元，可以说，地址指向该变量单元。因此，将地址形象化的称为“指针”。意思是通过它能找到以它为地址的内存单元。</p>
+<p><strong>区别：</strong></p>
+<p>1、指针有自己的一块空间，而引用只是一个别名；</p>
+<p>2、使用sizeof看一个指针的大小是4，而引用则是被引用对象的大小；</p>
+<p>3、指针可以被初始化为NULL，而引用必须被初始化且必须是一个已有对象的引用；</p>
+<p>4、作为参数传递时，指针需要被解引用才可以对对象进行操作，而直接对引用的修改都会改变引用所指向的对象；</p>
+<p>5、可以有const指针，但是没有const引用；</p>
+<p>6、指针在使用中可以指向其它对象，但是引用只能是一个对象的引用，不能 被改变；</p>
+<p>7、指针可以有多级指针（**p），而引用至于一级；</p>
+<p>8、指针和引用使用++运算符的意义不一样；</p>
+<p>9、如果返回动态内存分配的对象或者内存，必须使用指针，引用可能引起内存泄露。</p>
+<h3 id="13-请你回答一下为什么析构函数必须是虚函数？为什么C-默认的析构函数不是虚函数"><a href="#13-请你回答一下为什么析构函数必须是虚函数？为什么C-默认的析构函数不是虚函数" class="headerlink" title="13.请你回答一下为什么析构函数必须是虚函数？为什么C++默认的析构函数不是虚函数"></a>13.请你回答一下为什么析构函数必须是虚函数？为什么C++默认的析构函数不是虚函数</h3><p>将可能会被继承的父类的析构函数设置为虚函数，可以保证当我们new一个子类，然后使用基类指针指向该子类对象，释放基类指针时可以释放掉子类的空间，防止内存泄漏。</p>
+<p>C++默认的析构函数不是虚函数是因为虚函数需要额外的虚函数表和虚表指针，占用额外的内存。而对于不会被继承的类来说，其析构函数如果是虚函数，就会浪费内存。因此C++默认的析构函数不是虚函数，而是只有当需要当作父类时，设置为虚函数。</p>
+<h3 id="14-请你来说一下函数指针"><a href="#14-请你来说一下函数指针" class="headerlink" title="14.请你来说一下函数指针"></a>14.请你来说一下函数指针</h3><p>参考回答:</p>
+<p>1、定义<br>函数指针是指向函数的指针变量。</p>
+<p>函数指针本身首先是一个指针变量，该指针变量指向一个具体的函数。这正如用指针变量可指向整型变量、字符型、数组一样，这里是指向函数。</p>
+<p>C在编译时，每一个函数都有一个入口地址，该入口地址就是函数指针所指向的地址。有了指向函数的指针变量后，可用该指针变量调用函数，就如同用指针变量可引用其他类型变量一样，在这些概念上是大体一致的。</p>
+<p>2、用途：</p>
+<p>调用函数和做函数的参数，比如回调函数。</p>
+<p>3、示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> * <span class="title">fun</span><span class="params">(<span class="keyword">char</span> * p)</span>  </span>&#123;…&#125;       <span class="comment">// 函数fun</span></span><br><span class="line"><span class="keyword">char</span> * (*pf)(<span class="keyword">char</span> * p);             <span class="comment">// 函数指针pf</span></span><br><span class="line">pf = fun;                        <span class="comment">// 函数指针pf指向函数fun</span></span><br><span class="line">pf(p);                        <span class="comment">// 通过函数指针pf调用函数fun</span></span><br></pre></td></tr></table></figure>
+
+<p>15.请你来说一下fork函数</p>
+<p>参考回答:</p>
+<p>Fork：创建一个和当前进程映像一样的进程可以通过fork( )系统调用：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="keyword">pid_t</span> fork(<span class="keyword">void</span>);</span><br></pre></td></tr></table></figure>
+
+<p>成功调用fork( )会创建一个新的进程，它几乎与调用fork( )的进程一模一样，这两个进程都会继续运行。在子进程中，成功的fork( )调用会返回0。在父进程中fork( )返回子进程的pid。如果出现错误，fork( )返回一个负值。</p>
+<p>最常见的fork( )用法是创建一个新的进程，然后使用exec( )载入二进制映像，替换当前进程的映像。这种情况下，派生（fork）了新的进程，而这个子进程会执行一个新的二进制可执行文件的映像。这种“派生加执行”的方式是很常见的。</p>
+<p>在早期的Unix系统中，创建进程比较原始。当调用fork时，内核会把所有的内部数据结构复制一份，复制进程的页表项，然后把父进程的地址空间中的内容逐页的复制到子进程的地址空间中。但从内核角度来说，逐页的复制方式是十分耗时的。现代的Unix系统采取了更多的优化，例如Linux，采用了写时复制的方法，而不是对父进程空间进程整体复制。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欢迎鼓励!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mingyang Yue 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-基础/" rel="tag"># C++基础</a>
+          
+            <a href="/tags/面试题/" rel="tag"># 面试题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/03/2-QT中互斥与信号量/" rel="next" title="2-QT中互斥与信号量">
+                <i class="fa fa-chevron-left"></i> 2-QT中互斥与信号量
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/04/C-面试题2/" rel="prev" title="C-面试题(2)">
+                C-面试题(2) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1560749363&di=387614ca814079f6a3086e3601a5eef2&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg" alt="Mingyang Yue">
+            
+              <p class="site-author-name" itemprop="name">Mingyang Yue</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/yuemingyang7010" title="GitHub主页" target="_blank">GitHub主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/yuemingyang7010" title="CSDN主页" target="_blank">CSDN主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-为什么标准头文件都有类似以下的结构？"><span class="nav-number">1.</span> <span class="nav-text">1.为什么标准头文件都有类似以下的结构？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-请写一个C函数，若处理器是Big-endian的，则返回0；若是Little-endian的，则返回1"><span class="nav-number">2.</span> <span class="nav-text">2.请写一个C函数，若处理器是Big_endian的，则返回0；若是Little_endian的，则返回1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-说一下C-和C的区别"><span class="nav-number">3.</span> <span class="nav-text">3.说一下C++和C的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-说一说c-中四种cast转换"><span class="nav-number">4.</span> <span class="nav-text">4.说一说c++中四种cast转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-请说一下C-C-中指针和引用的区别？"><span class="nav-number">5.</span> <span class="nav-text">5.请说一下C/C++ 中指针和引用的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-简述智能指针原理"><span class="nav-number">6.</span> <span class="nav-text">6.简述智能指针原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-请你回答一下智能指针有没有内存泄露的情况"><span class="nav-number">7.</span> <span class="nav-text">7.请你回答一下智能指针有没有内存泄露的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-请你来回答一下什么是memory-leak，也就是内存泄漏"><span class="nav-number">8.</span> <span class="nav-text">8.请你来回答一下什么是memory leak，也就是内存泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-请你回答一下如何判断内存泄漏？"><span class="nav-number">9.</span> <span class="nav-text">9.请你回答一下如何判断内存泄漏？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-请回答一下数组和指针的区别"><span class="nav-number">10.</span> <span class="nav-text">10.请回答一下数组和指针的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-请你回答一下野指针是什么？"><span class="nav-number">11.</span> <span class="nav-text">11.请你回答一下野指针是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-请你理解的c-中的引用和指针"><span class="nav-number">12.</span> <span class="nav-text">12.请你理解的c++中的引用和指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-请你回答一下为什么析构函数必须是虚函数？为什么C-默认的析构函数不是虚函数"><span class="nav-number">13.</span> <span class="nav-text">13.请你回答一下为什么析构函数必须是虚函数？为什么C++默认的析构函数不是虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-请你来说一下函数指针"><span class="nav-number">14.</span> <span class="nav-text">14.请你来说一下函数指针</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingyang Yue</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+    <span class="site-uv">
+      本站访问数 <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人数
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量 <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'aKc2tU1wp20XlT9yQMdSn05x-gzGzoHsz',
+        appKey: 'twkLoqUVOTUyJgPUtk1myvof',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
