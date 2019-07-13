@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="1.为什么标准头文件都有类似以下的结构？12345678910#ifndef __INCvxWorksh#define __INCvxWorksh #ifdef __cplusplusextern &quot;C&quot; &amp;#123;#endif /*...*/ #ifdef __cplusplus&amp;#125;#endif #endif /* __INCvxWorksh */  头文件中的编译宏  #ifndef">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-12T09:43:51.765Z">
+<meta property="og:updated_time" content="2019-07-13T06:40:59.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++面试题(1)">
 <meta name="twitter:description" content="1.为什么标准头文件都有类似以下的结构？12345678910#ifndef __INCvxWorksh#define __INCvxWorksh #ifdef __cplusplusextern &quot;C&quot; &amp;#123;#endif /*...*/ #ifdef __cplusplus&amp;#125;#endif #endif /* __INCvxWorksh */  头文件中的编译宏  #ifndef">
@@ -598,15 +598,15 @@
 <p>2、指针：</p>
 <p>指针利用地址，它的值直接指向存在电脑存储器中另一个地方的值。由于通过地址能找到所需的变量单元，可以说，地址指向该变量单元。因此，将地址形象化的称为“指针”。意思是通过它能找到以它为地址的内存单元。</p>
 <p><strong>区别：</strong></p>
-<p>1、指针有自己的一块空间，而引用只是一个别名；</p>
-<p>2、使用sizeof看一个指针的大小是4，而引用则是被引用对象的大小；</p>
-<p>3、指针可以被初始化为NULL，而引用必须被初始化且必须是一个已有对象的引用；</p>
-<p>4、作为参数传递时，指针需要被解引用才可以对对象进行操作，而直接对引用的修改都会改变引用所指向的对象；</p>
-<p>5、可以有const指针，但是没有const引用；</p>
-<p>6、指针在使用中可以指向其它对象，但是引用只能是一个对象的引用，不能 被改变；</p>
-<p>7、指针可以有多级指针（**p），而引用至于一级；</p>
-<p>8、指针和引用使用++运算符的意义不一样；</p>
-<p>9、如果返回动态内存分配的对象或者内存，必须使用指针，引用可能引起内存泄露。</p>
+<p>1)   <strong>指针是一个实体</strong>，需要分配内存空间。引用只是变量的别名，不需要分配内存空间。</p>
+<p>2)   <strong>引用在定义的时候必须进行初始化，并且不能够改变。</strong>指针在定义的时候不一定要初始化，并且指向的空间可变。（注：不能有引用的值不能为NULL）</p>
+<p>3)   <strong>有多级指针，但是没有多级引用</strong>，只能有一级引用。</p>
+<p>4)   <strong>指针和引用的自增运算</strong>结果不一样。（指针是指向下一个空间，引用时引用的变量值加1）</p>
+<p>5)   <strong>sizeof</strong> 引用得到的是所指向的变量（对象）的大小，而sizeof 指针得到的是指针本身的大小。</p>
+<p>6)   <strong>引用访问一个变量是直接访问，而指针访问一个变量是间接访问。</strong></p>
+<p>7)   <strong>使用指针前最好做类型检查</strong>，防止野指针的出现；</p>
+<p>8)   <strong>引用底层是通过指针实现的</strong>；</p>
+<p>9)   作为参数时也不同，传指针的实质是传值，传递的值是指针的地址；传引用的实质是传地址，传递的是变量的地址。</p>
 <h3 id="13-请你回答一下为什么析构函数必须是虚函数？为什么C-默认的析构函数不是虚函数"><a href="#13-请你回答一下为什么析构函数必须是虚函数？为什么C-默认的析构函数不是虚函数" class="headerlink" title="13.请你回答一下为什么析构函数必须是虚函数？为什么C++默认的析构函数不是虚函数"></a>13.请你回答一下为什么析构函数必须是虚函数？为什么C++默认的析构函数不是虚函数</h3><p>将可能会被继承的父类的析构函数设置为虚函数，可以保证当我们new一个子类，然后使用基类指针指向该子类对象，释放基类指针时可以释放掉子类的空间，防止内存泄漏。</p>
 <p>C++默认的析构函数不是虚函数是因为虚函数需要额外的虚函数表和虚表指针，占用额外的内存。而对于不会被继承的类来说，其析构函数如果是虚函数，就会浪费内存。因此C++默认的析构函数不是虚函数，而是只有当需要当作父类时，设置为虚函数。</p>
 <h3 id="14-请你来说一下函数指针"><a href="#14-请你来说一下函数指针" class="headerlink" title="14.请你来说一下函数指针"></a>14.请你来说一下函数指针</h3><p>参考回答:</p>
@@ -692,8 +692,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/04/C-面试题2/" rel="prev" title="C-面试题(2)">
-                C-面试题(2) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/04/C-面试题2/" rel="prev" title="C++面试题(2)">
+                C++面试题(2) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -778,7 +778,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -789,7 +789,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -800,7 +800,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

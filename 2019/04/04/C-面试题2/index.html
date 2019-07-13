@@ -79,15 +79,18 @@
 
 
 
+<meta name="description" content="1.请你来说一下map和set有什么区别，分别又是怎么实现的？参考回答: map和set都是C++的关联容器，其底层实现都是红黑树（RB-Tree）。由于 map 和set所开放的各种操作接口，RB-tree 也都提供了，所以几乎所有的 map 和set的操作行为，都只是转调 RB-tree 的操作行为。 map和set区别在于： （1）map中的元素是key-value（关键字—值）对：关键字起">
 <meta name="keywords" content="C++基础,面试题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C-面试题(2)">
+<meta property="og:title" content="C++面试题(2)">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/04/04/C-面试题2/index.html">
 <meta property="og:site_name" content="yue">
+<meta property="og:description" content="1.请你来说一下map和set有什么区别，分别又是怎么实现的？参考回答: map和set都是C++的关联容器，其底层实现都是红黑树（RB-Tree）。由于 map 和set所开放的各种操作接口，RB-tree 也都提供了，所以几乎所有的 map 和set的操作行为，都只是转调 RB-tree 的操作行为。 map和set区别在于： （1）map中的元素是key-value（关键字—值）对：关键字起">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-12T12:50:29.600Z">
+<meta property="og:updated_time" content="2019-07-13T06:50:34.219Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C-面试题(2)">
+<meta name="twitter:title" content="C++面试题(2)">
+<meta name="twitter:description" content="1.请你来说一下map和set有什么区别，分别又是怎么实现的？参考回答: map和set都是C++的关联容器，其底层实现都是红黑树（RB-Tree）。由于 map 和set所开放的各种操作接口，RB-tree 也都提供了，所以几乎所有的 map 和set的操作行为，都只是转调 RB-tree 的操作行为。 map和set区别在于： （1）map中的元素是key-value（关键字—值）对：关键字起">
 
 
 
@@ -123,7 +126,7 @@
 
 
 
-  <title>C-面试题(2) | yue</title>
+  <title>C++面试题(2) | yue</title>
   
 
 
@@ -309,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C-面试题(2)</h1>
+          <h1 class="post-title" itemprop="name headline">C++面试题(2)</h1>
         
 
         <div class="post-meta">
@@ -396,7 +399,32 @@
       
 
       
-        
+        <h3 id="1-请你来说一下map和set有什么区别，分别又是怎么实现的？"><a href="#1-请你来说一下map和set有什么区别，分别又是怎么实现的？" class="headerlink" title="1.请你来说一下map和set有什么区别，分别又是怎么实现的？"></a>1.请你来说一下map和set有什么区别，分别又是怎么实现的？</h3><p>参考回答:</p>
+<p>map和set都是C++的关联容器，其底层实现都是红黑树（RB-Tree）。由于 map 和set所开放的各种操作接口，RB-tree 也都提供了，所以<strong>几乎所有的 map 和set的操作行为，都只是转调 RB-tree 的操作行为。</strong></p>
+<p>map和set区别在于：</p>
+<p>（1）map中的元素是key-value（关键字—值）对：<strong>关键字起到索引的作用</strong>，值则表示与索引相关联的数据；Set与之相对就是关键字的简单集合，set中每个元素只包含一个关键字。</p>
+<p>（2）<strong>set的迭代器是const的，不允许修改元素的值；map允许修改value，但不允许修改key。</strong>其原因是因为map和set是根据关键字排序来保证其有序性的，如果允许修改key的话，那么首先需要删除该键，然后调节平衡，再插入修改后的键值，调节平衡，如此一来，严重破坏了map和set的结构，导致iterator失效，不知道应该指向改变前的位置，还是指向改变后的位置。所以STL中将set的迭代器设置成const，不允许修改迭代器的值；而map的迭代器则不允许修改key值，允许修改value值。</p>
+<p>（3）<strong>map支持下标操作，set不支持下标操作。map可以用key做下标，map的下标运算符[ ]将关键码作为下标去执行查找</strong>，如果关键码不存在，则插入一个具有该关键码和mapped_type类型默认值的元素至map中，因此下标运算符[ ]在map应用中需要慎用，const_map不能用，只希望确定某一个关键值是否存在而不希望插入元素时也不应该使用，mapped_type类型没有默认值也不应该使用。如果find能解决需要，尽可能用find。</p>
+<h3 id="2-请你来说一下C-中struct和class的区别"><a href="#2-请你来说一下C-中struct和class的区别" class="headerlink" title="2.请你来说一下C++中struct和class的区别"></a>2.请你来说一下C++中struct和class的区别</h3><p>在C++中，可以用struct和class定义类，都可以继承。区别在于：structural的默认继承权限和默认访问权限是public，而class的默认继承权限和默认访问权限是private。<br>另外，class还可以定义模板类形参，比如template &lt;class T, int i&gt;。</p>
+<h3 id="3-请你来说一下一个C-源文件从文本到可执行文件经历的过程？"><a href="#3-请你来说一下一个C-源文件从文本到可执行文件经历的过程？" class="headerlink" title="3.请你来说一下一个C++源文件从文本到可执行文件经历的过程？"></a>3.请你来说一下一个C++源文件从文本到可执行文件经历的过程？</h3><p>对于C++源文件，从文本到可执行文件一般需要四个过程：<br>预处理阶段：对源代码文件中<strong>文件包含关系（头文件）、预编译语句（宏定义）进行分析和替换，生成预编译文件。</strong></p>
+<p>编译阶段：将经过预处理后的预编译文件转换成特定汇编代码，<strong>生成汇编文件</strong></p>
+<p>汇编阶段：将编译阶段生成的<strong>汇编文件转化成机器码，生成可重定位目标文件</strong></p>
+<p>链接阶段：将<strong>多个目标文件及所需要的库连接</strong>成最终的<strong>可执行目标文件</strong></p>
+<h3 id="4-请你来回答一下include头文件的顺序以及双引号””和尖括号-lt-gt-的区别？"><a href="#4-请你来回答一下include头文件的顺序以及双引号””和尖括号-lt-gt-的区别？" class="headerlink" title="4.请你来回答一下include头文件的顺序以及双引号””和尖括号&lt;&gt;的区别？"></a>4.请你来回答一下include头文件的顺序以及双引号””和尖括号&lt;&gt;的区别？</h3><p>Include头文件的顺序：对于include的头文件来说，如果在文件a.h中声明一个在文件b.h中定义的变量，而不引用b.h。那么要在a.c文件中引用b.h文件，并且要先引用b.h，后引用a.h,否则汇报变量类型未声明错误。</p>
+<p>双引号和尖括号的区别：编译器预处理阶段查找头文件的路径不一样。</p>
+<p>对于使用<strong>双引号包含的头文件</strong>，查找头文件路径的顺序为：</p>
+<p>（1）当前头文件目录</p>
+<p>（2）编译器设置的头文件路径（编译器可使用-I显式指定搜索路径）</p>
+<p>（3）系统变量CPLUS_INCLUDE_PATH/C_INCLUDE_PATH指定的头文件路径</p>
+<p>对于使用<strong>尖括号包含的头文件</strong>，查找头文件的路径顺序为：</p>
+<p>（1）编译器设置的头文件路径（编译器可使用-I显式指定搜索路径）</p>
+<p>（2）系统变量CPLUS_INCLUDE_PATH/C_INCLUDE_PATH指定的头文件路径</p>
+<h3 id="5-请你回答一下malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？"><a href="#5-请你回答一下malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？" class="headerlink" title="5.请你回答一下malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？"></a>5.请你回答一下malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？</h3><p>Malloc函数用于动态分配内存。为了减少内存碎片和系统调用的开销，<strong>malloc其采用内存池的方式，先申请大块内存作为堆区，然后将堆区分为多个内存块，以块作为内存管理的基本单位。</strong>当用户申请内存时，直接从堆区分配一块合适的空闲块。Malloc采用隐式链表结构将堆区分成连续的、大小不一的块，包含已分配块和未分配块；同时malloc采用显示链表结构来管理所有的空闲块，即使用一个双向链表将空闲块连接起来，每一个空闲块记录了一个连续的、未分配的地址。</p>
+<p>当进行内存分配时，Malloc会通过隐式链表遍历所有的空闲块，选择满足要求的块进行分配；当进行内存合并时，malloc采用边界标记法，根据每个块的前后块是否已经分配来决定是否进行块合并。</p>
+<p><strong>Malloc在申请内存时，一般会通过brk或者mmap系统调用进行申请。其中当申请内存小于128K时，会使用系统函数brk在堆区中分配；而当申请内存大于128K时，会使用系统函数mmap在映射区分配。</strong></p>
+<h3 id="6-请你来说一下什么时候会发生段错误"><a href="#6-请你来说一下什么时候会发生段错误" class="headerlink" title="6.请你来说一下什么时候会发生段错误"></a>6.请你来说一下什么时候会发生段错误</h3><p>段错误通常发生在访问非法内存地址的时候，具体来说分为以下几种情况：<br>使用野指针</p>
+<p>试图修改字符串常量的内容</p>
+
       
     </div>
     
@@ -521,8 +549,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -539,7 +576,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -550,7 +587,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -561,7 +598,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -602,6 +639,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-请你来说一下map和set有什么区别，分别又是怎么实现的？"><span class="nav-number">1.</span> <span class="nav-text">1.请你来说一下map和set有什么区别，分别又是怎么实现的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-请你来说一下C-中struct和class的区别"><span class="nav-number">2.</span> <span class="nav-text">2.请你来说一下C++中struct和class的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-请你来说一下一个C-源文件从文本到可执行文件经历的过程？"><span class="nav-number">3.</span> <span class="nav-text">3.请你来说一下一个C++源文件从文本到可执行文件经历的过程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-请你来回答一下include头文件的顺序以及双引号””和尖括号-lt-gt-的区别？"><span class="nav-number">4.</span> <span class="nav-text">4.请你来回答一下include头文件的顺序以及双引号””和尖括号&lt;&gt;的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-请你回答一下malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？"><span class="nav-number">5.</span> <span class="nav-text">5.请你回答一下malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-请你来说一下什么时候会发生段错误"><span class="nav-number">6.</span> <span class="nav-text">6.请你来说一下什么时候会发生段错误</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

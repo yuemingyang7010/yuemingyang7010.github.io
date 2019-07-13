@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="中断与异常  进程与线程1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P2，接着Pl执行下一条语句输出一个”-“（其实是放入缓冲区，等合适的时候再输出，我们将此’-‘记为a）； P2成为一个独立的子进程，继承P1的诸如环境变量、PC等环境，P2也执行下一条语句输出一个’-‘（其实是放入缓冲区，等合适的时候再">
+<meta name="description" content="中断与异常  进程与线程0.重点梳理★★★ 进程与线程的本质区别、以及各自的使用场景。 ★★★ 进程调度算法的特点以及使用场景。 ★★★ 进程通信方法的特点以及使用场景。 ★★☆ 协程的作用。★★☆ 常见进程同步问题。 ★☆☆ 进程状态。 ★☆☆ 线程实现的方式。 1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统-进程管理">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="中断与异常  进程与线程1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P2，接着Pl执行下一条语句输出一个”-“（其实是放入缓冲区，等合适的时候再输出，我们将此’-‘记为a）； P2成为一个独立的子进程，继承P1的诸如环境变量、PC等环境，P2也执行下一条语句输出一个’-‘（其实是放入缓冲区，等合适的时候再">
+<meta property="og:description" content="中断与异常  进程与线程0.重点梳理★★★ 进程与线程的本质区别、以及各自的使用场景。 ★★★ 进程调度算法的特点以及使用场景。 ★★★ 进程通信方法的特点以及使用场景。 ★★☆ 协程的作用。★★☆ 常见进程同步问题。 ★☆☆ 进程状态。 ★☆☆ 线程实现的方式。 1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/12.jpg">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/13.jpg">
@@ -97,10 +97,10 @@
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/11.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/07.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/08.png">
-<meta property="og:updated_time" content="2019-06-24T15:07:14.918Z">
+<meta property="og:updated_time" content="2019-07-13T09:02:36.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统-进程管理">
-<meta name="twitter:description" content="中断与异常  进程与线程1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P2，接着Pl执行下一条语句输出一个”-“（其实是放入缓冲区，等合适的时候再输出，我们将此’-‘记为a）； P2成为一个独立的子进程，继承P1的诸如环境变量、PC等环境，P2也执行下一条语句输出一个’-‘（其实是放入缓冲区，等合适的时候再">
+<meta name="twitter:description" content="中断与异常  进程与线程0.重点梳理★★★ 进程与线程的本质区别、以及各自的使用场景。 ★★★ 进程调度算法的特点以及使用场景。 ★★★ 进程通信方法的特点以及使用场景。 ★★☆ 协程的作用。★★☆ 常见进程同步问题。 ★☆☆ 进程状态。 ★☆☆ 线程实现的方式。 1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子">
 <meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/12.jpg">
 
 
@@ -423,7 +423,13 @@
       
         <h1 id="中断与异常"><a href="#中断与异常" class="headerlink" title="中断与异常"></a>中断与异常</h1><img src="/2019/03/20/操作系统-进程管理/12.jpg">
 
-<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><h2 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h2><img src="/2019/03/20/操作系统-进程管理/13.jpg">
+<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><h3 id="0-重点梳理"><a href="#0-重点梳理" class="headerlink" title="0.重点梳理"></a>0.重点梳理</h3><p>★★★ 进程与线程的本质区别、以及各自的使用场景。</p>
+<p>★★★ 进程调度算法的特点以及使用场景。</p>
+<p>★★★ 进程通信方法的特点以及使用场景。</p>
+<p>★★☆ 协程的作用。<br>★★☆ 常见进程同步问题。</p>
+<p>★☆☆ 进程状态。</p>
+<p>★☆☆ 线程实现的方式。</p>
+<h2 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h2><img src="/2019/03/20/操作系统-进程管理/13.jpg">
 
 <img src="/2019/03/20/操作系统-进程管理/09.png">
 
@@ -522,6 +528,10 @@
 <p><font size="3"> <strong>使用管程实现生产者-消费者问题</strong> </font><br></p>
 <figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 管程</span></span><br><span class="line">monitor ProducerConsumer</span><br><span class="line">    condition full, empty;</span><br><span class="line">    integer count := <span class="number">0</span>;</span><br><span class="line">    condition c;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">insert</span><span class="params">(item: integer)</span>;</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> count = N <span class="keyword">then</span> wait(full);</span><br><span class="line">        insert_item(item);</span><br><span class="line">        count := count + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> count = <span class="number">1</span> <span class="keyword">then</span> signal(empty);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">remove</span>:</span> integer;</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> count = <span class="number">0</span> <span class="keyword">then</span> wait(empty);</span><br><span class="line">        remove = remove_item;</span><br><span class="line">        count := count - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> count = N -<span class="number">1</span> <span class="keyword">then</span> signal(full);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span> monitor;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生产者客户端</span></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">producer</span></span></span><br><span class="line"><span class="function"><span class="title">begin</span></span></span><br><span class="line"><span class="function">    <span class="title">while</span> <span class="title">true</span> <span class="title">do</span></span></span><br><span class="line"><span class="function">    <span class="title">begin</span></span></span><br><span class="line"><span class="function">        <span class="title">item</span> = <span class="title">produce_item</span>;</span></span><br><span class="line">        ProducerConsumer.insert(item);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 消费者客户端</span></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">consumer</span></span></span><br><span class="line"><span class="function"><span class="title">begin</span></span></span><br><span class="line"><span class="function">    <span class="title">while</span> <span class="title">true</span> <span class="title">do</span></span></span><br><span class="line"><span class="function">    <span class="title">begin</span></span></span><br><span class="line"><span class="function">        <span class="title">item</span> = <span class="title">ProducerConsumer</span>.<span class="title">remove</span>;</span></span><br><span class="line">        consume_item(item);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
 
+<h1 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h1><p>临界区：通过多线程的串行化来访问公共资源或一段代码，速度快，<strong>适合控制数据访问；</strong></p>
+<p>互斥量Synchronized/Lock：采用互斥对象机制，只有拥有互斥对象的线程才有访问公共资源的权限。因为互斥对象只有一个，所以<strong>可以保证公共资源不会被多个线程同时访问</strong></p>
+<p>信号量Semphare：为控制具有有限数量的用户资源而设计的，<strong>它允许多个线程在同一时刻去访问同一个资源，但一般需要限制同一时刻访问此资源的最大线程数目。</strong></p>
+<p>事件(信号)，Wait/Notify：<strong>通过通知操作的方式来保持多线程同步</strong>，还可以方便的实现多线程优先级的比较操作</p>
 <h1 id="经典同步问题"><a href="#经典同步问题" class="headerlink" title="经典同步问题"></a>经典同步问题</h1><p>生产者和消费者问题前面已经讨论过了。</p>
 <h2 id="1-读者-写者问题"><a href="#1-读者-写者问题" class="headerlink" title="1. 读者-写者问题"></a>1. 读者-写者问题</h2><p><strong>允许多个进程同时对数据进行读操作，但是不允许读和写以及写和写操作同时发生。</strong></p>
 <p>一个整型变量 count 记录在对数据进行读操作的进程数量，一个互斥量 count_mutex 用于对 count 加锁，一个互斥量 data_mutex 用于对读写的数据加锁。</p>
@@ -573,6 +583,20 @@
 <p>需要使用信号量用来同步对共享存储的访问。</p>
 <p>多个进程可以将同一个文件映射到它们的地址空间从而实现共享内存。另外 XSI 共享内存不是使用文件，而是使用内存的匿名段。</p>
 <h2 id="6-套接字"><a href="#6-套接字" class="headerlink" title="6. 套接字"></a>6. 套接字</h2><p>与其它通信机制不同的是，它可用于不同机器间的进程通信。</p>
+<h1 id="协程是什么"><a href="#协程是什么" class="headerlink" title="协程是什么"></a>协程是什么</h1><p>1) 是<strong>一种比线程更加轻量级的存在</strong>。正如一个进程可以拥有多个线程一样，<strong>一个线程可以拥有多个协程</strong>；协程不是被操作系统内核管理，而完全是由程序所控制。</p>
+<p>2) <strong>协程的开销远远小于线程；</strong></p>
+<p>3) 协程拥有自己寄存器上下文和栈。协程调度切换时，将寄存器上下文和栈保存到其他地方，在切换回来的时候，恢复先前保存的寄存器上下文和栈。</p>
+<p>4) 每个协程表示一个执行单元，有自己的本地数据，与其他协程共享全局数据和其他资源。</p>
+<p>5) <strong>跨平台、跨体系架构、无需线程上下文切换的开销、方便切换控制流，简化编程模型</strong>；</p>
+<p>6) 协程又称为微线程，协程的完成主要靠yeild关键字，协程执行过程中，在子程序内部可中断，然后转而执行别的子程序，在适当的时候再返回来接着执行；</p>
+<p>7) <strong>协程极高的执行效率，和多线程相比，线程数量越多，协程的性能优势就越明显；</strong></p>
+<p>8) <strong>不需要多线程的锁机制；</strong></p>
+<h1 id="孤儿进程和僵尸进程的区别？怎么避免这两类进程？守护进程？"><a href="#孤儿进程和僵尸进程的区别？怎么避免这两类进程？守护进程？" class="headerlink" title="孤儿进程和僵尸进程的区别？怎么避免这两类进程？守护进程？"></a>孤儿进程和僵尸进程的区别？怎么避免这两类进程？守护进程？</h1><p>1、 一般情况下，<strong>子进程是由父进程创建</strong>，而子进程和父进程的退出是无顺序的，两者之间都不知道谁先退出。正常情况下<strong>父进程先结束会调用 wait 或者 waitpid 函数等待子进程完成再退出，而一旦父进程不等待直接退出，则剩下的子进程会被init(pid=1)进程接收，成会孤儿进程。</strong>（进程树中除了init都会有父进程）。</p>
+<p>2、 <strong>如果子进程先退出了，父进程还未结束并且没有调用 wait 或者 waitpid 函数获取子进程的状态信息，则子进程残留的状态信息（ task_struct 结构和少量资源信息）会变成僵尸进程。</strong></p>
+<p><strong>僵尸处理方式：</strong></p>
+<p><strong>子进程退出时向父进程发送SIGCHILD信号</strong>，父进程处理SIGCHILD信号。在信号处理函数中调用wait进行处理僵尸进程。</p>
+<p>原理是将子进程成为孤儿进程，从而其的父进程变为init进程，通过init进程可以处理僵尸进程。</p>
+<p>3、 <strong>守护进程（ daemon) 是指在后台运行，没有控制终端与之相连的进程。</strong>它独立于控制终端，通常周期性地执行某种任务 。守护进程脱离于终端是为了避免进程在执行过程中的信息在任何终端上显示并且进程也不会被任何终端所产生的终端信息所打断。</p>
 <p><a href="https://cyc2018.github.io/CS-Notes/#/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86" target="_blank" rel="noopener">参考github资料</a></p>
 
       
@@ -628,8 +652,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/20/Shell编程四剑客/" rel="next" title="Shell编程四剑客">
-                <i class="fa fa-chevron-left"></i> Shell编程四剑客
+              <a href="/2019/03/19/Shell/" rel="next" title="Shell">
+                <i class="fa fa-chevron-left"></i> Shell
               </a>
             
           </div>
@@ -638,8 +662,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/20/Linux/" rel="prev" title="Linux">
-                Linux <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/20/Shell编程四剑客/" rel="prev" title="Shell编程四剑客">
+                Shell编程四剑客 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -724,7 +748,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -735,7 +759,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -746,7 +770,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -797,7 +821,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中断与异常"><span class="nav-number">1.</span> <span class="nav-text">中断与异常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程与线程"><span class="nav-number">2.</span> <span class="nav-text">进程与线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程"><span class="nav-number">2.1.</span> <span class="nav-text">1. 进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-线程"><span class="nav-number">2.2.</span> <span class="nav-text">2. 线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-区别"><span class="nav-number">2.3.</span> <span class="nav-text">3. 区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程状态的切换"><span class="nav-number">3.</span> <span class="nav-text">进程状态的切换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程调度算法"><span class="nav-number">4.</span> <span class="nav-text">进程调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-练习"><span class="nav-number">4.1.</span> <span class="nav-text">2.练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程同步"><span class="nav-number">5.</span> <span class="nav-text">进程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-临界区"><span class="nav-number">5.1.</span> <span class="nav-text">1. 临界区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-同步与互斥"><span class="nav-number">5.2.</span> <span class="nav-text">2. 同步与互斥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-信号量"><span class="nav-number">5.3.</span> <span class="nav-text">3. 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-管程"><span class="nav-number">5.4.</span> <span class="nav-text">4. 管程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典同步问题"><span class="nav-number">6.</span> <span class="nav-text">经典同步问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-读者-写者问题"><span class="nav-number">6.1.</span> <span class="nav-text">1. 读者-写者问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-哲学家进餐问题"><span class="nav-number">6.2.</span> <span class="nav-text">2. 哲学家进餐问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程通信"><span class="nav-number">7.</span> <span class="nav-text">进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-管道"><span class="nav-number">7.1.</span> <span class="nav-text">1. 管道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-FIFO"><span class="nav-number">7.2.</span> <span class="nav-text">2. FIFO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-消息队列"><span class="nav-number">7.3.</span> <span class="nav-text">3. 消息队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-信号量"><span class="nav-number">7.4.</span> <span class="nav-text">4. 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-共享存储"><span class="nav-number">7.5.</span> <span class="nav-text">5. 共享存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-套接字"><span class="nav-number">7.6.</span> <span class="nav-text">6. 套接字</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中断与异常"><span class="nav-number">1.</span> <span class="nav-text">中断与异常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程与线程"><span class="nav-number">2.</span> <span class="nav-text">进程与线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-重点梳理"><span class="nav-number">2.0.1.</span> <span class="nav-text">0.重点梳理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程"><span class="nav-number">2.1.</span> <span class="nav-text">1. 进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-线程"><span class="nav-number">2.2.</span> <span class="nav-text">2. 线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-区别"><span class="nav-number">2.3.</span> <span class="nav-text">3. 区别</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#进程状态的切换"><span class="nav-number">3.</span> <span class="nav-text">进程状态的切换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程调度算法"><span class="nav-number">4.</span> <span class="nav-text">进程调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-练习"><span class="nav-number">4.1.</span> <span class="nav-text">2.练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程同步"><span class="nav-number">5.</span> <span class="nav-text">进程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-临界区"><span class="nav-number">5.1.</span> <span class="nav-text">1. 临界区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-同步与互斥"><span class="nav-number">5.2.</span> <span class="nav-text">2. 同步与互斥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-信号量"><span class="nav-number">5.3.</span> <span class="nav-text">3. 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-管程"><span class="nav-number">5.4.</span> <span class="nav-text">4. 管程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程同步"><span class="nav-number">6.</span> <span class="nav-text">线程同步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典同步问题"><span class="nav-number">7.</span> <span class="nav-text">经典同步问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-读者-写者问题"><span class="nav-number">7.1.</span> <span class="nav-text">1. 读者-写者问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-哲学家进餐问题"><span class="nav-number">7.2.</span> <span class="nav-text">2. 哲学家进餐问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程通信"><span class="nav-number">8.</span> <span class="nav-text">进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-管道"><span class="nav-number">8.1.</span> <span class="nav-text">1. 管道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-FIFO"><span class="nav-number">8.2.</span> <span class="nav-text">2. FIFO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-消息队列"><span class="nav-number">8.3.</span> <span class="nav-text">3. 消息队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-信号量"><span class="nav-number">8.4.</span> <span class="nav-text">4. 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-共享存储"><span class="nav-number">8.5.</span> <span class="nav-text">5. 共享存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-套接字"><span class="nav-number">8.6.</span> <span class="nav-text">6. 套接字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协程是什么"><span class="nav-number">9.</span> <span class="nav-text">协程是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#孤儿进程和僵尸进程的区别？怎么避免这两类进程？守护进程？"><span class="nav-number">10.</span> <span class="nav-text">孤儿进程和僵尸进程的区别？怎么避免这两类进程？守护进程？</span></a></li></div>
             
 
           </div>
