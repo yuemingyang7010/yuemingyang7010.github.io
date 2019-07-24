@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/19/计算机网络-传输层/05.jpg">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/19/计算机网络-传输层/06.jpg">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/19/计算机网络-传输层/07.png">
-<meta property="og:updated_time" content="2019-06-22T09:24:01.032Z">
+<meta property="og:updated_time" content="2019-07-21T15:15:56.203Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络-传输层">
 <meta name="twitter:description" content="网络层只把分组发送到目的主机，但是真正通信的并不是主机而是主机中的进程。传输层提供了进程间的逻辑通信，传输层向高层用户屏蔽了下面网络层的核心细节，使应用程序看起来像是在两个传输层实体之间有一条端到端的逻辑通信信道。 UDP 和 TCP 的特点 用户数据报协议 UDP（User Datagram Protocol）是无连接的，尽最大可能交付，没有拥塞控制，面向报文（对于应用程序传下来的报文不合并也不">
@@ -495,11 +495,12 @@
 </ul>
 <h1 id="TCP-滑动窗口"><a href="#TCP-滑动窗口" class="headerlink" title="TCP 滑动窗口"></a>TCP 滑动窗口</h1><p>窗口是缓存的一部分，用来暂时存放字节流。发送方和接收方各有一个窗口，接收方通过 TCP 报文段中的窗口字段告诉发送方自己的窗口大小，发送方根据这个值和其它信息设置自己的窗口大小。</p>
 <p>发送窗口内的字节都允许被发送，接收窗口内的字节都允许被接收。如果发送窗口左部的字节已经发送并且收到了确认，那么就将发送窗口向右滑动一定距离，直到左部第一个字节不是已发送并且已确认的状态；接收窗口的滑动类似，接收窗口左部字节已经发送确认并交付主机，就向右滑动接收窗口。</p>
-<p>接收窗口只会对窗口内最后一个按序到达的字节进行确认，例如接收窗口已经收到的字节为 {31, 34, 35}，其中 {31} 按序到达，而 {34, 35} 就不是，因此只对字节 31 进行确认。发送方得到一个字节的确认之后，就知道这个字节之前的所有字节都已经被接收。</p>
+<p>接收窗口只会对窗口内最后一个按序到达的字节进行确认，例如接收窗口已经收到的字节为 {31, 34, 35}，其中 {31} 按序到达，而 {34, 35} 就不是，因此只对字节 32进行确认。发送方得到一个字节的确认之后，就知道这个字节之前的所有字节都已经被接收。</p>
+<p><strong>(累计确认，加快传输速度)</strong></p>
 <img src="/2019/03/19/计算机网络-传输层/05.jpg">
 
-<h1 id="TCP-流量控制"><a href="#TCP-流量控制" class="headerlink" title="TCP 流量控制"></a>TCP 流量控制</h1><p>流量控制是为了控制发送方发送速率，保证接收方来得及接收。</p>
-<p>接收方发送的确认报文中的窗口字段可以用来控制发送方窗口大小，从而影响发送方的发送速率。将窗口字段设置为 0，则发送方不能发送数据。</p>
+<h1 id="TCP-流量控制"><a href="#TCP-流量控制" class="headerlink" title="TCP 流量控制"></a>TCP 流量控制</h1><p>流量控制是<strong>为了控制发送方发送速率，保证接收方来得及接收。</strong></p>
+<p><strong>接收方发送的确认报文中的窗口字段可以用来控制发送方窗口大小，从而影响发送方的发送速率。将窗口字段设置为 0，则发送方不能发送数据。</strong></p>
 <h1 id="TCP-拥塞控制"><a href="#TCP-拥塞控制" class="headerlink" title="TCP 拥塞控制"></a>TCP 拥塞控制</h1><p>如果网络出现拥塞，分组将会丢失，此时发送方会继续重传，从而导致网络拥塞程度更高。因此当出现拥塞时，应当控制发送方的速率。这一点和流量控制很像，但是出发点不同。流量控制是为了让接收方能来得及接收，而拥塞控制是为了降低整个网络的拥塞程度。</p>
 <img src="/2019/03/19/计算机网络-传输层/06.jpg">
 
@@ -678,7 +679,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

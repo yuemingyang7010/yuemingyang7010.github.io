@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据库,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文主要参考博客 对于磁道、扇区和磁盘块的理解1 对于磁道、扇区和磁盘块的理解2 磁盘I/O原理扇区与磁盘块(block)的区别磁盘在物理层面上分为磁道，扇区（通常大小为512K），磁盘驱动器操作磁盘数据，硬盘的最小存储单位是扇区，硬盘本身没有block的概念。 文件系统： 文件系统若按照一个扇区一个扇区读数据速度太慢，所以有了block（磁盘块）的概念，是一个块一个块读取的，block才是文件存">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL中的索引">
+<meta property="og:url" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/index.html">
+<meta property="og:site_name" content="yue">
+<meta property="og:description" content="本文主要参考博客 对于磁道、扇区和磁盘块的理解1 对于磁道、扇区和磁盘块的理解2 磁盘I/O原理扇区与磁盘块(block)的区别磁盘在物理层面上分为磁道，扇区（通常大小为512K），磁盘驱动器操作磁盘数据，硬盘的最小存储单位是扇区，硬盘本身没有block的概念。 文件系统： 文件系统若按照一个扇区一个扇区读数据速度太慢，所以有了block（磁盘块）的概念，是一个块一个块读取的，block才是文件存">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/04.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/05.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/06.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/08.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/09.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/10.png">
+<meta property="og:updated_time" content="2019-07-24T10:32:31.628Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL中的索引">
+<meta name="twitter:description" content="本文主要参考博客 对于磁道、扇区和磁盘块的理解1 对于磁道、扇区和磁盘块的理解2 磁盘I/O原理扇区与磁盘块(block)的区别磁盘在物理层面上分为磁道，扇区（通常大小为512K），磁盘驱动器操作磁盘数据，硬盘的最小存储单位是扇区，硬盘本身没有block的概念。 文件系统： 文件系统若按照一个扇区一个扇区读数据速度太慢，所以有了block（磁盘块）的概念，是一个块一个块读取的，block才是文件存">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/">
+
+
+
+
+
+  <title>MySQL中的索引 | yue</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yue</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mingyang Yue">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL中的索引</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-24T16:28:27+08:00">
+                2019-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/24/MySQL中的索引/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/24/MySQL中的索引/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://www.cnblogs.com/xiaoxi/p/6894610.html?utm_source=itdadao&utm_medium=referral" target="_blank" rel="noopener">本文主要参考博客</a></p>
+<p><a href="https://blog.csdn.net/q503267755/article/details/50791794" target="_blank" rel="noopener">对于磁道、扇区和磁盘块的理解1</a></p>
+<p><a href="https://www.cnblogs.com/yi-mu-xi/p/10939612.html" target="_blank" rel="noopener">对于磁道、扇区和磁盘块的理解2</a></p>
+<h2 id="磁盘I-O原理"><a href="#磁盘I-O原理" class="headerlink" title="磁盘I/O原理"></a>磁盘I/O原理</h2><h3 id="扇区与磁盘块-block-的区别"><a href="#扇区与磁盘块-block-的区别" class="headerlink" title="扇区与磁盘块(block)的区别"></a>扇区与磁盘块(block)的区别</h3><p><strong>磁盘在物理层面上分为磁道，扇区</strong>（通常大小为512K），磁盘驱动器操作磁盘数据，硬盘的最小存储单位是扇区，硬盘本身没有block的概念。</p>
+<p><strong>文件系统：</strong></p>
+<p>文件系统若按照一个扇区一个扇区读数据速度太慢，所以有了<strong>block（磁盘块）</strong>的概念，是一个块一个块读取的，block才是文件存取的最小单位。通常一个block是4K，该文件系统中1个块是由连续的8个扇区组成。一个块大小=一个扇区大小*2的n次方。N是可以修改的。</p>
+<p><strong>总结：扇区是对硬盘而言，块是对文件系统而言。</strong></p>
+<p>索引是帮助MySQL高效获取数据的排好序的数据结构</p>
+<h2 id="二、B-Tree（平衡多路查找树）"><a href="#二、B-Tree（平衡多路查找树）" class="headerlink" title="二、B-Tree（平衡多路查找树）"></a><strong>二、B-Tree（平衡多路查找树）</strong></h2><p>B-Tree是为磁盘等外存储设备设计的一种平衡查找树。因此在讲B-Tree之前先了解下磁盘的相关知识。</p>
+<p>系统从磁盘读取数据到内存时是以磁盘块（block）为基本单位的，位于同一个磁盘块中的数据会被一次性读取出来，而不是需要什么取什么。</p>
+<p><strong>InnoDB存储引擎中有页（Page）的概念，页是其磁盘管理的最小单位。InnoDB存储引擎中默认每个页的大小为16KB，可通过参数innodb_page_size将页的大小设置为4K、8K、16K，在MySQL中可通过如下命令查看页的大小（可以将其设置为4K）：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like &apos;innodb_page_size&apos;;</span><br></pre></td></tr></table></figure>
+
+<p>而系统一个磁盘块的存储空间往往没有这么大，因此InnoDB每次申请磁盘空间时都会是若干地址连续磁盘块来达到页的大小16KB。InnoDB在把磁盘数据读入到内存时会以页为基本单位，在查询数据时如果一个页中的每条数据都能有助于定位数据记录的位置，这将会减少磁盘I/O次数，提高查询效率。</p>
+<p>B-Tree结构的数据可以让系统高效的找到数据所在的磁盘块。为了描述B-Tree，首先定义一条记录为一个二元组[key, data] ，key为记录的键值，对应表中的主键值，data为一行记录中除主键外的数据。对于不同的记录，key值互不相同。</p>
+<p><strong>一棵m阶的B-Tree有如下特性：</strong> </p>
+<ol>
+<li>每个节点最多有m个孩子。 </li>
+<li>除了根节点和叶子节点外，其它每个节点至少有Ceil(m/2)个孩子。 </li>
+<li>若根节点不是叶子节点，则至少有2个孩子。</li>
+<li>所有叶子节点都在同一层，且不包含其它关键字信息。 </li>
+<li>每个非终端节点包含n个关键字信息（P0,P1,…Pn, k1,…kn） </li>
+<li>关键字的个数n满足：ceil(m/2)-1 &lt;= n &lt;= m-1 </li>
+<li>ki(i=1,…n)为关键字，且关键字升序排序。 </li>
+<li>Pi(i=1,…n)为指向子树根节点的指针。P(i-1)指向的子树的所有节点关键字均小于ki，但都大于k(i-1)。</li>
+</ol>
+<p>B-Tree中的每个节点根据实际情况可以包含大量的关键字信息和分支，如下图所示为一个3阶的B-Tree：</p>
+<img src="/2019/07/24/MySQL中的索引/01.png">
+
+<p>两个关键词划分成的三个范围域对应三个指针指向的子树的数据的范围域。以根节点为例，关键字为17和35，P1指针指向的子树的数据范围为小于17，P2指针指向的子树的数据范围为17~35，P3指针指向的子树的数据范围为大于35。</p>
+<p>模拟查找关键字29的过程：</p>
+<p>根据根节点找到磁盘块1，读入内存。【磁盘I/O操作第1次】<br>比较关键字29在区间（17,35），找到磁盘块1的指针P2。<br>根据P2指针找到磁盘块3，读入内存。【磁盘I/O操作第2次】<br>比较关键字29在区间（26,30），找到磁盘块3的指针P2。<br>根据P2指针找到磁盘块8，读入内存。【磁盘I/O操作第3次】<br>在磁盘块8中的关键字列表中找到关键字29。</p>
+<p>分析上面过程，发现需要<strong>3次磁盘I/O操作，和3次内存查找操作。</strong>由于内存中的关键字是一个有序表结构，<strong>可以利用二分法查找提高效率</strong>。而<strong><u>3次磁盘I/O操作是影响整个B-Tree查找效率的决定因素</u></strong>。B-Tree相对于AVLTree缩减了节点个数，使每次磁盘I/O取到内存的数据都发挥了作用，从而提高了查询效率。</p>
+<h2 id="三、B-Tree"><a href="#三、B-Tree" class="headerlink" title="三、B+Tree"></a><strong>三、B+Tree</strong></h2><p>B+Tree是在B-Tree基础上的一种优化，使其更适合实现外存储索引结构，InnoDB存储引擎就是用B+Tree实现其索引结构。</p>
+<p>从上一节中的B-Tree结构图中可以看到每个节点中不仅包含数据的key值，还有data值。而每一个页的存储空间是有限的，如果data数据较大时将会导致每个节点（即一个页）能存储的key的数量很小，当存储的数据量很大时同样会导致B-Tree的深度较大，增大查询时的磁盘I/O次数，进而影响查询效率。<strong>在B+Tree中，所有数据记录节点都是按照键值大小顺序存放在同一层的叶子节点上，而非叶子节点上只存储key值信息</strong>，这样可以大大加大每个节点存储的key值数量，降低B+Tree的高度。</p>
+<p><strong>B+Tree相对于B-Tree有几点不同：</strong></p>
+<ol>
+<li>非叶子节点只存储键值信息。</li>
+<li>所有叶子节点之间都有一个链指针。</li>
+<li>数据记录都存放在叶子节点中。</li>
+</ol>
+<p>将上一节中的B-Tree优化，由于B+Tree的非叶子节点只存储键值信息，假设每个磁盘块能存储4个键值及指针信息，则变成B+Tree后其结构如下图所示：</p>
+<img src="/2019/07/24/MySQL中的索引/02.png">
+
+<p>通常在B+Tree上有两个头指针，一个指向根节点，另一个指向关键字最小的叶子节点，而且所有叶子节点（即数据节点）之间是一种链式环结构。因此可以对B+Tree进行两种查找运算：一种是对于主键的范围查找和分页查找，另一种是从根节点开始，进行随机查找。</p>
+<h2 id="四、为什么使用B-Tree（B-Tree）"><a href="#四、为什么使用B-Tree（B-Tree）" class="headerlink" title="四、为什么使用B-Tree（B+Tree）"></a>四、为什么使用B-Tree（B+Tree）</h2><p>一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I/O消耗，相对于内存存取，I/O存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是要尽量减少查找过程中磁盘I/O的存取次数。</p>
+<h3 id="磁盘存取原理"><a href="#磁盘存取原理" class="headerlink" title="磁盘存取原理"></a><strong>磁盘存取原理</strong></h3><p>​      上面说过，索引一般以文件形式存储在磁盘上，索引检索需要磁盘I/O操作。与主存不同，磁盘I/O存在机械运动耗费，因此磁盘I/O的时间消耗是巨大的。</p>
+<p>​      下图是磁盘的整体结构示意图。</p>
+<img src="/2019/07/24/MySQL中的索引/03.png">
+
+<p>一个磁盘由大小相同且同轴的圆形盘片组成，磁盘可以转动（各个磁盘必须同步转动）。在磁盘的一侧有磁头支架，磁头支架固定了一组磁头，每个磁头负责存取一个磁盘的内容。磁头不能转动，但是可以沿磁盘半径方向运动（实际是斜切向运动），每个磁头同一时刻也必须是同轴的，即从正上方向下看，所有磁头任何时候都是重叠的（不过目前已经有多磁头独立技术，可不受此限制）。</p>
+<p>​      下图是磁盘结构的示意图。</p>
+<img src="/2019/07/24/MySQL中的索引/04.png">
+
+<p>盘片被划分成一系列同心环，圆心是盘片中心，每个同心环叫做一个磁道，所有半径相同的磁道组成一个柱面。磁道被沿半径线划分成一个个小的段，每个段叫做一个扇区，每个扇区是磁盘的最小存储单元。为了简单起见，我们下面假设磁盘只有一个盘片和一个磁头。</p>
+<p>​      当需要从磁盘读取数据时，系统会将数据逻辑地址传给磁盘，磁盘的控制电路按照寻址逻辑将逻辑地址翻译成物理地址，即确定要读的数据在哪个磁道，哪个扇区。为了读取这个扇区的数据，需要将磁头放到这个扇区上方，为了实现这一点，磁头需要移动对准相应磁道，这个过程叫做寻道，所耗费时间叫做寻道时间，然后磁盘旋转将目标扇区旋转到磁头下，这个过程耗费的时间叫做旋转时间。</p>
+<h3 id="局部性原理与磁盘预读"><a href="#局部性原理与磁盘预读" class="headerlink" title="局部性原理与磁盘预读"></a><strong>局部性原理与磁盘预读</strong></h3><p> 由于存储介质的特性，磁盘本身存取就比主存慢很多，再加上机械运动耗费，磁盘的存取速度往往是主存的几百分分之一，因此为了提高效率，要尽量减少磁盘I/O。为了达到这个目的，磁盘往往不是严格按需读取，而是每次都会预读，即使只需要一个字节，磁盘也会从这个位置开始，顺序向后读取一定长度的数据放入内存。这样做的理论依据是计算机科学中著名的局部性原理：</p>
+<p>​      当一个数据被用到时，其附近的数据也通常会马上被使用。</p>
+<h3 id="B-Tree索引的性能分析"><a href="#B-Tree索引的性能分析" class="headerlink" title="B-/+Tree索引的性能分析"></a><strong>B-/+Tree索引的性能分析</strong></h3><p>​      到这里终于可以分析B-/+Tree索引的性能了。</p>
+<p>​    数据库系统的设计者巧<strong>妙利用了磁盘预读原理</strong>，<strong>将一个节点的大小设为等于一个页</strong>，这样每个节点只需要一次I/O就可以完全载入。为了达到这个目的，在实际实现B-Tree还需要使用如下技巧：</p>
+<p>​     每次新建节点时，直接申请一个页的空间，这样就保证一个节点物理上也存储在一个页里，加之计算机存储分配都是按页对齐的，就实现了一个node只需一次I/O。</p>
+<p>​     B-Tree中一次检索最多需要h-1次I/O（<strong>根节点常驻内存</strong>），渐进复杂度为O(h)=O(logdN)O(h)=O(logdN)。一般实际应用中，出度d是非常大的数字，通常超过100，因此h非常小（通常不超过3）。</p>
+<p>​     综上所述，用B-Tree作为索引结构效率是非常高的。</p>
+<h2 id="五、聚簇索引与非聚簇索引"><a href="#五、聚簇索引与非聚簇索引" class="headerlink" title="五、聚簇索引与非聚簇索引"></a><strong>五、聚簇索引与非聚簇索引</strong></h2><p>mysql中普遍使用B+Tree做索引，但在实现上又根据聚簇索引和非聚簇索引而不同。</p>
+<h3 id="1、聚簇索引"><a href="#1、聚簇索引" class="headerlink" title="1、聚簇索引"></a><strong>1、聚簇索引</strong></h3><p>​    所谓聚簇索引，就是指<strong><u>主索引</u>文件和数据文件为同一份文件，聚簇索引主要用在Innodb存储引擎中。</strong>在该索引实现方式中B+Tree的叶子节点上的data就是数据本身，key为主键，如果是一般索引的话，data便会指向对应的主索引(<strong>然后再进行一次索引</strong>)，如下图所示：</p>
+<img src="/2019/07/24/MySQL中的索引/05.png">
+
+<p>  在B+Tree的每个叶子节点增加一个指向相邻叶子节点的指针，就形成了带有顺序访问指针的B+Tree。<strong>做这个优化的目的是为了提高区间访问的性能</strong>，例如上图中如果要查询key为从18到49的所有数据记录，当找到18后，只需顺着节点和指针顺序遍历就可以一次性访问到所有数据节点，极大提到了区间查询效率。</p>
+<h3 id="2、非聚簇索引"><a href="#2、非聚簇索引" class="headerlink" title="2、非聚簇索引"></a><strong>2、非聚簇索引</strong></h3><p>​    非聚簇索引就是<strong>指B+Tree的叶子节点上的data，并不是数据本身，而是数据存放的地址。</strong>主索引和辅助索引没啥区别，只是主索引中的key一定得是唯一的。主要用在MyISAM存储引擎中，如下图：</p>
+<img src="/2019/07/24/MySQL中的索引/06.png">
+
+<p><strong>非聚簇索引比聚簇索引多了一次读取数据的IO操作，所以查找性能上会差。</strong></p>
+<h2 id="六、MySQL索引实现"><a href="#六、MySQL索引实现" class="headerlink" title="六、MySQL索引实现"></a><strong>六、MySQL索引实现</strong></h2><p>在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，下面主要讨论MyISAM和InnoDB两个存储引擎的索引实现方式。</p>
+<h3 id="1、MyISAM索引实现"><a href="#1、MyISAM索引实现" class="headerlink" title="1、MyISAM索引实现"></a><strong>1、MyISAM索引实现</strong></h3><p>MyISAM引擎使用B+Tree作为索引结构，<strong>叶节点的data域存放的是数据记录的地址</strong>。下图是MyISAM索引的原理图：</p>
+<img src="/2019/07/24/MySQL中的索引/07.png">
+
+<p>这里设表一共有三列，假设我们以Col1为主键，则上图是一个MyISAM表的主索引（Primary key）示意。可以看出MyISAM的索引文件仅仅保存数据记录的地址。<strong>在MyISAM中，主索引和辅助索引（Secondary key）在结构上没有任何区别，只是主索引要求key是唯一的，而辅助索引的key可以重复。</strong>如果我们在Col2上建立一个辅助索引，则此索引的结构如下图所示：</p>
+<img src="/2019/07/24/MySQL中的索引/08.png">
+
+<h3 id="2、InnoDB索引实现"><a href="#2、InnoDB索引实现" class="headerlink" title="2、InnoDB索引实现"></a><strong>2、InnoDB索引实现</strong></h3><p>​     虽然InnoDB也使用B+Tree作为索引结构，但具体实现方式却与MyISAM截然不同。</p>
+<p>​     第一个重大区别是<strong>InnoDB的数据文件本身就是索引文件。</strong>从上文知道，<strong>MyISAM索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。</strong>而在InnoDB中，表数据文件本身就是按B+Tree组织的一个索引结构，这棵树的<strong>叶节点data域保存了完整的数据记录</strong>。这个索引的key是数据表的主键，因此InnoDB表数据文件本身就是主索引。</p>
+<img src="/2019/07/24/MySQL中的索引/09.png">
+
+<p>​    上图是InnoDB主索引（同时也是数据文件）的示意图，可以看到叶节点包含了完整的数据记录。这种索引叫做聚集索引。因为InnoDB的数据文件本身要按主键聚集，所以InnoDB要求表必须有主键（MyISAM可以没有），如果没有显式指定，则MySQL系统会自动选择一个可以唯一标识数据记录的列作为主键，如果不存在这种列，则MySQL自动为InnoDB表生成一个隐含字段作为主键，这个字段长度为6个字节，类型为长整形。</p>
+<p>​      <strong>第二个与MyISAM索引的不同是InnoDB的辅助索引data域存储相应记录主键的值而不是地址。换句话说，InnoDB的所有辅助索引都引用主键作为data域。</strong>例如，下图为定义在Col3上的一个辅助索引：</p>
+<img src="/2019/07/24/MySQL中的索引/10.png">
+
+<p>这里以英文字符的ASCII码作为比较准则。<strong><u>聚集索引这种实现方式使得按主键的搜索十分高效，但是辅助索引搜索需要检索两遍索引：首先检索辅助索引获得主键，然后用主键到主索引中检索获得记录。</u></strong></p>
+<p>​     了解不同存储引擎的索引实现方式对于正确使用和优化索引都非常有帮助，例如知道了InnoDB的索引实现后，就很容易明白为什么<strong>不建议使用过长的字段作为主键，因为所有辅助索引都引用主索引，过长的主索引会令辅助索引变得过大。</strong>再例如，用<strong>非单调的字段</strong>作为主键在InnoDB中不是个好主意，因为InnoDB数据文件本身是一颗B+Tree，非单调的主键会造成在<strong>插入新记录时数据文件</strong>为了维持B+Tree的特性而<strong>频繁的分裂调整</strong>，十分低效，而<strong><u>使用自增字段作为主键则是一个很好的选择。</u></strong></p>
+<p><strong><u>对于InnoDB而言，因为节点下有数据文件，因此节点的分裂将会比较慢。对于InnoDB的主键，尽量用整型，而且是递增的整型。如果是无规律的数据，将会产生页的分裂，影响速度。</u></strong></p>
+<h3 id="InnoDB索引和MyISAM索引的区别："><a href="#InnoDB索引和MyISAM索引的区别：" class="headerlink" title="InnoDB索引和MyISAM索引的区别："></a><strong>InnoDB索引</strong>和<strong>MyISAM索引</strong>的区别：</h3><p><strong>一是主索引的区别，InnoDB的数据文件本身就是索引文件。而MyISAM的索引和数据是分开的。</strong></p>
+<p><strong>二是辅助索引的区别：InnoDB的辅助索引data域存储相应记录主键的值而不是地址。而MyISAM的辅助索引和主索引没有多大区别。</strong></p>
+<p><strong>InnoDB的主索引文件上，直接存放该行数据，称为聚簇索引。次索引指向对主键的引用。</strong></p>
+<p><strong>Myisam中，主索引和次索引都指向物理行。</strong></p>
+<p>补充：索引覆盖</p>
+<p>索引覆盖是指如果查询的列恰好是索引的一部分，那么查询只需要在索引文件上进行，不需要回行到磁盘再找数据。这种查询速度非常快，称为“索引覆盖”。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欢迎鼓励!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mingyang Yue 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/21/Linux-IO模式及select、poll、epoll/" rel="next" title="Linux IO模式及select、poll、epoll">
+                <i class="fa fa-chevron-left"></i> Linux IO模式及select、poll、epoll
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Mingyang Yue">
+            
+              <p class="site-author-name" itemprop="name">Mingyang Yue</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/yuemingyang7010" title="GitHub主页" target="_blank">GitHub主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/yuemingyang7010" title="CSDN主页" target="_blank">CSDN主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘I-O原理"><span class="nav-number">1.</span> <span class="nav-text">磁盘I/O原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#扇区与磁盘块-block-的区别"><span class="nav-number">1.1.</span> <span class="nav-text">扇区与磁盘块(block)的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、B-Tree（平衡多路查找树）"><span class="nav-number">2.</span> <span class="nav-text">二、B-Tree（平衡多路查找树）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、B-Tree"><span class="nav-number">3.</span> <span class="nav-text">三、B+Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、为什么使用B-Tree（B-Tree）"><span class="nav-number">4.</span> <span class="nav-text">四、为什么使用B-Tree（B+Tree）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘存取原理"><span class="nav-number">4.1.</span> <span class="nav-text">磁盘存取原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部性原理与磁盘预读"><span class="nav-number">4.2.</span> <span class="nav-text">局部性原理与磁盘预读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Tree索引的性能分析"><span class="nav-number">4.3.</span> <span class="nav-text">B-/+Tree索引的性能分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、聚簇索引与非聚簇索引"><span class="nav-number">5.</span> <span class="nav-text">五、聚簇索引与非聚簇索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、聚簇索引"><span class="nav-number">5.1.</span> <span class="nav-text">1、聚簇索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、非聚簇索引"><span class="nav-number">5.2.</span> <span class="nav-text">2、非聚簇索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、MySQL索引实现"><span class="nav-number">6.</span> <span class="nav-text">六、MySQL索引实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、MyISAM索引实现"><span class="nav-number">6.1.</span> <span class="nav-text">1、MyISAM索引实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、InnoDB索引实现"><span class="nav-number">6.2.</span> <span class="nav-text">2、InnoDB索引实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InnoDB索引和MyISAM索引的区别："><span class="nav-number">6.3.</span> <span class="nav-text">InnoDB索引和MyISAM索引的区别：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingyang Yue</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+    <span class="site-uv">
+      本站访问数 <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人数
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量 <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'aKc2tU1wp20XlT9yQMdSn05x-gzGzoHsz',
+        appKey: 'twkLoqUVOTUyJgPUtk1myvof',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
