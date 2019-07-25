@@ -79,23 +79,25 @@
 
 
 
-<meta name="description" content="目录   题目 难度     1.二维数组中的查找(..).note ☆ 从右上角到左下角进行查找   11.旋转数组的最小数字.note ☆☆☆ 采用分治的思想，递归地将数组进行二分区，然后找到最小的数（时间复杂度logn   顺序查找O(n)）   10.斐波那契数列.note ☆ 很简单，考虑节省空间复杂度，用循环代替递归。   21.调整数组顺序使奇数位于偶数前面.note ☆ 用两个指针">
+<meta name="description" content="天平与假币有12枚硬币，其中有且只有1枚是假币，其重量与真币不同，但不知是重还是轻。现给定一祭没有砝码的天平，问至少需要多少次称量才能确保找到这枚假币？ 解释： 随机将12枚硬币等分成3份，每份4枚；标记为A、B、C三份。将A放于左侧，B放于右侧，用天平称量A和B，分三种情况：1.天平平衡2.A（左）比B（右）重 3.A（左）比B（右）轻口与2对称，只分析2即可 核心讲解：     理论下界一次天">
 <meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指offer-数组">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="目录   题目 难度     1.二维数组中的查找(..).note ☆ 从右上角到左下角进行查找   11.旋转数组的最小数字.note ☆☆☆ 采用分治的思想，递归地将数组进行二分区，然后找到最小的数（时间复杂度logn   顺序查找O(n)）   10.斐波那契数列.note ☆ 很简单，考虑节省空间复杂度，用循环代替递归。   21.调整数组顺序使奇数位于偶数前面.note ☆ 用两个指针">
+<meta property="og:description" content="天平与假币有12枚硬币，其中有且只有1枚是假币，其重量与真币不同，但不知是重还是轻。现给定一祭没有砝码的天平，问至少需要多少次称量才能确保找到这枚假币？ 解释： 随机将12枚硬币等分成3份，每份4枚；标记为A、B、C三份。将A放于左侧，B放于右侧，用天平称量A和B，分三种情况：1.天平平衡2.A（左）比B（右）重 3.A（左）比B（右）轻口与2对称，只分析2即可 核心讲解：     理论下界一次天">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/08.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/07.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/01.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/02.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/03.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/04.png">
-<meta property="og:updated_time" content="2019-07-21T08:15:08.453Z">
+<meta property="og:updated_time" content="2019-07-25T16:31:11.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer-数组">
-<meta name="twitter:description" content="目录   题目 难度     1.二维数组中的查找(..).note ☆ 从右上角到左下角进行查找   11.旋转数组的最小数字.note ☆☆☆ 采用分治的思想，递归地将数组进行二分区，然后找到最小的数（时间复杂度logn   顺序查找O(n)）   10.斐波那契数列.note ☆ 很简单，考虑节省空间复杂度，用循环代替递归。   21.调整数组顺序使奇数位于偶数前面.note ☆ 用两个指针">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/01.png">
+<meta name="twitter:description" content="天平与假币有12枚硬币，其中有且只有1枚是假币，其重量与真币不同，但不知是重还是轻。现给定一祭没有砝码的天平，问至少需要多少次称量才能确保找到这枚假币？ 解释： 随机将12枚硬币等分成3份，每份4枚；标记为A、B、C三份。将A放于左侧，B放于右侧，用天平称量A和B，分三种情况：1.天平平衡2.A（左）比B（右）重 3.A（左）比B（右）轻口与2对称，只分析2即可 核心讲解：     理论下界一次天">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/06/18/剑指offer-数组/08.png">
 
 
 
@@ -415,7 +417,17 @@
       
 
       
-        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><table>
+        <h3 id="天平与假币"><a href="#天平与假币" class="headerlink" title="天平与假币"></a>天平与假币</h3><p>有12枚硬币，其中有且只有1枚是假币，其重量与真币不同，但不知是重还是轻。现给定一祭没有砝码的天平，问至少需要多少次称量才能确保找到这枚假币？</p>
+<p><strong>解释：</strong></p>
+<p>随机将12枚硬币等分成3份，每份4枚；标记为A、B、C三份。<br>将A放于左侧，B放于右侧，用天平称量A和B，分三种情况：<br>1.天平平衡<br>2.A（左）比B（右）重</p>
+<p>3.A（左）比B（右）轻口与2对称，只分析2即可</p>
+<p><strong>核心讲解：</strong></p>
+<img src="/2019/06/18/剑指offer-数组/08.png">
+
+<img src="/2019/06/18/剑指offer-数组/07.png">
+
+<p><strong>理论下界</strong><br>一次天平称量能得到左倾、右倾、平衡3种情况，则把一次称量当成一位编码，该编码是3进制的。问题转换为：需要多少位编码，能够表示12呢？<br>(1)由于12的轻重未知，有两种可能，因此，需要用3进制表示24。<br>    答：假定需要n位，则：3^n &gt;= 24<br>(2)取对数后计算得到n = 2.89，这表示至少3次才能找到该假币。</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><table>
 <thead>
 <tr>
 <th>题目</th>
@@ -879,7 +891,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组中的查找"><span class="nav-number">2.</span> <span class="nav-text">二维数组中的查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#旋转数组的最小数字"><span class="nav-number">3.</span> <span class="nav-text">旋转数组的最小数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">4.</span> <span class="nav-text">斐波那契数列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调整数组顺序使奇数位于偶数前面"><span class="nav-number">5.</span> <span class="nav-text">调整数组顺序使奇数位于偶数前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顺时针打印矩阵"><span class="nav-number">6.</span> <span class="nav-text">顺时针打印矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中出现次数超过一半的数字"><span class="nav-number">7.</span> <span class="nav-text">数组中出现次数超过一半的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小的K个数"><span class="nav-number">8.</span> <span class="nav-text">最小的K个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在排序数组中查找数字"><span class="nav-number">9.</span> <span class="nav-text">在排序数组中查找数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中只出现一次的两个数字"><span class="nav-number">10.</span> <span class="nav-text">数组中只出现一次的两个数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和为S的连续正数序列"><span class="nav-number">11.</span> <span class="nav-text">和为S的连续正数序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和为S的两个数字"><span class="nav-number">12.</span> <span class="nav-text">和为S的两个数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扑克牌顺子"><span class="nav-number">13.</span> <span class="nav-text">扑克牌顺子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中重复的数字"><span class="nav-number">14.</span> <span class="nav-text">数组中重复的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建乘积数组"><span class="nav-number">15.</span> <span class="nav-text">构建乘积数组</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#天平与假币"><span class="nav-number">1.</span> <span class="nav-text">天平与假币</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number"></span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维数组中的查找"><span class="nav-number"></span> <span class="nav-text">二维数组中的查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#旋转数组的最小数字"><span class="nav-number"></span> <span class="nav-text">旋转数组的最小数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#斐波那契数列"><span class="nav-number"></span> <span class="nav-text">斐波那契数列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调整数组顺序使奇数位于偶数前面"><span class="nav-number"></span> <span class="nav-text">调整数组顺序使奇数位于偶数前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顺时针打印矩阵"><span class="nav-number"></span> <span class="nav-text">顺时针打印矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中出现次数超过一半的数字"><span class="nav-number"></span> <span class="nav-text">数组中出现次数超过一半的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小的K个数"><span class="nav-number"></span> <span class="nav-text">最小的K个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在排序数组中查找数字"><span class="nav-number"></span> <span class="nav-text">在排序数组中查找数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中只出现一次的两个数字"><span class="nav-number"></span> <span class="nav-text">数组中只出现一次的两个数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和为S的连续正数序列"><span class="nav-number"></span> <span class="nav-text">和为S的连续正数序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和为S的两个数字"><span class="nav-number"></span> <span class="nav-text">和为S的两个数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扑克牌顺子"><span class="nav-number"></span> <span class="nav-text">扑克牌顺子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中重复的数字"><span class="nav-number"></span> <span class="nav-text">数组中重复的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建乘积数组"><span class="nav-number"></span> <span class="nav-text">构建乘积数组</span></a></li></div>
             
 
           </div>
