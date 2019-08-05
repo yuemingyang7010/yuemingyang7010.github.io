@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/11.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/07.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/08.png">
-<meta property="og:updated_time" content="2019-07-13T09:02:36.622Z">
+<meta property="og:updated_time" content="2019-08-01T10:20:57.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统-进程管理">
 <meta name="twitter:description" content="中断与异常  进程与线程0.重点梳理★★★ 进程与线程的本质区别、以及各自的使用场景。 ★★★ 进程调度算法的特点以及使用场景。 ★★★ 进程通信方法的特点以及使用场景。 ★★☆ 协程的作用。★★☆ 常见进程同步问题。 ★☆☆ 进程状态。 ★☆☆ 线程实现的方式。 1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子">
@@ -598,6 +598,19 @@
 <p>原理是将子进程成为孤儿进程，从而其的父进程变为init进程，通过init进程可以处理僵尸进程。</p>
 <p>3、 <strong>守护进程（ daemon) 是指在后台运行，没有控制终端与之相连的进程。</strong>它独立于控制终端，通常周期性地执行某种任务 。守护进程脱离于终端是为了避免进程在执行过程中的信息在任何终端上显示并且进程也不会被任何终端所产生的终端信息所打断。</p>
 <p><a href="https://cyc2018.github.io/CS-Notes/#/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86" target="_blank" rel="noopener">参考github资料</a></p>
+<h2 id="进程上下文切换与和线程上下文切换有什么不同？"><a href="#进程上下文切换与和线程上下文切换有什么不同？" class="headerlink" title="进程上下文切换与和线程上下文切换有什么不同？"></a>进程上下文切换与和线程上下文切换有什么不同？</h2><h2 id="（1）什么是上下文切换？（面试题）"><a href="#（1）什么是上下文切换？（面试题）" class="headerlink" title="（1）什么是上下文切换？（面试题）"></a>（1）什么是上下文切换？（面试题）</h2><p>上下文切换就是从当前执行任务切换到另一个任务执行的过程。但是，为了确保下次能从正确的位置继续执行，在切换之前，会保存上一个任务的状态。</p>
+<h2 id="（2）区别"><a href="#（2）区别" class="headerlink" title="（2）区别"></a>（2）区别</h2><p><strong>最主要的区别</strong>就是线程的切换虚拟空间内存是相同的（因为都是属于自己的进程），但是，进程切换的虚拟空间内存则是不同的。</p>
+<p>以下是相同:</p>
+<p>同时，这两种上下文切换的处理都是通过操作系统内核来完成的。内核的这种切换过程伴随的最显著的性能损耗是将寄存器中的内容切换出。</p>
+<h1 id="函数调用和系统调用的区别？"><a href="#函数调用和系统调用的区别？" class="headerlink" title="函数调用和系统调用的区别？"></a>函数调用和系统调用的区别？</h1><p>1)     系统调用</p>
+<p>①     操作系统提供给用户程序调用的一组特殊的接口。用户程序可以通过这组特殊接口来获得操作系统内核提供的服务；</p>
+<p>②     系统调用可以用来控制硬件；设置系统状态或读取内核数据；进程管理，系统调用接口用来保证系统中进程能以多任务在虚拟环境下运行；</p>
+<p>③     Linux中实现系统调用利用了x86体系结构中的软件中断；</p>
+<p>2)     函数调用</p>
+<p>①     函数调用运行在用户空间；</p>
+<p>②     它主要是通过压栈操作来进行函数调用；</p>
+<h1 id="执行一个系统调用时，OS发生的过程"><a href="#执行一个系统调用时，OS发生的过程" class="headerlink" title="执行一个系统调用时，OS发生的过程(?)"></a>执行一个系统调用时，OS发生的过程(?)</h1><p>  1．执行用户程序(如:fork) </p>
+<p> 2． 根据glibc中的函数实现，取得系统调用号并执行int $0x80产生中断。<br> 3． 进行地址空间的转换和堆栈的切换，执行SAVE_ALL。（进行内核模式）<br> 4． 进行中断处理，根据系统调用表调用内核函数。<br> 5． 执行内核函数。<br> 6． 执行RESTORE_ALL并返回用户模式</p>
 
       
     </div>
@@ -652,8 +665,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/20/Linux/" rel="next" title="Linux">
-                <i class="fa fa-chevron-left"></i> Linux
+              <a href="/2019/03/19/Shell/" rel="next" title="Shell">
+                <i class="fa fa-chevron-left"></i> Shell
               </a>
             
           </div>
@@ -662,8 +675,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/21/操作系统其他/" rel="prev" title="操作系统其他">
-                操作系统其他 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/20/Linux/" rel="prev" title="Linux">
+                Linux <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -748,7 +761,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -770,7 +783,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -821,7 +834,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中断与异常"><span class="nav-number">1.</span> <span class="nav-text">中断与异常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程与线程"><span class="nav-number">2.</span> <span class="nav-text">进程与线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-重点梳理"><span class="nav-number">2.0.1.</span> <span class="nav-text">0.重点梳理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程"><span class="nav-number">2.1.</span> <span class="nav-text">1. 进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-线程"><span class="nav-number">2.2.</span> <span class="nav-text">2. 线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-区别"><span class="nav-number">2.3.</span> <span class="nav-text">3. 区别</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#进程状态的切换"><span class="nav-number">3.</span> <span class="nav-text">进程状态的切换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程调度算法"><span class="nav-number">4.</span> <span class="nav-text">进程调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-练习"><span class="nav-number">4.1.</span> <span class="nav-text">2.练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程同步"><span class="nav-number">5.</span> <span class="nav-text">进程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-临界区"><span class="nav-number">5.1.</span> <span class="nav-text">1. 临界区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-同步与互斥"><span class="nav-number">5.2.</span> <span class="nav-text">2. 同步与互斥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-信号量"><span class="nav-number">5.3.</span> <span class="nav-text">3. 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-管程"><span class="nav-number">5.4.</span> <span class="nav-text">4. 管程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程同步"><span class="nav-number">6.</span> <span class="nav-text">线程同步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典同步问题"><span class="nav-number">7.</span> <span class="nav-text">经典同步问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-读者-写者问题"><span class="nav-number">7.1.</span> <span class="nav-text">1. 读者-写者问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-哲学家进餐问题"><span class="nav-number">7.2.</span> <span class="nav-text">2. 哲学家进餐问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程通信"><span class="nav-number">8.</span> <span class="nav-text">进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-管道"><span class="nav-number">8.1.</span> <span class="nav-text">1. 管道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-FIFO"><span class="nav-number">8.2.</span> <span class="nav-text">2. FIFO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-消息队列"><span class="nav-number">8.3.</span> <span class="nav-text">3. 消息队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-信号量"><span class="nav-number">8.4.</span> <span class="nav-text">4. 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-共享存储"><span class="nav-number">8.5.</span> <span class="nav-text">5. 共享存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-套接字"><span class="nav-number">8.6.</span> <span class="nav-text">6. 套接字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协程是什么"><span class="nav-number">9.</span> <span class="nav-text">协程是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#孤儿进程和僵尸进程的区别？怎么避免这两类进程？守护进程？"><span class="nav-number">10.</span> <span class="nav-text">孤儿进程和僵尸进程的区别？怎么避免这两类进程？守护进程？</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中断与异常"><span class="nav-number">1.</span> <span class="nav-text">中断与异常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程与线程"><span class="nav-number">2.</span> <span class="nav-text">进程与线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-重点梳理"><span class="nav-number">2.0.1.</span> <span class="nav-text">0.重点梳理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程"><span class="nav-number">2.1.</span> <span class="nav-text">1. 进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-线程"><span class="nav-number">2.2.</span> <span class="nav-text">2. 线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-区别"><span class="nav-number">2.3.</span> <span class="nav-text">3. 区别</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#进程状态的切换"><span class="nav-number">3.</span> <span class="nav-text">进程状态的切换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程调度算法"><span class="nav-number">4.</span> <span class="nav-text">进程调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-练习"><span class="nav-number">4.1.</span> <span class="nav-text">2.练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程同步"><span class="nav-number">5.</span> <span class="nav-text">进程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-临界区"><span class="nav-number">5.1.</span> <span class="nav-text">1. 临界区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-同步与互斥"><span class="nav-number">5.2.</span> <span class="nav-text">2. 同步与互斥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-信号量"><span class="nav-number">5.3.</span> <span class="nav-text">3. 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-管程"><span class="nav-number">5.4.</span> <span class="nav-text">4. 管程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程同步"><span class="nav-number">6.</span> <span class="nav-text">线程同步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典同步问题"><span class="nav-number">7.</span> <span class="nav-text">经典同步问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-读者-写者问题"><span class="nav-number">7.1.</span> <span class="nav-text">1. 读者-写者问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-哲学家进餐问题"><span class="nav-number">7.2.</span> <span class="nav-text">2. 哲学家进餐问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程通信"><span class="nav-number">8.</span> <span class="nav-text">进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-管道"><span class="nav-number">8.1.</span> <span class="nav-text">1. 管道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-FIFO"><span class="nav-number">8.2.</span> <span class="nav-text">2. FIFO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-消息队列"><span class="nav-number">8.3.</span> <span class="nav-text">3. 消息队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-信号量"><span class="nav-number">8.4.</span> <span class="nav-text">4. 信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-共享存储"><span class="nav-number">8.5.</span> <span class="nav-text">5. 共享存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-套接字"><span class="nav-number">8.6.</span> <span class="nav-text">6. 套接字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协程是什么"><span class="nav-number">9.</span> <span class="nav-text">协程是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#孤儿进程和僵尸进程的区别？怎么避免这两类进程？守护进程？"><span class="nav-number">10.</span> <span class="nav-text">孤儿进程和僵尸进程的区别？怎么避免这两类进程？守护进程？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程上下文切换与和线程上下文切换有什么不同？"><span class="nav-number">10.1.</span> <span class="nav-text">进程上下文切换与和线程上下文切换有什么不同？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）什么是上下文切换？（面试题）"><span class="nav-number">10.2.</span> <span class="nav-text">（1）什么是上下文切换？（面试题）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）区别"><span class="nav-number">10.3.</span> <span class="nav-text">（2）区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数调用和系统调用的区别？"><span class="nav-number">11.</span> <span class="nav-text">函数调用和系统调用的区别？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#执行一个系统调用时，OS发生的过程"><span class="nav-number">12.</span> <span class="nav-text">执行一个系统调用时，OS发生的过程(?)</span></a></li></div>
             
 
           </div>
