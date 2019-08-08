@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="索引什么是索引？排好序的快速查询的数据结构，常常类比为字典目录。 优点：大大加快数据的检索速度； 缺点：创建索引和维护索引要花费一定的时间。 索引的分类主键索引（PRIMAY KEY） 普通索引（INDEX） 唯一索引（UNIQUE） 全文索引（FULLTEXT） InnoDB和MyISAM会自动为主键或者声明为UNIQUE的列去自动建立B+树索引。 主键索引（最常用，最好用自增ID）为表设置了主">
+<meta name="description" content="索引什么是索引？排好序的快速查询的数据结构，常常类比为字典目录。 优点：大大加快数据的检索速度； 缺点：创建索引和维护索引要花费一定的时间。 索引的分类主键索引（PRIMAY KEY） 普通索引（INDEX） 唯一索引（UNIQUE） 联合索引 InnoDB和MyISAM会自动为主键或者声明为UNIQUE的列去自动建立B+树索引。 主键索引（最常用，最好用自增ID）为表设置了主键，数据库将自动创建">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL中的索引">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="索引什么是索引？排好序的快速查询的数据结构，常常类比为字典目录。 优点：大大加快数据的检索速度； 缺点：创建索引和维护索引要花费一定的时间。 索引的分类主键索引（PRIMAY KEY） 普通索引（INDEX） 唯一索引（UNIQUE） 全文索引（FULLTEXT） InnoDB和MyISAM会自动为主键或者声明为UNIQUE的列去自动建立B+树索引。 主键索引（最常用，最好用自增ID）为表设置了主">
+<meta property="og:description" content="索引什么是索引？排好序的快速查询的数据结构，常常类比为字典目录。 优点：大大加快数据的检索速度； 缺点：创建索引和维护索引要花费一定的时间。 索引的分类主键索引（PRIMAY KEY） 普通索引（INDEX） 唯一索引（UNIQUE） 联合索引 InnoDB和MyISAM会自动为主键或者声明为UNIQUE的列去自动建立B+树索引。 主键索引（最常用，最好用自增ID）为表设置了主键，数据库将自动创建">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/01.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/02.png">
@@ -97,10 +97,11 @@
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/10.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/05.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/06.png">
-<meta property="og:updated_time" content="2019-08-05T15:30:50.940Z">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/11.jpg">
+<meta property="og:updated_time" content="2019-08-08T01:45:04.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL中的索引">
-<meta name="twitter:description" content="索引什么是索引？排好序的快速查询的数据结构，常常类比为字典目录。 优点：大大加快数据的检索速度； 缺点：创建索引和维护索引要花费一定的时间。 索引的分类主键索引（PRIMAY KEY） 普通索引（INDEX） 唯一索引（UNIQUE） 全文索引（FULLTEXT） InnoDB和MyISAM会自动为主键或者声明为UNIQUE的列去自动建立B+树索引。 主键索引（最常用，最好用自增ID）为表设置了主">
+<meta name="twitter:description" content="索引什么是索引？排好序的快速查询的数据结构，常常类比为字典目录。 优点：大大加快数据的检索速度； 缺点：创建索引和维护索引要花费一定的时间。 索引的分类主键索引（PRIMAY KEY） 普通索引（INDEX） 唯一索引（UNIQUE） 联合索引 InnoDB和MyISAM会自动为主键或者声明为UNIQUE的列去自动建立B+树索引。 主键索引（最常用，最好用自增ID）为表设置了主键，数据库将自动创建">
 <meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/01.png">
 
 
@@ -427,13 +428,16 @@
 <h2 id="索引的分类"><a href="#索引的分类" class="headerlink" title="索引的分类"></a>索引的分类</h2><p>主键索引（PRIMAY KEY）</p>
 <p>普通索引（INDEX）</p>
 <p>唯一索引（UNIQUE）</p>
-<p>全文索引（FULLTEXT）</p>
+<p>联合索引</p>
 <p>InnoDB和MyISAM会自动为<strong>主键</strong>或者声明为<strong>UNIQUE</strong>的列去自动建立B+树索引。</p>
 <h3 id="主键索引（最常用，最好用自增ID）"><a href="#主键索引（最常用，最好用自增ID）" class="headerlink" title="主键索引（最常用，最好用自增ID）"></a>主键索引（最常用，最好用自增ID）</h3><p>为表设置了主键，数据库将自动创建主键索引</p>
 <p>（一个表只能有一个主键，主键的值不可重复，也不可为空（NULL）。）</p>
 <h3 id="普通索引（一表可建多个，尽量避免NULL）"><a href="#普通索引（一表可建多个，尽量避免NULL）" class="headerlink" title="普通索引（一表可建多个，尽量避免NULL）"></a>普通索引（一表可建多个，尽量避免NULL）</h3><p>注意：可以有NULL，但是<strong>尽量避免NULL</strong>：应该指定列为NOT NULL，除非你想存储NULL。在mysql中，含有空值的列很难进行查询优化。因为它们使得索引、索引的统计信息以及比较运算更加复杂。你应该用0、一个特殊的值或者一个空串代替空值。</p>
-<h3 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h3><p>与普通索引类似，不同的是，Mysql的索引列值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一。</p>
-<h3 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h3><h2 id="MySQL中创建和删除索引的语句"><a href="#MySQL中创建和删除索引的语句" class="headerlink" title="MySQL中创建和删除索引的语句"></a>MySQL中创建和删除索引的语句</h2><p>我们可以在创建表的时候指定需要建立索引的单个列或者建立联合索引的多个列：</p>
+<h3 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h3><p>与普通索引类似，不同的是，Mysql的索引列值必须唯一，但普通索引值可重复。</p>
+<h3 id="联合索引"><a href="#联合索引" class="headerlink" title="联合索引"></a>联合索引</h3><p>联合索引即联合若干列组成索引，这种情况下和普通索引类似，可不唯一，可以有NULL，如果加上unique，可以使其为联合唯一索引，如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> t_aa <span class="keyword">add</span> <span class="keyword">unique</span> <span class="keyword">index</span>(aa,bb);</span><br></pre></td></tr></table></figure>
+
+<h2 id="MySQL中创建和删除索引的语句"><a href="#MySQL中创建和删除索引的语句" class="headerlink" title="MySQL中创建和删除索引的语句"></a>MySQL中创建和删除索引的语句</h2><p>我们可以在创建表的时候指定需要建立索引的单个列或者建立联合索引的多个列：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TALBE 表名 (</span><br><span class="line">    各种列的信息 ··· , </span><br><span class="line">    [<span class="keyword">KEY</span>|<span class="keyword">INDEX</span>] 索引名 (需要被索引的单个列或多个列)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
 <p>其中的KEY和INDEX是同义词，任意选用一个就可以。我们也可以在修改表结构的时候添加索引：</p>
@@ -450,7 +454,33 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> index_demo <span class="keyword">DROP</span> <span class="keyword">INDEX</span> idx_c2_c3;</span><br></pre></td></tr></table></figure>
 
 <p>注意：主键长度越小，普通索引的叶子节点就越小，普通索引占用的空间也就越小。所以，从性能和存储空间方面考量，自增主键往往是更合理的选择。</p>
-<h2 id="主键索引和普通索引的查询有什么区别？"><a href="#主键索引和普通索引的查询有什么区别？" class="headerlink" title="主键索引和普通索引的查询有什么区别？"></a>主键索引和普通索引的查询有什么区别？</h2><p>如果语句是 select * from T where ID=500，即主键查询方式，则只需要搜索 ID 这棵 B+ 树；<br>如果语句是 select * from T where k=5，即普通索引查询方式，则需要先搜索 k 索引树，得到 ID 的值为 500，再到 ID 索引树搜索一次。这个过程称为回表。<br>也就是说，基于非主键索引的查询需要多扫描一棵索引树。因此，我们在应用中应该尽量使用主键查询。</p>
+<h2 id="各种索引的区别与联系"><a href="#各种索引的区别与联系" class="headerlink" title="各种索引的区别与联系"></a>各种索引的区别与联系</h2><table>
+<thead>
+<tr>
+<th>索引类型</th>
+<th>是否要求值唯一</th>
+<th>是否要求值不能有NULL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主键索引</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>唯一索引</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>普通索引</td>
+<td>否</td>
+<td>否</td>
+</tr>
+</tbody></table>
+<h3 id="主键索引与普通索引的区别"><a href="#主键索引与普通索引的区别" class="headerlink" title="主键索引与普通索引的区别"></a>主键索引与普通索引的区别</h3><p>如果语句是 select * from T where ID=500，即主键查询方式，则只需要搜索 ID 这棵 B+ 树；<br>如果语句是 select * from T where k=5，即普通索引查询方式，则需要先搜索 k 索引树，得到 ID 的值为 500，再到 ID 索引树搜索一次。这个过程称为回表。<br>也就是说，基于非主键索引的查询需要多扫描一棵索引树。因此，我们在应用中应该尽量使用主键查询。</p>
+<p>总结：（1）主键索引查询一次B+树，普通索引有回表操作；（2）主键索引要求列值唯一，且无NULL，普通索引没这两个限制。</p>
+<h3 id="主键索引与唯一索引的区别"><a href="#主键索引与唯一索引的区别" class="headerlink" title="主键索引与唯一索引的区别"></a>主键索引与唯一索引的区别</h3><p>（1）主键索引查询一次B+树，唯一索引有回表操作；（2）主键索引要求列值唯一，且无NULL，唯一索引列值唯一，但是<strong>可以有NULL</strong>。</p>
 <h1 id="索引底层数据结构"><a href="#索引底层数据结构" class="headerlink" title="索引底层数据结构"></a>索引底层数据结构</h1><p><a href="https://www.cnblogs.com/xiaoxi/p/6894610.html?utm_source=itdadao&utm_medium=referral" target="_blank" rel="noopener">本文主要参考博客</a></p>
 <p><a href="https://blog.csdn.net/q503267755/article/details/50791794" target="_blank" rel="noopener">对于磁道、扇区和磁盘块的理解1</a></p>
 <p><a href="https://www.cnblogs.com/yi-mu-xi/p/10939612.html" target="_blank" rel="noopener">对于磁道、扇区和磁盘块的理解2</a></p>
@@ -557,9 +587,8 @@
 <p><strong>InnoDB的主索引文件上，直接存放该行数据，称为聚簇索引。次索引指向对主键的引用。</strong></p>
 <p><strong>Myisam中，主索引和次索引都指向物理行。</strong></p>
 <p>补充：<strong>索引覆盖</strong></p>
-<p>索引覆盖是指如果查询的列恰好是索引的一部分，那么查询只需要在索引文件上进行，不需要回行到磁盘再找数据。这种查询速度非常快，称为“索引覆盖”。</p>
-<h2 id="聚簇索引与非聚簇索引"><a href="#聚簇索引与非聚簇索引" class="headerlink" title="聚簇索引与非聚簇索引"></a><strong>聚簇索引与非聚簇索引</strong></h2><p>mysql中普遍使用B+Tree做索引，但在实现上又根据聚簇索引和非聚簇索引而不同。</p>
-<h3 id="1、聚簇索引"><a href="#1、聚簇索引" class="headerlink" title="1、聚簇索引"></a><strong>1、聚簇索引</strong></h3><p>​    所谓聚簇索引，就是指<strong><u>主索引</u>文件和数据文件为同一份文件，聚簇索引主要用在Innodb存储引擎中。</strong>在该索引实现方式中B+Tree的叶子节点上的data就是数据本身，key为主键，如果是一般索引的话，data便会指向对应的主索引(<strong>然后再进行一次索引</strong>)，如下图所示：</p>
+<p>索引覆盖是指如果查询的列恰好是索引的一部分，那么查询只需要在索引文件上进行，不需要回行到磁盘再找数据（<strong>即不需要回表查找</strong>）。这种查询速度非常快，称为“索引覆盖”。</p>
+<h2 id="聚簇索引与非聚簇索引"><a href="#聚簇索引与非聚簇索引" class="headerlink" title="聚簇索引与非聚簇索引"></a><strong>聚簇索引与非聚簇索引</strong></h2><h3 id="1、聚簇索引"><a href="#1、聚簇索引" class="headerlink" title="1、聚簇索引"></a><strong>1、聚簇索引</strong></h3><p>​    所谓聚簇索引，就是指<strong><u>主索引</u>文件和数据文件为同一份文件，聚簇索引主要用在Innodb存储引擎中。</strong>在该索引实现方式中B+Tree的叶子节点上的data就是数据本身，key为主键，如果是一般索引的话，data便会指向对应的主索引(<strong>然后再进行一次索引</strong>)，如下图所示：</p>
 <img src="/2019/07/24/MySQL中的索引/05.png">
 
 <p>  在B+Tree的每个叶子节点增加一个指向相邻叶子节点的指针，就形成了带有顺序访问指针的B+Tree。<strong>做这个优化的目的是为了提高区间访问的性能</strong>，例如上图中如果要查询key为从18到49的所有数据记录，当找到18后，只需顺着节点和指针顺序遍历就可以一次性访问到所有数据节点，极大提到了区间查询效率。</p>
@@ -567,6 +596,82 @@
 <img src="/2019/07/24/MySQL中的索引/06.png">
 
 <p><strong>非聚簇索引比聚簇索引多了一次读取数据的IO操作，所以查找性能上会差。</strong></p>
+<h2 id="联合索引-1"><a href="#联合索引-1" class="headerlink" title="联合索引"></a>联合索引</h2><h3 id="联合索引的B-树结构"><a href="#联合索引的B-树结构" class="headerlink" title="联合索引的B+树结构"></a>联合索引的B+树结构</h3><p>我们用（name，age）这个联合索引来分析</p>
+<img src="/2019/07/24/MySQL中的索引/11.jpg">
+
+<p>可以看到，索引项是按照索引定义里面出现的字段顺序排序的。</p>
+<p>当你的逻辑需求是查到所有名字是“张三”的人时，可以快速定位到 ID4，然后向后遍历得到所有需要的结果。</p>
+<p>只要满足最左前缀，就可以利用索引来加速检索。这个最左前缀可以是联合索引的最左 N 个字段，也可以是字符串索引的最左 M 个字符。</p>
+<p>基于上面对最左前缀索引的说明，我们来讨论一个问题：在建立联合索引的时候，如何安排索引内的字段顺序。</p>
+<p>使用越频繁的字段通常可以放在最左侧。</p>
+<h3 id="多个单列索引和联合索引的区别"><a href="#多个单列索引和联合索引的区别" class="headerlink" title="多个单列索引和联合索引的区别"></a>多个单列索引和联合索引的区别</h3><p>多个单列索引：</p>
+<p>多个单列索引在多条件查询时只会生效第一个索引！所以多条件联合查询时最好建联合索引！</p>
+<table>
+<thead>
+<tr>
+<th>where语句查询情况</th>
+<th>实际用的索引</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a and b and c</td>
+<td>a</td>
+</tr>
+<tr>
+<td>a or b or c</td>
+<td>a,b,c(查询结果有去重)</td>
+</tr>
+</tbody></table>
+<p>联合索引本质：</p>
+<p>当创建(a,b,c)联合索引时，<strong>相当于创建了(a)单列索引，(a,b)联合索引以及(a,b,c)联合索引</strong>想要索引生效的话,只能使用 a和a,b和a,b,c三种组合；当然，我们上面测试过，a,c组合也可以，但实际上只用到了a的索引，c并没有用到！生效情况如下表：</p>
+<table>
+<thead>
+<tr>
+<th>where语句查询情况</th>
+<th>索引</th>
+<th>实际用的索引</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td>联合索引</td>
+<td>a</td>
+</tr>
+<tr>
+<td>b</td>
+<td>NULL</td>
+<td>×</td>
+</tr>
+<tr>
+<td>c</td>
+<td>NULL</td>
+<td>×</td>
+</tr>
+<tr>
+<td>a and b</td>
+<td>联合索引</td>
+<td>(a,b)</td>
+</tr>
+<tr>
+<td>a and c</td>
+<td>联合索引</td>
+<td>a</td>
+</tr>
+<tr>
+<td>b and c</td>
+<td>NULL</td>
+<td>×</td>
+</tr>
+<tr>
+<td>a and b and c</td>
+<td>联合索引</td>
+<td>(a,b,c)</td>
+</tr>
+</tbody></table>
+<p><strong>总结：</strong>索引的最左原则（左前缀原则），如（c1,c2,c3,c4….cN）的联合索引，where 条件按照索引建立的字段顺序来使用（<strong>不代表and条件必须按照顺序来写</strong>），<strong>如果中间某列没有条件，或使用like会导致后面的列不能使用索引。</strong></p>
+<p>（如面试题：现在有a b 作为联合索引，有一条sql语句 where b &gt; 0 and a = 7 和 where a&gt;0 and b = 7分别会用到索引吗？  会）</p>
+<p><strong>最左前缀：</strong>顾名思义，就是最左优先，上例中我们创建了lname_fname_age多列索引,相当于创建了(lname)单列索引，(lname,fname)组合索引以及(lname,fname,age)组合索引。</p>
+<p><a href="https://blog.csdn.net/mrxiky/article/details/81775194" target="_blank" rel="noopener">参考博客:多个单列索引和联合索引的区别</a></p>
 <h2 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h2><h3 id="1-独立的列"><a href="#1-独立的列" class="headerlink" title="1. 独立的列"></a>1. 独立的列</h3><p>在进行查询时，索引列不能是表达式的一部分，也不能是函数的参数，否则无法使用索引。</p>
 <p>例如下面的查询不能使用 actor_id 列的索引：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> actor_id <span class="keyword">FROM</span> sakila.actor <span class="keyword">WHERE</span> actor_id + <span class="number">1</span> = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
@@ -589,7 +694,6 @@
 <li>索引通常远小于数据行的大小，只读取索引能大大减少数据访问量。</li>
 <li>一些存储引擎（例如 MyISAM）在内存中只缓存索引，而数据依赖于操作系统来缓存。因此，只访问索引可以不使用系统调用（通常比较费时）。</li>
 <li>对于 InnoDB 引擎，若辅助索引能够覆盖查询，则无需访问主索引。</li>
-<li></li>
 </ul>
 <h2 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h2><ul>
 <li>大大减少了服务器需要扫描的数据行数。</li>
@@ -824,7 +928,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#索引"><span class="nav-number">1.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是索引？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是索引？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引的分类"><span class="nav-number">1.2.</span> <span class="nav-text">索引的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主键索引（最常用，最好用自增ID）"><span class="nav-number">1.2.1.</span> <span class="nav-text">主键索引（最常用，最好用自增ID）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通索引（一表可建多个，尽量避免NULL）"><span class="nav-number">1.2.2.</span> <span class="nav-text">普通索引（一表可建多个，尽量避免NULL）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#唯一索引"><span class="nav-number">1.2.3.</span> <span class="nav-text">唯一索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合索引"><span class="nav-number">1.2.4.</span> <span class="nav-text">组合索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL中创建和删除索引的语句"><span class="nav-number">1.3.</span> <span class="nav-text">MySQL中创建和删除索引的语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主键索引和普通索引的查询有什么区别？"><span class="nav-number">1.4.</span> <span class="nav-text">主键索引和普通索引的查询有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索引底层数据结构"><span class="nav-number">2.</span> <span class="nav-text">索引底层数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘I-O原理"><span class="nav-number">2.1.</span> <span class="nav-text">磁盘I/O原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#扇区与磁盘块-block-的区别"><span class="nav-number">2.1.1.</span> <span class="nav-text">扇区与磁盘块(block)的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B树（平衡多路查找树）"><span class="nav-number">2.2.</span> <span class="nav-text">B树（平衡多路查找树）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Tree"><span class="nav-number">2.3.</span> <span class="nav-text">B+Tree**</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么使用B-Tree（B-Tree）"><span class="nav-number">2.4.</span> <span class="nav-text">为什么使用B-Tree（B+Tree）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-树索引和hash索引的区别"><span class="nav-number">2.5.</span> <span class="nav-text">B+树索引和hash索引的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘存取原理"><span class="nav-number">2.6.</span> <span class="nav-text">磁盘存取原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部性原理与磁盘预读"><span class="nav-number">2.7.</span> <span class="nav-text">局部性原理与磁盘预读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Tree索引的性能分析"><span class="nav-number">2.8.</span> <span class="nav-text">B-/+Tree索引的性能分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL索引实现"><span class="nav-number">3.</span> <span class="nav-text">MySQL索引实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MyISAM索引实现"><span class="nav-number">3.1.</span> <span class="nav-text">MyISAM索引实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InnoDB索引实现"><span class="nav-number">3.2.</span> <span class="nav-text">InnoDB索引实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InnoDB索引和MyISAM索引的区别："><span class="nav-number">3.3.</span> <span class="nav-text">InnoDB索引和MyISAM索引的区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚簇索引与非聚簇索引"><span class="nav-number">3.4.</span> <span class="nav-text">聚簇索引与非聚簇索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、聚簇索引"><span class="nav-number">3.4.1.</span> <span class="nav-text">1、聚簇索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、非聚簇索引"><span class="nav-number">3.4.2.</span> <span class="nav-text">2、非聚簇索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引优化"><span class="nav-number">3.5.</span> <span class="nav-text">索引优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-独立的列"><span class="nav-number">3.5.1.</span> <span class="nav-text">1. 独立的列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-多列索引"><span class="nav-number">3.5.2.</span> <span class="nav-text">2. 多列索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-索引列的顺序"><span class="nav-number">3.5.3.</span> <span class="nav-text">3. 索引列的顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-前缀索引"><span class="nav-number">3.5.4.</span> <span class="nav-text">4. 前缀索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-覆盖索引"><span class="nav-number">3.5.5.</span> <span class="nav-text">5. 覆盖索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引的优点"><span class="nav-number">3.6.</span> <span class="nav-text">索引的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引的使用条件"><span class="nav-number">3.7.</span> <span class="nav-text">索引的使用条件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#索引"><span class="nav-number">1.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是索引？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是索引？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引的分类"><span class="nav-number">1.2.</span> <span class="nav-text">索引的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主键索引（最常用，最好用自增ID）"><span class="nav-number">1.2.1.</span> <span class="nav-text">主键索引（最常用，最好用自增ID）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通索引（一表可建多个，尽量避免NULL）"><span class="nav-number">1.2.2.</span> <span class="nav-text">普通索引（一表可建多个，尽量避免NULL）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#唯一索引"><span class="nav-number">1.2.3.</span> <span class="nav-text">唯一索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联合索引"><span class="nav-number">1.2.4.</span> <span class="nav-text">联合索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL中创建和删除索引的语句"><span class="nav-number">1.3.</span> <span class="nav-text">MySQL中创建和删除索引的语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各种索引的区别与联系"><span class="nav-number">1.4.</span> <span class="nav-text">各种索引的区别与联系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主键索引与普通索引的区别"><span class="nav-number">1.4.1.</span> <span class="nav-text">主键索引与普通索引的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主键索引与唯一索引的区别"><span class="nav-number">1.4.2.</span> <span class="nav-text">主键索引与唯一索引的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索引底层数据结构"><span class="nav-number">2.</span> <span class="nav-text">索引底层数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘I-O原理"><span class="nav-number">2.1.</span> <span class="nav-text">磁盘I/O原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#扇区与磁盘块-block-的区别"><span class="nav-number">2.1.1.</span> <span class="nav-text">扇区与磁盘块(block)的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B树（平衡多路查找树）"><span class="nav-number">2.2.</span> <span class="nav-text">B树（平衡多路查找树）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Tree"><span class="nav-number">2.3.</span> <span class="nav-text">B+Tree**</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么使用B-Tree（B-Tree）"><span class="nav-number">2.4.</span> <span class="nav-text">为什么使用B-Tree（B+Tree）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-树索引和hash索引的区别"><span class="nav-number">2.5.</span> <span class="nav-text">B+树索引和hash索引的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘存取原理"><span class="nav-number">2.6.</span> <span class="nav-text">磁盘存取原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部性原理与磁盘预读"><span class="nav-number">2.7.</span> <span class="nav-text">局部性原理与磁盘预读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Tree索引的性能分析"><span class="nav-number">2.8.</span> <span class="nav-text">B-/+Tree索引的性能分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL索引实现"><span class="nav-number">3.</span> <span class="nav-text">MySQL索引实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MyISAM索引实现"><span class="nav-number">3.1.</span> <span class="nav-text">MyISAM索引实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InnoDB索引实现"><span class="nav-number">3.2.</span> <span class="nav-text">InnoDB索引实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InnoDB索引和MyISAM索引的区别："><span class="nav-number">3.3.</span> <span class="nav-text">InnoDB索引和MyISAM索引的区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚簇索引与非聚簇索引"><span class="nav-number">3.4.</span> <span class="nav-text">聚簇索引与非聚簇索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、聚簇索引"><span class="nav-number">3.4.1.</span> <span class="nav-text">1、聚簇索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、非聚簇索引"><span class="nav-number">3.4.2.</span> <span class="nav-text">2、非聚簇索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联合索引-1"><span class="nav-number">3.5.</span> <span class="nav-text">联合索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#联合索引的B-树结构"><span class="nav-number">3.5.1.</span> <span class="nav-text">联合索引的B+树结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多个单列索引和联合索引的区别"><span class="nav-number">3.5.2.</span> <span class="nav-text">多个单列索引和联合索引的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引优化"><span class="nav-number">3.6.</span> <span class="nav-text">索引优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-独立的列"><span class="nav-number">3.6.1.</span> <span class="nav-text">1. 独立的列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-多列索引"><span class="nav-number">3.6.2.</span> <span class="nav-text">2. 多列索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-索引列的顺序"><span class="nav-number">3.6.3.</span> <span class="nav-text">3. 索引列的顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-前缀索引"><span class="nav-number">3.6.4.</span> <span class="nav-text">4. 前缀索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-覆盖索引"><span class="nav-number">3.6.5.</span> <span class="nav-text">5. 覆盖索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引的优点"><span class="nav-number">3.7.</span> <span class="nav-text">索引的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引的使用条件"><span class="nav-number">3.8.</span> <span class="nav-text">索引的使用条件</span></a></li></ol></li></ol></div>
             
 
           </div>
