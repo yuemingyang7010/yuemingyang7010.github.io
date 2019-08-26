@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/06.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/07.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/10.png">
-<meta property="og:updated_time" content="2019-08-05T15:28:06.758Z">
+<meta property="og:updated_time" content="2019-08-10T10:47:55.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL">
 <meta name="twitter:description" content="MySql常用数据类型   类型 描述    Char(长度) 定长字符串，存储空间大小固定，适合作为主键或外键   Varchar(长度) 变长字符串，存储空间等于实际数据空间   double(有效数字位数，小数位) 数值型   Float(有效数字位数，小数位) 数值型   Int(长度) 整型   bigint(长度) 长整型   Date 日期型   BLOB Binary Large">
@@ -571,7 +571,7 @@
 <p>b.写锁（互斥锁）：如果当前写操作没有完毕（买衣服的一系列操作），则无法进行其他的读操作；</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tablelock(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment, </span><br><span class="line"><span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">20</span>)</span><br><span class="line">) <span class="keyword">engine</span> myisam; </span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tablelock(<span class="keyword">name</span>)<span class="keyword">values</span>(<span class="string">'al'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tablelock(<span class="keyword">name</span>)<span class="keyword">values</span>(<span class="string">'a2'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tablelock(<span class="keyword">name</span>)<span class="keyword">values</span>(<span class="string">'a3'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tablelock(<span class="keyword">name</span>)<span class="keyword">values</span>(<span class="string">'a4'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tablelock(<span class="keyword">name</span>)<span class="keyword">values</span>(<span class="string">'a5'</span>); </span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
 
-<p>增加锁的语法：<br>locak table   表1   read/write，表2 read/write，.…<br>查看加锁的表：<br>show open tables；</p>
+<p>增加锁的语法：<br>lock table   表1   read/write，表2 read/write，.…<br>查看加锁的表：<br>show open tables；</p>
 <h2 id="表锁介绍："><a href="#表锁介绍：" class="headerlink" title="表锁介绍："></a>表锁介绍：</h2><p><strong>加读锁实验：</strong></p>
 <p>会话：session：每一个访问数据的dos命令行、数据库客户端工具都是一个会话加读锁：</p>
 <p>会话0：</p>
@@ -694,8 +694,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/15/Redis/" rel="next" title="Redis">
-                <i class="fa fa-chevron-left"></i> Redis
+              <a href="/2019/03/15/redis指令与持久化/" rel="next" title="redis指令及部分基础">
+                <i class="fa fa-chevron-left"></i> redis指令及部分基础
               </a>
             
           </div>

@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/19/计算机网络-传输层/05.jpg">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/19/计算机网络-传输层/06.jpg">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/19/计算机网络-传输层/07.png">
-<meta property="og:updated_time" content="2019-08-05T09:15:10.043Z">
+<meta property="og:updated_time" content="2019-08-13T09:46:10.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络-传输层">
 <meta name="twitter:description" content="网络层只把分组发送到目的主机，但是真正通信的并不是主机而是主机中的进程。传输层提供了进程间的逻辑通信，传输层向高层用户屏蔽了下面网络层的核心细节，使应用程序看起来像是在两个传输层实体之间有一条端到端的逻辑通信信道。 UDP 和 TCP 的特点 用户数据报协议 UDP（User Datagram Protocol）是无连接的，尽最大可能交付，没有拥塞控制，面向报文（对于应用程序传下来的报文不合并也不">
@@ -546,9 +546,9 @@
 <p>　　（2）使用SYN Proxy防火墙</p>
 <p>Syn Cache技术和Syn Cookie技术总的来说是一种主机保护技术，需要系统的TCP/IP协议栈的支持，而目前并非所有的操作系统支持这些技术。因此很多防火墙中都提供一种 SYN代理的功能，让防火墙先确认有效性。</p>
 <h1 id="TCP粘包，拆包及解决方法"><a href="#TCP粘包，拆包及解决方法" class="headerlink" title="TCP粘包，拆包及解决方法"></a>TCP粘包，拆包及解决方法</h1><h3 id="粘包、拆包表现形式"><a href="#粘包、拆包表现形式" class="headerlink" title="粘包、拆包表现形式"></a>粘包、拆包表现形式</h3><p>第一种情况，接收端正常收到两个数据包，即没有发生拆包和粘包的现象，此种情况不讨论范。</p>
-<p>第二种情况，接收端只收到一个数据包，由于TCP是不会出现丢包的，所以这一个数据包中包含了发送端发送的两个数据包的信息，这种现象即为粘包。这种情况由于接收端不知道这两个数据包的界限，所以对于接收端来说很难处理。</p>
-<p>第三种情况，这种情况有两种表现形式，如下图。接收端收到了两个数据包，但是这两个数据包要么是不完整的，要么就是多出来一块，这种情况即发生了拆包和粘包。这两种情况如果不加特殊处理，对于接收端同样是不好处理的。</p>
-<h3 id="粘包、拆包发生原因"><a href="#粘包、拆包发生原因" class="headerlink" title="粘包、拆包发生原因"></a>粘包、拆包发生原因</h3><p>发生TCP粘包或拆包有很多原因，现列出常见的几点，可能不全面，欢迎补充，<br>1、<strong>要发送的数据大于TCP发送缓冲区剩余空间大小</strong>，将会发生拆包。<br>2、<strong>待发送数据大于MSS</strong>（最大报文长度），TCP在传输前将进行拆包。<br>3、<strong>要发送的数据小于TCP发送缓冲区的大小</strong>，TCP将多次写入缓冲区的数据一次发送出去，将会发生粘包。<br>4、<strong>接收数据端的应用层没有及时读取接收缓冲区中的数据</strong>，将发生粘包。</p>
+<p>第二种情况，接收端只收到一个数据包，由于TCP是不会出现丢包的，所以这<strong>一个数据包中包含了发送端发送的两个数据包的信息，这种现象即为粘包</strong>。这种情况由于接收端不知道这两个数据包的界限，所以对于接收端来说很难处理。</p>
+<p>第三种情况，这种情况有两种表现形式，如下图。<strong>接收端收到了两个数据包，但是这两个数据包要么是不完整的，要么就是多出来一块，这种情况即发生了拆包和粘包</strong>。这两种情况如果不加特殊处理，对于接收端同样是不好处理的。</p>
+<h3 id="粘包、拆包发生原因"><a href="#粘包、拆包发生原因" class="headerlink" title="粘包、拆包发生原因"></a>粘包、拆包发生原因</h3><p>发生TCP粘包或拆包有很多原因，现列出常见的几点，可能不全面，<br>1、<strong>要发送的数据大于TCP发送缓冲区剩余空间大小</strong>，将会发生拆包。<br>2、<strong>待发送数据大于MSS</strong>（最大报文长度），TCP在传输前将进行拆包。<br>3、<strong>要发送的数据小于TCP发送缓冲区的大小</strong>，TCP将多次写入缓冲区的数据一次发送出去，将会发生粘包。<br>4、<strong>接收数据端的应用层没有及时读取接收缓冲区中的数据</strong>，将发生粘包。</p>
 <p>等等。</p>
 <h3 id="粘包、拆包解决办法"><a href="#粘包、拆包解决办法" class="headerlink" title="粘包、拆包解决办法"></a>粘包、拆包解决办法</h3><p>通过以上分析，我们清楚了粘包或拆包发生的原因，那么如何解决这个问题呢？解决问题的<strong>关键在于如何给每个数据包添加边界信息</strong>，常用的方法有如下几个：<br>1、发送端给每个数据包添加包首部，<strong>首部中应该至少包含数据包的长度</strong>，这样接收端在接收到数据后，通过读取包首部的长度字段，便知道每一个数据包的实际长度了。<br>2、发送端将每个<strong>数据包封装为固定长度</strong>（不够的可以通过补0填充），这样接收端每次从接收缓冲区中读取固定长度的数据就自然而然的把每个数据包拆分开来。<br>3、可以在数据包之间<strong>设置边界，如添加特殊符号</strong>，这样，接收端通过这个边界就可以将不同的数据包拆分开。</p>
 <p>等等。</p>
@@ -616,8 +616,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/18/动力节点SQL34题/" rel="next" title="动力节点SQL34题">
-                <i class="fa fa-chevron-left"></i> 动力节点SQL34题
+              <a href="/2019/03/19/Shell/" rel="next" title="Shell">
+                <i class="fa fa-chevron-left"></i> Shell
               </a>
             
           </div>
@@ -626,8 +626,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/19/Shell/" rel="prev" title="Shell">
-                Shell <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/20/Shell编程四剑客/" rel="prev" title="Shell编程四剑客">
+                Shell编程四剑客 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
