@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/05.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/06.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/11.jpg">
-<meta property="og:updated_time" content="2019-08-08T01:45:04.763Z">
+<meta property="og:updated_time" content="2019-09-01T11:37:06.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL中的索引">
 <meta name="twitter:description" content="索引什么是索引？排好序的快速查询的数据结构，常常类比为字典目录。 优点：大大加快数据的检索速度； 缺点：创建索引和维护索引要花费一定的时间。 索引的分类主键索引（PRIMAY KEY） 普通索引（INDEX） 唯一索引（UNIQUE） 联合索引 InnoDB和MyISAM会自动为主键或者声明为UNIQUE的列去自动建立B+树索引。 主键索引（最常用，最好用自增ID）为表设置了主键，数据库将自动创建">
@@ -486,7 +486,7 @@
 <p><a href="https://www.cnblogs.com/yi-mu-xi/p/10939612.html" target="_blank" rel="noopener">对于磁道、扇区和磁盘块的理解2</a></p>
 <h2 id="磁盘I-O原理"><a href="#磁盘I-O原理" class="headerlink" title="磁盘I/O原理"></a>磁盘I/O原理</h2><h3 id="扇区与磁盘块-block-的区别"><a href="#扇区与磁盘块-block-的区别" class="headerlink" title="扇区与磁盘块(block)的区别"></a>扇区与磁盘块(block)的区别</h3><p><strong>磁盘在物理层面上分为磁道，扇区</strong>（通常大小为512K），磁盘驱动器操作磁盘数据，硬盘的最小存储单位是扇区，硬盘本身没有block的概念。</p>
 <p><strong>文件系统：</strong></p>
-<p>文件系统若按照一个扇区一个扇区读数据速度太慢，所以有了<strong>block（磁盘块）</strong>的概念，是一个块一个块读取的，block才是文件存取的最小单位。通常一个block是4K，该文件系统中1个块是由连续的8个扇区组成。一个块大小=一个扇区大小*2的n次方。N是可以修改的。</p>
+<p>文件系统若按照一个扇区一个扇区读数据速度太慢，所以有了<strong>block（磁盘块）</strong>的概念，是一个块一个块读取的，block才是文件存取的最小单位。通常一个block是4KB，该文件系统中1个块是由连续的8个扇区组成。一个块大小=一个扇区大小*2的n次方。N是可以修改的。</p>
 <p><strong>总结：扇区是对硬盘而言，块是对文件系统而言。</strong></p>
 <p>索引是帮助MySQL高效获取数据的排好序的数据结构</p>
 <h2 id="B树（平衡多路查找树）"><a href="#B树（平衡多路查找树）" class="headerlink" title="B树（平衡多路查找树）"></a><strong>B树（平衡多路查找树）</strong></h2><p>B-Tree是为磁盘等外存储设备设计的一种平衡查找树。因此在讲B-Tree之前先了解下磁盘的相关知识。</p>
@@ -855,7 +855,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
