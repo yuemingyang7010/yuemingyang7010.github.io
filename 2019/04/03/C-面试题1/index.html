@@ -88,7 +88,13 @@
 <meta property="og:description" content="为什么标准头文件都有类似以下的结构？12345678910#ifndef __INCvxWorksh#define __INCvxWorksh #ifdef __cplusplusextern &quot;C&quot; &amp;#123;#endif /*...*/ #ifdef __cplusplus&amp;#125;#endif #endif /* __INCvxWorksh */  头文件中的编译宏  #ifndef　I">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/01.png">
-<meta property="og:updated_time" content="2019-08-10T04:07:02.201Z">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/02.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/03.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/04.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/05.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/06.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/07.png">
+<meta property="og:updated_time" content="2019-09-06T02:23:53.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++面试题(1)">
 <meta name="twitter:description" content="为什么标准头文件都有类似以下的结构？12345678910#ifndef __INCvxWorksh#define __INCvxWorksh #ifdef __cplusplusextern &quot;C&quot; &amp;#123;#endif /*...*/ #ifdef __cplusplus&amp;#125;#endif #endif /* __INCvxWorksh */  头文件中的编译宏  #ifndef　I">
@@ -408,7 +414,7 @@
 <p>#define　__INCvxWorksh</p>
 <p>#endif<br>的作用是防止被重复引用。 </p>
 <p>后的str仍然为NULL；<br>1：传入形参并不能真正改变形参的值，执行完之后为空；<br>2：在函数GetMemory中和Test中没有malloc对应的free，造成内存泄露</p>
-<h3 id="请写一个C函数，若处理器是Big-endian的，则返回0；若是Little-endian的，则返回1"><a href="#请写一个C函数，若处理器是Big-endian的，则返回0；若是Little-endian的，则返回1" class="headerlink" title="请写一个C函数，若处理器是Big_endian的，则返回0；若是Little_endian的，则返回1"></a>请写一个C函数，若处理器是Big_endian的，则返回0；若是Little_endian的，则返回1</h3><p>【解答】 </p>
+<h3 id="Linux内存分区-常见两种分法"><a href="#Linux内存分区-常见两种分法" class="headerlink" title="Linux内存分区(常见两种分法)"></a>Linux内存分区(常见两种分法)</h3><h3 id="判断是大端存储还是小端存储"><a href="#判断是大端存储还是小端存储" class="headerlink" title="判断是大端存储还是小端存储"></a>判断是大端存储还是小端存储</h3><p>【解答】 </p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">checkCPU</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">union</span> w&#123; </span><br><span class="line">		<span class="keyword">int</span> a;</span><br><span class="line">		<span class="keyword">char</span> b;</span><br><span class="line">	&#125; c;</span><br><span class="line">	c.a = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> (c.b == <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>【剖析】<br>嵌入式系统开发者应该对Little-endian和Big-endian模式非常了解。采用Little-endian模式的CPU对操作数的存放方式是从低字节到高字节，而Big-endian模式对操作数的存放方式是从高字节到低字节。</p>
@@ -480,12 +486,12 @@
 <p><strong>为什么不使用C的强制转换？</strong></p>
 <p>C的强制转换表面上看起来功能强大什么都能转，但是转化不够明确，不能进行错误检查，容易出错。</p>
 <h3 id="指针和引用的区别？"><a href="#指针和引用的区别？" class="headerlink" title="指针和引用的区别？"></a>指针和引用的区别？</h3><p>参考回答:</p>
-<p>1)   指针是一个实体，需要分配内存空间。引用只是变量的别名，不需要分配内存空间。</p>
-<p>2)   引用在定义的时候必须进行初始化，并且不能够改变。指针在定义的时候不一定要初始化，并且指向的空间可变。（注：不能有引用的值不能为NULL）</p>
-<p>3)   有多级指针，但是没有多级引用，只能有一级引用。</p>
-<p>4)   指针和引用的自增运算结果不一样。（指针是指向下一个空间，引用时引用的变量值加1）</p>
-<p>5)   sizeof 引用得到的是所指向的变量（对象）的大小，而sizeof 指针得到的是指针本身的大小。</p>
-<p>6)   引用访问一个变量是直接访问，而指针访问一个变量是间接访问。</p>
+<p>1)   <strong>指针是一个实体，需要分配内存空间</strong>。引用只是变量的别名，不需要分配内存空间。</p>
+<p>2)   引用在定义的时候<strong>必须进行初始化</strong>，并且不能够改变。指针在定义的时候不一定要初始化，并且指向的空间可变。（注：不能有引用的值不能为NULL）</p>
+<p>3)   <strong>有多级指针，但是没有多级引用</strong>，只能有一级引用。</p>
+<p>4)   指针和引用的<strong>自增运算</strong>结果不一样。（指针是指向下一个空间，引用时引用的变量值加1）</p>
+<p>5)   <strong>sizeof</strong> 引用得到的是所指向的变量（对象）的大小，而sizeof 指针得到的是指针本身的大小。</p>
+<p>6)   <strong>引用访问一个变量是直接访问，而指针访问一个变量是间接访问</strong>。</p>
 <p>7)   使用指针前最好做类型检查，防止野指针的出现；</p>
 <p>8)   引用底层是通过指针实现的；</p>
 <p>9）如果返回动态内存分配的对象或者内存，必须使用指针，引用可能引起内存泄露。</p>
@@ -564,16 +570,16 @@
 <p><strong>把类A中的share_ptr改成之后能析构掉资源：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">B delete</span><br><span class="line">A delete</span><br></pre></td></tr></table></figure>
 
-<h3 id="请你来回答一下什么是memory-leak，也就是内存泄漏"><a href="#请你来回答一下什么是memory-leak，也就是内存泄漏" class="headerlink" title="请你来回答一下什么是memory leak，也就是内存泄漏"></a>请你来回答一下什么是memory leak，也就是内存泄漏</h3><p>参考回答:</p>
+<h3 id="什么是内存泄漏-memory-leak"><a href="#什么是内存泄漏-memory-leak" class="headerlink" title="什么是内存泄漏(memory leak)"></a>什么是内存泄漏(memory leak)</h3><p>参考回答:</p>
 <p>内存泄漏(memory leak)是指由于疏忽或错误造成了程序未能释放掉不再使用的内存的情况。内存泄漏并非指内存在物理上的消失，而是应用程序分配某段内存后，由于设计错误，<strong>失去了对该段内存的控制，因而造成了内存的浪费。</strong><br>内存泄漏的分类：</p>
 <ol>
 <li>堆内存泄漏 （Heap leak）。对内存指的是程序运行中根据需要分配通过<strong>malloc,realloc new</strong>等从堆中分配的一块内存，再是完成后必须通过调用对应的 <strong>free或者delete</strong> 删掉。如果程序的设计的错误导致这部分内存没有被释放，那么此后这块内存将不会被使用，就会产生Heap Leak.</li>
 <li>系统资源泄露（Resource Leak）。<strong>主要指程序使用系统分配的资源比如 Bitmap,handle ,SOCKET等没有使用相应的函数释放掉</strong>，导致系统资源的浪费，严重可导致系统效能降低，系统运行不稳定。</li>
 <li><strong>没有将基类的析构函数定义为虚函数。</strong>当基类指针指向子类对象时，如果基类的析构函数不是virtual，那么子类的析构函数将不会被调用，子类的资源没有正确是释放，因此造成内存泄露。</li>
 </ol>
-<h3 id="请你回答一下如何判断内存泄漏？"><a href="#请你回答一下如何判断内存泄漏？" class="headerlink" title="请你回答一下如何判断内存泄漏？"></a>请你回答一下如何判断内存泄漏？</h3><p>参考回答:</p>
+<h3 id="如何判断内存泄漏？"><a href="#如何判断内存泄漏？" class="headerlink" title="如何判断内存泄漏？"></a>如何判断内存泄漏？</h3><p>参考回答:</p>
 <p>内存泄漏通常是由于调用了malloc/new等内存申请的操作，但是缺少了对应的free/delete。为了判断内存是否泄露，我们一方面可以使用linux环境下的内存泄漏检查工具<strong>Valgrind</strong>(音标|‘vælgrind|),windows下由MicroSoft公司自己开发的一个工具——<strong>LeakDiag</strong>，另一方面我们在<strong>写代码时可以添加内存申请和释放的统计功能</strong>，统计当前申请和释放的内存是否一致，以此来判断内存是否泄露。（即在对象的构造函数,中对全局变量进行+1，在析函数中-1）</p>
-<h3 id="请回答一下数组和指针的区别"><a href="#请回答一下数组和指针的区别" class="headerlink" title="请回答一下数组和指针的区别"></a>请回答一下数组和指针的区别</h3><p>参考回答:</p>
+<h3 id="数组和指针的区别"><a href="#数组和指针的区别" class="headerlink" title="数组和指针的区别"></a>数组和指针的区别</h3><p>参考回答:</p>
 <p>指针和数组的主要区别如下：</p>
 <table>
 <thead>
@@ -603,9 +609,9 @@
 <td>自身即为数据名</td>
 </tr>
 </tbody></table>
-<h3 id="请你回答一下野指针是什么？"><a href="#请你回答一下野指针是什么？" class="headerlink" title="请你回答一下野指针是什么？"></a>请你回答一下野指针是什么？</h3><p>参考回答:</p>
+<h3 id="野指针是什么？"><a href="#野指针是什么？" class="headerlink" title="野指针是什么？"></a>野指针是什么？</h3><p>参考回答:</p>
 <p>野指针就是指向一个已删除的对象或者未申请访问受限内存区域的指针</p>
-<h3 id="请你理解的c-中的引用和指针"><a href="#请你理解的c-中的引用和指针" class="headerlink" title="请你理解的c++中的引用和指针"></a>请你理解的c++中的引用和指针</h3><p><strong>定义：</strong><br>1、引用：</p>
+<h3 id="引用和指针"><a href="#引用和指针" class="headerlink" title="引用和指针"></a>引用和指针</h3><p><strong>定义：</strong><br>1、引用：</p>
 <p>C++是C语言的继承，它可进行过程化程序设计，又可以进行以抽象数据类型为特点的基于对象的程序设计，还可以进行以继承和多态为特点的面向对象的程序设计。引用就是C++对C语言的重要扩充。引用就是某一变量的一个别名，对引用的操作与对变量直接操作完全一样。引用的声明方法：类型标识符 &amp;引用名=目标变量名；引用引入了对象的一个同义词。定义引用的表示方法与定义指针相似，只是用&amp;代替了*。</p>
 <p>2、指针：</p>
 <p>指针利用地址，它的值直接指向存在电脑存储器中另一个地方的值。由于通过地址能找到所需的变量单元，可以说，地址指向该变量单元。因此，将地址形象化的称为“指针”。意思是通过它能找到以它为地址的内存单元。</p>
@@ -619,9 +625,9 @@
 <p>7)   <strong>使用指针前最好做类型检查</strong>，防止野指针的出现；</p>
 <p>8)   <strong>引用底层是通过指针实现的</strong>；</p>
 <p>9)   作为参数时也不同，传指针的实质是传值，传递的值是指针的地址；传引用的实质是传地址，传递的是变量的地址。</p>
-<h3 id="请你回答一下为什么析构函数必须是虚函数？为什么C-默认的析构函数不是虚函数"><a href="#请你回答一下为什么析构函数必须是虚函数？为什么C-默认的析构函数不是虚函数" class="headerlink" title="请你回答一下为什么析构函数必须是虚函数？为什么C++默认的析构函数不是虚函数"></a>请你回答一下为什么析构函数必须是虚函数？为什么C++默认的析构函数不是虚函数</h3><p>将可能会被继承的父类的析构函数设置为虚函数，可以保证当我们new一个子类，然后使用基类指针指向该子类对象，释放基类指针时可以释放掉子类的空间，防止内存泄漏。</p>
+<h3 id="为什么析构函数必须是虚函数？C-默认的析构函数不是虚函数"><a href="#为什么析构函数必须是虚函数？C-默认的析构函数不是虚函数" class="headerlink" title="为什么析构函数必须是虚函数？C++默认的析构函数不是虚函数"></a>为什么析构函数必须是虚函数？C++默认的析构函数不是虚函数</h3><p>将可能会被继承的父类的析构函数设置为虚函数，可以保证当我们new一个子类，然后使用基类指针指向该子类对象，释放基类指针时可以释放掉子类的空间，防止内存泄漏。</p>
 <p>C++默认的析构函数不是虚函数是因为虚函数需要额外的虚函数表和虚表指针，占用额外的内存。而对于不会被继承的类来说，其析构函数如果是虚函数，就会浪费内存。因此C++默认的析构函数不是虚函数，而是只有当需要当作父类时，设置为虚函数。</p>
-<h3 id="请你来说一下函数指针"><a href="#请你来说一下函数指针" class="headerlink" title="请你来说一下函数指针"></a>请你来说一下函数指针</h3><p>参考回答:</p>
+<h3 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h3><p>参考回答:</p>
 <p>1、定义<br>函数指针是指向函数的指针变量。</p>
 <p>函数指针本身首先是一个指针变量，该指针变量指向一个具体的函数。这正如用指针变量可指向整型变量、字符型、数组一样，这里是指向函数。</p>
 <p>C在编译时，每一个函数都有一个入口地址，该入口地址就是函数指针所指向的地址。有了指向函数的指针变量后，可用该指针变量调用函数，就如同用指针变量可引用其他类型变量一样，在这些概念上是大体一致的。</p>
@@ -638,18 +644,18 @@
 <p>成功调用fork( )会创建一个新的进程，它几乎与调用fork( )的进程一模一样，这两个进程都会继续运行。在子进程中，成功的fork( )调用会返回0。在父进程中fork( )返回子进程的pid。如果出现错误，fork( )返回一个负值。</p>
 <p>最常见的fork( )用法是创建一个新的进程，然后使用exec( )载入二进制映像，替换当前进程的映像。这种情况下，派生（fork）了新的进程，而这个子进程会执行一个新的二进制可执行文件的映像。这种“派生加执行”的方式是很常见的。</p>
 <p>在早期的Unix系统中，创建进程比较原始。当调用fork时，内核会把所有的内部数据结构复制一份，复制进程的页表项，然后把父进程的地址空间中的内容逐页的复制到子进程的地址空间中。但从内核角度来说，逐页的复制方式是十分耗时的。现代的Unix系统采取了更多的优化，例如Linux，采用了写时复制的方法，而不是对父进程空间进程整体复制。</p>
-<h3 id="请你来说一下map和set有什么区别，分别又是怎么实现的？"><a href="#请你来说一下map和set有什么区别，分别又是怎么实现的？" class="headerlink" title="请你来说一下map和set有什么区别，分别又是怎么实现的？"></a>请你来说一下map和set有什么区别，分别又是怎么实现的？</h3><p>参考回答:</p>
+<h3 id="map和set有什么区别，分别又是怎么实现的？"><a href="#map和set有什么区别，分别又是怎么实现的？" class="headerlink" title="map和set有什么区别，分别又是怎么实现的？"></a>map和set有什么区别，分别又是怎么实现的？</h3><p>参考回答:</p>
 <p>map和set都是C++的关联容器，其底层实现都是红黑树（RB-Tree）。由于 map 和set所开放的各种操作接口，RB-tree 也都提供了，所以<strong>几乎所有的 map 和set的操作行为，都只是转调 RB-tree 的操作行为。</strong></p>
 <p>map和set区别在于：</p>
 <p>（1）map中的元素是key-value（关键字—值）对：<strong>关键字起到索引的作用</strong>，值则表示与索引相关联的数据；Set与之相对就是关键字的简单集合，set中每个元素只包含一个关键字。</p>
 <p>（2）<strong>set的迭代器是const的，不允许修改元素的值；map允许修改value，但不允许修改key。</strong>其原因是因为map和set是根据关键字排序来保证其有序性的，如果允许修改key的话，那么首先需要删除该键，然后调节平衡，再插入修改后的键值，调节平衡，如此一来，严重破坏了map和set的结构，导致iterator失效，不知道应该指向改变前的位置，还是指向改变后的位置。所以STL中将set的迭代器设置成const，不允许修改迭代器的值；而map的迭代器则不允许修改key值，允许修改value值。</p>
 <p>（3）<strong>map支持下标操作，set不支持下标操作。map可以用key做下标，map的下标运算符[ ]将关键码作为下标去执行查找</strong>，如果关键码不存在，则插入一个具有该关键码和mapped_type类型默认值的元素至map中，因此下标运算符[ ]在map应用中需要慎用，const_map不能用，只希望确定某一个关键值是否存在而不希望插入元素时也不应该使用，mapped_type类型没有默认值也不应该使用。如果find能解决需要，尽可能用find。</p>
-<h3 id="请你来说一下C-中struct和class的区别"><a href="#请你来说一下C-中struct和class的区别" class="headerlink" title="请你来说一下C++中struct和class的区别"></a>请你来说一下C++中struct和class的区别</h3><p>在C++中，可以用struct和class定义类，都可以继承。区别在于：structural的默认继承权限和默认访问权限是public，而class的默认继承权限和默认访问权限是private。<br>另外，class还可以定义模板类形参，比如template &lt;class T, int i&gt;。</p>
-<h3 id="请你来说一下一个C-源文件从文本到可执行文件经历的过程？"><a href="#请你来说一下一个C-源文件从文本到可执行文件经历的过程？" class="headerlink" title="请你来说一下一个C++源文件从文本到可执行文件经历的过程？"></a>请你来说一下一个C++源文件从文本到可执行文件经历的过程？</h3><p>对于C++源文件，从文本到可执行文件一般需要四个过程：<br>预处理阶段：对源代码文件中<strong>文件包含关系（头文件）、预编译语句（宏定义）进行分析和替换，生成预编译文件。</strong></p>
+<h3 id="C-中struct和class的区别"><a href="#C-中struct和class的区别" class="headerlink" title="C++中struct和class的区别"></a>C++中struct和class的区别</h3><p>在C++中，可以用struct和class定义类，都可以继承。区别在于：structural的默认继承权限和默认访问权限是public，而class的默认继承权限和默认访问权限是private。<br>另外，class还可以定义模板类形参，比如template &lt;class T, int i&gt;。</p>
+<h3 id="一个C-源文件从文本到可执行文件经历的过程？"><a href="#一个C-源文件从文本到可执行文件经历的过程？" class="headerlink" title="一个C++源文件从文本到可执行文件经历的过程？"></a>一个C++源文件从文本到可执行文件经历的过程？</h3><p>对于C++源文件，从文本到可执行文件一般需要四个过程：<br>预处理阶段：对源代码文件中<strong>文件包含关系（头文件）、预编译语句（宏定义）进行分析和替换，生成预编译文件。</strong></p>
 <p>编译阶段：将经过预处理后的预编译文件转换成特定汇编代码，<strong>生成汇编文件</strong></p>
 <p>汇编阶段：将编译阶段生成的<strong>汇编文件转化成机器码，生成可重定位目标文件</strong></p>
 <p>链接阶段：将<strong>多个目标文件及所需要的库连接</strong>成最终的<strong>可执行目标文件</strong></p>
-<h3 id="请你来回答一下include头文件的顺序以及双引号””和尖括号-lt-gt-的区别？"><a href="#请你来回答一下include头文件的顺序以及双引号””和尖括号-lt-gt-的区别？" class="headerlink" title="请你来回答一下include头文件的顺序以及双引号””和尖括号&lt;&gt;的区别？"></a>请你来回答一下include头文件的顺序以及双引号””和尖括号&lt;&gt;的区别？</h3><p>Include头文件的顺序：对于include的头文件来说，如果在文件a.h中声明一个在文件b.h中定义的变量，而不引用b.h。那么要在a.c文件中引用b.h文件，并且要先引用b.h，后引用a.h,否则汇报变量类型未声明错误。</p>
+<h3 id="include头文件的顺序以及双引号””和尖括号-lt-gt-的区别？"><a href="#include头文件的顺序以及双引号””和尖括号-lt-gt-的区别？" class="headerlink" title="include头文件的顺序以及双引号””和尖括号&lt;&gt;的区别？"></a>include头文件的顺序以及双引号””和尖括号&lt;&gt;的区别？</h3><p>Include头文件的顺序：对于include的头文件来说，如果在文件a.h中声明一个在文件b.h中定义的变量，而不引用b.h。那么要在a.c文件中引用b.h文件，并且要先引用b.h，后引用a.h,否则汇报变量类型未声明错误。</p>
 <p>双引号和尖括号的区别：编译器预处理阶段查找头文件的路径不一样。</p>
 <p>对于使用<strong>双引号包含的头文件</strong>，查找头文件路径的顺序为：</p>
 <p>（1）当前头文件目录</p>
@@ -658,10 +664,10 @@
 <p>对于使用<strong>尖括号包含的头文件</strong>，查找头文件的路径顺序为：</p>
 <p>（1）编译器设置的头文件路径（编译器可使用-I显式指定搜索路径）</p>
 <p>（2）系统变量CPLUS_INCLUDE_PATH/C_INCLUDE_PATH指定的头文件路径</p>
-<h3 id="请你回答一下malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？"><a href="#请你回答一下malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？" class="headerlink" title="请你回答一下malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？"></a>请你回答一下malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？</h3><p>Malloc函数用于动态分配内存。为了减少内存碎片和系统调用的开销，<strong>malloc其采用内存池的方式，先申请大块内存作为堆区，然后将堆区分为多个内存块，以块作为内存管理的基本单位。</strong>当用户申请内存时，直接从堆区分配一块合适的空闲块。Malloc采用隐式链表结构将堆区分成连续的、大小不一的块，包含已分配块和未分配块；同时malloc采用显示链表结构来管理所有的空闲块，即使用一个双向链表将空闲块连接起来，每一个空闲块记录了一个连续的、未分配的地址。</p>
+<h3 id="malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？"><a href="#malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？" class="headerlink" title="malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？"></a>malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？</h3><p>Malloc函数用于动态分配内存。为了减少内存碎片和系统调用的开销，<strong>malloc其采用内存池的方式，先申请大块内存作为堆区，然后将堆区分为多个内存块，以块作为内存管理的基本单位。</strong>当用户申请内存时，直接从堆区分配一块合适的空闲块。Malloc采用隐式链表结构将堆区分成连续的、大小不一的块，包含已分配块和未分配块；同时malloc采用显示链表结构来管理所有的空闲块，即使用一个双向链表将空闲块连接起来，每一个空闲块记录了一个连续的、未分配的地址。</p>
 <p>当进行内存分配时，Malloc会通过隐式链表遍历所有的空闲块，选择满足要求的块进行分配；当进行内存合并时，malloc采用边界标记法，根据每个块的前后块是否已经分配来决定是否进行块合并。</p>
 <p><strong>Malloc在申请内存时，一般会通过brk或者mmap系统调用进行申请。其中当申请内存小于128K时，会使用系统函数brk在堆区中分配；而当申请内存大于128K时，会使用系统函数mmap在映射区分配。</strong></p>
-<h3 id="请你来说一下什么时候会发生段错误"><a href="#请你来说一下什么时候会发生段错误" class="headerlink" title="请你来说一下什么时候会发生段错误"></a>请你来说一下什么时候会发生段错误</h3><p>段错误通常发生在访问非法内存地址的时候，具体来说分为以下几种情况：<br>使用野指针</p>
+<h3 id="什么时候会发生段错误"><a href="#什么时候会发生段错误" class="headerlink" title="什么时候会发生段错误"></a>什么时候会发生段错误</h3><p>段错误通常发生在访问非法内存地址的时候，具体来说分为以下几种情况：<br>使用野指针</p>
 <p>试图修改字符串常量的内容</p>
 <h3 id="C-中static关键字作用"><a href="#C-中static关键字作用" class="headerlink" title="C++中static关键字作用"></a><strong>C++中static关键字作用</strong></h3><p><a href="https://www.cnblogs.com/songdanzju/p/7422380.html" target="_blank" rel="noopener">参考</a></p>
 <p><strong>不考虑类，static的作用主要有三条。</strong></p>
@@ -695,18 +701,20 @@
 <p>static成员变量：</p>
 <p>1) <strong>一个类中可以有一个或多个静态成员变量，所有的对象都共享这些静态成员变量，都可以引用它。</strong></p>
 <p>2) static 成员变量和普通 static 变量一样，都在内存分区中的DATA段（静态区），到程序结束时才释放。这就意味着，<strong>static 成员变量不随对象的创建而分配内存，也不随对象的销毁而释放内存。</strong>而普通成员变量在对象创建时分配内存，在对象销毁时释放内存。</p>
-<p>3) <strong>静态成员变量必须初始化，而且只能在类体外进行。</strong>例如：</p>
+<p>3) <strong><u>静态成员变量必须初始化，而且只能在类体外进行</u>。</strong>例如：</p>
 <p>int Student::m_total = 10;</p>
 <p>初始化时可以赋初值，也可以不赋值。如果不赋值，那么会被默认初始化为 0。<strong>全局数据区的变量都有默认的初始值 0，而动态数据区（堆区、栈区）变量的默认值是不确定的，一般认为是垃圾值。</strong></p>
 <p>4) <strong>静态成员变量既可以通过对象名访问，也可以通过类名访问</strong>，但要遵循 private、protected 和 public 关键字的访问权限限制。当通过对象名访问时，对于不同的对象，访问的是同一份内存。</p>
 <p>static成员函数：</p>
 <p>关于静态成员函数，可以总结为以下几点：</p>
 <p>1）静态成员之间可以相互访问，包括<strong>静态成员函数访问静态成员变量和访问静态成员函数</strong>。<strong>静态成员函数不能访问非静态成员函数和非静态数据成员，非静态成员函数可以任意地访问静态成员函数和静态数据成员；</strong></p>
+<p>原因：由于static修饰的类成员属于类，不属于对象，因此static类成员函数是没有this指针的，this指针是指向本对象的指针。正因为没有this指针，所以static类成员函数不能访问非static的类成员，只能访问 static修饰的类成员。</p>
 <p>2）<strong>静态成员函数</strong>由于不与任何的对象相关联，因此它不具有this指针。因而它无法访问属于类对象的非静态数据成员，也无法访问非静态成员函数，<strong>只能调用其余的静态成员函数与访问静态数据成员</strong>。</p>
 <p><strong>注意：</strong>因为static成员不是任何对象的组成部分，所以<strong>static成员函数不能被声明为const</strong>。毕竟，将成员函数声明为const就是承诺不会修改该函数所属的对象，而static成员函数不属于任何对象。</p>
 <p>最后，<strong>static成员函数也不能被声明为虚函数、volatile</strong>。举例如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">base</span>&#123;</span></span><br><span class="line">    virtual static void funcl()；//错误</span><br><span class="line">    static void func2()const；//错误</span><br><span class="line">    static void func3()volatile；//错误</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
 
+<p><strong>static成员函数不能被virtual修饰</strong>，static成员不属于任何对象或实例，所以加上virtual没有任何实际意义；静态成员函数没有this指针，虚函数的实现是为每一个对象分配一个vptr指针，而vptr是通过this指针调用的，所以不能为virtual；虚函数的调用关系，<strong>this-&gt;vfptr-&gt;vtable-&gt;virtual function</strong></p>
 <h3 id="const作用"><a href="#const作用" class="headerlink" title="const作用"></a>const作用</h3><p>1)   【定义常量】<strong>阻止一个变量被改变，可以使用const关键字</strong>。在<strong>定义该const变量时，通常需要对它进行初始化</strong>，因为以后就没有机会再去改变它了；   </p>
 <p>2)   【修饰指针】<strong>对指针来说，可以指定指针本身为const，也可以指定指针所指的数据为const，或二者同时指定为const；</strong>   </p>
 <p>3)   【修饰函数形参】在一个<strong>函数声明中，const可以修饰形参，表明它是一个输入参数，在函数内部不能改变其值；</strong>   </p>
@@ -746,6 +754,178 @@
 
 <p>所以，在对含有指针成员的对象进行拷贝时，必须要自己定义拷贝构造函数，使拷贝后的对象指针成员有自己的内存空间，即进行深拷贝，这样就避免了内存泄漏发生。</p>
 <p><strong>对于成员变量存在指针变量的对象，浅拷贝带来问题的本质在于析构函数释放多次堆内存</strong>，使用std::shared_ptr，可以完美解决这个问题。</p>
+<h3 id="C-模板"><a href="#C-模板" class="headerlink" title="C++模板"></a>C++模板</h3><p><strong>函数模板：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> 类型参数<span class="number">1</span> , <span class="keyword">typename</span> 类型参数<span class="number">2</span> , ...&gt; 返回值类型  函数名(形参列表)&#123;</span><br><span class="line">    <span class="comment">//在函数体中可以使用类型参数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所谓函数模板，实际上是建立一个通用函数，它所用到的数据的类型（包括返回值类型、形参类型、局部变量类型）可以不具体指定，而是用一个虚拟的类型来代替（实际上是用一个标识符来占位），等发生函数调用时再根据传入的实参来逆推出真正的类型。这个通用函数就称为函数模板（Function Template）。</p>
+<p><strong>类模板：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> 类型参数<span class="number">1</span> , <span class="keyword">typename</span> 类型参数<span class="number">2</span> , …&gt; <span class="class"><span class="keyword">class</span> 类名&#123;</span></span><br><span class="line">    <span class="comment">//<span class="doctag">TODO:</span></span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>类模板在实例化时必须显式地指明数据类型，编译器不能根据给定的数据推演出数据类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Point&lt;<span class="keyword">float</span>, <span class="keyword">char</span>*&gt; p3(<span class="number">12.4</span>, <span class="string">"东经180度"</span>);</span><br><span class="line">Point&lt;<span class="keyword">char</span>*, <span class="keyword">char</span>*&gt; *p = <span class="keyword">new</span> Point&lt;<span class="keyword">char</span>*, <span class="keyword">char</span>*&gt;(<span class="string">"东经180度"</span>, <span class="string">"北纬210度"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="C与C-中truct区别，C-中struct与class区别"><a href="#C与C-中truct区别，C-中struct与class区别" class="headerlink" title="C与C++中truct区别，C++中struct与class区别"></a>C与C++中truct区别，C++中struct与class区别</h3><p>C语言和C++中struct的区别？</p>
+<table>
+<thead>
+<tr>
+<th>struct</th>
+<th>C语言</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>成员</td>
+<td>没有函数成员，只有数据</td>
+<td>函数和数据都可以有</td>
+</tr>
+<tr>
+<td>访问权限</td>
+<td>没有访问权限的设定，及对外不隐藏数据</td>
+<td>有访问权限的设定private,public,protected</td>
+</tr>
+<tr>
+<td>是否可以继承</td>
+<td>不可以</td>
+<td>有继承关系</td>
+</tr>
+</tbody></table>
+<p>C++中struct和class的区别？</p>
+<table>
+<thead>
+<tr>
+<th>C++</th>
+<th>struct</th>
+<th>class</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>访问默认权限</td>
+<td>struct默认是public</td>
+<td>class默认是private</td>
+</tr>
+<tr>
+<td>继承默认权限</td>
+<td>struct默认是public</td>
+<td>class默认是private</td>
+</tr>
+<tr>
+<td>定义模板参数</td>
+<td>不可以</td>
+<td>可以</td>
+</tr>
+</tbody></table>
+<h3 id="strcpy、strncpy与memcpy的区别与使用方法"><a href="#strcpy、strncpy与memcpy的区别与使用方法" class="headerlink" title="strcpy、strncpy与memcpy的区别与使用方法"></a>strcpy、strncpy与memcpy的区别与使用方法</h3><p>函数说明</p>
+<p>void  *memcpy(void *s1,  const void *s2,  size_t  n);</p>
+<p>char  *strcpy(char *s2, const char *s1);     </p>
+<p>char  *strncpy(char *s2, const char *s1, size_t n);</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//strcpy和strncpy是用在字符数组中，而不是</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> s1[<span class="number">4</span>] = &#123;<span class="string">'y'</span>,<span class="string">'u'</span>,<span class="string">'e'</span>,<span class="string">'\0'</span>&#125;;</span><br><span class="line">	<span class="keyword">char</span> s2[<span class="number">6</span>] = &#123; <span class="string">'y'</span>, <span class="string">'a'</span>, <span class="string">'n'</span>, <span class="string">'g'</span>,<span class="string">'y'</span>,<span class="string">'\0'</span> &#125;;</span><br><span class="line">	<span class="comment">//strcpy(s1,s2);   //缓冲溢出   s1数组为 y a n g,无‘\0’</span></span><br><span class="line">	<span class="comment">//strcpy(s2, s1);    //正常，s2为  y u e '\0' y '\0'</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//strncpy(s1, s2,5);  //当n&gt;s1数组长度时，s1数组为 y a n g,无‘\0’</span></span><br><span class="line">	<span class="comment">//strncpy(s1, s2, 2);   //当n&lt;s1数组长度时,只拷贝n个字符到s1</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">strncpy</span>(s2, s1, <span class="number">5</span>);   <span class="comment">//如果s1指向的数组是一个比n短的字符串，</span></span><br><span class="line">	<span class="comment">//则在s2定义的数组后面补空字符，直到写入了n个字符。</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意事项</p>
+<p>strcpy 是依据 “\0” 作为结束判断的，如果 s2 的空间不够，则会引起 buffer overflow。</p>
+<p>memcpy用来在内存中复制数据，<strong>由于字符串是以“\0”结尾的，所以对于在数据中包含“\0”的数据只能用memcpy，如:”hell\0oworld”。</strong></p>
+<p>Strncpy和memcpy很相似，只不过它在一个终止的空字符处停止。当n&gt;strlen(s1)时，<strong>给s2不够数的空间里填充“\0”；当n&lt;=strlen(s1)时，s2是没有结束符“\0”的。</strong></p>
+<p>这里隐藏了一个事实，就是s2指向的内存一定会被写n个字符。</p>
+<p>所以总的来说注意：</p>
+<p>1、s2指向的空间要足够拷贝；使用strcpy时，s2指向的空间要大于等于s1指向的空间；使用strncpy或memcpy时，s2指向的空间要大于或等于n。</p>
+<p>2、使用strncpy或memcpy时，n应该大于strlen(s1)，或者说最好n &gt;= strlen(s1)+1；这个1 就是最后的“\0”。</p>
+<p>3、使用strncpy时，确保s2的最后一个字符是“\0”。</p>
+<h3 id="右值与右值引用"><a href="#右值与右值引用" class="headerlink" title="右值与右值引用"></a>右值与右值引用</h3><p><a href="https://blog.csdn.net/china_jeffery/article/details/78520237" target="_blank" rel="noopener">参考</a></p>
+<p>补充1：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="number">2</span> <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(T&amp; a, T&amp; b)</span></span></span><br><span class="line"><span class="function">3 </span>&#123;</span><br><span class="line"><span class="number">4</span>     <span class="function">T <span class="title">t</span><span class="params">(<span class="built_in">std</span>::move(a))</span></span>;  <span class="comment">// a为空，t占有a的初始数据</span></span><br><span class="line"><span class="number">5</span>     a = <span class="built_in">std</span>::move(b); <span class="comment">//  b为空， a占有b的初始数据</span></span><br><span class="line"><span class="number">6</span>     b = <span class="built_in">std</span>::move(t); <span class="comment">// t为空，b占有a的初始数据</span></span><br><span class="line"><span class="number">7</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>补充2：</p>
+<p>1)    拷贝构造函数中，对于指针，我们一定要采用深层复制，而<strong>移动构造函数中，对于指针，我们采用浅层复制。</strong>浅层复制之所以危险，是因为两个指针共同指向一片内存空间，若第一个指针将其释放，另一个指针的指向就不合法了。所以我们只要避免第一个指针释放空间就可以了。避免的方法就是<strong>将第一个指针（比如a-&gt;value）置为NULL，这样在调用析构函数的时候，由于有判断是否为NULL的语句，所以析构a的时候并不会回收a-&gt;value指向的空间；</strong><br>2)    移动构造函数的参数是一个右值或者将亡值的引用。也就是说，<strong>只用用一个右值，或者将亡值初始化另一个对象的时候，才会调用移动构造函数。</strong>而那个move语句，就是将一个左值变成一个将亡值。</p>
+<h3 id="构成多态时为什么构造函数不定义为虚函数，析构函数通常定义为虚函数？"><a href="#构成多态时为什么构造函数不定义为虚函数，析构函数通常定义为虚函数？" class="headerlink" title="构成多态时为什么构造函数不定义为虚函数，析构函数通常定义为虚函数？"></a>构成多态时为什么构造函数不定义为虚函数，析构函数通常定义为虚函数？</h3><p>（1）虚函数表是在编译阶段生成的，里面没有存放虚函数的的实际物理地址，只有运行完构造函数进行初始化了，才能通过虚函数表里面的虚函数入口地址访问虚函数，因此构造函数，定义为虚函数没有意义。</p>
+<p>（2）析构函数通常要定义为虚函数，否则当基类指针指向派生类，然后delete基类指针的时候，派生类的析构函数无法执行。</p>
+<h3 id="虚函数表属于每一个对象，为什么？"><a href="#虚函数表属于每一个对象，为什么？" class="headerlink" title="虚函数表属于每一个对象，为什么？"></a>虚函数表属于每一个对象，为什么？</h3><p>虚函数表是在编译阶段生成的，里面没有存放虚函数的的实际物理地址，只有运行完构造函数进行初始化了，才能通过虚函数表里面的虚函数入口地址访问虚函数，因此虚函数表属于对象，而不属于类。他是一种晚绑定机制。</p>
+<h3 id="类构造函数的初始化列表"><a href="#类构造函数的初始化列表" class="headerlink" title="类构造函数的初始化列表"></a>类构造函数的初始化列表</h3><p>1)   必须使用成员初始化的四种情况</p>
+<p>①       当初始化一个引用成员时；</p>
+<p>②       当初始化一个常量成员时；</p>
+<p>③       当调用一个基类的构造函数，而它拥有一组参数时；</p>
+<p>④       当调用一个成员类的构造函数，而它拥有一组参数时；</p>
+<p>2）为什么用成员初始化列表会快一些？</p>
+<p>列表初始化是给数据成员分配内存空间时就进行初始化，这样可以避免赋值操作而产生的临时对象，临时对象的出现会降低程序的效率。</p>
+<h3 id="构造函数和析构函数可以调用虚函数吗，为什么"><a href="#构造函数和析构函数可以调用虚函数吗，为什么" class="headerlink" title="构造函数和析构函数可以调用虚函数吗，为什么"></a>构造函数和析构函数可以调用虚函数吗，为什么</h3><p>在C++中，提倡不在构造函数和析构函数中调用虚函数；<br>1)    构造函数和析构函数调用虚函数时都<strong>不使用动态联编</strong>，如果在构造函数或析构函数中调用虚函数，则运行的是为构造函数或析构函数自身类型定义的版本；<br>2)    因为<strong>父类对象会在子类之前进行构造，此时子类部分的数据成员还未初始化，因此调用子类的虚函数时不安全</strong>的，故而C++不会进行动态联编；<br>3)    析构函数是用来销毁一个对象的，在销毁一个对象时，先调用子类的析构函数，然后再调用基类的析构函数。所以<strong>在调用基类的析构函数时，派生类对象的数据成员已经销毁，这个时候再调用子类的虚函数没有任何意义。</strong></p>
+<p>静态联编：编译阶段就将函数实现与函数调用关联起来；<br>动态连编：在程序执行阶段才将函数实现和调用关联；</p>
+<p>注意：动态联编是针对C++的多态，C语言全部都是静态联编；</p>
+<h3 id="类的构造函数与析构函数执行顺序"><a href="#类的构造函数与析构函数执行顺序" class="headerlink" title="类的构造函数与析构函数执行顺序"></a>类的构造函数与析构函数执行顺序</h3><p>1)       构造函数顺序</p>
+<p>①     基类构造函数。</p>
+<p>②     成员类对象构造函数。</p>
+<p>③     派生类构造函数。</p>
+<p>2)       析构函数顺序</p>
+<p>①     调用派生类的析构函数；</p>
+<p>②     调用成员类对象的析构函数；</p>
+<p>③     调用基类的析构函数。</p>
+<h3 id="什么情况会自动生成默认构造函数？"><a href="#什么情况会自动生成默认构造函数？" class="headerlink" title="什么情况会自动生成默认构造函数？"></a>什么情况会自动生成默认构造函数？</h3><p><a href="http://www.cppblog.com/chenglong7997/articles/169731.html" target="_blank" rel="noopener">经典参考资料</a></p>
+<p>1)    带有默认构造函数的类成员对象；<br>2)    带有默认构造函数的基类；<br>3)    带有虚函数的类<br>4)    带有虚基类的类</p>
+<h3 id="C-里面的多态"><a href="#C-里面的多态" class="headerlink" title="C++里面的多态"></a>C++里面的多态</h3><p>1）静态多态（重载，模板）<br>是在编译的时候，就确定调用函数的类型。<br>（2）动态多态（覆盖，虚函数实现）<br>在运行的时候，才确定调用的是哪个函数，动态绑定。运行基类指针指向派生类的对象，并调用派生类的函数。</p>
+<p>下面是构成运行时多态的条件：<br>必须存在继承关系；<br>继承关系中必须有同名的虚函数，并且它们是遮蔽（覆盖）关系。<br>存在基类的指针，通过该指针调用虚函数。</p>
+<h3 id="类什么时候会析构？"><a href="#类什么时候会析构？" class="headerlink" title="类什么时候会析构？"></a>类什么时候会析构？</h3><p>1)    对象生命周期结束，被销毁时；<br>2)    delete指向对象的指针时，或delete指向对象的基类类型指针，而其基类虚构函数是虚函数时；<br>3)    对象i是对象o的成员，o的析构函数被调用时，对象i的析构函数也被调用。</p>
+<h3 id="组合与继承优缺点？"><a href="#组合与继承优缺点？" class="headerlink" title="组合与继承优缺点？"></a>组合与继承优缺点？</h3><p>（1）继承<br>继承的优点是子类可以重写父类的方法来<strong>方便地实现对父类的扩展</strong>。
+继承的缺点有以下几点：<br>①：<strong>父类的内部细节对子类是可见的。</strong><br>②：子类从父类继承的方法在<strong>编译时就确定下来了</strong>，所以<strong>无法在运行期间改变从父类继承的方法的行为</strong>。
+③：如果对父类的方法做了修改的话（比如增加了一个参数），则子类的方法必须做出相应的修改。所以说子类与父类是一种<strong>高耦合</strong>，违背了面向对象思想。<br>（2）组合<br>组合也就是设计类的时候把要组合的类的对象加入到该类中作为自己的成员变量。<br>组合的优点：<br>①：当前对象只能通过所包含的那个对象去调用其方法，所以所包含的对象的<strong>内部细节对当前对象时不可见的</strong>。
+②：当前对象与包含的对象是一个<strong>低耦合</strong>关系，如果修改包含对象的类中代码不需要修改当前对象类的代码。<br>③：当前对象可以在<strong>运行时动态的绑定所包含的对象</strong>。可以通过set方法给所包含对象赋值。<br>组合的缺点：①：<strong>容易产生过多的对象</strong>。②：为了能组合多个对象，必须仔细对接口进行定义。</p>
+<p>补充：组合的构造函数执行顺序为：<strong>先调用内嵌对象的构造函数，然后执行组合类构造函数的函数体，析构函数调用顺序相反。</strong></p>
+<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p><a href="https://www.cnblogs.com/jimodetiantang/p/9016826.html" target="_blank" rel="noopener">C++之Lambda表达式</a></p>
+<p><a href="https://blog.csdn.net/iloveyousunna/article/details/78532398" target="_blank" rel="noopener">c++中lambda表达式的用法</a></p>
+<p>1)    利用lambda表达式可以编写内嵌的匿名函数，用以替换独立函数或者函数对象；</p>
+<p>2)    lambda表达式的语法定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[函数对象参数] (操作符重载函数参数) mutable 或 exception 声明 -&gt; 返回值类型 &#123;函数体&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3)    lambda必须使用尾置返回来指定返回类型，可以忽略参数列表和返回值，但必须永远包含捕获列表和函数体；</p>
+<h3 id="C-重写（覆盖）、重载、重定义"><a href="#C-重写（覆盖）、重载、重定义" class="headerlink" title="C++重写（覆盖）、重载、重定义"></a><strong>C++重写（覆盖）、重载、重定义</strong></h3><p>1 重载overload</p>
+<p><strong>在一个类中</strong>，方法名相同而参数不同的几个方法，但是不能靠返回类型来判断。</p>
+<p>2 重写（覆盖）override</p>
+<p><strong>函数特征相同，但是具体实现不同。</strong></p>
+<p>a、最重要的一点，重写是<strong>子类与父类</strong>之间的。</p>
+<p>b、被重写的函数不能是 static 的。</p>
+<p>c、<strong>函数三要素（函数名、函数参数、函数返回类型）完全一样</strong></p>
+<p>d、如果父类中有virtual关键字，这种父子之间的关系叫做虚函数重写</p>
+<p>3 重定义redefining</p>
+<p><strong>子类重新定义父类中</strong>有相同名称的非虚函数 ( 参数列表可以不同 )</p>
+<h3 id="volatile作用"><a href="#volatile作用" class="headerlink" title="volatile作用"></a>volatile作用</h3><p>1&gt; 告诉compiler 不能做任何优化<br>2&gt; 用volatile 定义的变量会在程序外被改变,每次都必须从内存中读取，而不能重复使用放在cache或寄存器中的备份。</p>
+<h3 id="什么时候编译器产生默认构造函数"><a href="#什么时候编译器产生默认构造函数" class="headerlink" title="什么时候编译器产生默认构造函数"></a>什么时候编译器产生默认构造函数</h3><p>   那么到底什么时候编译器会为我们产生nontrivial default constructor(有用的默认构造函数)呢?有下面四中情况:</p>
+<p>​       <strong>①如果一个类里面某个成员对象有默认构造函数,编译器就会为我们的类产生默认构造函数。</strong></p>
+<p>​       原因：编译器需要显式的来调用这个类成员对象的默认构造函数。</p>
+<p>​       编译器合成的nontrivial default constructor仅仅调用类成员对象的默认构造函数,而不对我们类里面的其它变量做任何初始化操作。</p>
+<p>​        <strong>②如果一个派生类的基类有默认构造函数,那么编译器会为派生类合成一个默认构造函数。</strong></p>
+<p>​        原因:因为派生类被合成时需要显式调用基类的默认构造函数。</p>
+<p>​        <strong>③类中有虚函数</strong></p>
+<p>​        编译器必须自己产生一个默认构造函数来完成虚函数表的初始化操作。</p>
+<p>​        <strong>④如果一个类虚继承于其它类。</strong></p>
+<p>​     编译器必须自己产生一个默认构造函数来完成虚基类表的初始化操作。</p>
+<h3 id="C-函数对象"><a href="#C-函数对象" class="headerlink" title="C++函数对象"></a>C++函数对象</h3><p>如果一个类将()运算符重载为成员函数，这个类就称为函数对象类，这个类的对象就是函数对象。<strong>函数对象是一个对象</strong>，但是<strong>使用的形式看起来像函数调用，实际上也执行了函数调用</strong>，因而得名。</p>
+<p>下面是一个函数对象的例子。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CAverage</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">int</span> a1, <span class="keyword">int</span> a2, <span class="keyword">int</span> a3)</span></span></span><br><span class="line"><span class="function">    </span>&#123;  <span class="comment">//重载()运算符</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">double</span>)(a1 + a2 + a3) / <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    CAverage average;  <span class="comment">//能够求三个整数平均数的函数对象</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; average(<span class="number">3</span>, <span class="number">2</span>, <span class="number">3</span>);  <span class="comment">//等价于 cout &lt;&lt; average.operator(3, 2, 3);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. 66667</span><br></pre></td></tr></table></figure>
+
+<h3 id="虚继承及其内存模型"><a href="#虚继承及其内存模型" class="headerlink" title="虚继承及其内存模型"></a>虚继承及其内存模型</h3><p><a href="http://c.biancheng.net/cpp/biancheng/view/3005.html" target="_blank" rel="noopener">参考</a></p>
+<p>为了解决多继承时的命名冲突和冗余数据问题，C++ 提出了虚继承，使得在派生类中只保留一份间接基类的成员。</p>
+<p>普通的继承内存模型如下：B继承A，C继承B，D继承C</p>
+<img src="/2019/04/03/C-面试题1/02.jpg">
+
+<p>假设 A 是 B 的虚基类，B 又是 C 的虚基类，那么各个对象的内存模型如下图所示：</p>
+<img src="/2019/04/03/C-面试题1/03.jpg">
+
+<p>VC对于虚继承，对象内存的设计：</p>
+<p>VC 引入了<strong>虚基类表</strong>，如果某个派生类有一个或多个虚基类，编译器就会在派生类对象中安插一个指针，指向虚基类表。虚基类表其实就是一个数组，数组中的元素存放的是各个虚基类的偏移。</p>
+<p>假设 A 是 B 的虚基类，同时 B 又是 C 的虚基类</p>
+<img src="/2019/04/03/C-面试题1/04.jpg">
+
+<p>假设 A、B、C、D 类的继承关系为：</p>
+<img src="/2019/04/03/C-面试题1/05.jpg">
+
+<p>内存模型如下图所示：</p>
+<img src="/2019/04/03/C-面试题1/06.jpg">
+
+<p><strong>总结：每多一层虚继承，对象里面多一个指向虚基类表的指针。</strong></p>
+<h3 id="虚函数表"><a href="#虚函数表" class="headerlink" title="虚函数表"></a>虚函数表</h3><p>虚表是一个指针数组，每个元素对应一个虚函数的函数指针，普通的函数即非虚函数，其调用不需要经过虚表。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_data1, m_data2;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> :</span> <span class="keyword">public</span> A &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_data3;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span> <span class="keyword">public</span> B &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_data1, m_data4;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<img src="/2019/04/03/C-面试题1/07.png">
+
 
       
     </div>
@@ -802,8 +982,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/03/2-QT中互斥与信号量/" rel="next" title="2-QT中互斥与信号量">
-                <i class="fa fa-chevron-left"></i> 2-QT中互斥与信号量
+              <a href="/2019/04/02/C-手写代码/" rel="next" title="C++手写代码">
+                <i class="fa fa-chevron-left"></i> C++手写代码
               </a>
             
           </div>
@@ -812,8 +992,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/17/socket编程-Linux下实现/" rel="prev" title="socket编程(Linux下实现)">
-                socket编程(Linux下实现) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/03/2-QT中互斥与信号量/" rel="prev" title="2-QT中互斥与信号量">
+                2-QT中互斥与信号量 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -898,7 +1078,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -920,7 +1100,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -971,7 +1151,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么标准头文件都有类似以下的结构？"><span class="nav-number">1.</span> <span class="nav-text">为什么标准头文件都有类似以下的结构？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请写一个C函数，若处理器是Big-endian的，则返回0；若是Little-endian的，则返回1"><span class="nav-number">2.</span> <span class="nav-text">请写一个C函数，若处理器是Big_endian的，则返回0；若是Little_endian的，则返回1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说一下C-和C的区别"><span class="nav-number">3.</span> <span class="nav-text">说一下C++和C的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说一说c-中四种cast转换"><span class="nav-number">4.</span> <span class="nav-text">说一说c++中四种cast转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针和引用的区别？"><span class="nav-number">5.</span> <span class="nav-text">指针和引用的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针参数传递和引用参数传递"><span class="nav-number">6.</span> <span class="nav-text">指针参数传递和引用参数传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数传递种类"><span class="nav-number">7.</span> <span class="nav-text">函数参数传递种类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述智能指针原理"><span class="nav-number">8.</span> <span class="nav-text">简述智能指针原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你回答一下智能指针有没有内存泄露的情况"><span class="nav-number">9.</span> <span class="nav-text">请你回答一下智能指针有没有内存泄露的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你来回答一下什么是memory-leak，也就是内存泄漏"><span class="nav-number">10.</span> <span class="nav-text">请你来回答一下什么是memory leak，也就是内存泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你回答一下如何判断内存泄漏？"><span class="nav-number">11.</span> <span class="nav-text">请你回答一下如何判断内存泄漏？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请回答一下数组和指针的区别"><span class="nav-number">12.</span> <span class="nav-text">请回答一下数组和指针的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你回答一下野指针是什么？"><span class="nav-number">13.</span> <span class="nav-text">请你回答一下野指针是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你理解的c-中的引用和指针"><span class="nav-number">14.</span> <span class="nav-text">请你理解的c++中的引用和指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你回答一下为什么析构函数必须是虚函数？为什么C-默认的析构函数不是虚函数"><span class="nav-number">15.</span> <span class="nav-text">请你回答一下为什么析构函数必须是虚函数？为什么C++默认的析构函数不是虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你来说一下函数指针"><span class="nav-number">16.</span> <span class="nav-text">请你来说一下函数指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你来说一下map和set有什么区别，分别又是怎么实现的？"><span class="nav-number">17.</span> <span class="nav-text">请你来说一下map和set有什么区别，分别又是怎么实现的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你来说一下C-中struct和class的区别"><span class="nav-number">18.</span> <span class="nav-text">请你来说一下C++中struct和class的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你来说一下一个C-源文件从文本到可执行文件经历的过程？"><span class="nav-number">19.</span> <span class="nav-text">请你来说一下一个C++源文件从文本到可执行文件经历的过程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你来回答一下include头文件的顺序以及双引号””和尖括号-lt-gt-的区别？"><span class="nav-number">20.</span> <span class="nav-text">请你来回答一下include头文件的顺序以及双引号””和尖括号&lt;&gt;的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你回答一下malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？"><span class="nav-number">21.</span> <span class="nav-text">请你回答一下malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你来说一下什么时候会发生段错误"><span class="nav-number">22.</span> <span class="nav-text">请你来说一下什么时候会发生段错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-中static关键字作用"><span class="nav-number">23.</span> <span class="nav-text">C++中static关键字作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const作用"><span class="nav-number">24.</span> <span class="nav-text">const作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extern用法"><span class="nav-number">25.</span> <span class="nav-text">extern用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝构造函数、深拷贝、浅拷贝"><span class="nav-number">26.</span> <span class="nav-text">拷贝构造函数、深拷贝、浅拷贝</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么标准头文件都有类似以下的结构？"><span class="nav-number">1.</span> <span class="nav-text">为什么标准头文件都有类似以下的结构？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux内存分区-常见两种分法"><span class="nav-number">2.</span> <span class="nav-text">Linux内存分区(常见两种分法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断是大端存储还是小端存储"><span class="nav-number">3.</span> <span class="nav-text">判断是大端存储还是小端存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说一下C-和C的区别"><span class="nav-number">4.</span> <span class="nav-text">说一下C++和C的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说一说c-中四种cast转换"><span class="nav-number">5.</span> <span class="nav-text">说一说c++中四种cast转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针和引用的区别？"><span class="nav-number">6.</span> <span class="nav-text">指针和引用的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针参数传递和引用参数传递"><span class="nav-number">7.</span> <span class="nav-text">指针参数传递和引用参数传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数传递种类"><span class="nav-number">8.</span> <span class="nav-text">函数参数传递种类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述智能指针原理"><span class="nav-number">9.</span> <span class="nav-text">简述智能指针原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请你回答一下智能指针有没有内存泄露的情况"><span class="nav-number">10.</span> <span class="nav-text">请你回答一下智能指针有没有内存泄露的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是内存泄漏-memory-leak"><span class="nav-number">11.</span> <span class="nav-text">什么是内存泄漏(memory leak)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何判断内存泄漏？"><span class="nav-number">12.</span> <span class="nav-text">如何判断内存泄漏？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组和指针的区别"><span class="nav-number">13.</span> <span class="nav-text">数组和指针的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#野指针是什么？"><span class="nav-number">14.</span> <span class="nav-text">野指针是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用和指针"><span class="nav-number">15.</span> <span class="nav-text">引用和指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么析构函数必须是虚函数？C-默认的析构函数不是虚函数"><span class="nav-number">16.</span> <span class="nav-text">为什么析构函数必须是虚函数？C++默认的析构函数不是虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数指针"><span class="nav-number">17.</span> <span class="nav-text">函数指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map和set有什么区别，分别又是怎么实现的？"><span class="nav-number">18.</span> <span class="nav-text">map和set有什么区别，分别又是怎么实现的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-中struct和class的区别"><span class="nav-number">19.</span> <span class="nav-text">C++中struct和class的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个C-源文件从文本到可执行文件经历的过程？"><span class="nav-number">20.</span> <span class="nav-text">一个C++源文件从文本到可执行文件经历的过程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#include头文件的顺序以及双引号””和尖括号-lt-gt-的区别？"><span class="nav-number">21.</span> <span class="nav-text">include头文件的顺序以及双引号””和尖括号&lt;&gt;的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？"><span class="nav-number">22.</span> <span class="nav-text">malloc的原理，另外brk系统调用和mmap系统调用的作用分别是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么时候会发生段错误"><span class="nav-number">23.</span> <span class="nav-text">什么时候会发生段错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-中static关键字作用"><span class="nav-number">24.</span> <span class="nav-text">C++中static关键字作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const作用"><span class="nav-number">25.</span> <span class="nav-text">const作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extern用法"><span class="nav-number">26.</span> <span class="nav-text">extern用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝构造函数、深拷贝、浅拷贝"><span class="nav-number">27.</span> <span class="nav-text">拷贝构造函数、深拷贝、浅拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-模板"><span class="nav-number">28.</span> <span class="nav-text">C++模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C与C-中truct区别，C-中struct与class区别"><span class="nav-number">29.</span> <span class="nav-text">C与C++中truct区别，C++中struct与class区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#strcpy、strncpy与memcpy的区别与使用方法"><span class="nav-number">30.</span> <span class="nav-text">strcpy、strncpy与memcpy的区别与使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#右值与右值引用"><span class="nav-number">31.</span> <span class="nav-text">右值与右值引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构成多态时为什么构造函数不定义为虚函数，析构函数通常定义为虚函数？"><span class="nav-number">32.</span> <span class="nav-text">构成多态时为什么构造函数不定义为虚函数，析构函数通常定义为虚函数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚函数表属于每一个对象，为什么？"><span class="nav-number">33.</span> <span class="nav-text">虚函数表属于每一个对象，为什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类构造函数的初始化列表"><span class="nav-number">34.</span> <span class="nav-text">类构造函数的初始化列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数和析构函数可以调用虚函数吗，为什么"><span class="nav-number">35.</span> <span class="nav-text">构造函数和析构函数可以调用虚函数吗，为什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类的构造函数与析构函数执行顺序"><span class="nav-number">36.</span> <span class="nav-text">类的构造函数与析构函数执行顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么情况会自动生成默认构造函数？"><span class="nav-number">37.</span> <span class="nav-text">什么情况会自动生成默认构造函数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-里面的多态"><span class="nav-number">38.</span> <span class="nav-text">C++里面的多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类什么时候会析构？"><span class="nav-number">39.</span> <span class="nav-text">类什么时候会析构？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合与继承优缺点？"><span class="nav-number">40.</span> <span class="nav-text">组合与继承优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lambda表达式"><span class="nav-number">41.</span> <span class="nav-text">lambda表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-重写（覆盖）、重载、重定义"><span class="nav-number">42.</span> <span class="nav-text">C++重写（覆盖）、重载、重定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile作用"><span class="nav-number">43.</span> <span class="nav-text">volatile作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么时候编译器产生默认构造函数"><span class="nav-number">44.</span> <span class="nav-text">什么时候编译器产生默认构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-函数对象"><span class="nav-number">45.</span> <span class="nav-text">C++函数对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚继承及其内存模型"><span class="nav-number">46.</span> <span class="nav-text">虚继承及其内存模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚函数表"><span class="nav-number">47.</span> <span class="nav-text">虚函数表</span></a></li></ol></div>
             
 
           </div>
