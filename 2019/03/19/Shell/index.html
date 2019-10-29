@@ -428,7 +428,7 @@
 <p>(2) 使脚本具有执行权限：<code>chmod +x helloworld.sh</code></p>
 <p>(3) 使用 vim 命令修改helloworld.sh文件：<code>vim helloworld.sh</code>(vim 文件——&gt;进入文件—–&gt;命令模式——&gt;按i进入编辑模式—–&gt;编辑文件 ——-&gt;按Esc进入底行模式—–&gt;输入:wq/q! （输入wq代表写入内容并退出，即保存；输入q!代表强制退出不保存。）)</p>
 <p>helloworld.sh 内容如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"><span class="meta">#</span>第一个shell小程序,echo 是linux中的输出命令。</span><br><span class="line">echo  "helloworld!"</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash">第一个shell小程序,<span class="built_in">echo</span> 是linux中的输出命令。</span></span><br><span class="line">echo  "helloworld!"</span><br></pre></td></tr></table></figure>
 
 <p>shell中 # 符号表示注释。<strong>shell 的第一行比较特殊，一般都会以#!开始来指定使用的 shell 类型。在linux中，除了bash shell以外，还有很多版本的shell， 例如zsh、dash等等…不过bash shell还是我们使用最多的。</strong></p>
 <p>(4) 运行脚本:<code>./helloworld.sh</code> 。（注意，一定要写成 <code>./helloworld.sh</code> ，而不是 <code>helloworld.sh</code> ，运行其它二进制的程序也一样，直接写 <code>helloworld.sh</code> ，linux 系统会去 PATH 里寻找有没有叫 test.sh 的，而只有 /bin, /sbin, /usr/bin，/usr/sbin 等在 PATH 里，你的当前目录通常不在 PATH 里，所以写成 <code>helloworld.sh</code> 是会找不到命令的，要用<code>./helloworld.sh</code> 告诉系统说，就在当前目录找。）</p>
@@ -640,8 +640,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/19/计算机网络-传输层/" rel="next" title="计算机网络-传输层">
-                <i class="fa fa-chevron-left"></i> 计算机网络-传输层
+              <a href="/2019/03/18/计算机网络-网络层/" rel="next" title="计算机网络-网络层">
+                <i class="fa fa-chevron-left"></i> 计算机网络-网络层
               </a>
             
           </div>
@@ -650,8 +650,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/20/Shell编程四剑客/" rel="prev" title="Shell编程四剑客">
-                Shell编程四剑客 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/19/计算机网络-传输层/" rel="prev" title="计算机网络-传输层">
+                计算机网络-传输层 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -736,7 +736,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
