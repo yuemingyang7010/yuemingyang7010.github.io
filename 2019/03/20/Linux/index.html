@@ -434,7 +434,7 @@
 <li><strong>为用户提供一个与系统交互的操作界面 ；</strong></li>
 <li><strong>操作系统分内核与外壳（我们可以把外壳理解成围绕着内核的应用程序，而内核就是能操作硬件的程序）。</strong></li>
 </ul>
-<p><img src="https://user-gold-cdn.xitu.io/2018/7/3/1645ee3dc5cf626e?w=862&h=637&f=png&s=23899" alt="操作系统分内核与外壳"></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/3/1645ee3dc5cf626e?w=862&amp;h=637&amp;f=png&amp;s=23899" alt="操作系统分内核与外壳"></p>
 <h3 id="1-2-操作系统简单分类"><a href="#1-2-操作系统简单分类" class="headerlink" title="1.2 操作系统简单分类"></a>1.2 操作系统简单分类</h3><ol>
 <li><strong>Windows:</strong> 目前最流行的个人桌面操作系统 ，不做多的介绍，大家都清楚。</li>
 <li><strong>Unix：</strong> 最早的多用户、多任务操作系统 .按照操作系统的分类，属于分时操作系统。Unix 大多被用在服务器、工作站，现在也有用在个人计算机上。它在创建互联网、计算机网络或客户端/服务器模型方面发挥着非常重要的作用。</li>
@@ -453,13 +453,13 @@
 <h3 id="2-3-Linux的分类"><a href="#2-3-Linux的分类" class="headerlink" title="2.3 Linux的分类"></a>2.3 Linux的分类</h3><p><strong>Linux根据原生程度，分为两种：</strong></p>
 <ol>
 <li><strong>内核版本：</strong> Linux不是一个操作系统，严格来讲，Linux只是一个操作系统中的内核。内核是什么？内核建立了计算机软件与硬件之间通讯的平台，内核提供系统服务，比如文件管理、虚拟内存、设备I/O等；</li>
-<li><strong>发行版本：</strong> 一些组织或公司在内核版基础上进行二次开发而重新发行的版本。Linux发行版本有很多种（ubuntu和CentOS用的都很多，初学建议选择CentOS），如下图所示：<br><img src="https://user-gold-cdn.xitu.io/2018/7/3/1645efa7048fd018?w=548&h=274&f=png&s=99213" alt="Linux发行版本"></li>
+<li><strong>发行版本：</strong> 一些组织或公司在内核版基础上进行二次开发而重新发行的版本。Linux发行版本有很多种（ubuntu和CentOS用的都很多，初学建议选择CentOS），如下图所示：<br><img src="https://user-gold-cdn.xitu.io/2018/7/3/1645efa7048fd018?w=548&amp;h=274&amp;f=png&amp;s=99213" alt="Linux发行版本"></li>
 </ol>
 <h2 id="三-Linux文件系统概览"><a href="#三-Linux文件系统概览" class="headerlink" title="三 Linux文件系统概览"></a>三 Linux文件系统概览</h2><h3 id="3-1-Linux文件系统简介"><a href="#3-1-Linux文件系统简介" class="headerlink" title="3.1 Linux文件系统简介"></a>3.1 Linux文件系统简介</h3><p><strong>在Linux操作系统中，所有被操作系统管理的资源，例如网络接口卡、磁盘驱动器、打印机、输入输出设备、普通文件或是目录都被看作是一个文件。</strong></p>
 <p>也就是说在LINUX系统中有一个重要的概念：<strong>一切都是文件</strong>。其实这是UNIX哲学的一个体现，而Linux是重写UNIX而来，所以这个概念也就传承了下来。在UNIX系统中，把一切资源都看作是文件，包括硬件设备。UNIX系统把每个硬件都看成是一个文件，通常称为设备文件，这样用户就可以用读写文件的方式实现对硬件的访问。</p>
-<h3 id="3-2-文件类型与目录结构"><a href="#3-2-文件类型与目录结构" class="headerlink" title="3.2 文件类型与目录结构"></a>3.2 文件类型与目录结构</h3><p><strong>Linux支持5种文件类型 ：</strong><br><img src="https://user-gold-cdn.xitu.io/2018/7/3/1645f1a7d64def1a?w=901&h=547&f=png&s=72692" alt="文件类型"></p>
+<h3 id="3-2-文件类型与目录结构"><a href="#3-2-文件类型与目录结构" class="headerlink" title="3.2 文件类型与目录结构"></a>3.2 文件类型与目录结构</h3><p><strong>Linux支持5种文件类型 ：</strong><br><img src="https://user-gold-cdn.xitu.io/2018/7/3/1645f1a7d64def1a?w=901&amp;h=547&amp;f=png&amp;s=72692" alt="文件类型"></p>
 <p><strong>Linux的目录结构如下：</strong></p>
-<p>Linux文件系统的结构层次鲜明，就像一棵倒立的树，最顶层是其根目录：<br><img src="https://user-gold-cdn.xitu.io/2018/7/3/1645f1c65676caf6?w=823&h=315&f=png&s=15226" alt="Linux的目录结构"></p>
+<p>Linux文件系统的结构层次鲜明，就像一棵倒立的树，最顶层是其根目录：<br><img src="https://user-gold-cdn.xitu.io/2018/7/3/1645f1c65676caf6?w=823&amp;h=315&amp;f=png&amp;s=15226" alt="Linux的目录结构"></p>
 <p><strong>常见目录说明：</strong></p>
 <ul>
 <li><strong>/bin：</strong> 存放二进制可执行文件(ls、cat、mkdir等)，常用命令一般都在这里；</li>
@@ -491,12 +491,10 @@
 <li><strong><code>mkdir 目录名称</code>：</strong> 直接mkdir会在当前文件夹中创建一个文件夹，但是要保证上级文件夹存在，加上参数 -p ，可以连同上级文件夹一起创建：</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /home/yue/a/b/c</span><br></pre></td></tr></table></figure>
-
 <p><strong><code>ls或者ll</code></strong>（ll是ls -l的别名，ll命令可以看到该目录下的所有目录和文件的详细信息）：查看目录信息</p>
 <p>2.rm [-rf] 目录`:** 删除目录（删）</p>
 <p>注意：rm不仅可以删除目录，也可以删除其他文件或压缩包，但是默认只能删除文件，为了增强大家的记忆，  无论删除任何目录或文件，都直接使用<code>rm -rf</code> 目录/文件/压缩包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /home/yue/a/b   <span class="comment">#文件夹b和子文件夹c一块儿删除了</span></span><br></pre></td></tr></table></figure>
-
 <p>3.<strong>find 目录 参数`：</strong> 寻找目录（查）</p>
 <p>示例：</p>
 <ul>
@@ -509,27 +507,22 @@
 <li><p>当前目录及子目录下查找所有以.txt和.pdf结尾的文件:<code>find . \( -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot; \)</code>或<code>find . -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot;</code></p>
 </li>
 </ul>
-<p>4.<strong><code>mv 目录名称 新目录名称</code>：</strong> 修改目录的名称 –<strong>重命名</strong>（改）</p>
+<p>4.<strong><code>mv 目录名称 新目录名称</code>：</strong> 修改目录的名称 —<strong>重命名</strong>（改）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /home/<span class="built_in">test</span> /home/test2  <span class="comment">#将test文件夹重命名为test2</span></span><br></pre></td></tr></table></figure>
-
 <p>注意：mv的语法不仅可以对目录进行重命名而且也可以对各种文件，压缩包等进行  重命名的操作。mv命令用来对文件或目录重新命名，或者将文件从一个目录移到另一个目录中。后面会介绍到mv命令的另一个用法。</p>
-<p><strong><code>mv 目录名称 目录的新位置</code>：</strong>  移动目录的位置—<strong>剪切</strong>（改）</p>
+<p><strong><code>mv 目录名称 目录的新位置</code>：</strong>  移动目录的位置—-<strong>剪切</strong>（改）</p>
 <p>注意：mv语法不仅可以对目录进行剪切操作，对文件和压缩包等都可执行剪切操作。另外mv与cp的结果不同，mv好像文件“搬家”，文件个数并未增加。而cp对文件进行复制，文件个数增加了。</p>
 <p><strong>5.cp</strong> </p>
 <p>注意：<strong>cp命令不仅可以拷贝目录还可以拷贝文件，压缩包等</strong>，<strong>拷贝文件和压缩包时不  用写-r递归</strong></p>
 <p>如将当前目录下的aaa文件复制到/tmp下，并命名为bbb：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ./aaa /tmp/bbb</span><br></pre></td></tr></table></figure>
-
 <p>复制目录要用-r，如复制/etc/这个目录下所有内容到/tem下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -r /etc/ /tmp</span><br></pre></td></tr></table></figure>
-
 <p>6.<strong><code>rm [-rf] 目录</code>:</strong> 删除目录（删）</p>
 <p>注意：rm不仅可以删除目录，也可以删除其他文件或压缩包，但是默认只能删除文件，为了增强大家的记忆，  无论删除任何目录或文件，都直接使用<code>rm -rf</code> 目录/文件/压缩包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /home/yue/a/b   <span class="comment">#文件夹b和子文件夹c一块儿删除了</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="4-3-文件的操作命令-增删改查"><a href="#4-3-文件的操作命令-增删改查" class="headerlink" title="4.3 文件的操作命令(增删改查)"></a>4.3 文件的操作命令(增删改查)</h3><ol>
-<li><p><strong><code>touch 文件名称</code>:</strong>  文件的创建（增）</p>
-</li>
+<li><strong><code>touch 文件名称</code>:</strong>  文件的创建（增）</li>
 <li><p><strong><code>cat/more/less/tail 文件名称</code></strong> 文件的查看（查）</p>
 <ul>
 <li><strong><code>cat</code>：</strong> 查看显示文件内容</li>
@@ -542,7 +535,7 @@
 <li><p><strong><code>vim 文件</code>：</strong>  修改文件的内容（改）</p>
 <p>vim编辑器是Linux中的强大组件，是vi编辑器的加强版，vim编辑器的命令和快捷方式有很多，但此处不一一阐述，大家也无需研究的很透彻，使用vim编辑修改文件的方式基本会使用就可以了。</p>
 <p><strong>在实际开发中，使用vim编辑器主要作用就是修改配置文件，下面是一般步骤：</strong></p>
-<p> vim 文件——&gt;进入文件—–&gt;命令模式——&gt;按i进入编辑模式—–&gt;编辑文件  ——-&gt;按Esc进入底行模式—–&gt;输入：wq/q! （输入wq代表写入内容并退出，即保存；输入q!代表强制退出不保存。）</p>
+<p> vim 文件———&gt;进入文件——-&gt;命令模式———&gt;按i进入编辑模式——-&gt;编辑文件  ———-&gt;按Esc进入底行模式——-&gt;输入：wq/q! （输入wq代表写入内容并退出，即保存；输入q!代表强制退出不保存。）</p>
 </li>
 <li><p><strong><code>rm -rf 文件</code>：</strong> 删除文件（删）</p>
 <p> 同目录删除：熟记 <code>rm -rf</code> 文件 即可</p>
@@ -564,9 +557,9 @@
 <p>2 将/test下的test.tar.gz解压到根目录/usr下:<strong><code>tar -xvf xxx.tar.gz -C /usr</code></strong>（- C代表指定解压的位置）</p>
 <h3 id="4-5-Linux的权限命令"><a href="#4-5-Linux的权限命令" class="headerlink" title="4.5 Linux的权限命令"></a>4.5 Linux的权限命令</h3><p> 操作系统中每个文件都拥有特定的权限、所属用户和所属组。权限是操作系统用来限制资源访问的机制，在Linux中权限一般分为读(readable)、写(writable)和执行(excutable)，分为三组。分别对应文件的属主(owner)，属组(group)和其他用户(other)，通过这样的机制来限制哪些用户、哪些组可以对特定的文件进行什么样的操作。通过 <strong><code>ls -l</code></strong> 命令我们可以  查看某个目录下的文件或目录的权限</p>
 <p>示例：在随意某个目录下<code>ls -l</code></p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/7/5/1646955be781daaa?w=589&h=228&f=png&s=16360" alt></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/5/1646955be781daaa?w=589&amp;h=228&amp;f=png&amp;s=16360" alt></p>
 <p>第一列的内容的信息解释如下：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/7/5/16469565b6951791?w=489&h=209&f=png&s=39791" alt></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/5/16469565b6951791?w=489&amp;h=209&amp;f=png&amp;s=39791" alt></p>
 <blockquote>
 <p>下面将详细讲解文件的类型、Linux中权限以及文件有所有者、所在组、其它组具体是什么？</p>
 </blockquote>
@@ -585,47 +578,55 @@
 <p><strong>文件和目录权限的区别：</strong></p>
 <p> 对文件和目录而言，读写执行表示不同的意义。</p>
 <p> 对于文件：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">权限名称</th>
-<th align="right">可执行操作</th>
+<th style="text-align:left">权限名称</th>
+<th style="text-align:right">可执行操作</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">r</td>
-<td align="right">可以使用cat查看文件的内容</td>
+<tbody>
+<tr>
+<td style="text-align:left">r</td>
+<td style="text-align:right">可以使用cat查看文件的内容</td>
 </tr>
 <tr>
-<td align="left">w</td>
-<td align="right">可以修改文件的内容</td>
+<td style="text-align:left">w</td>
+<td style="text-align:right">可以修改文件的内容</td>
 </tr>
 <tr>
-<td align="left">x</td>
-<td align="right">可以将其运行为二进制文件</td>
+<td style="text-align:left">x</td>
+<td style="text-align:right">可以将其运行为二进制文件</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p> 对于目录：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">权限名称</th>
-<th align="right">可执行操作</th>
+<th style="text-align:left">权限名称</th>
+<th style="text-align:right">可执行操作</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">r</td>
-<td align="right">可以查看目录下列表</td>
+<tbody>
+<tr>
+<td style="text-align:left">r</td>
+<td style="text-align:right">可以查看目录下列表</td>
 </tr>
 <tr>
-<td align="left">w</td>
-<td align="right">可以创建和删除目录下文件</td>
+<td style="text-align:left">w</td>
+<td style="text-align:right">可以创建和删除目录下文件</td>
 </tr>
 <tr>
-<td align="left">x</td>
-<td align="right">可以使用cd进入目录</td>
+<td style="text-align:left">x</td>
+<td style="text-align:right">可以使用cd进入目录</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>需要注意的是超级用户可以无视普通用户的权限，即使文件目录权限是000，依旧可以访问。</strong><br><strong>在linux中的每个用户必须属于一个组，不能独立于组外。在linux中每个文件有所有者、所在组、其它组的概念。</strong></p>
 <ul>
 <li><p><strong>所有者</strong></p>
@@ -644,7 +645,7 @@
 <p><strong>修改文件/目录的权限的命令：<code>chmod</code></strong></p>
 <p>示例：修改/test下的aaa.txt的权限为属主有全部权限，属主所在的组有读写权限，<br>其他用户只有读的权限</p>
 <p><strong><code>chmod u=rwx,g=rw,o=r aaa.txt</code></strong></p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/7/5/164697447dc6ecac?w=525&h=246&f=png&s=12362" alt></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/5/164697447dc6ecac?w=525&amp;h=246&amp;f=png&amp;s=12362" alt></p>
 <p>上述示例还可以使用数字表示：</p>
 <p>chmod 764 aaa.txt</p>
 <p><strong>补充一个比较常用的东西:</strong></p>
@@ -679,7 +680,7 @@
 <h3 id="4-8-其他常用命令"><a href="#4-8-其他常用命令" class="headerlink" title="4.8 其他常用命令"></a>4.8 其他常用命令</h3><ul>
 <li><p><strong><code>pwd</code>：</strong> 显示当前所在位置</p>
 </li>
-<li><p><strong><code>grep 要搜索的字符串 要搜索的文件 --color</code>：</strong> 搜索命令，–color代表高亮显示</p>
+<li><p><strong><code>grep 要搜索的字符串 要搜索的文件 --color</code>：</strong> 搜索命令，—color代表高亮显示</p>
 </li>
 <li><p><strong><code>ps -ef</code>/<code>ps -aux</code>：</strong> 这两个命令都是查看当前系统正在运行进程，两者的区别是展示格式不同。如果想要查看特定的进程可以使用这样的格式：<strong><code>ps aux|grep redis</code></strong> （查看包括redis字符串的进程），也可使用 <code>pgrep redis -a</code>。</p>
 <p>注意：如果直接用ps（（Process Status））命令，会显示所有进程的状态，通常结合grep命令查看某进程的状态。</p>
@@ -704,73 +705,62 @@
 <h1 id="四、进程管理"><a href="#四、进程管理" class="headerlink" title="四、进程管理"></a>四、进程管理</h1><h2 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h2><h3 id="1-ps"><a href="#1-ps" class="headerlink" title="1. ps"></a>1. ps</h3><p><strong>查看某个时间点的进程信息。</strong>信息相对于top较少，且不是动态的</p>
 <p>示例一：查看自己的进程</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -l</span></span><br></pre></td></tr></table></figure>
-
 <p>示例二：查看系统所有进程</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps aux</span></span><br></pre></td></tr></table></figure>
-
 <p>示例三：查看特定的进程</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps aux | grep threadx</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="2-pstree"><a href="#2-pstree" class="headerlink" title="2. pstree"></a>2. pstree</h3><p>查看进程树。</p>
 <p>示例：查看所有进程树</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pstree -A</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="3-top（重点）"><a href="#3-top（重点）" class="headerlink" title="3. top（重点）"></a>3. top（重点）</h3><p><strong>实时显示进程信息。</strong></p>
 <p>示例：两秒钟刷新一次</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># top -d 2    可以直接top命令，采用系统默认刷新时间</span></span><br></pre></td></tr></table></figure>
-
 <p>Linux系统可以通过top命令查看系统的CPU、内存、运行时间、交换分区、执行的线程等信息。通过top命令可以有效的发现系统的缺陷出在哪里。<strong>是内存不够、CPU处理能力不够、IO读写过高</strong>。</p>
 <img src="/2019/03/20/Linux/12.png">
-
 <img src="/2019/03/20/Linux/13.png">
-
 <img src="/2019/03/20/Linux/14.png">
-
 <img src="/2019/03/20/Linux/15.png">
-
 <img src="/2019/03/20/Linux/16.png">
-
 <img src="/2019/03/20/Linux/17.png">
-
 <img src="/2019/03/20/Linux/18.png">
-
 <h3 id="4-df"><a href="#4-df" class="headerlink" title="4.df"></a>4.df</h3><p>列出文件系统的整体磁盘使用量</p>
 <h3 id="5-netstat"><a href="#5-netstat" class="headerlink" title="5. netstat"></a>5. netstat</h3><p>查看占用端口的进程</p>
 <p>示例：查看特定端口的进程</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># netstat -anp | grep port</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h2><table>
+<h2 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h2><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">状态</th>
+<th style="text-align:center">状态</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">R</td>
+<tbody>
+<tr>
+<td style="text-align:center">R</td>
 <td>running or runnable (on run queue)<br>正在执行或者可执行，此时进程位于执行队列中。</td>
 </tr>
 <tr>
-<td align="center">D</td>
+<td style="text-align:center">D</td>
 <td>uninterruptible sleep (usually I/O)<br>不可中断阻塞，通常为 IO 阻塞。</td>
 </tr>
 <tr>
-<td align="center">S</td>
+<td style="text-align:center">S</td>
 <td>interruptible sleep (waiting for an event to complete) <br> 可中断阻塞，此时进程正在等待某个事件完成。</td>
 </tr>
 <tr>
-<td align="center">Z</td>
+<td style="text-align:center">Z</td>
 <td>zombie (terminated but not reaped by its parent)<br>僵死，进程已经终止但是尚未被其父进程获取信息。</td>
 </tr>
 <tr>
-<td align="center">T</td>
+<td style="text-align:center">T</td>
 <td>stopped (either by a job control signal or because it is being traced) <br> 结束，进程既可以被作业控制信号结束，也可能是正在被追踪。</td>
 </tr>
-</tbody></table>
-<br>
-
+</tbody>
+</table>
+</div>
+<p><br></p>
 <img src="/2019/03/20/Linux/11.png">
-
 <h2 id="SIGCHLD"><a href="#SIGCHLD" class="headerlink" title="SIGCHLD"></a>SIGCHLD</h2><p>当一个子进程改变了它的状态时（停止运行，继续运行或者退出），有两件事会发生在父进程中：</p>
 <ul>
 <li>得到 SIGCHLD 信号；</li>
@@ -778,15 +768,12 @@
 </ul>
 <p>其中子进程发送的 SIGCHLD 信号包含了子进程的信息，比如进程 ID、进程状态、进程使用 CPU 的时间等。</p>
 <p>在子进程退出时，它的进程描述符不会立即释放，这是为了让父进程得到子进程信息，父进程通过 wait() 和 waitpid() 来获得一个已经退出的子进程的信息。</p>
-<div align="center"> <!-- <img src="pics/flow.png" width=""/> --> </div><br>
-
+<p><div align="center"> <!-- <img src="pics/flow.png" width=""/> --> </div><br></p>
 <h2 id="wait"><a href="#wait" class="headerlink" title="wait()"></a>wait()</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pid_t</span> wait(<span class="keyword">int</span> *status)</span><br></pre></td></tr></table></figure>
-
 <p>父进程调用 wait() 会一直阻塞，直到收到一个子进程退出的 SIGCHLD 信号，之后 wait() 函数会销毁子进程并返回。</p>
 <p>如果成功，返回被收集的子进程的进程 ID；如果调用进程没有子进程，调用就会失败，此时返回 -1，同时 errno 被置为 ECHILD。</p>
 <p>参数 status 用来保存被收集的子进程退出时的一些状态，如果对这个子进程是如何死掉的毫不在意，只想把这个子进程消灭掉，可以设置这个参数为 NULL。</p>
 <h2 id="waitpid"><a href="#waitpid" class="headerlink" title="waitpid()"></a>waitpid()</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pid_t</span> waitpid(<span class="keyword">pid_t</span> pid, <span class="keyword">int</span> *status, <span class="keyword">int</span> options)</span><br></pre></td></tr></table></figure>
-
 <p>作用和 wait() 完全相同，但是多了两个可由用户控制的参数 pid 和 options。</p>
 <p>pid 参数指示一个子进程的 ID，表示只关心这个子进程退出的 SIGCHLD 信号。如果 pid=-1 时，那么和 wait() 作用相同，都是关心所有子进程退出的 SIGCHLD 信号。</p>
 <p>options 参数主要有 WNOHANG 和 WUNTRACED 两个选项，WNOHANG 可以使 waitpid() 调用变成非阻塞的，也就是说它会立即返回，父进程可以继续执行其它任务。</p>
@@ -797,45 +784,36 @@
 <p>僵尸进程通过 ps 命令显示出来的状态为 Z（zombie）。</p>
 <p>系统所能使用的进程号是有限的，如果产生大量僵尸进程，将因为没有可用的进程号而导致系统不能产生新的进程。</p>
 <p>要消灭系统中大量的僵尸进程，只需要将其父进程杀死，此时僵尸进程就会变成孤儿进程，从而被 init 进程所收养，这样 init 进程就会释放所有的僵尸进程所占有的资源，从而结束僵尸进程。</p>
-<p><a href="[https://github.com/Snailclimb/JavaGuide/blob/master/docs/operating-system/%E5%90%8E%E7%AB%AF%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E5%A4%87%E7%9A%84Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md](https://github.com/Snailclimb/JavaGuide/blob/master/docs/operating-system/后端程序员必备的Linux基础知识.md)">参考资料</a></p>
+<p><a href="[https://github.com/Snailclimb/JavaGuide/blob/master/docs/operating-system/%E5%90%8E%E7%AB%AF%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E5%A4%87%E7%9A%84Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md](https://github.com/Snailclimb/JavaGuide/blob/master/docs/operating-system/后端程序员必备的Linux基础知识.md">参考资料</a>)</p>
 <h1 id="五、Linux的锁"><a href="#五、Linux的锁" class="headerlink" title="五、Linux的锁"></a>五、Linux的锁</h1><h2 id="1-互斥锁（mutex）"><a href="#1-互斥锁（mutex）" class="headerlink" title="1.互斥锁（mutex）"></a><strong>1.互斥锁（mutex）</strong></h2><p><strong>特点：</strong>对于读者和写者来说。只要有一方获取了锁，另一方则不能继续获取，进而执行临界区代码。 </p>
 <p><strong>创建锁：</strong> </p>
 <p>有两种方法创建互斥锁，静态方式和动态方式。POSIX定义了一个宏PTHREAD_MUTEX_INITIALIZER 来静态初始化互斥锁，</p>
 <p><strong>方法如下：</strong> </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pthread_mutex_t</span> mutex=PTHREAD_MUTEX_INITIALIZER;</span><br></pre></td></tr></table></figure>
-
 <p>在LinuxThreads实现中，pthread_mutex_t是一个结构，而PTHREAD_MUTEX_INITIALIZER则是一个结构常量。 </p>
 <p>动态方式是采用pthread_mutex_init()函数来初始化互斥锁，API定义如下： </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_init</span><span class="params">(<span class="keyword">pthread_mutex_t</span> *mutex, <span class="keyword">const</span> <span class="keyword">pthread_mutexattr_t</span>*mutexattr)</span></span></span><br></pre></td></tr></table></figure>
-
 <p>其中mutexattr用于指定互斥锁属性（见下），如果为NULL则使用缺省属性。 pthread_mutex_destroy ()用于注销一个互斥锁，API定义如下： </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_destroy</span><span class="params">(<span class="keyword">pthread_mutex_t</span> *mutex)</span></span></span><br></pre></td></tr></table></figure>
-
 <p>锁操作主要包括加锁pthread_mutex_lock()、解锁pthread_mutex_unlock()和测试加锁 pthread_mutex_trylock()三个，不论哪种类型的锁，都不可能被两个不同的线程同时得到， 而必须等待解锁。对于普通锁和适应锁类型，解锁者可以是同进程内任何线程； 而检错锁则必须由加锁者解锁才有效，否则返回EPERM；对于嵌套锁，文档和实现要求必须由 加锁者解锁，但实验结果表明并没有这种限制，这个不同目前还没有得到解释。在同一进程中 的线程，如果加锁后没有解锁，则任何其他线程都无法再获得锁。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_lock</span><span class="params">(<span class="keyword">pthread_mutex_t</span> *mutex)</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_unlock</span><span class="params">(<span class="keyword">pthread_mutex_t</span> *mutex)</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_trylock</span><span class="params">(<span class="keyword">pthread_mutex_t</span> *mutex)</span></span></span><br></pre></td></tr></table></figure>
-
 <p>pthread_mutex_trylock() 语义与pthread_mutex_lock()类似，不同的是在锁已经被占据时返回 EBUSY而不是挂起等待。<br> 例如：单例模式下，线程安全的加锁： </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleTon</span> &#123;</span> </span><br><span class="line"><span class="keyword">public</span>: </span><br><span class="line">	<span class="function"><span class="keyword">static</span> SingleTon* <span class="title">getInstance</span><span class="params">()</span> </span>&#123; </span><br><span class="line">		pthread_mutex_lock(&amp;mutex); </span><br><span class="line">		<span class="keyword">if</span>(mpSingle == <span class="literal">NULL</span>) &#123; </span><br><span class="line">			mpSingleTon = <span class="keyword">new</span> SingleTon(); </span><br><span class="line">		&#125; </span><br><span class="line">		pthread_mutex_unlock(&amp;mutex); </span><br><span class="line">		<span class="keyword">return</span> mpSingleTon; </span><br><span class="line">	&#125;    </span><br><span class="line"><span class="keyword">private</span>: </span><br><span class="line">	SingleTon()&#123;&#125;; </span><br><span class="line">	~SingleTon()&#123;pthread_mutex_desttroy(&amp;mutex,<span class="literal">NULL</span>);&#125; </span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">pthread_mutex_t</span> mutex; </span><br><span class="line">	<span class="keyword">static</span> SingleTon * mpSingleTon; </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">pthread_mutex_t</span> SingleTon::mutex = PTHREAD_MUTEX_INITIALIZER; </span><br><span class="line">SingleTon * SingleTon::mpSingleTon = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
-
 <p><strong>优点：</strong></p>
 <p>由一块能够被多个进程共享的内存空间（一个对齐后的整型变量）组成；这个整型变量的值能够通过汇编语言调用CPU提供的原子操作指令来增加或减少，并且一个进程可以等待直到那个值变成正数。 的操作几乎全部在应用程序空间完成；只有当操作结果不 一致从而需要仲裁时，才需要进入操作系统内核空间执行。这种机制允许使用的锁定原语有非常高的执行效率：由于绝大多数 的操作并不需要在多个进程之间进行仲裁，所以绝大多数操作都可以在应用程序空间执行，而不需要使用（相对高代价的）内核系统调<br> 用。</p>
 <h2 id="2-读写锁"><a href="#2-读写锁" class="headerlink" title="2.读写锁"></a><strong>2.读写锁</strong></h2><p><strong>特点：</strong>读写锁适合于对数据结构的读次数比写次数多得多的情况.因为,读模式锁定时可以共享,以写 模式锁住时意味着独占,所以读写锁又叫共享-独占锁. </p>
 <p><strong>初始化和销毁:</strong> </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_rwlock_init</span><span class="params">(<span class="keyword">pthread_rwlock_t</span> *<span class="keyword">restrict</span> rwlock, <span class="keyword">const</span></span></span></span><br><span class="line"><span class="function"><span class="params"><span class="keyword">pthread_rwlockattr_t</span> *<span class="keyword">restrict</span> attr)</span></span>; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_rwlock_destroy</span><span class="params">(<span class="keyword">pthread_rwlock_t</span> *rwlock)</span></span>;</span><br></pre></td></tr></table></figure>
-
 <p>成功则返回0,出错则返回错误编号. 同互斥量以上,在释放读写锁占用的内存之前,需要先通过 pthread_rwlock_destroy对读写锁进行清理工作, 释放由init分配的资源. </p>
 <p><strong>读和写:</strong> </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_rwlock_rdlock</span><span class="params">(<span class="keyword">pthread_rwlock_t</span> *rwlock)</span></span>; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_rwlock_wrlock</span><span class="params">(<span class="keyword">pthread_rwlock_t</span> *rwlock)</span></span>; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_rwlock_unlock</span><span class="params">(<span class="keyword">pthread_rwlock_t</span> *rwlock)</span></span>;</span><br></pre></td></tr></table></figure>
-
 <p>成功则返回0,出错则返回错误编号.这3个函数分别实现获取读锁,获取写锁和释放锁的操作.获 取锁的两个函数是阻塞操作,同样,非阻塞的函数为: </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_rwlock_tryrdlock</span><span class="params">(<span class="keyword">pthread_rwlock_t</span> *rwlock)</span></span>; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_rwlock_trywrlock</span><span class="params">(<span class="keyword">pthread_rwlock_t</span> *rwlock)</span></span>;</span><br></pre></td></tr></table></figure>
-
 <p>成功则返回0,出错则返回错误编号.非阻塞的获取锁操作,如果可以获取则返回0,否则返回 错误的EBUSY.</p>
 <h2 id="3-自旋锁"><a href="#3-自旋锁" class="headerlink" title="3.自旋锁"></a><strong>3.自旋锁</strong></h2><p><strong>特点：</strong>轮询忙等待。 </p>
 <p>在单核cpu下不起作用：被自旋锁保护的临界区代码执行时不能进行挂起状态。会造成死锁<br> 自旋锁的初衷就是：在短期间内进行轻量级的锁定。一个被争用的自旋锁使得请求它的线程在等待锁重新可用的期间进行自旋（特别浪费处理器时间），所以自旋锁不应该被持有时间过长。如果需要长时间锁定的话, 最好使用信号量。</p>
 <p><strong>API:</strong></p>
 <img src="/2019/03/20/Linux/19.png">
-
 <h2 id="4-互斥锁和自旋锁的比较"><a href="#4-互斥锁和自旋锁的比较" class="headerlink" title="4.互斥锁和自旋锁的比较"></a>4.互斥锁和自旋锁的比较</h2><p><a href="https://blog.csdn.net/susidian/article/details/51068858" target="_blank" rel="noopener">参考</a></p>
 <p>互斥锁的起始原始开销要高于自旋锁，但是基本是一劳永逸，临界区持锁时间的大小并不会对互斥锁的开销造成影响，而自旋锁是死循环检测，加锁全程消耗cpu，起始开销虽然低于互斥锁，但是随着持锁时间，加锁的开销是线性增长。</p>
 <p>互斥锁：线程会从sleep（加锁）——&gt;running（解锁），过程中有上下文的切换，cpu的抢占，信号的发送等开销。</p>
@@ -854,10 +832,8 @@
 <p>类比理解：其实就相当于链表，进程形成了链表，父进程的fpid(p 意味point)指向子进程的进程id,</p>
 <p>因为子进程没有子进程，所以其fpid为0.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt; </span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">   <span class="keyword">int</span> i=<span class="number">0</span>; </span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"i son/pa ppid pid  fpid/n"</span>); </span><br><span class="line">   <span class="comment">//ppid指当前进程的父进程pid </span></span><br><span class="line">   <span class="comment">//pid指当前进程的pid, </span></span><br><span class="line">   <span class="comment">//fpid指fork返回给当前进程的值 </span></span><br><span class="line">   <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)&#123; </span><br><span class="line">       <span class="keyword">pid_t</span> fpid=fork(); </span><br><span class="line">       <span class="keyword">if</span>(fpid==<span class="number">0</span>) </span><br><span class="line">           <span class="built_in">printf</span>(<span class="string">"%d child  %4d %4d %4d/n"</span>,i,getppid(),getpid(),fpid); </span><br><span class="line">       <span class="keyword">else</span> </span><br><span class="line">           <span class="built_in">printf</span>(<span class="string">"%d parent %4d %4d %4d/n"</span>,i,getppid(),getpid(),fpid); </span><br><span class="line">   &#125; </span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>运行结果是：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">i son/pa ppid pid  fpid</span><br><span class="line">0 parent 2043 3224 3225</span><br><span class="line">0 child  3224 3225    0</span><br><span class="line">1 parent 2043 3224 3226</span><br><span class="line">1 parent 3224 3225 3227</span><br><span class="line">1 child     1 3227    0</span><br><span class="line">1 child     1 3226    0</span><br></pre></td></tr></table></figure>
-
 <p>我们用一个链表来表示这个关系：    p2043-&gt;p3224-&gt;p3225 </p>
 <h2 id="作业和进程的区别与联系"><a href="#作业和进程的区别与联系" class="headerlink" title="作业和进程的区别与联系"></a>作业和进程的区别与联系</h2><p>（1）联系</p>
 <p><strong>一个作业通常包括几个进程，几个进程共同完成一个任务，即作业。</strong><br>用户提交作业以后，当作业被调度，系统会为作业创建进程，一个进程无法完成时，系统会为这个进程创建子进程。</p>
@@ -867,10 +843,8 @@
 <h2 id="Linux-内存的延迟分配"><a href="#Linux-内存的延迟分配" class="headerlink" title="Linux 内存的延迟分配"></a>Linux 内存的延迟分配</h2><p>Linux内存的延迟分配就是在你未使用内存（均值物理内存）的时候，操作系统是不会真正的分配物理内存的，</p>
 <p>比如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int *p = (int*)malloc(1024 * 1024)</span><br></pre></td></tr></table></figure>
-
 <p>比如我又写下了这样的代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*p = 4; </span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
 <p>这时候进程占用的内存是多少？不是1M，通常按照页框大小为单位进行分配。</p>
 
       
@@ -938,8 +912,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/21/操作系统-死锁/" rel="prev" title="操作系统-死锁">
-                操作系统-死锁 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/20/Shell编程四剑客/" rel="prev" title="Shell编程四剑客">
+                Shell编程四剑客 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

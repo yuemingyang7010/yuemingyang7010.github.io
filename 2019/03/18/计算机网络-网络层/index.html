@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="概述因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。 使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。   与 IP 协议配套使用的还有三个协议：  地址解析协议 ARP（Address Resolution Protocol） 网际控制报文协议 ICMP（Internet Cont">
+<meta name="description" content="概述因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。 使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。  与 IP 协议配套使用的还有三个协议：  地址解析协议 ARP（Address Resolution Protocol） 网际控制报文协议 ICMP（Internet Contr">
 <meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络-网络层">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-网络层/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="概述因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。 使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。   与 IP 协议配套使用的还有三个协议：  地址解析协议 ARP（Address Resolution Protocol） 网际控制报文协议 ICMP（Internet Cont">
+<meta property="og:description" content="概述因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。 使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。  与 IP 协议配套使用的还有三个协议：  地址解析协议 ARP（Address Resolution Protocol） 网际控制报文协议 ICMP（Internet Contr">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-网络层/01.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-网络层/02.jpg">
@@ -118,7 +118,7 @@
 <meta property="og:updated_time" content="2019-08-05T08:29:01.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络-网络层">
-<meta name="twitter:description" content="概述因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。 使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。   与 IP 协议配套使用的还有三个协议：  地址解析协议 ARP（Address Resolution Protocol） 网际控制报文协议 ICMP（Internet Cont">
+<meta name="twitter:description" content="概述因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。 使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。  与 IP 协议配套使用的还有三个协议：  地址解析协议 ARP（Address Resolution Protocol） 网际控制报文协议 ICMP（Internet Contr">
 <meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-网络层/01.png">
 
 
@@ -442,7 +442,6 @@
         <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。</p>
 <p>使用 IP 协议，<strong>可以把异构的物理网络连接起来</strong>，使得在网络层看起来好像是一个统一的网络。</p>
 <img src="/2019/03/18/计算机网络-网络层/01.png">
-
 <p>与 IP 协议配套使用的还有三个协议：</p>
 <ul>
 <li>地址解析协议 ARP（Address Resolution Protocol）</li>
@@ -450,7 +449,6 @@
 <li>网际组管理协议 IGMP（Internet Group Management Protocol）</li>
 </ul>
 <h1 id="IP-数据报格式"><a href="#IP-数据报格式" class="headerlink" title="IP 数据报格式"></a>IP 数据报格式</h1><img src="/2019/03/18/计算机网络-网络层/02.jpg">
-
 <ul>
 <li><p><strong>版本</strong>  : 有 4（IPv4）和 6（IPv6）两个值；</p>
 </li>
@@ -472,43 +470,27 @@
 </li>
 </ul>
 <img src="/2019/03/18/计算机网络-网络层/03.png">
-
 <h1 id="IP-地址编址方式"><a href="#IP-地址编址方式" class="headerlink" title="==IP 地址编址方式=="></a>==IP 地址编址方式==</h1><p>IP 地址的编址方式经历了三个历史阶段：</p>
 <img src="/2019/03/18/计算机网络-网络层/04.png">
-
 <h2 id="1-分类"><a href="#1-分类" class="headerlink" title="1. 分类"></a>1. 分类</h2><p>由两部分组成，网络号和主机号，其中不同分类具有不同的网络号长度，并且是固定的。</p>
 <p>IP 地址 ::= {&lt; 网络号 &gt;, &lt; 主机号 &gt;}</p>
 <img src="/2019/03/18/计算机网络-网络层/05.jpg">
-
 <h2 id="2-子网划分"><a href="#2-子网划分" class="headerlink" title="2. 子网划分"></a>2. 子网划分</h2><p>通过在主机号字段中拿一部分作为子网号，把两级 IP 地址划分为三级 IP 地址。</p>
 <p>IP 地址 ::= {&lt; 网络号 &gt;, &lt; 子网号 &gt;, &lt; 主机号 &gt;}</p>
 <p>要使用子网，必须配置子网掩码。</p>
 <img src="/2019/03/18/计算机网络-网络层/06.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/07.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/08.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/09.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/10.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/11.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/12.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/13.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/14.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/15.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/16.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/17.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/18.jpg">
-
 <p>注意，外部网络看不到子网的存在。</p>
 <h2 id="3-无分类"><a href="#3-无分类" class="headerlink" title="3. 无分类"></a>3. 无分类</h2><p>无分类编址 CIDR 消除了传统 A 类、B 类和 C 类地址以及划分子网的概念，使用网络前缀和主机号来对 IP 地址进行编码，网络前缀的长度可以根据需要变化。</p>
 <p>IP 地址 ::= {&lt; 网络前缀号 &gt;, &lt; 主机号 &gt;}</p>
@@ -517,31 +499,21 @@
 <p>一个 CIDR 地址块中有很多地址，一个 CIDR 表示的网络就可以表示原来的很多个网络，并且在路由表中只需要一个路由就可以代替原来的多个路由，减少了路由表项的数量。把这种通过使用网络前缀来减少路由表项的方式称为路由聚合，也称为  <strong>构成超网</strong> 。</p>
 <p>在路由表中的项目由“网络前缀”和“下一跳地址”组成，在查找时可能会得到不止一个匹配结果，应当采用最长前缀匹配来确定应该匹配哪一个。</p>
 <img src="/2019/03/18/计算机网络-网络层/19.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/20.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/21.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/22.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/23.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/24.jpg">
-
 <img src="/2019/03/18/计算机网络-网络层/25.jpg">
-
 <h1 id="地址解析协议-ARP"><a href="#地址解析协议-ARP" class="headerlink" title="==地址解析协议 ARP=="></a>==地址解析协议 ARP==</h1><p>网络层实现主机之间的通信，而链路层实现具体每段链路之间的通信。因此在通信过程中，IP 数据报的源地址和目的地址始终不变，而 MAC 地址随着链路的改变而改变。</p>
 <img src="/2019/03/18/计算机网络-网络层/26.jpg">
-
 <p>ARP 实现由 IP 地址得到 MAC 地址。</p>
 <img src="/2019/03/18/计算机网络-网络层/27.jpg">
-
 <h3 id="ARP过程（重要）"><a href="#ARP过程（重要）" class="headerlink" title="ARP过程（重要）"></a>ARP过程（重要）</h3><p>每个主机都有一个 ARP 缓存，里面有本局域网上的各主机和路由器的 <strong>IP 地址到 MAC 地址的映射表。</strong></p>
 <p>主机 A 知道主机 B 的 IP 地址：</p>
 <p>（1）如果 ARP 缓存中<strong>有</strong>该 IP 地址到 MAC 地址的映射，直接将IP数据包封装后发出去。</p>
 <p>（2）如果 ARP 缓存中<strong>没有</strong>该 IP 地址到 MAC 地址的映射，此时<strong>主机 A 通过广播的方式发送 ARP 请求分组</strong>，<strong>主机 B 收到该请求后会发送 ARP 响应分组给主机 A 告知其 MAC 地址</strong>，随后主机 A <strong>向其高速缓存中写入</strong>主机 B 的 IP 地址到 MAC 地址的映射。</p>
 <img src="/2019/03/18/计算机网络-网络层/28.png">
-
 <p>ARP欺骗,用于监听(回复解析的MAC，对真实回复的MAC进行覆盖)，用于让目标机无法接受(传个不存在的MAC)(工具：网络执法官，防止：ARP防火墙)</p>
 <h1 id="网际控制报文协议-ICMP"><a href="#网际控制报文协议-ICMP" class="headerlink" title="==网际控制报文协议 ICMP=="></a>==网际控制报文协议 ICMP==</h1><p>用于实现链路<strong>连通性测试</strong>和链路追踪，可以实现链路差错报告，属于UDP协议。</p>
 <p>ping、tracert 等命令的内部就是用的 icmp 协议。</p>
@@ -619,8 +591,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/18/动力节点SQL34题/" rel="next" title="动力节点SQL34题">
-                <i class="fa fa-chevron-left"></i> 动力节点SQL34题
+              <a href="/2019/03/18/计算机网络-应用层/" rel="next" title="计算机网络-应用层">
+                <i class="fa fa-chevron-left"></i> 计算机网络-应用层
               </a>
             
           </div>
@@ -629,8 +601,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/19/Shell/" rel="prev" title="Shell">
-                Shell <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/18/计算机网络-物理层/" rel="prev" title="计算机网络-物理层">
+                计算机网络-物理层 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

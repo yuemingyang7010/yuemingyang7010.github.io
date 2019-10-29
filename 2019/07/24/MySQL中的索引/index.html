@@ -436,25 +436,20 @@
 <h3 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h3><p>与普通索引类似，不同的是，Mysql的索引列值必须唯一，但普通索引值可重复。</p>
 <h3 id="联合索引"><a href="#联合索引" class="headerlink" title="联合索引"></a>联合索引</h3><p>联合索引即联合若干列组成索引，这种情况下和普通索引类似，可不唯一，可以有NULL，如果加上unique，可以使其为联合唯一索引，如下：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> t_aa <span class="keyword">add</span> <span class="keyword">unique</span> <span class="keyword">index</span>(aa,bb);</span><br></pre></td></tr></table></figure>
-
 <h2 id="MySQL中创建和删除索引的语句"><a href="#MySQL中创建和删除索引的语句" class="headerlink" title="MySQL中创建和删除索引的语句"></a>MySQL中创建和删除索引的语句</h2><p>我们可以在创建表的时候指定需要建立索引的单个列或者建立联合索引的多个列：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TALBE 表名 (</span><br><span class="line">    各种列的信息 ··· , </span><br><span class="line">    [<span class="keyword">KEY</span>|<span class="keyword">INDEX</span>] 索引名 (需要被索引的单个列或多个列)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
 <p>其中的KEY和INDEX是同义词，任意选用一个就可以。我们也可以在修改表结构的时候添加索引：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ADD</span> [<span class="keyword">INDEX</span>|<span class="keyword">KEY</span>] 索引名 (需要被索引的单个列或多个列);</span><br></pre></td></tr></table></figure>
-
 <p>也可以在修改表结构的时候删除索引：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">DROP</span> [<span class="keyword">INDEX</span>|<span class="keyword">KEY</span>] 索引名;</span><br></pre></td></tr></table></figure>
-
 <p>比方说我们想在创建index_demo表的时候就为c2和c3列添加一个联合索引，可以这么写建表语句：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> index_demo(</span><br><span class="line">    c1 <span class="built_in">INT</span>,</span><br><span class="line">    c2 <span class="built_in">INT</span>,</span><br><span class="line">    c3 <span class="built_in">CHAR</span>(<span class="number">1</span>),</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span>(c1),</span><br><span class="line">    <span class="keyword">INDEX</span> idx_c2_c3 (c2, c3)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>在这个建表语句中我们创建的索引名是idx_c2_c3，这个名称可以随便起，不过我们还是建议以idx_为前缀，后边跟着需要建立索引的列名，多个列名之间用下划线_分隔开。</p>
+<p>在这个建表语句中我们创建的索引名是idx<em>c2_c3，这个名称可以随便起，不过我们还是建议以idx</em>为前缀，后边跟着需要建立索引的列名，多个列名之间用下划线_分隔开。</p>
 <p>如果我们想删除这个索引，可以这么写：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> index_demo <span class="keyword">DROP</span> <span class="keyword">INDEX</span> idx_c2_c3;</span><br></pre></td></tr></table></figure>
-
 <p>注意：主键长度越小，普通索引的叶子节点就越小，普通索引占用的空间也就越小。所以，从性能和存储空间方面考量，自增主键往往是更合理的选择。</p>
-<h2 id="各种索引的区别与联系"><a href="#各种索引的区别与联系" class="headerlink" title="各种索引的区别与联系"></a>各种索引的区别与联系</h2><table>
+<h2 id="各种索引的区别与联系"><a href="#各种索引的区别与联系" class="headerlink" title="各种索引的区别与联系"></a>各种索引的区别与联系</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>索引类型</th>
@@ -462,7 +457,8 @@
 <th>是否要求值不能有NULL</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>主键索引</td>
 <td>是</td>
 <td>是</td>
@@ -477,11 +473,13 @@
 <td>否</td>
 <td>否</td>
 </tr>
-</tbody></table>
-<h3 id="主键索引与普通索引的区别"><a href="#主键索引与普通索引的区别" class="headerlink" title="主键索引与普通索引的区别"></a>主键索引与普通索引的区别</h3><p>如果语句是 select * from T where ID=500，即主键查询方式，则只需要搜索 ID 这棵 B+ 树；<br>如果语句是 select * from T where k=5，即普通索引查询方式，则需要先搜索 k 索引树，得到 ID 的值为 500，再到 ID 索引树搜索一次。这个过程称为回表。<br>也就是说，基于非主键索引的查询需要多扫描一棵索引树。因此，我们在应用中应该尽量使用主键查询。</p>
+</tbody>
+</table>
+</div>
+<h3 id="主键索引与普通索引的区别"><a href="#主键索引与普通索引的区别" class="headerlink" title="主键索引与普通索引的区别"></a>主键索引与普通索引的区别</h3><p>如果语句是 select <em> from T where ID=500，即主键查询方式，则只需要搜索 ID 这棵 B+ 树；<br>如果语句是 select </em> from T where k=5，即普通索引查询方式，则需要先搜索 k 索引树，得到 ID 的值为 500，再到 ID 索引树搜索一次。这个过程称为回表。<br>也就是说，基于非主键索引的查询需要多扫描一棵索引树。因此，我们在应用中应该尽量使用主键查询。</p>
 <p>总结：（1）主键索引查询一次B+树，普通索引有回表操作；（2）主键索引要求列值唯一，且无NULL，普通索引没这两个限制。</p>
 <h3 id="主键索引与唯一索引的区别"><a href="#主键索引与唯一索引的区别" class="headerlink" title="主键索引与唯一索引的区别"></a>主键索引与唯一索引的区别</h3><p>（1）主键索引查询一次B+树，唯一索引有回表操作；（2）主键索引要求列值唯一，且无NULL，唯一索引列值唯一，但是<strong>可以有NULL</strong>。</p>
-<h1 id="索引底层数据结构"><a href="#索引底层数据结构" class="headerlink" title="索引底层数据结构"></a>索引底层数据结构</h1><p><a href="https://www.cnblogs.com/xiaoxi/p/6894610.html?utm_source=itdadao&utm_medium=referral" target="_blank" rel="noopener">本文主要参考博客</a></p>
+<h1 id="索引底层数据结构"><a href="#索引底层数据结构" class="headerlink" title="索引底层数据结构"></a>索引底层数据结构</h1><p><a href="https://www.cnblogs.com/xiaoxi/p/6894610.html?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="noopener">本文主要参考博客</a></p>
 <p><a href="https://blog.csdn.net/q503267755/article/details/50791794" target="_blank" rel="noopener">对于磁道、扇区和磁盘块的理解1</a></p>
 <p><a href="https://www.cnblogs.com/yi-mu-xi/p/10939612.html" target="_blank" rel="noopener">对于磁道、扇区和磁盘块的理解2</a></p>
 <h2 id="磁盘I-O原理"><a href="#磁盘I-O原理" class="headerlink" title="磁盘I/O原理"></a>磁盘I/O原理</h2><h3 id="扇区与磁盘块-block-的区别"><a href="#扇区与磁盘块-block-的区别" class="headerlink" title="扇区与磁盘块(block)的区别"></a>扇区与磁盘块(block)的区别</h3><p><strong>磁盘在物理层面上分为磁道，扇区</strong>（通常大小为512K），磁盘驱动器操作磁盘数据，硬盘的最小存储单位是扇区，硬盘本身没有block的概念。</p>
@@ -493,7 +491,6 @@
 <p>系统从磁盘读取数据到内存时是以磁盘块（block）为基本单位的，位于同一个磁盘块中的数据会被一次性读取出来，而不是需要什么取什么。</p>
 <p><strong>InnoDB存储引擎中有页（Page）的概念，页是其磁盘管理的最小单位。InnoDB存储引擎中默认每个页的大小为16KB，可通过参数innodb_page_size将页的大小设置为4K、8K、16K，在MySQL中可通过如下命令查看页的大小（可以将其设置为4K）：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like &apos;innodb_page_size&apos;;</span><br></pre></td></tr></table></figure>
-
 <p>而系统一个磁盘块的存储空间往往没有这么大，因此InnoDB每次申请磁盘空间时都会是若干地址连续磁盘块来达到页的大小16KB。InnoDB在把磁盘数据读入到内存时会以页为基本单位，在查询数据时如果一个页中的每条数据都能有助于定位数据记录的位置，这将会减少磁盘I/O次数，提高查询效率。</p>
 <p>B-Tree结构的数据可以让系统高效的找到数据所在的磁盘块。为了描述B-Tree，首先定义一条记录为一个二元组[key, data] ，key为记录的键值，对应表中的主键值，data为一行记录中除主键外的数据。对于不同的记录，key值互不相同。</p>
 <p><strong>一棵m阶的B-Tree有如下特性：</strong> </p>
@@ -509,7 +506,6 @@
 </ol>
 <p>B-Tree中的每个节点根据实际情况可以包含大量的关键字信息和分支，如下图所示为一个3阶的B-Tree：</p>
 <img src="/2019/07/24/MySQL中的索引/01.png">
-
 <p>两个关键词划分成的三个范围域对应三个指针指向的子树的数据的范围域。以根节点为例，关键字为17和35，P1指针指向的子树的数据范围为小于17，P2指针指向的子树的数据范围为17~35，P3指针指向的子树的数据范围为大于35。</p>
 <p>模拟查找关键字29的过程：</p>
 <p>根据根节点找到磁盘块1，读入内存。【磁盘I/O操作第1次】<br>比较关键字29在区间（17,35），找到磁盘块1的指针P2。<br>根据P2指针找到磁盘块3，读入内存。【磁盘I/O操作第2次】<br>比较关键字29在区间（26,30），找到磁盘块3的指针P2。<br>根据P2指针找到磁盘块8，读入内存。【磁盘I/O操作第3次】<br>在磁盘块8中的关键字列表中找到关键字29。</p>
@@ -524,7 +520,6 @@
 </ol>
 <p>将上一节中的B-Tree优化，由于B+Tree的非叶子节点只存储键值信息，假设每个磁盘块能存储4个键值及指针信息，则变成B+Tree后其结构如下图所示：</p>
 <img src="/2019/07/24/MySQL中的索引/02.png">
-
 <p>通常在B+Tree上有两个头指针，一个指向根节点，另一个指向关键字最小的叶子节点，而且所有叶子节点（即数据节点）之间是一种链式环结构。因此可以对B+Tree进行两种查找运算：一种是对于主键的范围查找和分页查找，另一种是从根节点开始，进行随机查找。</p>
 <h2 id="为什么使用B-Tree（B-Tree）"><a href="#为什么使用B-Tree（B-Tree）" class="headerlink" title="为什么使用B-Tree（B+Tree）"></a>为什么使用B-Tree（B+Tree）</h2><p>一般来说，索引本身也很大，<strong>不可能全部存储在内存中</strong>，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I/O消耗，相对于内存存取，I/O存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是要<strong>尽量减少查找过程中磁盘I/O的存取次数</strong>。</p>
 <p><strong>与红黑树的比较：</strong></p>
@@ -548,11 +543,9 @@
 <h2 id="磁盘存取原理"><a href="#磁盘存取原理" class="headerlink" title="磁盘存取原理"></a><strong>磁盘存取原理</strong></h2><p>​      上面说过，索引一般以文件形式存储在磁盘上，索引检索需要磁盘I/O操作。与主存不同，磁盘I/O存在机械运动耗费，因此磁盘I/O的时间消耗是巨大的。</p>
 <p>​      下图是磁盘的整体结构示意图。</p>
 <img src="/2019/07/24/MySQL中的索引/03.png">
-
 <p>一个磁盘由大小相同且同轴的圆形盘片组成，磁盘可以转动（各个磁盘必须同步转动）。在磁盘的一侧有磁头支架，磁头支架固定了一组磁头，每个磁头负责存取一个磁盘的内容。磁头不能转动，但是可以沿磁盘半径方向运动（实际是斜切向运动），每个磁头同一时刻也必须是同轴的，即从正上方向下看，所有磁头任何时候都是重叠的（不过目前已经有多磁头独立技术，可不受此限制）。</p>
 <p>​      下图是磁盘结构的示意图。</p>
 <img src="/2019/07/24/MySQL中的索引/04.png">
-
 <p>盘片被划分成一系列同心环，圆心是盘片中心，每个同心环叫做一个磁道，所有半径相同的磁道组成一个柱面。磁道被沿半径线划分成一个个小的段，每个段叫做一个扇区，每个扇区是磁盘的最小存储单元。为了简单起见，我们下面假设磁盘只有一个盘片和一个磁头。</p>
 <p>​      当需要从磁盘读取数据时，系统会将数据逻辑地址传给磁盘，磁盘的控制电路按照寻址逻辑将逻辑地址翻译成物理地址，即确定要读的数据在哪个磁道，哪个扇区。为了读取这个扇区的数据，需要将磁头放到这个扇区上方，为了实现这一点，磁头需要移动对准相应磁道，这个过程叫做寻道，所耗费时间叫做寻道时间，然后磁盘旋转将目标扇区旋转到磁头下，这个过程耗费的时间叫做旋转时间。</p>
 <h2 id="局部性原理与磁盘预读"><a href="#局部性原理与磁盘预读" class="headerlink" title="局部性原理与磁盘预读"></a><strong>局部性原理与磁盘预读</strong></h2><p> 由于存储介质的特性，磁盘本身存取就比主存慢很多，再加上机械运动耗费，磁盘的存取速度往往是主存的几百分分之一，因此为了提高效率，要尽量减少磁盘I/O。为了达到这个目的，磁盘往往不是严格按需读取，而是每次都会预读，即使只需要一个字节，磁盘也会从这个位置开始，顺序向后读取一定长度的数据放入内存。这样做的理论依据是计算机科学中著名的局部性原理：</p>
@@ -565,20 +558,14 @@
 <h1 id="MySQL索引实现"><a href="#MySQL索引实现" class="headerlink" title="MySQL索引实现"></a><strong>MySQL索引实现</strong></h1><p>在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，下面主要讨论MyISAM和InnoDB两个存储引擎的索引实现方式。</p>
 <h2 id="MyISAM索引实现"><a href="#MyISAM索引实现" class="headerlink" title="MyISAM索引实现"></a><strong>MyISAM索引实现</strong></h2><p>MyISAM引擎使用B+Tree作为索引结构，<strong>叶节点的data域存放的是数据记录的地址</strong>。下图是MyISAM索引的原理图：</p>
 <img src="/2019/07/24/MySQL中的索引/07.png">
-
 <p>这里设表一共有三列，假设我们以Col1为主键，则上图是一个MyISAM表的主索引（Primary key）示意。可以看出MyISAM的索引文件仅仅保存数据记录的地址。<strong>在MyISAM中，主索引和辅助索引（Secondary key）在结构上没有任何区别，只是主索引要求key是唯一的，而辅助索引的key可以重复。</strong>如果我们在Col2上建立一个辅助索引，则此索引的结构如下图所示：</p>
 <img src="/2019/07/24/MySQL中的索引/08.png">
-
-
-
 <h2 id="InnoDB索引实现"><a href="#InnoDB索引实现" class="headerlink" title="InnoDB索引实现"></a><strong>InnoDB索引实现</strong></h2><p>​     虽然InnoDB也使用B+Tree作为索引结构，但具体实现方式却与MyISAM截然不同。</p>
 <p>​     第一个重大区别是<strong>InnoDB的数据文件本身就是索引文件。</strong>从上文知道，<strong>MyISAM索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。</strong>而在InnoDB中，表数据文件本身就是按B+Tree组织的一个索引结构，这棵树的<strong>叶节点data域保存了完整的数据记录</strong>。这个索引的key是数据表的主键，因此InnoDB表数据文件本身就是主索引。</p>
 <img src="/2019/07/24/MySQL中的索引/09.png">
-
 <p>​    上图是InnoDB主索引（同时也是数据文件）的示意图，可以看到叶节点包含了完整的数据记录。这种索引叫做聚集索引。因为InnoDB的数据文件本身要按主键聚集，所以InnoDB要求表必须有主键（MyISAM可以没有），如果没有显式指定，则MySQL系统会自动选择一个可以唯一标识数据记录的列作为主键，如果不存在这种列，则MySQL自动为InnoDB表生成一个隐含字段作为主键，这个字段长度为6个字节，类型为长整形。</p>
 <p>​      <strong>第二个与MyISAM索引的不同是InnoDB的辅助索引data域存储相应记录主键的值而不是地址。换句话说，InnoDB的所有辅助索引都引用主键作为data域。</strong>例如，下图为定义在Col3上的一个辅助索引：</p>
 <img src="/2019/07/24/MySQL中的索引/10.png">
-
 <p>这里以英文字符的ASCII码作为比较准则。<strong><u>聚集索引这种实现方式使得按主键的搜索十分高效，但是辅助索引搜索需要检索两遍索引：首先检索辅助索引获得主键，然后用主键到主索引中检索获得记录。</u></strong></p>
 <p>​     了解不同存储引擎的索引实现方式对于正确使用和优化索引都非常有帮助，例如知道了InnoDB的索引实现后，就很容易明白为什么<strong>不建议使用过长的字段作为主键，因为所有辅助索引都引用主索引，过长的主索引会令辅助索引变得过大。</strong>再例如，用<strong>非单调的字段</strong>作为主键在InnoDB中不是个好主意，因为InnoDB数据文件本身是一颗B+Tree，非单调的主键会造成在<strong>插入新记录时数据文件</strong>为了维持B+Tree的特性而<strong>频繁的分裂调整</strong>，十分低效，而<strong><u>使用自增字段作为主键则是一个很好的选择。</u></strong></p>
 <p><strong><u>对于InnoDB而言，因为节点下有数据文件，因此节点的分裂将会比较慢。对于InnoDB的主键，尽量用整型，而且是递增的整型。如果是无规律的数据，将会产生页的分裂，影响速度。</u></strong></p>
@@ -590,15 +577,12 @@
 <p>索引覆盖是指如果查询的列恰好是索引的一部分，那么查询只需要在索引文件上进行，不需要回行到磁盘再找数据（<strong>即不需要回表查找</strong>）。这种查询速度非常快，称为“索引覆盖”。</p>
 <h2 id="聚簇索引与非聚簇索引"><a href="#聚簇索引与非聚簇索引" class="headerlink" title="聚簇索引与非聚簇索引"></a><strong>聚簇索引与非聚簇索引</strong></h2><h3 id="1、聚簇索引"><a href="#1、聚簇索引" class="headerlink" title="1、聚簇索引"></a><strong>1、聚簇索引</strong></h3><p>​    所谓聚簇索引，就是指<strong><u>主索引</u>文件和数据文件为同一份文件，聚簇索引主要用在Innodb存储引擎中。</strong>在该索引实现方式中B+Tree的叶子节点上的data就是数据本身，key为主键，如果是一般索引的话，data便会指向对应的主索引(<strong>然后再进行一次索引</strong>)，如下图所示：</p>
 <img src="/2019/07/24/MySQL中的索引/05.png">
-
 <p>  在B+Tree的每个叶子节点增加一个指向相邻叶子节点的指针，就形成了带有顺序访问指针的B+Tree。<strong>做这个优化的目的是为了提高区间访问的性能</strong>，例如上图中如果要查询key为从18到49的所有数据记录，当找到18后，只需顺着节点和指针顺序遍历就可以一次性访问到所有数据节点，极大提到了区间查询效率。</p>
 <h3 id="2、非聚簇索引"><a href="#2、非聚簇索引" class="headerlink" title="2、非聚簇索引"></a><strong>2、非聚簇索引</strong></h3><p>​    非聚簇索引就是<strong>指B+Tree的叶子节点上的data，并不是数据本身，而是数据存放的地址。</strong>主索引和辅助索引没啥区别，只是主索引中的key一定得是唯一的。主要用在MyISAM存储引擎中，如下图：</p>
 <img src="/2019/07/24/MySQL中的索引/06.png">
-
 <p><strong>非聚簇索引比聚簇索引多了一次读取数据的IO操作，所以查找性能上会差。</strong></p>
 <h2 id="联合索引-1"><a href="#联合索引-1" class="headerlink" title="联合索引"></a>联合索引</h2><h3 id="联合索引的B-树结构"><a href="#联合索引的B-树结构" class="headerlink" title="联合索引的B+树结构"></a>联合索引的B+树结构</h3><p>我们用（name，age）这个联合索引来分析</p>
 <img src="/2019/07/24/MySQL中的索引/11.jpg">
-
 <p>可以看到，索引项是按照索引定义里面出现的字段顺序排序的。</p>
 <p>当你的逻辑需求是查到所有名字是“张三”的人时，可以快速定位到 ID4，然后向后遍历得到所有需要的结果。</p>
 <p>只要满足最左前缀，就可以利用索引来加速检索。这个最左前缀可以是联合索引的最左 N 个字段，也可以是字符串索引的最左 M 个字符。</p>
@@ -606,6 +590,7 @@
 <p>使用越频繁的字段通常可以放在最左侧。</p>
 <h3 id="多个单列索引和联合索引的区别"><a href="#多个单列索引和联合索引的区别" class="headerlink" title="多个单列索引和联合索引的区别"></a>多个单列索引和联合索引的区别</h3><p>多个单列索引：</p>
 <p>多个单列索引在多条件查询时只会生效第一个索引！所以多条件联合查询时最好建联合索引！</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -613,7 +598,8 @@
 <th>实际用的索引</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>a and b and c</td>
 <td>a</td>
 </tr>
@@ -621,9 +607,12 @@
 <td>a or b or c</td>
 <td>a,b,c(查询结果有去重)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>联合索引本质：</p>
 <p>当创建(a,b,c)联合索引时，<strong>相当于创建了(a)单列索引，(a,b)联合索引以及(a,b,c)联合索引</strong>想要索引生效的话,只能使用 a和a,b和a,b,c三种组合；当然，我们上面测试过，a,c组合也可以，但实际上只用到了a的索引，c并没有用到！生效情况如下表：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -632,7 +621,8 @@
 <th>实际用的索引</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>a</td>
 <td>联合索引</td>
 <td>a</td>
@@ -667,7 +657,9 @@
 <td>联合索引</td>
 <td>(a,b,c)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>总结：</strong>索引的最左原则（左前缀原则），如（c1,c2,c3,c4….cN）的联合索引，where 条件按照索引建立的字段顺序来使用（<strong>不代表and条件必须按照顺序来写</strong>），<strong>如果中间某列没有条件，或使用like会导致后面的列不能使用索引。</strong></p>
 <p>（如面试题：现在有a b 作为联合索引，有一条sql语句 where b &gt; 0 and a = 7 和 where a&gt;0 and b = 7分别会用到索引吗？  会）</p>
 <p><strong>最左前缀：</strong>顾名思义，就是最左优先，上例中我们创建了lname_fname_age多列索引,相当于创建了(lname)单列索引，(lname,fname)组合索引以及(lname,fname,age)组合索引。</p>
@@ -675,17 +667,13 @@
 <h2 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h2><h3 id="1-独立的列"><a href="#1-独立的列" class="headerlink" title="1. 独立的列"></a>1. 独立的列</h3><p>在进行查询时，索引列不能是表达式的一部分，也不能是函数的参数，否则无法使用索引。</p>
 <p>例如下面的查询不能使用 actor_id 列的索引：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> actor_id <span class="keyword">FROM</span> sakila.actor <span class="keyword">WHERE</span> actor_id + <span class="number">1</span> = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-
 <h3 id="2-多列索引"><a href="#2-多列索引" class="headerlink" title="2. 多列索引"></a>2. 多列索引</h3><p>在需要使用多个列作为条件进行查询时，使用多列索引比使用多个单列索引性能更好。例如下面的语句中，最好把 actor_id 和 film_id 设置为多列索引。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> film_id, actor_ <span class="keyword">id</span> <span class="keyword">FROM</span> sakila.film_actor</span><br><span class="line"><span class="keyword">WHERE</span> actor_id = <span class="number">1</span> <span class="keyword">AND</span> film_id = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
 <h3 id="3-索引列的顺序"><a href="#3-索引列的顺序" class="headerlink" title="3. 索引列的顺序"></a>3. 索引列的顺序</h3><p>让选择性最强的索引列放在前面。</p>
 <p>索引的选择性是指：不重复的索引值和记录总数的比值。最大值为 1，此时每个记录都有唯一的索引与其对应。选择性越高，每个记录的区分度越高，查询效率也越高。</p>
 <p>例如下面显示的结果中 customer_id 的选择性比 staff_id 更高，因此最好把 customer_id 列放在多列索引的前面。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> staff_id)/<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> staff_id_selectivity,</span><br><span class="line"><span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> customer_id)/<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> customer_id_selectivity,</span><br><span class="line"><span class="keyword">COUNT</span>(*)</span><br><span class="line"><span class="keyword">FROM</span> payment;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   staff_id_selectivity: 0.0001</span><br><span class="line">customer_id_selectivity: 0.0373</span><br><span class="line">               COUNT(*): 16049</span><br></pre></td></tr></table></figure>
-
 <h3 id="4-前缀索引"><a href="#4-前缀索引" class="headerlink" title="4. 前缀索引"></a>4. 前缀索引</h3><p>对于 BLOB、TEXT 和 VARCHAR 类型的列，必须使用前缀索引，只索引开始的部分字符。</p>
 <p>前缀长度的选取需要根据索引选择性来确定。</p>
 <h3 id="5-覆盖索引"><a href="#5-覆盖索引" class="headerlink" title="5. 覆盖索引"></a>5. 覆盖索引</h3><p>索引包含所有需要查询的字段的值。</p>

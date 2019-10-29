@@ -428,7 +428,6 @@
 <p>7.<strong>进程间不会相互影响 ；线程一个线程挂掉将导致整个进程挂掉</strong></p>
 <p>8.<strong>进程适应于多核、多机分布；线程适用于多核</strong></p>
 <h3 id="4-进程状态转换图"><a href="#4-进程状态转换图" class="headerlink" title="4.      进程状态转换图"></a>4.      进程状态转换图</h3><img src="/2019/03/21/操作系统面试题/01.png">                                
-
 <p>1)   新状态：进程已经创建</p>
 <p>2)   就绪态：进程做好了准备，准备执行，等待分配处理机</p>
 <p>3)   执行态：该进程正在执行；</p>
@@ -498,10 +497,10 @@
 <p>〈3〉      占有且申请条件。进程至少已经占有一个资源，但又申请新的资源；由于该资源已被另外进程占有，此时该进程阻塞；但是，它在等待新资源之时，仍继续占用已占有的资源。还以过独木桥为例，甲乙两人在桥上相遇。甲走过一段桥面（即占有了一些资源），还需要走其余的桥面（申请新的资源），但那部分桥面被乙占有（乙走过一段桥面）。甲过不去，前进不能，又不后退；乙也处于同样的状况。</p>
 <p>〈4〉      循环等待条件。存在一个进程等待序列{P1，P2，…，Pn}，其中P1等待P2所占有的某一资源，P2等待P3所占有的某一源，……，而Pn等待P1所占有的的某一资源，形成一个进程循环等待环。就像前面的过独木桥问题，甲等待乙占有的桥面，而乙又等待甲占有的桥面，从而彼此循环等待。</p>
 <p>死锁的预防是保证系统不进入死锁状态的一种策略。它的基本思想是要求进程申请资源时遵循某种协议，从而打破产生死锁的四个必要条件中的一个或几个，保证系统不会进入死锁状态。</p>
-<p>&lt;1&gt;打破互斥条件。即允许进程同时访问某些资源。但是，有的资源是不允许被同时访问的，像打印机等等，这是由资源本身的属性所决定的。所以，这种办法并无实用价值。</p>
-<p>&lt;2&gt;打破不可抢占条件。即允许进程强行从占有者那里夺取某些资源。就是说，当一个进程已占有了某些资源，它又申请新的资源，但不能立即被满足时，它必须释放所占有的全部资源，以后再重新申请。它所释放的资源可以分配给其它进程。这就相当于该进程占有的资源被隐蔽地强占了。这种预防死锁的方法实现起来困难，会降低系统性能。    </p>
-<p>&lt;3&gt;打破占有且申请条件。可以实行资源预先分配策略。即进程在运行前一次性地向系统申请它所需要的全部资源。如果某个进程所需的全部资源得不到满足，则不分配任何资源，此进程暂不运行。只有当系统能够满足当前进程的全部资源需求时，才一次性地将所申请的资源全部分配给该进程。由于运行的进程已占有了它所需的全部资源，所以不会发生占有资源又申请资源的现象，因此不会发生死锁。</p>
-<p>&lt;4&gt;打破循环等待条件，实行资源有序分配策略。采用这种策略，即把资源事先分类编号，按号分配，使进程在申请，占用资源时不会形成环路。所有进程对资源的请求必须严格按资源序号递增的顺序提出。进程占用了小号资源，才能申请大号资源，就不会产生环路，从而预防了死锁</p>
+<p><1>打破互斥条件。即允许进程同时访问某些资源。但是，有的资源是不允许被同时访问的，像打印机等等，这是由资源本身的属性所决定的。所以，这种办法并无实用价值。</1></p>
+<p><2>打破不可抢占条件。即允许进程强行从占有者那里夺取某些资源。就是说，当一个进程已占有了某些资源，它又申请新的资源，但不能立即被满足时，它必须释放所占有的全部资源，以后再重新申请。它所释放的资源可以分配给其它进程。这就相当于该进程占有的资源被隐蔽地强占了。这种预防死锁的方法实现起来困难，会降低系统性能。    </2></p>
+<p><3>打破占有且申请条件。可以实行资源预先分配策略。即进程在运行前一次性地向系统申请它所需要的全部资源。如果某个进程所需的全部资源得不到满足，则不分配任何资源，此进程暂不运行。只有当系统能够满足当前进程的全部资源需求时，才一次性地将所申请的资源全部分配给该进程。由于运行的进程已占有了它所需的全部资源，所以不会发生占有资源又申请资源的现象，因此不会发生死锁。</3></p>
+<p><4>打破循环等待条件，实行资源有序分配策略。采用这种策略，即把资源事先分类编号，按号分配，使进程在申请，占用资源时不会形成环路。所有进程对资源的请求必须严格按资源序号递增的顺序提出。进程占用了小号资源，才能申请大号资源，就不会产生环路，从而预防了死锁</4></p>
 <p>死锁避免：银行家算法</p>
 <h3 id="11-鸵鸟策略"><a href="#11-鸵鸟策略" class="headerlink" title="11.  鸵鸟策略"></a>11.  鸵鸟策略</h3><p>假设的前提是，这样的问题出现的概率很低。比如，在操作系统中，为应对<a href="https://baike.baidu.com/item/死锁" target="_blank" rel="noopener">死锁</a>问题，可以采用这样的一种办法。当系统发生<a href="https://baike.baidu.com/item/死锁" target="_blank" rel="noopener">死锁</a>时不会对用户造成多大影响，或系统很少发生<a href="https://baike.baidu.com/item/死锁" target="_blank" rel="noopener">死锁</a>的场合采用允许死锁发生的鸵鸟算法，这样一来可能开销比不允许发生死锁及检测和解除死锁的小。如果<a href="https://baike.baidu.com/item/死锁" target="_blank" rel="noopener">死锁</a>很长时间才发生一次，而系统每周都会因硬件故障、<a href="https://baike.baidu.com/item/编译器" target="_blank" rel="noopener">编译器</a>错误或操作系统错误而崩溃一次，那么大多数工程师不会以性能损失或者易用性损失的代价来设计较为复杂的死锁解决策略，来消除死锁。鸵鸟策略的实质：出现死锁的概率很小，并且出现之后处理死锁会花费很大的代价，还不如不做处理，OS中这种置之不理的策略称之为鸵鸟策略（也叫鸵鸟算法）。</p>
 <h3 id="12-银行家算法"><a href="#12-银行家算法" class="headerlink" title="12.  银行家算法"></a>12.  银行家算法</h3><p>在避免<a href="https://baike.baidu.com/item/死锁" target="_blank" rel="noopener">死锁</a>的方法中，所施加的限制条件较弱，有可能获得令人满意的系统性能。在该方法中把系统的状态分为安全状态和不安全状态，只要能使系统始终都处于安全状态，便可以避免发生<a href="https://baike.baidu.com/item/死锁" target="_blank" rel="noopener">死锁</a>。</p>
@@ -574,9 +573,9 @@
 <p>3)   外围设备的中断</p>
 <p>当外围设备完成用户请求的操作后，会向CPU发出相应的中断信号，这时CPU会暂停执行下一条即将要执行的指令转而去执行与中断信号对应的处理程序，如果先前执行的指令是用户态下的程序，那么这个转换的过程自然也就发生了由用户态到内核态的切换。比如硬盘读写操作完成，系统会切换到硬盘读写的中断处理程序中执行后续操作等。</p>
 <h3 id="24-中断的实现与作用，中断的实现过程？"><a href="#24-中断的实现与作用，中断的实现过程？" class="headerlink" title="24.  中断的实现与作用，中断的实现过程？"></a>24.  中断的实现与作用，中断的实现过程？</h3><p>①   关中断，进入不可再次响应中断的状态，由硬件实现。</p>
-<p>②   保存断点，为了在<a href="https://www.baidu.com/s?wd=中断处理&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">中断处理</a>结束后能正确返回到中断点。由硬件实现。</p>
-<p>③   将<a href="https://www.baidu.com/s?wd=中断服务程序&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">中断服务程序</a>入口地址送PC，转向<a href="https://www.baidu.com/s?wd=中断服务程序&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">中断服务程序</a>。可由硬件实现，也可由软件实现。</p>
-<p>④   保护现场、置屏蔽字、开中断，即保护CPU中某些寄存器的内容、设置<a href="https://www.baidu.com/s?wd=中断处理&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">中断处理</a>次序、允许更高级的<a href="https://www.baidu.com/s?wd=中断请求&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">中断请求</a>得到响应，实现<a href="https://www.baidu.com/s?wd=中断嵌套&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">中断嵌套</a>。由软件实现。</p>
+<p>②   保存断点，为了在<a href="https://www.baidu.com/s?wd=中断处理&amp;tn=SE_PcZhidaonwhc_ngpagmjz&amp;rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">中断处理</a>结束后能正确返回到中断点。由硬件实现。</p>
+<p>③   将<a href="https://www.baidu.com/s?wd=中断服务程序&amp;tn=SE_PcZhidaonwhc_ngpagmjz&amp;rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">中断服务程序</a>入口地址送PC，转向<a href="https://www.baidu.com/s?wd=中断服务程序&amp;tn=SE_PcZhidaonwhc_ngpagmjz&amp;rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">中断服务程序</a>。可由硬件实现，也可由软件实现。</p>
+<p>④   保护现场、置屏蔽字、开中断，即保护CPU中某些寄存器的内容、设置<a href="https://www.baidu.com/s?wd=中断处理&amp;tn=SE_PcZhidaonwhc_ngpagmjz&amp;rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">中断处理</a>次序、允许更高级的<a href="https://www.baidu.com/s?wd=中断请求&amp;tn=SE_PcZhidaonwhc_ngpagmjz&amp;rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">中断请求</a>得到响应，实现<a href="https://www.baidu.com/s?wd=中断嵌套&amp;tn=SE_PcZhidaonwhc_ngpagmjz&amp;rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">中断嵌套</a>。由软件实现。</p>
 <p>⑤   设备服务，实际上有效的中断处理工作是在此程序段中实现的。由软件程序实现</p>
 <p>⑥   退出中断。在退出时，又应进入不可中断状态，即关中断、恢复屏蔽字、恢复现场、开中断、中断返回。由软件实现。</p>
 <h3 id="25-系统中断是什么，用户态和内核态的区别"><a href="#25-系统中断是什么，用户态和内核态的区别" class="headerlink" title="25.  系统中断是什么，用户态和内核态的区别"></a>25.  系统中断是什么，用户态和内核态的区别</h3><p>1)   内核态与用户态是操作系统的两种运行级别,当程序运行在3级特权级上时，就可以称之为运行在用户态，因为这是最低特权级，是普通的用户进程运行的特权级，大部分用户直接面对的程序都是运行在用户态；反之，当程序运行在0级特权级上时，就可以称之为运行在内核态。运行在用户态下的程序不能直接访问操作系统内核数据结构和程序。当我们在系统中执行一个程序时，大部分时间是运行在用户态下的，在其需要操作系统帮助完成某些它没有权力和能力完成的工作时就会切换到内核态。 </p>
@@ -774,27 +773,18 @@
 <p>4)   链接，由汇编程序生成的目标文件并不能立即就被执行，其中可能还有许多没有解决的问题。</p>
 <h3 id="8-一般情况下在Linux-windows平台下栈空间的大小"><a href="#8-一般情况下在Linux-windows平台下栈空间的大小" class="headerlink" title="8.      一般情况下在Linux/windows平台下栈空间的大小"></a>8.      一般情况下在Linux/windows平台下栈空间的大小</h3><p>windows是编译器决定栈的大小，记录在可执行文件中，默认是1M。linux是操作系统来决定的，在系统环境变量中设置， ulimit -s 字节数 命令查看修改，但是linux默认栈大小为10M;vs编译器设置：属性—&gt;设置à链接à输出à栈分配à重新设置；</p>
 <h3 id="9-Linux重定向"><a href="#9-Linux重定向" class="headerlink" title="9.      Linux重定向"></a>9.      Linux重定向</h3><p>1 重定向符号</p>
+<p>&gt;<br>输出重定向到一个文件或设备 覆盖原来的文件</p>
 <blockquote>
+<p>!<br>输出重定向到一个文件或设备 强制覆盖原来的文件</p>
+<p>&gt;<br>输出重定向到一个文件或设备 追加原来的文件</p>
 </blockquote>
-<p>输出重定向到一个文件或设备 覆盖原来的文件</p>
-<blockquote>
-<p>!             
-输出重定向到一个文件或设备 强制覆盖原来的文件</p>
-</blockquote>
-<blockquote>
-<blockquote>
-</blockquote>
-<p>输出重定向到一个文件或设备 追加原来的文件</p>
-</blockquote>
-<p>&lt;              
-输入重定向到一个程序</p>
+<p>&lt;<br>输入重定向到一个程序</p>
 <p>2标准错误重定向符号</p>
 <p>2&gt;<br>将一个标准错误输出重定向到一个文件或设备 覆盖原来的文件  b-shell</p>
 <p>2&gt;&gt;<br>将一个标准错误输出重定向到一个文件或设备 追加到原来的文件</p>
 <p>2&gt;&amp;1<br>将一个标准错误输出重定向到标准输出 注释:1 可能就是代表 标准输出</p>
 <blockquote>
-<p>&amp;            
-将一个标准错误输出重定向到一个文件或设备 覆盖原来的文件  c-shell</p>
+<p>&amp;<br>将一个标准错误输出重定向到一个文件或设备 覆盖原来的文件  c-shell</p>
 </blockquote>
 <p>|&amp;<br>将一个标准错误 管道 输送 到另一个命令作为输入</p>
 <p>3命令重导向示例</p>
@@ -883,8 +873,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/21/操作系统其他/" rel="next" title="操作系统其他">
-                <i class="fa fa-chevron-left"></i> 操作系统其他
+              <a href="/2019/03/21/操作系统-死锁/" rel="next" title="操作系统-死锁">
+                <i class="fa fa-chevron-left"></i> 操作系统-死锁
               </a>
             
           </div>

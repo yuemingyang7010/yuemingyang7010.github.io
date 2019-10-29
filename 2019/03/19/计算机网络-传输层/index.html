@@ -429,10 +429,8 @@
 </li>
 </ul>
 <h1 id="UDP-首部格式"><a href="#UDP-首部格式" class="headerlink" title="UDP 首部格式"></a>UDP 首部格式</h1><img src="/2019/03/19/计算机网络-传输层/01.jpg">
-
 <p>首部字段只有 8 个字节，包括源端口、目的端口、长度、检验和。12 字节的伪首部是为了计算检验和临时添加的。</p>
 <h1 id="TCP-首部格式"><a href="#TCP-首部格式" class="headerlink" title="TCP 首部格式"></a>TCP 首部格式</h1><img src="/2019/03/19/计算机网络-传输层/02.png">
-
 <ul>
 <li><p><strong>序号</strong>  ：用于对字节流进行编号，例如序号为 301，表示第一个字节的编号为 301，如果携带的数据长度为 100 字节，那么下一个报文段的序号应为 401。</p>
 </li>
@@ -450,7 +448,6 @@
 </li>
 </ul>
 <h1 id="TCP-的三次握手"><a href="#TCP-的三次握手" class="headerlink" title="TCP 的三次握手"></a><u>TCP 的三次握手</u></h1><img src="/2019/03/19/计算机网络-传输层/03.png">
-
 <p>假设 A 为客户端，B 为服务器端。</p>
 <ul>
 <li><p>首先 B 处于 LISTEN（监听）状态，等待客户的连接请求。</p>
@@ -469,7 +466,6 @@
 <p>客户端发送的连接请求如果在网络中滞留，那么就会隔很长一段时间才能收到服务器端发回的连接确认。<strong>客户端等待一个超时重传时间之后，就会重新请求连接。</strong>但是这个滞留的连接请求最后还是会到达服务器，如果不进行三次握手，那么服务器就会打开两个连接。如果有第三次握手，客户端会忽略服务器之后发送的对滞留连接请求的连接确认，不进行第三次握手，因此就不会再次打开连接。</p>
 <p><strong>【原因2】</strong>TCP之所以可靠，是因为它保证了传送数据包的顺序。顺序是用一个序列号来保证的。响应包内也包括一个序列号，表示接收方准备好这个序列号的包。显然两次握手不能做到使客户端的序列号发给服务端，并得到服务端的确认，同时服务端产生一个序列号发给客户端，并得到客户端的确认。</p>
 <h1 id="TCP-的四次挥手"><a href="#TCP-的四次挥手" class="headerlink" title="TCP 的四次挥手"></a><u>TCP 的四次挥手</u></h1><img src="/2019/03/19/计算机网络-传输层/04.jpg">
-
 <p>以下描述不讨论序号和确认号，因为序号和确认号的规则比较简单。并且不讨论 ACK，因为 ACK 在连接建立之后都为 1。</p>
 <ul>
 <li><p>A 发送连接释放报文，FIN=1。</p>
@@ -498,12 +494,10 @@
 <p>接收窗口只会对窗口内最后一个按序到达的字节进行确认，例如接收窗口已经收到的字节为 {31, 34, 35}，其中 {31} 按序到达，而 {34, 35} 就不是，因此只对字节 32进行确认。发送方得到一个字节的确认之后，就知道这个字节之前的所有字节都已经被接收。</p>
 <p><strong>(累计确认，加快传输速度)</strong></p>
 <img src="/2019/03/19/计算机网络-传输层/05.jpg">
-
 <h1 id="TCP-流量控制"><a href="#TCP-流量控制" class="headerlink" title="TCP 流量控制"></a>TCP 流量控制</h1><p>流量控制是<strong>为了控制发送方发送速率，保证接收方来得及接收。</strong></p>
 <p><strong>接收方发送的确认报文中的窗口字段可以用来控制发送方窗口大小，从而影响发送方的发送速率。将窗口字段设置为 0，则发送方不能发送数据。</strong></p>
 <h1 id="TCP-拥塞控制"><a href="#TCP-拥塞控制" class="headerlink" title="TCP 拥塞控制"></a>TCP 拥塞控制</h1><p>如果网络出现拥塞，分组将会丢失，此时发送方会继续重传，从而导致网络拥塞程度更高。因此当出现拥塞时，应当控制发送方的速率。这一点和流量控制很像，但是出发点不同。流量控制是为了让接收方能来得及接收，而拥塞控制是为了降低整个网络的拥塞程度。</p>
 <img src="/2019/03/19/计算机网络-传输层/06.jpg">
-
 <p>TCP 主要通过四个算法来进行拥塞控制：慢开始、拥塞避免、快重传、快恢复。</p>
 <p>发送方需要维护一个叫做<strong>拥塞窗口</strong>（cwnd）的状态变量，注意拥塞窗口与发送方窗口的区别：拥塞窗口只是一个状态变量，实际决定发送方能发送多少数据的是发送方窗口。</p>
 <p>为了便于讨论，做如下假设：</p>
@@ -512,7 +506,6 @@
 <li>虽然 TCP 的窗口基于字节，但是这里设<strong>窗口的大小单位为报文段</strong>。</li>
 </ul>
 <img src="/2019/03/19/计算机网络-传输层/07.png">
-
 <h2 id="1-慢开始与拥塞避免"><a href="#1-慢开始与拥塞避免" class="headerlink" title="1. 慢开始与拥塞避免"></a>1. 慢开始与拥塞避免</h2><p>发送的<strong>最初执行慢开始，令 cwnd = 1，发送方只能发送 1 个报文段；当收到确认后，将 <u>cwnd 加倍</u></strong>，因此之后发送方能够发送的报文段数量为：2、4、8 …</p>
 <p>注意到慢开始每个轮次都将 cwnd 加倍，这样会让 cwnd 增长速度非常快，从而使得发送方发送的速度增长速度过快，网络拥塞的可能性也就更高。设置一个慢开始门限 ssthresh，<strong>当 cwnd &gt;= ssthresh 时，进入拥塞避免，每个轮次只将 cwnd 加 1。</strong></p>
 <p>如果出现了超时，则令 ssthresh = cwnd / 2，然后重新执行慢开始。</p>
@@ -520,7 +513,6 @@
 <p><strong>在发送方，如果收到三个重复确认，那么可以知道下一个报文段丢失，此时执行快重传，立即重传下一个报文段。</strong>例如收到三个 M<sub>2</sub>，则 M<sub>3</sub> 丢失，立即重传 M<sub>3</sub>。</p>
 <p>在这种情况下，只是丢失个别报文段，而不是网络拥塞。因此执行快恢复，令 ssthresh = cwnd / 2 ，cwnd = ssthresh，注意到此时直接进入拥塞避免。</p>
 <p><strong>慢开始和快恢复的快慢指的是 cwnd 的设定值</strong>，而不是 cwnd 的增长速率。慢开始 cwnd 设定为 1，而快恢复 cwnd 设定为 ssthresh。</p>
-
 
 <h1 id="TCP超时与重传机制"><a href="#TCP超时与重传机制" class="headerlink" title="TCP超时与重传机制"></a>TCP超时与重传机制</h1><p><strong>原理：</strong>在发送一个数据之后，就<strong>开启一个定时器</strong>，若是在这个时间内没有收到发送数据的ACK确认报文，则对该报文进行重传，在达到一定次数还没有成功时放弃并发送一个复位信号。 </p>
 <p><strong>重传计时器：</strong></p>
@@ -561,8 +553,7 @@
 <h3 id="3-FIN扫描"><a href="#3-FIN扫描" class="headerlink" title="3.FIN扫描"></a>3.FIN扫描</h3><p>根据上述四次挥手过程，主动结束的一方会发送FIN帧。当我们发送FIN帧给一个非监听的端口时，会有RST应答，反之，发给一个正在监听的端口时，不会有任何回应。</p>
 <p>优点：  隐蔽性好；速度快。</p>
 <p>缺点：  只能用于Linux系统，windows系统下无效，在windows下，无论端口是否监听，都将回应RST帧，造成无法判断；不可靠，当收不到应答包时，不确定是端口在监听，还是丢包了。</p>
-<p>### </p>
-
+<h3 id><a href="#" class="headerlink" title=" "></a> </h3>
       
     </div>
     
@@ -616,8 +607,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/19/Shell/" rel="next" title="Shell">
-                <i class="fa fa-chevron-left"></i> Shell
+              <a href="/2019/03/18/动力节点SQL34题/" rel="next" title="动力节点SQL34题">
+                <i class="fa fa-chevron-left"></i> 动力节点SQL34题
               </a>
             
           </div>
@@ -626,8 +617,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/20/Shell编程四剑客/" rel="prev" title="Shell编程四剑客">
-                Shell编程四剑客 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/19/Shell/" rel="prev" title="Shell">
+                Shell <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -785,7 +776,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UDP-和-TCP-的特点"><span class="nav-number">1.</span> <span class="nav-text">UDP 和 TCP 的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别"><span class="nav-number">1.1.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UDP-首部格式"><span class="nav-number">2.</span> <span class="nav-text">UDP 首部格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-首部格式"><span class="nav-number">3.</span> <span class="nav-text">TCP 首部格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-的三次握手"><span class="nav-number">4.</span> <span class="nav-text">TCP 的三次握手</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-的四次挥手"><span class="nav-number">5.</span> <span class="nav-text">TCP 的四次挥手</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-滑动窗口"><span class="nav-number">6.</span> <span class="nav-text">TCP 滑动窗口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-流量控制"><span class="nav-number">7.</span> <span class="nav-text">TCP 流量控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-拥塞控制"><span class="nav-number">8.</span> <span class="nav-text">TCP 拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-慢开始与拥塞避免"><span class="nav-number">8.1.</span> <span class="nav-text">1. 慢开始与拥塞避免</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-快重传与快恢复"><span class="nav-number">8.2.</span> <span class="nav-text">2. 快重传与快恢复</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP超时与重传机制"><span class="nav-number">9.</span> <span class="nav-text">TCP超时与重传机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-怎样保证可靠性"><span class="nav-number">10.</span> <span class="nav-text">TCP 怎样保证可靠性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SYN-Flood应如何应对"><span class="nav-number">11.</span> <span class="nav-text">SYN Flood应如何应对</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP粘包，拆包及解决方法"><span class="nav-number">12.</span> <span class="nav-text">TCP粘包，拆包及解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#粘包、拆包表现形式"><span class="nav-number">12.0.1.</span> <span class="nav-text">粘包、拆包表现形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#粘包、拆包发生原因"><span class="nav-number">12.0.2.</span> <span class="nav-text">粘包、拆包发生原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#粘包、拆包解决办法"><span class="nav-number">12.0.3.</span> <span class="nav-text">粘包、拆包解决办法</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP端口扫描方式"><span class="nav-number">13.</span> <span class="nav-text">TCP端口扫描方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-connect扫描"><span class="nav-number">13.0.1.</span> <span class="nav-text">1.connect扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-SYN扫描"><span class="nav-number">13.0.2.</span> <span class="nav-text">2.SYN扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-FIN扫描"><span class="nav-number">13.0.3.</span> <span class="nav-text">3.FIN扫描</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UDP-和-TCP-的特点"><span class="nav-number">1.</span> <span class="nav-text">UDP 和 TCP 的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别"><span class="nav-number">1.1.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UDP-首部格式"><span class="nav-number">2.</span> <span class="nav-text">UDP 首部格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-首部格式"><span class="nav-number">3.</span> <span class="nav-text">TCP 首部格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-的三次握手"><span class="nav-number">4.</span> <span class="nav-text">TCP 的三次握手</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-的四次挥手"><span class="nav-number">5.</span> <span class="nav-text">TCP 的四次挥手</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-滑动窗口"><span class="nav-number">6.</span> <span class="nav-text">TCP 滑动窗口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-流量控制"><span class="nav-number">7.</span> <span class="nav-text">TCP 流量控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-拥塞控制"><span class="nav-number">8.</span> <span class="nav-text">TCP 拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-慢开始与拥塞避免"><span class="nav-number">8.1.</span> <span class="nav-text">1. 慢开始与拥塞避免</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-快重传与快恢复"><span class="nav-number">8.2.</span> <span class="nav-text">2. 快重传与快恢复</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP超时与重传机制"><span class="nav-number">9.</span> <span class="nav-text">TCP超时与重传机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-怎样保证可靠性"><span class="nav-number">10.</span> <span class="nav-text">TCP 怎样保证可靠性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SYN-Flood应如何应对"><span class="nav-number">11.</span> <span class="nav-text">SYN Flood应如何应对</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP粘包，拆包及解决方法"><span class="nav-number">12.</span> <span class="nav-text">TCP粘包，拆包及解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#粘包、拆包表现形式"><span class="nav-number">12.0.1.</span> <span class="nav-text">粘包、拆包表现形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#粘包、拆包发生原因"><span class="nav-number">12.0.2.</span> <span class="nav-text">粘包、拆包发生原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#粘包、拆包解决办法"><span class="nav-number">12.0.3.</span> <span class="nav-text">粘包、拆包解决办法</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP端口扫描方式"><span class="nav-number">13.</span> <span class="nav-text">TCP端口扫描方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-connect扫描"><span class="nav-number">13.0.1.</span> <span class="nav-text">1.connect扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-SYN扫描"><span class="nav-number">13.0.2.</span> <span class="nav-text">2.SYN扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-FIN扫描"><span class="nav-number">13.0.3.</span> <span class="nav-text">3.FIN扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">13.0.4.</span> <span class="nav-text"> </span></a></li></ol></li></div>
             
 
           </div>

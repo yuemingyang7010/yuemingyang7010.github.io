@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="●基础1.连接数据库 1mysql -uroot -p  然后输入密码 2。创建“bjpowernode”数据库 1mysql&amp;gt; create database bjpowernode;  3.选择数据库 1mysql&amp;gt; use bjpowernode;  4.导入数据 1mysql&amp;gt;source  D:\ bjpowernode.sql   删除数据库  1mysql&amp;gt;">
+<meta name="description" content="●基础1.连接数据库 1mysql -uroot -p 然后输入密码 2。创建“bjpowernode”数据库 1mysql&amp;gt; create database bjpowernode; 3.选择数据库 1mysql&amp;gt; use bjpowernode; 4.导入数据 1mysql&amp;gt;source  D:\ bjpowernode.sql  删除数据库  1mysql&amp;gt; drop">
 <meta name="keywords" content="数据库,SQL语句">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL语句">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="●基础1.连接数据库 1mysql -uroot -p  然后输入密码 2。创建“bjpowernode”数据库 1mysql&amp;gt; create database bjpowernode;  3.选择数据库 1mysql&amp;gt; use bjpowernode;  4.导入数据 1mysql&amp;gt;source  D:\ bjpowernode.sql   删除数据库  1mysql&amp;gt;">
+<meta property="og:description" content="●基础1.连接数据库 1mysql -uroot -p 然后输入密码 2。创建“bjpowernode”数据库 1mysql&amp;gt; create database bjpowernode; 3.选择数据库 1mysql&amp;gt; use bjpowernode; 4.导入数据 1mysql&amp;gt;source  D:\ bjpowernode.sql  删除数据库  1mysql&amp;gt; drop">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/01.png">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/02.png">
@@ -93,7 +93,7 @@
 <meta property="og:updated_time" content="2019-08-08T12:49:07.563Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL语句">
-<meta name="twitter:description" content="●基础1.连接数据库 1mysql -uroot -p  然后输入密码 2。创建“bjpowernode”数据库 1mysql&amp;gt; create database bjpowernode;  3.选择数据库 1mysql&amp;gt; use bjpowernode;  4.导入数据 1mysql&amp;gt;source  D:\ bjpowernode.sql   删除数据库  1mysql&amp;gt;">
+<meta name="twitter:description" content="●基础1.连接数据库 1mysql -uroot -p 然后输入密码 2。创建“bjpowernode”数据库 1mysql&amp;gt; create database bjpowernode; 3.选择数据库 1mysql&amp;gt; use bjpowernode; 4.导入数据 1mysql&amp;gt;source  D:\ bjpowernode.sql  删除数据库  1mysql&amp;gt; drop">
 <meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/01.png">
 
 
@@ -416,22 +416,17 @@
       
         <h1 id="●基础"><a href="#●基础" class="headerlink" title="●基础"></a>●基础</h1><p>1.连接数据库</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
-
 <p>然后输入密码</p>
 <p>2。创建“bjpowernode”数据库</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database bjpowernode;</span><br></pre></td></tr></table></figure>
-
 <p>3.选择数据库</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use bjpowernode;</span><br></pre></td></tr></table></figure>
-
 <p>4.导入数据</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;source  D:\ bjpowernode.sql</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
+<ol>
 <li>删除数据库</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database bjpowernode;</span><br></pre></td></tr></table></figure>
-
 <h1 id="●-常用SQL语句（DDL-DML-DCL-TCL）"><a href="#●-常用SQL语句（DDL-DML-DCL-TCL）" class="headerlink" title="● 常用SQL语句（DDL,DML,DCL,TCL）"></a><strong>●</strong> <strong>常用SQL语句（DDL,DML,DCL,TCL）</strong></h1><p>数据查询语言(DQL-Data Query Language) </p>
 <p>代表关键字:select</p>
 <p>数据操纵语言(DML-Data Manipulation Language)   <strong>增删改，针对表的数据</strong></p>
@@ -445,36 +440,27 @@
 <h2 id="●数据定义语句-create、drop、alter"><a href="#●数据定义语句-create、drop、alter" class="headerlink" title="●数据定义语句(create、drop、alter)"></a><strong>●数据定义语句(create、drop、alter)</strong></h2><p><strong>1.定义基本表</strong></p>
 <p>SQL 语言使用CREATETABLE语句定义基本表，其基本格式如下：</p>
 <img src="/2019/03/17/SQL语句/01.png">
-
 <p>建立一个“学生信息”表Student：</p>
 <img src="/2019/03/17/SQL语句/02.png">
-
 <p><strong>2.修改基本表</strong></p>
 <p>随着应用环境和应用需求的变化，有时需要修改已建立好的基本表，SQL 语言用ALTER TABLE语句修改基本表，其一般格式为：</p>
 <img src="/2019/03/17/SQL语句/03.png">
-
 <p>其中，&lt;表名&gt;是要修改的表，<strong>ADD子句用于增加新列和新的完整性约束条件</strong>，DROP子句用于删除指定的完整性约束条件，<strong>MODIFY COLUMN子句用于修改原有的列定义，包括修改列名和数据类型。</strong></p>
 <p><strong>例1：</strong>向Student表增加“入学时间”列，其数据类型为日期型。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Student <span class="keyword">ADD</span> S entrance <span class="built_in">DATE</span>；</span><br></pre></td></tr></table></figure>
-
 <p>上述代码不论基本表中原来是否已有数据，新增加的列一律为空值。</p>
 <p><strong>例2：</strong>要求将年龄的数据类型由字符型（假设原来的数据类型是字符型）改为整数。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Student <span class="keyword">MODIFY</span> <span class="keyword">COLUMN</span> Sage <span class="built_in">INT</span>；</span><br></pre></td></tr></table></figure>
-
 <p><strong>例3：</strong>增加Student表Sname必须取唯一值的约束条件：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Student <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span>（Sname）；</span><br></pre></td></tr></table></figure>
-
 <p><strong>3.删除基本表</strong></p>
 <p>当某个基本表不再需要时，可以使用DROPTABLE语句删除它。其一般格式为：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span>&lt;表名&gt; [RESTRICT ICASCADE]；</span><br></pre></td></tr></table></figure>
-
 <p>若选择RESTRICT，则该表的删除是有限制条件的：欲删除的基本表不能被其他表的约束所引用（如check，foreign key等约束），不能有视图，不能有触发器，不能有存储过程或函数等。如果存在这些依赖该表的对象，则此表不能被删除。</p>
 <p>若选择CASCADE，则该表的删除没有限制条件。在删除该表的同时，相关的依赖对象，例如视图，都将被一起删除。删除Student表：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> Student <span class="keyword">CASCADE</span>；</span><br></pre></td></tr></table></figure>
-
 <h2 id="●数据查询-select"><a href="#●数据查询-select" class="headerlink" title="●数据查询(select)"></a><strong>●数据查询(select)</strong></h2><p>一个完整的select语句格式如下:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>      <span class="comment">#字段</span></span><br><span class="line"><span class="keyword">from</span>       <span class="comment">#表名</span></span><br><span class="line"><span class="keyword">where</span>     <span class="comment"># …….</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span>   <span class="comment">#……..</span></span><br><span class="line"><span class="keyword">having</span>     <span class="comment">#……. (就是为了过滤分组后的数据而存在的—不可以单独的出现)</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span>   <span class="comment">#……..</span></span><br></pre></td></tr></table></figure>
-
 <p>以上语句的执行顺序</p>
 <ol>
 <li><p><strong>首先执行where语句过滤原始数据</strong></p>
@@ -492,31 +478,28 @@
 <p><strong>1.简单查询</strong></p>
 <p>假设在表Student（1.2.1节中已定义）中，查询名为BilGates的学生信息，你可以使用下面的查询：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>*<span class="keyword">from</span> Student <span class="keyword">WHERE</span> Sname=<span class="string">'Bill Gates'</span>；</span><br></pre></td></tr></table></figure>
-
 <p>假设在表Student中，查询名字中有Bill的学生信息，你可以使用下面的查询：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>*<span class="keyword">from</span> Student <span class="keyword">WHERE</span> Sname <span class="keyword">like</span><span class="string">'$Bill%'</span>；</span><br></pre></td></tr></table></figure>
-
 <p>上述%是通配符，代表任意长度（可为0）的字符串。例如a%b表示以a开头，以b结尾的任意长度的字符串。除此之外，（下画线）代表任意单词字符。</p>
 <p>假设在表Student中查询年龄在20~23岁（包括20岁与23岁）之间的学生的信息：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>*<span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sage <span class="keyword">BETWEEN</span> <span class="number">20</span> <span class="keyword">AND</span> <span class="number">23</span>；</span><br></pre></td></tr></table></figure>
-
 <p>与BETWEEN…AND…相对的谓词是NOT BETWEEN·…AND…。</p>
 <p>假设在表Student中查询计算机系（CS）、信息系（MA）和数学系（IS）学生的姓名和性别：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sname，Ssex <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sdept <span class="keyword">IN</span>（<span class="string">'CS'</span>，<span class="string">'IS'</span>，<span class="string">'MA'</span>）；</span><br></pre></td></tr></table></figure>
-
 <p>与IN相对的谓词是NOTIN，用于查找属性值不属于指定集合的元组。</p>
 <p>假设在表Student中查询没有年龄信息的学生：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sage <span class="keyword">IS</span> <span class="literal">NULL</span>；</span><br></pre></td></tr></table></figure>
-
 <p><strong>注意这里的“IS”不能被等号代替。</strong></p>
-<h4 id="2-分组函数-聚合函数-多行处理函数"><a href="#2-分组函数-聚合函数-多行处理函数" class="headerlink" title="2.分组函数/聚合函数/多行处理函数"></a><strong>2.分组函数/聚合函数/多行处理函数</strong></h4><table>
+<h4 id="2-分组函数-聚合函数-多行处理函数"><a href="#2-分组函数-聚合函数-多行处理函数" class="headerlink" title="2.分组函数/聚合函数/多行处理函数"></a><strong>2.分组函数/聚合函数/多行处理函数</strong></h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>count</th>
 <th>取得记录数</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>sum</td>
 <td>求和</td>
 </tr>
@@ -532,60 +515,54 @@
 <td>min</td>
 <td>取最小的数</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>注意：分组函数自动忽略空值，不需要手动的加where**</strong>条件排除空值。**</p>
 <p><strong>select count(*) from emp where xxx;</strong>                   <strong>符合条件的所有记录总数。</strong></p>
 <p><strong>select count(comm) from emp;         comm**</strong>这个字段中不为空的元素总数。**</p>
 <p>注意：分组函数不能直接使用在where关键字后面。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select ename,sal from emp where sal &gt; avg(sal);</span><br><span class="line">ERROR 1111 (HY000): Invalid <span class="keyword">use</span> <span class="keyword">of</span> <span class="keyword">group</span> <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
-
 <p>例1：在SQL中，用于聚集查询的函数有哪些？（2012·搜狗）</p>
 <p>解答：count，sum，avg，max，min。</p>
 <h4 id="3-分组查询"><a href="#3-分组查询" class="headerlink" title="3.分组查询"></a><strong>3.分组查询</strong></h4><p><strong>3.1 group by</strong></p>
 <p>GROUP BY子句<strong>根据一个或多个属性的值来对元组进行分组，值相等的为一组。</strong></p>
 <p>对查询结果分组的目的是为了细化聚集函数的作用对象，分组后聚集函数将作用于每一个组，即每一组都有一个函数值，如下列语句为查询Student 表中具有相同年龄的每个组的人数：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sage，<span class="keyword">count</span>（*）<span class="keyword">from</span> Student <span class="keyword">group</span> <span class="keyword">by</span> Sage；</span><br></pre></td></tr></table></figure>
-
 <p><strong>如果使用了order by，order by必须放到group by后面</strong></p>
 <p><strong>易错注意：！！！</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select empno,deptno,avg(sal) from emp group by deptno;</span><br><span class="line"></span><br><span class="line">+<span class="comment">-------+--------+-------------+</span></span><br><span class="line">| empno | deptno | avg(sal)    |</span><br><span class="line">+<span class="comment">-------+--------+-------------+</span></span><br><span class="line">|  7782 |     10 | 2916.666667 |</span><br><span class="line">|  7369 |     20 | 2175.000000 |</span><br><span class="line">|  7499 |     30 | 1566.666667 |</span><br><span class="line">+<span class="comment">-------+--------+-------------+</span></span><br></pre></td></tr></table></figure>
-
 <p>以上SQL语句在Oracle数据库中无法执行，执行报错。</p>
 <p>以上SQL语句在Mysql数据库中可以执行，但是执行结果矛盾。</p>
 <p>在SQL语句中若有group by 语句，那么在select语句后面只能跟<strong>分组函数（分组函数参数不一定是参与分组的字段）</strong>+<strong>参与分组的字段</strong>。</p>
 <p><strong>3.2 having</strong></p>
 <p>如果想对分组数据再进行过滤需要使用having子句，例如：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sage，<span class="keyword">count</span>（*）<span class="keyword">from</span> Student <span class="keyword">group</span> <span class="keyword">by</span> Sage <span class="keyword">having</span> <span class="keyword">count</span>（*）&gt;<span class="number">1</span>；</span><br></pre></td></tr></table></figure>
-
 <h4 id="4-ORDER-BY子句"><a href="#4-ORDER-BY子句" class="headerlink" title="4.ORDER BY子句"></a><strong>4.ORDER BY子句</strong></h4><p>用户可以用order by子句对查询的结果按照<strong>一个或多个属性</strong>列的升序（ASC）或降序（DESC）排列，默认值为升序。</p>
 <p>例如在表Student中，按学生的年龄值升序检索出全部学生的信息：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Student <span class="keyword">ORDER</span> <span class="keyword">BY</span> Sage；</span><br></pre></td></tr></table></figure>
-
 <p>在表Student中，先按专业升序排序，然后同一专业的学生再按年龄降序排序，并输出全部学生信息：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Student <span class="keyword">ORDER</span> <span class="keyword">BY</span> Sdept，Sage <span class="keyword">desc</span>；</span><br></pre></td></tr></table></figure>
-
 <h4 id="5-LIMIT子句"><a href="#5-LIMIT子句" class="headerlink" title="5.LIMIT子句"></a><strong>5.LIMIT子句</strong></h4><p>LIMIT主要是用于查询之后要显示返回的前几条或者中间某几行数据。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">LIMIT</span>[<span class="keyword">offset</span>，]<span class="keyword">rows</span> I <span class="keyword">rows</span> <span class="keyword">OFFSET</span> <span class="keyword">offset</span></span><br></pre></td></tr></table></figure>
-
 <p>LIMIT子句可以被用于强制SELECT 语句返回指定的记录数。LIMIT接受一个或两个数字参数。参数必须是一个整数常量。如果给定两个参数，第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目。<strong>初始记录行的偏移量是0（而不是1）。</strong>如：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Student <span class="keyword">LIMIT</span> <span class="number">5</span>，<span class="number">10</span>；//检索记录行<span class="number">6</span><span class="number">-15</span></span><br></pre></td></tr></table></figure>
-
 <p>如果只给定一个参数，它表示返回最前面的记录行数目：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>*<span class="keyword">FROM</span> Student <span class="keyword">LIMIT</span> <span class="number">5</span>；//检索前<span class="number">5</span>个记录行</span><br></pre></td></tr></table></figure>
-
 <p>换句话说，LIMITn等价于LIMIT0，n。</p>
 <p>例1：如下SQL语句是需要列出一个论坛版面第一页（每页显示20个）的帖子（post）标题（title），并按照发布时间（create_time）降序排列：（2012·腾讯）</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title <span class="keyword">FROM</span> post ? create_time <span class="keyword">DESC</span> ? <span class="number">0</span>，<span class="number">20</span>；</span><br></pre></td></tr></table></figure>
-
 <p>解答：order by，limit。</p>
-<h4 id="6-数据处理函数-单行处理函数"><a href="#6-数据处理函数-单行处理函数" class="headerlink" title="6.数据处理函数/单行处理函数"></a><strong>6.数据处理函数/单行处理函数</strong></h4><table>
+<h4 id="6-数据处理函数-单行处理函数"><a href="#6-数据处理函数-单行处理函数" class="headerlink" title="6.数据处理函数/单行处理函数"></a><strong>6.数据处理函数/单行处理函数</strong></h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th><strong>Lower</strong></th>
 <th>转换小写</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>upper</td>
 <td>转换大写</td>
 </tr>
@@ -625,60 +602,49 @@
 <td><strong>Ifnull</strong></td>
 <td>可以将null转换成一个具体值</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>substr</strong>  </p>
 <p>查询姓名以M开头所有的员工</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> <span class="keyword">substr</span>(ename, <span class="number">1</span>, <span class="number">1</span>)=<span class="keyword">upper</span>(<span class="string">'m'</span>);</span><br></pre></td></tr></table></figure>
-
 <p><strong>trim</strong></p>
 <p>trim会去首尾空格，不会去除中间的空格</p>
 <p>取得工作岗位为manager的所有员工</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> job=<span class="keyword">trim</span>(<span class="keyword">upper</span>(<span class="string">'manager  '</span>));</span><br></pre></td></tr></table></figure>
-
 <h4 id="7-连接查询"><a href="#7-连接查询" class="headerlink" title="7.连接查询"></a><u><strong>7.连接查询</strong></u></h4><p>连接查询：也可以叫跨表查询，需要关联多个表进行查询：</p>
 <p><strong>内连接：</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Student.*，SC.* <span class="keyword">FROM</span> Student，SC  <span class="keyword">WHERE</span> Student.Sno=SC.Sno；</span><br></pre></td></tr></table></figure>
-
 <p>在以上的连接操作中，只有满足条件的元组才能作为结果输出。若表Student中某些学生没有选课，则在SC表中没有相应的元组，造成最终结果中舍弃掉了这些学生的信息。</p>
 <p>上述连接称为自然连接、<strong>内连接</strong>。</p>
 <p><strong>外连接：</strong></p>
 <p>有时想以Student表为主体列出每个学生的基本情况及其选课情况。若某个学生没有选课，依然将其保存到结果中（在SC表的属性上填空值），这时就需要使用<strong>外连接</strong>。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Student.*，SC.* <span class="keyword">FROM</span> Student <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> SC <span class="keyword">ON</span>（Student.Sno=SC.Sno）;</span><br></pre></td></tr></table></figure>
-
 <p><strong>以上是左外连接，左外连接列出左边表（本例为Student表）中的所有元组，右外连接列出右表关系中所有的元组。</strong></p>
 <h2 id="●数据操纵-insert-delete-update"><a href="#●数据操纵-insert-delete-update" class="headerlink" title="●数据操纵(insert,delete,update)"></a><strong>●</strong>数据操纵(insert,delete,update)</h2><p>数据操纵操作有3种：向表中添加若干行数据、修改表中的数据和删除表中的若干行数据。</p>
 <p><strong>1.插入元组</strong></p>
 <p>插入元组的INSERT语句的格式为：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span>  <span class="keyword">INTO</span> tablel（fieldl，field2..） </span><br><span class="line"><span class="keyword">VALUES</span>（value1，value2..）;</span><br></pre></td></tr></table></figure>
-
 <p>其功能是将新元组插入到指定表中。其中新元组的fieldl的值为valuel，field2的值为value2…</p>
 <p>如果INTO语句中没有指定任何属性列名，则新插入的元组必须在每个属性列上均有值。</p>
 <p>将一个新学生元组（学号：201009013；姓名：王明；性别：男；所在系：CS；年龄：23）插入到Student表中的语句为：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Student（Sno，Sname，Ssex，Sdept，Sage） </span><br><span class="line"><span class="keyword">VALUES</span>（<span class="string">'201009013'</span>，<span class="string">'王明’，‘M'</span>，<span class="string">'CS'</span>，<span class="number">23</span>）；</span><br></pre></td></tr></table></figure>
-
 <p><strong>2.修改数据</strong></p>
 <p>修改数据又称为更新操作，其语句的一般格式为：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> table1 </span><br><span class="line"><span class="keyword">SET</span> fieldl=valuel，field2=value2 </span><br><span class="line"><span class="keyword">WHERE</span>范围；</span><br></pre></td></tr></table></figure>
-
 <p>其功能是修改指定表中满足WHERE子句条件的元组。其中SET子句给出的value值用于取代相应的属性列值。如果省略WHERE子句，则表示要修改表中的所有元组。</p>
 <p>将学生201009013的年龄改为22岁：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> Student  </span><br><span class="line"><span class="keyword">SET</span> Sage=<span class="number">22</span> </span><br><span class="line"><span class="keyword">WHERE</span> Sno=<span class="string">'201009013'</span>；</span><br></pre></td></tr></table></figure>
-
 <p><strong>3.删除数据</strong></p>
 <p>删除语句的一般格式为：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span>  </span><br><span class="line"><span class="keyword">FROM</span> table1 </span><br><span class="line"><span class="keyword">WHERE</span>范围；</span><br></pre></td></tr></table></figure>
-
 <p>DELETE语句的功能是从指定表中删除满足WHERE子句条件的所有元组。如果省略 WHERE子句，表示删除表中全部元组，但表仍存在。删除学号为201009013的学生记录：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span>  </span><br><span class="line"><span class="keyword">FROM</span> Student  </span><br><span class="line"><span class="keyword">WHERE</span> Sno=<span class="string">'201009013'</span>；</span><br></pre></td></tr></table></figure>
-
-<h1 id="●SQL编程（触发器、游标等）"><a href="#●SQL编程（触发器、游标等）" class="headerlink" title="●SQL编程（触发器、游标等）"></a>●SQL编程（触发器、游标等）</h1><h2 id="●触发器"><a href="#●触发器" class="headerlink" title="●触发器"></a>●触发器</h2><h3 id="应用场合"><a href="#应用场合" class="headerlink" title="应用场合"></a>应用场合</h3><p>（1）当向一张表中<strong>添加或删除记录时，需要在相关表中进行同步操作。</strong><br>比如，当一个订单产生时，订单所购的商品的库存量相应减少。<br>（2）当表上<strong>某列数据的值与其他表中的数据有联系时</strong>。
-比如，当某客户进行欠款消费，可以在生成订单时通过设计触发器判断该客户的累计欠款是否超出了最大限度。<br>（3）当需要对某张表进行跟踪时。<br>比如，当有新订单产生时，需要及时通知相关人员进行处理；此时可以在订单表上设计添加触发器加以实现。</p>
+<h1 id="●SQL编程（触发器、游标等）"><a href="#●SQL编程（触发器、游标等）" class="headerlink" title="●SQL编程（触发器、游标等）"></a>●SQL编程（触发器、游标等）</h1><h2 id="●触发器"><a href="#●触发器" class="headerlink" title="●触发器"></a>●触发器</h2><h3 id="应用场合"><a href="#应用场合" class="headerlink" title="应用场合"></a>应用场合</h3><p>（1）当向一张表中<strong>添加或删除记录时，需要在相关表中进行同步操作。</strong><br>比如，当一个订单产生时，订单所购的商品的库存量相应减少。<br>（2）当表上<strong>某列数据的值与其他表中的数据有联系时</strong>。<br>比如，当某客户进行欠款消费，可以在生成订单时通过设计触发器判断该客户的累计欠款是否超出了最大限度。<br>（3）当需要对某张表进行跟踪时。<br>比如，当有新订单产生时，需要及时通知相关人员进行处理；此时可以在订单表上设计添加触发器加以实现。</p>
 <h3 id="触发器创建语法之4要素"><a href="#触发器创建语法之4要素" class="headerlink" title="触发器创建语法之4要素"></a>触发器创建语法之4要素</h3><p>监视地点    table</p>
 <p>监视事件    insert/update/delete<br>触发时间    after/before<br>触发事件    insert/update/delete</p>
 <h3 id="触发器创建"><a href="#触发器创建" class="headerlink" title="触发器创建"></a>触发器创建</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">·创建触发器的语法</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span>  触发器名称</span><br><span class="line"><span class="keyword">after</span>/befor（触发时间）<span class="keyword">insert</span>/<span class="keyword">update</span>/<span class="keyword">delete</span>（监视事件）</span><br><span class="line"><span class="keyword">on</span> 表名（监视地址）</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span> </span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">sql1；</span><br><span class="line">sqlN；</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">查看已有triggers: show triggers;</span><br><span class="line">删除已有triggers:drop trigger triggername;</span><br></pre></td></tr></table></figure>
-
 <p>举例：</p>
 <p><strong>需求：</strong>当下1个订单时，对应的商品要相应减少（买几个商品就少几个库存）<br>商品表：goods</p>
 <p>订单表：ord</p>
@@ -689,63 +655,45 @@
 <p>实例：</p>
 <p>第一步：新建goods表、orde表，在goods表中插入数据</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> goods(</span><br><span class="line">	gid <span class="built_in">int</span>,</span><br><span class="line">	gname <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">	<span class="keyword">num</span> <span class="built_in">smallint</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> orde(</span><br><span class="line">	<span class="keyword">oid</span> <span class="built_in">int</span>,</span><br><span class="line">	gid <span class="built_in">int</span>,</span><br><span class="line">	much <span class="built_in">smallint</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> goods <span class="keyword">values</span></span><br><span class="line">(<span class="number">1</span>,<span class="string">'cat'</span>,<span class="number">34</span>),</span><br><span class="line">(<span class="number">2</span>,<span class="string">'dog'</span>,<span class="number">65</span>),</span><br><span class="line">(<span class="number">3</span>,<span class="string">'pig'</span>,<span class="number">21</span>);</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from goods;</span><br><span class="line">+------+-------+------+</span><br><span class="line">| gid  | gname | num  |</span><br><span class="line">+------+-------+------+</span><br><span class="line">|    1 | cat   |   34 |</span><br><span class="line">|    2 | dog   |   65 |</span><br><span class="line">|    3 | pig   |   21 |</span><br><span class="line">+------+-------+------+</span><br></pre></td></tr></table></figure>
-
 <p>第二步：<strong>创建一个触发器</strong>后，在orde表中插入一行数据</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> t1</span><br><span class="line"><span class="keyword">after</span> <span class="keyword">insert</span></span><br><span class="line"><span class="keyword">on</span> orde</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span></span><br><span class="line"><span class="keyword">update</span> goods <span class="keyword">set</span> <span class="keyword">num</span> = <span class="keyword">num</span><span class="number">-1</span> <span class="keyword">where</span> gid=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into orde values (1,1,5);</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from goods;</span><br><span class="line">+------+-------+------+</span><br><span class="line">| gid  | gname | num  |</span><br><span class="line">+------+-------+------+</span><br><span class="line">|    1 | cat   |   33 |</span><br><span class="line">|    2 | dog   |   65 |</span><br><span class="line">|    3 | pig   |   21 |</span><br><span class="line">+------+-------+------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from orde;</span><br><span class="line">+------+------+------+</span><br><span class="line">| oid  | gid  | much |</span><br><span class="line">+------+------+------+</span><br><span class="line">|    1 |    1 |    5 |</span><br><span class="line">+------+------+------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
 <p>可以观察到，执行插入操作后，自动执行了触发器定义的内容。</p>
 <p><strong>思考一：若想引用被监视的语句，怎么做？</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在插入订单操作中，new代表orde中插入的一行</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> t_insert</span><br><span class="line"><span class="keyword">after</span> <span class="keyword">insert</span></span><br><span class="line"><span class="keyword">on</span> orde</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span></span><br><span class="line"><span class="keyword">update</span> goods <span class="keyword">set</span> <span class="keyword">num</span> = <span class="keyword">num</span>-new.much <span class="keyword">where</span> gid=new.gid;</span><br><span class="line"></span><br><span class="line"><span class="comment">#在删除订单操作中，old代表orde中删除的一行</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> t_delete</span><br><span class="line"><span class="keyword">after</span> <span class="keyword">delete</span></span><br><span class="line"><span class="keyword">on</span> orde</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span></span><br><span class="line"><span class="keyword">update</span> goods <span class="keyword">set</span> <span class="keyword">num</span> = <span class="keyword">num</span>+old.much <span class="keyword">where</span> gid=old.gid;</span><br><span class="line"></span><br><span class="line"><span class="comment">#在修改订单操作中，old代表之前的，new代表之后</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> t_update</span><br><span class="line"><span class="keyword">before</span> <span class="keyword">update</span></span><br><span class="line"><span class="keyword">on</span> orde</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span></span><br><span class="line"><span class="keyword">update</span> goods <span class="keyword">set</span> <span class="keyword">num</span> = <span class="keyword">num</span>+old.much-new.much <span class="keyword">where</span> gid=new.gid;</span><br></pre></td></tr></table></figure>
-
 <p>插入操作</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; insert into orde values (2,2,5);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from goods;</span><br><span class="line">+------+-------+------+</span><br><span class="line">| gid  | gname | num  |</span><br><span class="line">+------+-------+------+</span><br><span class="line">|    1 | cat   |   33 |</span><br><span class="line">|    2 | dog   |   60 |</span><br><span class="line">|    3 | pig   |   21 |</span><br><span class="line">+------+-------+------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from orde;</span><br><span class="line">+------+------+------+</span><br><span class="line">| oid  | gid  | much |</span><br><span class="line">+------+------+------+</span><br><span class="line">|    1 |    1 |    5 |</span><br><span class="line">|    2 |    2 |    5 |</span><br><span class="line">+------+------+------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
 <p>删除操作</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delete  from orde where oid=2;</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from orde;</span><br><span class="line">+------+------+------+</span><br><span class="line">| oid  | gid  | much |</span><br><span class="line">+------+------+------+</span><br><span class="line">|    1 |    1 |    5 |</span><br><span class="line">+------+------+------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from goods;</span><br><span class="line">+------+-------+------+</span><br><span class="line">| gid  | gname | num  |</span><br><span class="line">+------+-------+------+</span><br><span class="line">|    1 | cat   |   33 |</span><br><span class="line">|    2 | dog   |   65 |</span><br><span class="line">|    3 | pig   |   21 |</span><br><span class="line">+------+-------+------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
 <p>更改操作：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; update orde set much=2 where oid=1;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from orde;</span><br><span class="line">+------+------+------+</span><br><span class="line">| oid  | gid  | much |</span><br><span class="line">+------+------+------+</span><br><span class="line">|    1 |    1 |    2 |</span><br><span class="line">+------+------+------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from goods;</span><br><span class="line">+------+-------+------+</span><br><span class="line">| gid  | gname | num  |</span><br><span class="line">+------+-------+------+</span><br><span class="line">|    1 | cat   |   36 |</span><br><span class="line">|    2 | dog   |   65 |</span><br><span class="line">|    3 | pig   |   21 |</span><br><span class="line">+------+-------+------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
 <p><strong>思考二：before目前似乎没有看出和after的区别？</strong></p>
 <p>再思考：如果剩余3头猪，但客户买了10头猪，发生什么情况？</p>
 <p>能否预防能否在购买量much&gt;库存量num时，把much自动改为num</p>
 <p>提示：before适合</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">delimiter $</span><br><span class="line"><span class="comment">#在t2的基础上，完成much与num的判断</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> t5</span><br><span class="line"><span class="keyword">after</span> <span class="keyword">insert</span></span><br><span class="line"><span class="keyword">on</span> orde </span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span> </span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line"><span class="keyword">declare</span> rnum <span class="built_in">int</span>;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">num</span> <span class="keyword">into</span> rnum <span class="keyword">from</span> goods <span class="keyword">where</span> gid=new.gid;</span><br><span class="line">if new.much &gt;rnum then </span><br><span class="line">	<span class="keyword">set</span> new.much=rnum;  <span class="comment">#此处更新new有问题</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">if</span>; </span><br><span class="line"><span class="keyword">update</span> goods <span class="keyword">set</span> <span class="keyword">num</span>=<span class="keyword">num</span>-new.much <span class="keyword">where</span> gid=new.gid;</span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
-
 <p>报如下错误：<br>ERROR 1362（HY000）：Updating of NEW row is not allowed in after trigger</p>
 <p>原因：insert之后，new行已经插入到表中，成为事实，改new已经晚了.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">delimiter $</span><br><span class="line"><span class="comment">#在t2的基础上，完成much与num的判断</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> t6</span><br><span class="line"><span class="keyword">before</span> <span class="keyword">insert</span></span><br><span class="line"><span class="keyword">on</span> orde </span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span> </span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line"><span class="keyword">declare</span> rnum <span class="built_in">int</span>;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">num</span> <span class="keyword">into</span> rnum <span class="keyword">from</span> goods <span class="keyword">where</span> gid=new.gid;</span><br><span class="line">if new.much &gt;rnum then </span><br><span class="line">	<span class="keyword">set</span> new.much=rnum;  <span class="comment">#此处更新new有问题</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">update</span> goods <span class="keyword">set</span> <span class="keyword">num</span>=<span class="keyword">num</span>-new.much <span class="keyword">where</span> gid=new.gid;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
-
 <p>要改变new的值，用before,before适合用于这种爆仓的问题。</p>
 <p>总结：使用before的情况下，触发器里面的命令在DML修改数据之前执行，一般需要更改要操作的数据时使用before。如果记录日志要使用after。只有使用了after才能确保DML语句成功执行，这样记录日志才有意义。</p>
 <h3 id="行级触发器与语句级触发器"><a href="#行级触发器与语句级触发器" class="headerlink" title="行级触发器与语句级触发器"></a>行级触发器与语句级触发器</h3><p>每一行受影响，触发器都执行，叫做行级触发器.</p>
-<p>在oracle中<br>for each row如果不写，无论update语句一次影响了多少行，都只执行1次。<br>比如：1人下了订单，买了5件商品，insert 5次，可以用行级触发器，修改5次库存用语句级触发，insert一条发货提醒。<br>遗憾的是—mysq1目前不支持语句级触发器.</p>
-<h2 id="●存储过程"><a href="#●存储过程" class="headerlink" title="●存储过程"></a>●存储过程</h2><p>–存储过程是可以编程的，<br>–意味着可以使用变量，表达式，控制结构<br>–来完成复杂的功能</p>
+<p>在oracle中<br>for each row如果不写，无论update语句一次影响了多少行，都只执行1次。<br>比如：1人下了订单，买了5件商品，insert 5次，可以用行级触发器，修改5次库存用语句级触发，insert一条发货提醒。<br>遗憾的是—-mysq1目前不支持语句级触发器.</p>
+<h2 id="●存储过程"><a href="#●存储过程" class="headerlink" title="●存储过程"></a>●存储过程</h2><p>—存储过程是可以编程的，<br>—意味着可以使用变量，表达式，控制结构<br>—来完成复杂的功能</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">存储过程的创建语法：</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> procedureName（）</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="comment">--sq1语句；</span></span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line">查看已有的<span class="keyword">procedure</span> </span><br><span class="line"><span class="keyword">show</span> <span class="keyword">procedure</span> <span class="keyword">status</span>；</span><br><span class="line">调用存储过程</span><br><span class="line"><span class="keyword">call</span> <span class="keyword">procedure</span>();</span><br></pre></td></tr></table></figure>
-
-<h2 id="●引入变量"><a href="#●引入变量" class="headerlink" title="●引入变量"></a>●引入变量</h2><p>–在存储过程中，用declare声明变量<br>–格式   declare   变量名  变量类型  [default 默认值]</p>
+<h2 id="●引入变量"><a href="#●引入变量" class="headerlink" title="●引入变量"></a>●引入变量</h2><p>—在存储过程中，用declare声明变量<br>—格式   declare   变量名  变量类型  [default 默认值]</p>
 <p>定义变量</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">delimiter $</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p2（）</span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line">	<span class="keyword">declare</span> age <span class="built_in">int</span> <span class="keyword">default</span> <span class="number">90</span>;</span><br><span class="line">	<span class="keyword">declare</span> height <span class="built_in">int</span> <span class="keyword">default</span> <span class="number">175</span>;</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">concat</span>（<span class="string">'年龄'</span>，age，<span class="string">'身高'</span>，height）<span class="keyword">from</span> dual;</span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
-
 <p>变量运算：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p3（）</span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line">	<span class="keyword">declare</span> age <span class="built_in">int</span> <span class="keyword">default</span> <span class="number">18</span>；</span><br><span class="line">	<span class="keyword">set</span> age :=age+<span class="number">20</span>；</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">concat</span>（<span class="string">'20年后年龄是'</span>，age）；</span><br><span class="line"><span class="keyword">end</span>$</span><br></pre></td></tr></table></figure>
-
 <h2 id="●控制流程"><a href="#●控制流程" class="headerlink" title="●控制流程"></a>●控制流程</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--p4引入表达式</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p4（）</span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line">	<span class="keyword">declare</span> age <span class="built_in">tinyint</span> <span class="keyword">unsigned</span> <span class="keyword">default</span> <span class="number">9</span>e;</span><br><span class="line">	<span class="keyword">declare</span> height <span class="built_in">tinyint</span> <span class="keyword">unsigned</span> <span class="keyword">default</span> <span class="number">175</span>;</span><br><span class="line">	if age&gt;70 then </span><br><span class="line">		<span class="keyword">select</span> <span class="string">'古稀之年'</span> <span class="keyword">from</span> dual;</span><br><span class="line">	else </span><br><span class="line">		<span class="keyword">select</span> <span class="string">'风华正茂'</span> <span class="keyword">from</span> dual;</span><br><span class="line">	<span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">end</span>$</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">-p5给存储过程传参</span><br><span class="line"><span class="comment">--存储过程的括号里，可以声明参数，语法是[in/out/inout]参数名参数类型本*/</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p5（width <span class="built_in">int</span>，height <span class="built_in">int</span>）</span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">concat</span>（<span class="string">'你的面积是'</span>，width*height）<span class="keyword">as</span> area;</span><br><span class="line">	if width&gt;height then </span><br><span class="line">		<span class="keyword">select</span> <span class="string">'你挺胖'</span>;</span><br><span class="line">	elseif width&lt; height then </span><br><span class="line">		<span class="keyword">select</span> <span class="string">'你挺瘦'</span>;</span><br><span class="line">	else </span><br><span class="line">		<span class="keyword">select</span> <span class="string">'你挺方'</span>;</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">end</span>$</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--the "in"代表输入</span></span><br><span class="line"><span class="comment">--p7求1~N的和</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p7(<span class="keyword">in</span> n <span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line">	<span class="keyword">declare</span> total <span class="built_in">int</span> <span class="keyword">default</span> <span class="number">0</span>; </span><br><span class="line">	<span class="keyword">declare</span> <span class="keyword">num</span> <span class="built_in">int</span> <span class="keyword">default</span> e; </span><br><span class="line">	while num&lt;n do</span><br><span class="line">	<span class="comment">--add num to total,adn incr the value of num </span></span><br><span class="line">		<span class="keyword">set</span> <span class="keyword">num</span>:=<span class="keyword">num</span>+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">set</span> total:=total+<span class="keyword">num</span>; </span><br><span class="line">	<span class="keyword">end</span> <span class="keyword">while</span>; </span><br><span class="line">	<span class="keyword">select</span> total;</span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"><span class="comment">--调用 call p7(100);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--代表输出参数 </span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p8(<span class="keyword">in</span> n <span class="built_in">int</span>,<span class="keyword">out</span> total <span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line">	<span class="keyword">declare</span> <span class="keyword">num</span> <span class="built_in">int</span> <span class="keyword">default</span> e; </span><br><span class="line">	<span class="keyword">set</span> total:=<span class="number">0</span>; </span><br><span class="line">	while num&lt;n do </span><br><span class="line">		<span class="keyword">set</span> <span class="keyword">num</span>:=<span class="keyword">num</span>+<span class="number">1</span>; </span><br><span class="line">		<span class="keyword">set</span> total:=total+<span class="keyword">num</span>; </span><br><span class="line">	<span class="keyword">end</span> <span class="keyword">while</span>; </span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"><span class="comment">--调用 call p8(100,@sum);   select sum;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p9(inout age <span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line">	<span class="keyword">set</span> age:=age+<span class="number">20</span>; </span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"><span class="comment">--调用时，set @currage = 18;   call p9(@currage);  select @currage</span></span><br></pre></td></tr></table></figure>
-
 <p>…</p>
 <h2 id="●游标"><a href="#●游标" class="headerlink" title="●游标"></a>●游标</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--在mysql cursor中，可以declare continue handler来操作1个越界标识</span></span><br><span class="line"><span class="comment">--declare continue handler for NOT FOUND statement；</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p15（）</span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line">	<span class="keyword">declare</span> <span class="keyword">row</span> gid <span class="built_in">int</span>；</span><br><span class="line">	<span class="keyword">declare</span> row_num <span class="built_in">int</span>；</span><br><span class="line">	<span class="keyword">declare</span> row_name <span class="built_in">varchar</span>（<span class="number">20</span>）；</span><br><span class="line">	<span class="keyword">declare</span> you <span class="built_in">int</span> <span class="keyword">default</span> <span class="number">1</span>；</span><br><span class="line">	<span class="keyword">declare</span> getgoods <span class="keyword">cursor</span> <span class="keyword">for</span> <span class="keyword">select</span> gid，<span class="keyword">num</span>，<span class="keyword">name</span> <span class="keyword">from</span> goods；</span><br><span class="line">	<span class="comment">--declare continue handler for NOT FOUND set you :=0； --采用continue将多去处一行数</span></span><br><span class="line">	<span class="keyword">declare</span> <span class="keyword">exit</span> <span class="keyword">handler</span> <span class="keyword">for</span> <span class="keyword">NOT</span> <span class="keyword">FOUND</span> <span class="keyword">set</span> you :=<span class="number">0</span>；</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">open</span> getgoods；</span><br><span class="line">	<span class="keyword">repeat</span> </span><br><span class="line">		<span class="keyword">fetch</span> getgoods <span class="keyword">into</span> row_gid，row_num，row_name；</span><br><span class="line">		<span class="keyword">select</span> row_num，row_name；</span><br><span class="line">	<span class="keyword">until</span> you=<span class="number">0</span> <span class="keyword">end</span> <span class="keyword">repeat</span>；</span><br><span class="line">	<span class="keyword">close</span> getgoods；</span><br><span class="line"><span class="keyword">end</span>$</span><br></pre></td></tr></table></figure>
-
-<p>–除continue，exit外，还有一种undo handler，<br>–continue是触发后，后面的语句继续执行<br>–exit是触发后，后面的语句不再执行<br>–undo是触发后，前面的语句撤消（但是，目前mysq1还不支持undo）</p>
+<p>—除continue，exit外，还有一种undo handler，<br>—continue是触发后，后面的语句继续执行<br>—exit是触发后，后面的语句不再执行<br>—undo是触发后，前面的语句撤消（但是，目前mysq1还不支持undo）</p>
 
       
     </div>
@@ -802,8 +750,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/17/HTTP/" rel="next" title="HTTP">
-                <i class="fa fa-chevron-left"></i> HTTP
+              <a href="/2019/03/17/Leetcode-Database 题解/" rel="next" title="Leetcode数据库题解">
+                <i class="fa fa-chevron-left"></i> Leetcode数据库题解
               </a>
             
           </div>
@@ -812,8 +760,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/17/socket编程/" rel="prev" title="socket编程">
-                socket编程 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/17/数据库原理/" rel="prev" title="数据库原理">
+                数据库原理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

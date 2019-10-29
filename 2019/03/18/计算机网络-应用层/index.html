@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="域名系统DNSDNS服务作用：负责将域名解析成IP DNS 是一个分布式数据库，提供了主机名和 IP 地址之间相互转换的服务。这里的分布式数据库是指，每个站点只保留它自己的那部分数据。 域名具有层次结构，从上到下依次为：根域名、顶级域名、二级域名。   DNS 可以使用 UDP 或者 TCP 进行传输，使用的端口号都为 53。大多数情况下 DNS 使用 UDP 进行传输，这就要求域名解析器和域名服">
+<meta name="description" content="域名系统DNSDNS服务作用：负责将域名解析成IP DNS 是一个分布式数据库，提供了主机名和 IP 地址之间相互转换的服务。这里的分布式数据库是指，每个站点只保留它自己的那部分数据。 域名具有层次结构，从上到下依次为：根域名、顶级域名、二级域名。  DNS 可以使用 UDP 或者 TCP 进行传输，使用的端口号都为 53。大多数情况下 DNS 使用 UDP 进行传输，这就要求域名解析器和域名服务">
 <meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络-应用层">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="域名系统DNSDNS服务作用：负责将域名解析成IP DNS 是一个分布式数据库，提供了主机名和 IP 地址之间相互转换的服务。这里的分布式数据库是指，每个站点只保留它自己的那部分数据。 域名具有层次结构，从上到下依次为：根域名、顶级域名、二级域名。   DNS 可以使用 UDP 或者 TCP 进行传输，使用的端口号都为 53。大多数情况下 DNS 使用 UDP 进行传输，这就要求域名解析器和域名服">
+<meta property="og:description" content="域名系统DNSDNS服务作用：负责将域名解析成IP DNS 是一个分布式数据库，提供了主机名和 IP 地址之间相互转换的服务。这里的分布式数据库是指，每个站点只保留它自己的那部分数据。 域名具有层次结构，从上到下依次为：根域名、顶级域名、二级域名。  DNS 可以使用 UDP 或者 TCP 进行传输，使用的端口号都为 53。大多数情况下 DNS 使用 UDP 进行传输，这就要求域名解析器和域名服务">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/01.jpg">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/04.jpg">
@@ -94,7 +94,7 @@
 <meta property="og:updated_time" content="2019-08-05T07:24:31.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络-应用层">
-<meta name="twitter:description" content="域名系统DNSDNS服务作用：负责将域名解析成IP DNS 是一个分布式数据库，提供了主机名和 IP 地址之间相互转换的服务。这里的分布式数据库是指，每个站点只保留它自己的那部分数据。 域名具有层次结构，从上到下依次为：根域名、顶级域名、二级域名。   DNS 可以使用 UDP 或者 TCP 进行传输，使用的端口号都为 53。大多数情况下 DNS 使用 UDP 进行传输，这就要求域名解析器和域名服">
+<meta name="twitter:description" content="域名系统DNSDNS服务作用：负责将域名解析成IP DNS 是一个分布式数据库，提供了主机名和 IP 地址之间相互转换的服务。这里的分布式数据库是指，每个站点只保留它自己的那部分数据。 域名具有层次结构，从上到下依次为：根域名、顶级域名、二级域名。  DNS 可以使用 UDP 或者 TCP 进行传输，使用的端口号都为 53。大多数情况下 DNS 使用 UDP 进行传输，这就要求域名解析器和域名服务">
 <meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/01.jpg">
 
 
@@ -419,13 +419,12 @@
 <p>DNS 是一个分布式数据库，提供了主机名和 IP 地址之间相互转换的服务。这里的分布式数据库是指，每个站点只保留它自己的那部分数据。</p>
 <p>域名具有层次结构，从上到下依次为：根域名、顶级域名、二级域名。</p>
 <img src="/2019/03/18/计算机网络-应用层/01.jpg">
-
 <p><strong>DNS 可以使用 UDP 或者 TCP 进行传输</strong>，使用的端口号都为 53。大多数情况下 DNS 使用 UDP 进行传输，这就要求域名解析器和域名服务器都必须自己处理超时和重传从而保证可靠性。在两种情况下会使用 TCP 进行传输：</p>
 <ul>
 <li>如果返回的响应超过的 512 字节（UDP 最大只支持 512 字节的数据）。</li>
 <li>区域传送（区域传送是主域名服务器向辅助域名服务器传送变化的那部分数据）。</li>
 </ul>
-<h3 id="浏览器输入DNS解析过程："><a href="#浏览器输入DNS解析过程：" class="headerlink" title="浏览器输入DNS解析过程："></a>浏览器输入DNS解析过程：</h3><p>1.在浏览器中输入<a href="http://www.baidu.com之后，系统会先**检查本地hosts文件是否存在域名映射**，如果存在，则域名解析到此完成。" target="_blank" rel="noopener">www.baidu.com之后，系统会先**检查本地hosts文件是否存在域名映射**，如果存在，则域名解析到此完成。</a></p>
+<h3 id="浏览器输入DNS解析过程："><a href="#浏览器输入DNS解析过程：" class="headerlink" title="浏览器输入DNS解析过程："></a>浏览器输入DNS解析过程：</h3><p>1.在浏览器中输入www.baidu.com之后，系统会先<strong>检查本地hosts文件是否存在域名映射</strong>，如果存在，则域名解析到此完成。</p>
 <p>2.如果本地hosts文件不存在映射关系，则会<strong>查询本地DNS缓存</strong>，如果存在，则域名解析完成。</p>
 <p>3.主机向本地域名服务器发起查询，该查询一般都是采用递归查询。</p>
 <p>所谓递归查询就是：如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么本地域名服务器就以DNS客户的身份，向其它根域名服务器继续发出查询请求报文(即替主机继续查询)。</p>
@@ -444,92 +443,92 @@
 <li>DHCP 服务器发送 Ack 报文，表示客户端此时可以使用提供给它的信息。</li>
 </ol>
 <img src="/2019/03/18/计算机网络-应用层/04.jpg">
-
 <h1 id="远程登录协议TELNET"><a href="#远程登录协议TELNET" class="headerlink" title="远程登录协议TELNET"></a>远程登录协议TELNET</h1><p>TELNET 用于登录到远程主机上，并且远程主机上的输出也会返回。</p>
 <p>TELNET 可以适应许多计算机和操作系统的差异，例如不同操作系统系统的换行符定义。</p>
 <h1 id="电子邮件协议"><a href="#电子邮件协议" class="headerlink" title="电子邮件协议"></a>电子邮件协议</h1><p>一个电子邮件系统由三部分组成：用户代理、邮件服务器以及邮件协议。</p>
 <p>邮件协议包含发送协议和读取协议，发送协议常用 SMTP，读取协议常用 POP3 和 IMAP。</p>
 <img src="/2019/03/18/计算机网络-应用层/05.png">
-
 <h2 id="1-SMTP-发送"><a href="#1-SMTP-发送" class="headerlink" title="1. SMTP(发送)"></a>1. SMTP(发送)</h2><p>SMTP 只能发送 ASCII 码，而互联网邮件扩充 MIME 可以发送二进制文件。MIME 并没有改动或者取代 SMTP，而是增加邮件主体的结构，定义了非 ASCII 码的编码规则。</p>
 <img src="/2019/03/18/计算机网络-应用层/06.png">
-
 <h2 id="2-POP3-接收"><a href="#2-POP3-接收" class="headerlink" title="2. POP3(接收)"></a>2. POP3(接收)</h2><p>POP3 的特点是只要用户从服务器上读取了邮件，就把该邮件删除。</p>
 <h2 id="3-IMAP-接收"><a href="#3-IMAP-接收" class="headerlink" title="3. IMAP(接收)"></a>3. IMAP(接收)</h2><p>IMAP 协议中客户端和服务器上的邮件保持同步，如果不手动删除邮件，那么服务器上的邮件也不会被删除。IMAP 这种做法可以让用户随时随地去访问服务器上的邮件。</p>
-<h1 id="常用端口"><a href="#常用端口" class="headerlink" title="常用端口"></a><u>常用端口</u></h1><table>
+<h1 id="常用端口"><a href="#常用端口" class="headerlink" title="常用端口"></a><u>常用端口</u></h1><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">应用</th>
-<th align="center">应用层协议</th>
-<th align="center">端口号</th>
-<th align="center">传输层协议</th>
-<th align="center">备注</th>
+<th style="text-align:center">应用</th>
+<th style="text-align:center">应用层协议</th>
+<th style="text-align:center">端口号</th>
+<th style="text-align:center">传输层协议</th>
+<th style="text-align:center">备注</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">域名解析</td>
-<td align="center">DNS</td>
-<td align="center">53</td>
-<td align="center">UDP/TCP</td>
-<td align="center">长度超过 512 字节时使用 TCP</td>
+<tbody>
+<tr>
+<td style="text-align:center">域名解析</td>
+<td style="text-align:center">DNS</td>
+<td style="text-align:center">53</td>
+<td style="text-align:center">UDP/TCP</td>
+<td style="text-align:center">长度超过 512 字节时使用 TCP</td>
 </tr>
 <tr>
-<td align="center">动态主机配置协议</td>
-<td align="center">DHCP</td>
-<td align="center">67/68</td>
-<td align="center">UDP</td>
-<td align="center"></td>
+<td style="text-align:center">动态主机配置协议</td>
+<td style="text-align:center">DHCP</td>
+<td style="text-align:center">67/68</td>
+<td style="text-align:center">UDP</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">简单网络管理协议</td>
-<td align="center">SNMP</td>
-<td align="center">161/162</td>
-<td align="center">UDP</td>
-<td align="center"></td>
+<td style="text-align:center">简单网络管理协议</td>
+<td style="text-align:center">SNMP</td>
+<td style="text-align:center">161/162</td>
+<td style="text-align:center">UDP</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">文件传送协议</td>
-<td align="center">FTP</td>
-<td align="center">20/21</td>
-<td align="center">TCP</td>
-<td align="center">控制连接 21，数据连接 20</td>
+<td style="text-align:center">文件传送协议</td>
+<td style="text-align:center">FTP</td>
+<td style="text-align:center">20/21</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center">控制连接 21，数据连接 20</td>
 </tr>
 <tr>
-<td align="center">远程终端协议</td>
-<td align="center">TELNET</td>
-<td align="center">23</td>
-<td align="center">TCP</td>
-<td align="center"></td>
+<td style="text-align:center">远程终端协议</td>
+<td style="text-align:center">TELNET</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">超文本传送协议</td>
-<td align="center">HTTP</td>
-<td align="center">80</td>
-<td align="center">TCP</td>
-<td align="center"></td>
+<td style="text-align:center">超文本传送协议</td>
+<td style="text-align:center">HTTP</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">简单邮件传送协议</td>
-<td align="center">SMTP</td>
-<td align="center">25</td>
-<td align="center">TCP</td>
-<td align="center"></td>
+<td style="text-align:center">简单邮件传送协议</td>
+<td style="text-align:center">SMTP</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">邮件读取协议</td>
-<td align="center">POP3</td>
-<td align="center">110</td>
-<td align="center">TCP</td>
-<td align="center"></td>
+<td style="text-align:center">邮件读取协议</td>
+<td style="text-align:center">POP3</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">网际报文存取协议</td>
-<td align="center">IMAP</td>
-<td align="center">143</td>
-<td align="center">TCP</td>
-<td align="center"></td>
+<td style="text-align:center">网际报文存取协议</td>
+<td style="text-align:center">IMAP</td>
+<td style="text-align:center">143</td>
+<td style="text-align:center">TCP</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h1 id="在浏览器地址栏键入URL，按下回车之后会经历以下流程："><a href="#在浏览器地址栏键入URL，按下回车之后会经历以下流程：" class="headerlink" title="在浏览器地址栏键入URL，按下回车之后会经历以下流程："></a><u>在浏览器地址栏键入URL，按下回车之后会经历以下流程：</u></h1><p>1、浏览器向 DNS 服务器请求解析该 URL 中的域名所对应的 IP 地址;</p>
 <p>2、解析出 IP 地址后，根据该 IP 地址和默认端口 80，和服务器建立TCP连接;</p>
 <p>3、浏览器发出读取文件(URL 中域名后面部分对应的文件)的HTTP 请求，该请求报文作为 TCP 三次握手的第三个报文的数据发送给服务器;</p>
@@ -658,8 +657,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/18/计算机网络-物理层/" rel="prev" title="计算机网络-物理层">
-                计算机网络-物理层 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/18/计算机网络-网络层/" rel="prev" title="计算机网络-网络层">
+                计算机网络-网络层 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

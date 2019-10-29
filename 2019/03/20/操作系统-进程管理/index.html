@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="中断与异常  进程与线程0.重点梳理★★★ 进程与线程的本质区别、以及各自的使用场景。 ★★★ 进程调度算法的特点以及使用场景。 ★★★ 进程通信方法的特点以及使用场景。 ★★☆ 协程的作用。★★☆ 常见进程同步问题。 ★☆☆ 进程状态。 ★☆☆ 线程实现的方式。 1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子">
+<meta name="description" content="中断与异常 进程与线程0.重点梳理★★★ 进程与线程的本质区别、以及各自的使用场景。 ★★★ 进程调度算法的特点以及使用场景。 ★★★ 进程通信方法的特点以及使用场景。 ★★☆ 协程的作用。★★☆ 常见进程同步问题。 ★☆☆ 进程状态。 ★☆☆ 线程实现的方式。 1. 进程  解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统-进程管理">
 <meta property="og:url" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/index.html">
 <meta property="og:site_name" content="yue">
-<meta property="og:description" content="中断与异常  进程与线程0.重点梳理★★★ 进程与线程的本质区别、以及各自的使用场景。 ★★★ 进程调度算法的特点以及使用场景。 ★★★ 进程通信方法的特点以及使用场景。 ★★☆ 协程的作用。★★☆ 常见进程同步问题。 ★☆☆ 进程状态。 ★☆☆ 线程实现的方式。 1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子">
+<meta property="og:description" content="中断与异常 进程与线程0.重点梳理★★★ 进程与线程的本质区别、以及各自的使用场景。 ★★★ 进程调度算法的特点以及使用场景。 ★★★ 进程通信方法的特点以及使用场景。 ★★☆ 协程的作用。★★☆ 常见进程同步问题。 ★☆☆ 进程状态。 ★☆☆ 线程实现的方式。 1. 进程  解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/12.jpg">
 <meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/13.jpg">
@@ -100,7 +100,7 @@
 <meta property="og:updated_time" content="2019-08-09T03:11:08.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统-进程管理">
-<meta name="twitter:description" content="中断与异常  进程与线程0.重点梳理★★★ 进程与线程的本质区别、以及各自的使用场景。 ★★★ 进程调度算法的特点以及使用场景。 ★★★ 进程通信方法的特点以及使用场景。 ★★☆ 协程的作用。★★☆ 常见进程同步问题。 ★☆☆ 进程状态。 ★☆☆ 线程实现的方式。 1. 进程    解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子">
+<meta name="twitter:description" content="中断与异常 进程与线程0.重点梳理★★★ 进程与线程的本质区别、以及各自的使用场景。 ★★★ 进程调度算法的特点以及使用场景。 ★★★ 进程通信方法的特点以及使用场景。 ★★☆ 协程的作用。★★☆ 常见进程同步问题。 ★☆☆ 进程状态。 ★☆☆ 线程实现的方式。 1. 进程  解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P">
 <meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/12.jpg">
 
 
@@ -422,7 +422,6 @@
 
       
         <h1 id="中断与异常"><a href="#中断与异常" class="headerlink" title="中断与异常"></a>中断与异常</h1><img src="/2019/03/20/操作系统-进程管理/12.jpg">
-
 <h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><h3 id="0-重点梳理"><a href="#0-重点梳理" class="headerlink" title="0.重点梳理"></a>0.重点梳理</h3><p>★★★ 进程与线程的本质区别、以及各自的使用场景。</p>
 <p>★★★ 进程调度算法的特点以及使用场景。</p>
 <p>★★★ 进程通信方法的特点以及使用场景。</p>
@@ -430,16 +429,13 @@
 <p>★☆☆ 进程状态。</p>
 <p>★☆☆ 线程实现的方式。</p>
 <h2 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h2><img src="/2019/03/20/操作系统-进程管理/13.jpg">
-
 <img src="/2019/03/20/操作系统-进程管理/09.png">
-
 <p>解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P2，接着Pl执行下一条语句输出一个”-“（其实是放入缓冲区，等合适的时候再输出，我们将此’-‘记为a）；</p>
 <p>P2成为一个独立的子进程，继承P1的诸如环境变量、PC等环境，P2也执行下一条语句输出一个’-‘（其实是放入缓冲区，等合适的时候再输出，我们将此记为b），同时P2中此时i=1，继续执行for 循环P2先forkO出一个子进程P3，然后P2再执行下一条语句输出一个一（其实是放入缓冲区，等合适的时候再输出，我们将此记为c）。</p>
 <p>P3进程为P2的子进程，它会复制其父进程P2的诸如环境变量、PC等环境，它执行下一条语句（输出语句）本应该输出一个，但事实上因为这里P3会继承P2的缓冲区，而P2的缓冲区中有一个（P2调用fork产生P3时缓冲区里有b），所以P3会输出两个。</p>
 <p>Pl产生子进程P2后，继续下一轮循环，当i=1时，fork()产生另一个它的子进程P4，同时P1执行输出语句输出一个’-‘。</p>
 <h2 id="2-线程"><a href="#2-线程" class="headerlink" title="2. 线程"></a>2. 线程</h2><p><strong>线程是独立调度的基本单位。</strong></p>
 <img src="/2019/03/20/操作系统-进程管理/15.jpg">
-
 <p><strong>例1：</strong>同一进程下的线程可以共享（）。（2012·搜狗）</p>
 <p>A.stack                                B.data section                             C.register set                        D.thread ID             </p>
 <p>解答：B。B中data section存放全局变量等内容，显然是可以被同一进程下的线程共享的。</p>
@@ -452,7 +448,6 @@
 <p>解答：B。<strong>进程之间的地址空间是独享的，而线程共享进程的地址空间。</strong></p>
 <p><strong>例4：</strong>两个线程：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">threadl:x=<span class="number">1</span>；         </span><br><span class="line">		r1=y； </span><br><span class="line"></span><br><span class="line">thread2：y=<span class="number">1</span>；         </span><br><span class="line">		r2=x；</span><br></pre></td></tr></table></figure>
-
 <p>x和y初始值为0，两者皆为全局变量，程序运行过后r1和r2的值可能是（）。（2012·微软） </p>
 <p>A.rl=1，r2=1                     B.rl=1，r2=0                         C.rl=0，r2=1                               D.rl=0，r2=0  </p>
 <p>解答：ABC。 首先执行x=1，然后中断，执行y=1，r2=x，然后执行rl=y，可得r1=1，r2=1； 首先执行thread1，再执行thread2，可得r1=0，r2=1； 首先执行thread2，再执行thread1，可得r1=1，r2=0。 </p>
@@ -470,9 +465,7 @@
 <p>Ⅳ 通信方面</p>
 <p>线程间可以通过直接读写同一进程中的数据进行通信，但是进程通信需要借助 IPC。</p>
 <h1 id="进程状态的切换"><a href="#进程状态的切换" class="headerlink" title="进程状态的切换"></a>进程状态的切换</h1><img src="/2019/03/20/操作系统-进程管理/14.jpg">
-
 <img src="/2019/03/20/操作系统-进程管理/16.jpg">
-
 <h1 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h1><p>可以参考<a href="https://mp.weixin.qq.com/s/D_woyVReMhAXH-sHx7eZfA" target="_blank" rel="noopener">大话操作系统之调度算法</a>   重要！！！</p>
 <p>不同环境的调度算法目标不同，因此需要针对不同环境来讨论调度算法。</p>
 <p>调度的基本准则包括CPU利用率、系统吞吐量、周转时间、等待时间、响应时间等。</p>
@@ -486,7 +479,6 @@
 <p>解答：D。</p>
 <p>例2：假定我们有3个程序，每个程序花费80%的时间进行I/0，20%的时间使用CPU。每个程序启动时间和其需要使用进行计算的分钟数如下，不考虑进程切换时间：</p>
 <img src="/2019/03/20/操作系统-进程管理/10.png">
-
 <p>请问，在多线程/进程环境下，系统的总周转时间为（）。（2012·腾讯）</p>
 <p>A.22.5                    B.23.5                     C.24.5                              D.25.5</p>
 <p>解答：B。从0点0分开始到0点10分，系统里只有1个程序，因此属于单道编程状态。单道编程时CPU的利用率为20%，因此第1个程序在该10分钟里总共使用了CPU达2分钟（其他8分钟都用来进行I/0了）。0点10分到0点15分，系统里面有两个程序，因此属于2道编程。<strong>2道编程时CPU利用率为36%（两个进程同时不使用CPU的概率是0.8*0.8-0.64）</strong>，则在5分钟时间内，CPU使用了1.8分钟。假定这两个程序完全平等，则每个程序使用CPU的时间是0.9分钟。至此，程序1总共运行了2.9分钟CPU时间，程序2运行了0.9分钟CPU时间。</p>
@@ -494,11 +486,9 @@
 <p><strong>2道编程时CPU利用率为36%</strong>，此时程序2运行了0.9+0.6-1.5分钟，程序3运行了0.6分钟，此时，程序2离结束所需要的CPU时间最短，仅为0.5分钟。而如果程序2想再运行0.5分钟CPU时间，则整个系统需运行时间约为2.8分钟（2.8分钟时间内CPU共被使用1分钟，平均每个程序使用CPU时间为0.5分钟），因此在0点<strong>21.5分</strong>时，第二个程序执行完毕，系统变为1道编程。</p>
 <p>系统里只有1个程序，因此属于单道编程状态。单道编程时CPU的利用率为20%，此时程序3运行了0.6+0.5=1.1分钟，还需要运行0.4分钟的CPU时间，故整个系统需要2分钟（2分钟内CPU被利用0.4分钟），故程序3在0点<strong>23.5分</strong>时结束。</p>
 <img src="/2019/03/20/操作系统-进程管理/11.png">
-
 <h1 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h1><h2 id="1-临界区"><a href="#1-临界区" class="headerlink" title="1. 临界区"></a>1. 临界区</h2><p>对临界资源进行访问的那段代码称为临界区。</p>
 <p>为了互斥访问临界资源，每个进程在进入临界区之前，需要先进行检查。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// entry section</span><br><span class="line">// critical section;</span><br><span class="line">// exit section</span><br></pre></td></tr></table></figure>
-
 <h2 id="2-同步与互斥"><a href="#2-同步与互斥" class="headerlink" title="2. 同步与互斥"></a>2. 同步与互斥</h2><ul>
 <li>同步：多个进程因为合作产生的直接制约关系，使得进程有一定的先后执行关系。</li>
 <li>互斥：多个进程在同一时刻只有一个进程能进入临界区。</li>
@@ -511,23 +501,19 @@
 <p>down 和 up 操作需要被设计成原语，不可分割，通常的做法是在执行这些操作的时候屏蔽中断。</p>
 <p>如果信号量的取值只能为 0 或者 1，那么就成为了  <strong>互斥量（Mutex）</strong> ，0 表示临界区已经加锁，1 表示临界区解锁。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</span><br><span class="line">semaphore mutex = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">P1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    down(&amp;mutex);</span><br><span class="line">    <span class="comment">// 临界区</span></span><br><span class="line">    up(&amp;mutex);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">P2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    down(&amp;mutex);</span><br><span class="line">    <span class="comment">// 临界区</span></span><br><span class="line">    up(&amp;mutex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><font size="3">  <strong>使用信号量实现生产者-消费者问题</strong>  </font> <br></p>
+<p><font size="3">  <strong>使用信号量实现生产者-消费者问题</strong>  </font> &lt;/br&gt;</p>
 <p>问题描述：使用一个缓冲区来保存物品，只有缓冲区没有满，生产者才可以放入物品；只有缓冲区不为空，消费者才可以拿走物品。</p>
 <p>因为缓冲区属于临界资源，因此需要使用一个互斥量 mutex 来控制对缓冲区的互斥访问。</p>
 <p>为了同步生产者和消费者的行为，需要记录缓冲区中物品的数量。数量可以使用信号量来进行统计，这里需要使用两个信号量：empty 记录空缓冲区的数量，full 记录满缓冲区的数量。其中，empty 信号量是在生产者进程中使用，当 empty 不为 0 时，生产者才可以放入物品；full 信号量是在消费者进程中使用，当 full 信号量不为 0 时，消费者才可以取走物品。</p>
 <p>注意，不能先对缓冲区进行加锁，再测试信号量。也就是说，不能先执行 down(mutex) 再执行 down(empty)。如果这么做了，那么可能会出现这种情况：生产者对缓冲区加锁后，执行 down(empty) 操作，发现 empty = 0，此时生产者睡眠。消费者不能进入临界区，因为生产者对缓冲区加锁了，消费者就无法执行 up(empty) 操作，empty 永远都为 0，导致生产者永远等待下，不会释放锁，消费者因此也会永远等待下去。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</span><br><span class="line">semaphore mutex = <span class="number">1</span>;</span><br><span class="line">semaphore empty = N;</span><br><span class="line">semaphore full = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">        <span class="keyword">int</span> item = produce_item();</span><br><span class="line">        down(&amp;empty);</span><br><span class="line">        down(&amp;mutex);</span><br><span class="line">        insert_item(item);</span><br><span class="line">        up(&amp;mutex);</span><br><span class="line">        up(&amp;full);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">consumer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">        down(&amp;full);</span><br><span class="line">        down(&amp;mutex);</span><br><span class="line">        <span class="keyword">int</span> item = remove_item();</span><br><span class="line">        consume_item(item);</span><br><span class="line">        up(&amp;mutex);</span><br><span class="line">        up(&amp;empty);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="4-管程"><a href="#4-管程" class="headerlink" title="4. 管程"></a>4. 管程</h2><p>使用信号量机制实现的生产者消费者问题需要客户端代码做很多控制，而管程把控制的代码独立出来，不仅不容易出错，也使得客户端代码调用更容易。<strong>管程是对信号量更高层次的抽象，用类进行封装。</strong></p>
 <p>c 语言不支持管程，下面的示例代码使用了类 Pascal 语言来描述管程。示例代码的管程提供了 insert() 和 remove() 方法，客户端代码通过调用这两个方法来解决生产者-消费者问题。</p>
 <figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">monitor ProducerConsumer</span><br><span class="line">    integer i;</span><br><span class="line">    condition c;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">insert</span><span class="params">()</span>;</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">remove</span><span class="params">()</span>;</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span> monitor;</span><br></pre></td></tr></table></figure>
-
 <p>管程有一个重要特性：在一个时刻只能有一个进程使用管程。进程在无法继续执行的时候不能一直占用管程，否则其它进程永远不能使用管程。</p>
 <p>管程引入了  <strong>条件变量</strong>  以及相关的操作：<strong>wait()</strong> 和 <strong>signal()</strong> 来实现同步操作。对条件变量执行 wait() 操作会导致调用进程阻塞，把管程让出来给另一个进程持有。signal() 操作用于唤醒被阻塞的进程。</p>
 <p><font size="3"> <strong>使用管程实现生产者-消费者问题</strong> </font><br></p>
 <figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 管程</span></span><br><span class="line">monitor ProducerConsumer</span><br><span class="line">    condition full, empty;</span><br><span class="line">    integer count := <span class="number">0</span>;</span><br><span class="line">    condition c;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">insert</span><span class="params">(item: integer)</span>;</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> count = N <span class="keyword">then</span> wait(full);</span><br><span class="line">        insert_item(item);</span><br><span class="line">        count := count + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> count = <span class="number">1</span> <span class="keyword">then</span> signal(empty);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">remove</span>:</span> integer;</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> count = <span class="number">0</span> <span class="keyword">then</span> wait(empty);</span><br><span class="line">        remove = remove_item;</span><br><span class="line">        count := count - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> count = N -<span class="number">1</span> <span class="keyword">then</span> signal(full);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span> monitor;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生产者客户端</span></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">producer</span></span></span><br><span class="line"><span class="function"><span class="title">begin</span></span></span><br><span class="line"><span class="function">    <span class="title">while</span> <span class="title">true</span> <span class="title">do</span></span></span><br><span class="line"><span class="function">    <span class="title">begin</span></span></span><br><span class="line"><span class="function">        <span class="title">item</span> = <span class="title">produce_item</span>;</span></span><br><span class="line">        ProducerConsumer.insert(item);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 消费者客户端</span></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">consumer</span></span></span><br><span class="line"><span class="function"><span class="title">begin</span></span></span><br><span class="line"><span class="function">    <span class="title">while</span> <span class="title">true</span> <span class="title">do</span></span></span><br><span class="line"><span class="function">    <span class="title">begin</span></span></span><br><span class="line"><span class="function">        <span class="title">item</span> = <span class="title">ProducerConsumer</span>.<span class="title">remove</span>;</span></span><br><span class="line">        consume_item(item);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
-
 <h1 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h1><p>临界区：通过多线程的串行化来访问公共资源或一段代码，速度快，<strong>适合控制数据访问；</strong></p>
 <p>互斥量Synchronized/Lock：采用互斥对象机制，只有拥有互斥对象的线程才有访问公共资源的权限。因为互斥对象只有一个，所以<strong>可以保证公共资源不会被多个线程同时访问</strong></p>
 <p>信号量Semphare：为控制具有有限数量的用户资源而设计的，<strong>它允许多个线程在同一时刻去访问同一个资源，但一般需要限制同一时刻访问此资源的最大线程数目。</strong></p>
@@ -536,20 +522,16 @@
 <h2 id="1-读者-写者问题"><a href="#1-读者-写者问题" class="headerlink" title="1. 读者-写者问题"></a>1. 读者-写者问题</h2><p><strong>允许多个进程同时对数据进行读操作，但是不允许读和写以及写和写操作同时发生。</strong></p>
 <p>一个整型变量 count 记录在对数据进行读操作的进程数量，一个互斥量 count_mutex 用于对 count 加锁，一个互斥量 data_mutex 用于对读写的数据加锁。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</span><br><span class="line">semaphore count_mutex = <span class="number">1</span>;</span><br><span class="line">semaphore data_mutex = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reader</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">        down(&amp;count_mutex);</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">if</span>(count == <span class="number">1</span>) down(&amp;data_mutex); <span class="comment">// 第一个读者需要对数据进行加锁，防止写进程访问</span></span><br><span class="line">        up(&amp;count_mutex);</span><br><span class="line">        read();</span><br><span class="line">        down(&amp;count_mutex);</span><br><span class="line">        count--;</span><br><span class="line">        <span class="keyword">if</span>(count == <span class="number">0</span>) up(&amp;data_mutex);</span><br><span class="line">        up(&amp;count_mutex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">writer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">        down(&amp;data_mutex);</span><br><span class="line">        write();</span><br><span class="line">        up(&amp;data_mutex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="2-哲学家进餐问题"><a href="#2-哲学家进餐问题" class="headerlink" title="2. 哲学家进餐问题"></a>2. 哲学家进餐问题</h2>
-
 <p>五个哲学家围着一张圆桌，每个哲学家面前放着食物。哲学家的生活有两种交替活动：吃饭以及思考。当一个哲学家吃饭时，需要先拿起自己左右两边的两根筷子，并且一次只能拿起一根筷子。</p>
 <p>下面是一种错误的解法，考虑到如果所有哲学家同时拿起左手边的筷子，那么就无法拿起右手边的筷子，造成死锁。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">        think();</span><br><span class="line">        take(i);       <span class="comment">// 拿起左边的筷子</span></span><br><span class="line">        take((i+<span class="number">1</span>)%N); <span class="comment">// 拿起右边的筷子</span></span><br><span class="line">        eat();</span><br><span class="line">        put(i);</span><br><span class="line">        put((i+<span class="number">1</span>)%N);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>为了防止死锁的发生，可以设置两个条件：</p>
 <ul>
 <li>必须同时拿起左右两根筷子；</li>
 <li>只有在两个邻居都没有进餐的情况下才允许进餐。</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LEFT (i + N - 1) % N <span class="comment">// 左邻居</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RIGHT (i + 1) % N    <span class="comment">// 右邻居</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> THINKING 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HUNGRY   1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EATING   2</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</span><br><span class="line"><span class="keyword">int</span> state[N];                <span class="comment">// 跟踪每个哲学家的状态</span></span><br><span class="line">semaphore mutex = <span class="number">1</span>;         <span class="comment">// 临界区的互斥</span></span><br><span class="line">semaphore s[N];              <span class="comment">// 每个哲学家一个信号量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">        think();</span><br><span class="line">        take_two(i);</span><br><span class="line">        eat();</span><br><span class="line">        put_two(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">take_two</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    down(&amp;mutex);</span><br><span class="line">    state[i] = HUNGRY;</span><br><span class="line">    test(i);</span><br><span class="line">    up(&amp;mutex);</span><br><span class="line">    down(&amp;s[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">put_two</span><span class="params">(i)</span> </span>&#123;</span><br><span class="line">    down(&amp;mutex);</span><br><span class="line">    state[i] = THINKING;</span><br><span class="line">    test(LEFT);</span><br><span class="line">    test(RIGHT);</span><br><span class="line">    up(&amp;mutex);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(i)</span> </span>&#123;         <span class="comment">// 尝试拿起两把筷子</span></span><br><span class="line">    <span class="keyword">if</span>(state[i] == HUNGRY &amp;&amp; state[LEFT] != EATING &amp;&amp; state[RIGHT] !=EATING) &#123;</span><br><span class="line">        state[i] = EATING;</span><br><span class="line">        up(&amp;s[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h1 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h1><p>进程同步与进程通信很容易混淆，它们的区别在于：</p>
 <ul>
 <li>进程同步：控制多个进程按一定顺序执行；</li>
@@ -558,20 +540,16 @@
 <p>进程通信是一种手段，而进程同步是一种目的。也可以说，为了能够达到进程同步的目的，需要让进程进行通信，传输一些进程同步所需要的信息。</p>
 <h2 id="1-管道"><a href="#1-管道" class="headerlink" title="1. 管道"></a>1. 管道</h2><p>管道是通过调用 pipe 函数创建的，fd[0] 用于读，fd[1] 用于写。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pipe</span><span class="params">(<span class="keyword">int</span> fd[<span class="number">2</span>])</span></span>;</span><br></pre></td></tr></table></figure>
-
 <p>它具有以下限制：</p>
 <ul>
 <li>只支持半双工通信（单向交替传输）；</li>
 <li>只能在父子进程或者兄弟进程中使用。</li>
 </ul>
 <img src="/2019/03/20/操作系统-进程管理/07.png">
-
 <h2 id="2-FIFO"><a href="#2-FIFO" class="headerlink" title="2. FIFO"></a>2. FIFO</h2><p>也称为命名管道，去除了管道只能在父子进程中使用的限制。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mkfifo</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *path, <span class="keyword">mode_t</span> mode)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mkfifoat</span><span class="params">(<span class="keyword">int</span> fd, <span class="keyword">const</span> <span class="keyword">char</span> *path, <span class="keyword">mode_t</span> mode)</span></span>;</span><br></pre></td></tr></table></figure>
-
 <p>FIFO 常用于客户-服务器应用程序中，FIFO 用作汇聚点，在客户进程和服务器进程之间传递数据。</p>
 <img src="/2019/03/20/操作系统-进程管理/08.png">
-
 <h2 id="3-消息队列"><a href="#3-消息队列" class="headerlink" title="3. 消息队列"></a>3. 消息队列</h2><p>相比于 FIFO，消息队列具有以下优点：</p>
 <ul>
 <li>消息队列可以独立于读写进程存在，从而避免了 FIFO 中同步管道的打开和关闭时可能产生的困难；</li>
@@ -670,8 +648,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/20/Shell编程四剑客/" rel="next" title="Shell编程四剑客">
-                <i class="fa fa-chevron-left"></i> Shell编程四剑客
+              <a href="/2019/03/19/Shell/" rel="next" title="Shell">
+                <i class="fa fa-chevron-left"></i> Shell
               </a>
             
           </div>
