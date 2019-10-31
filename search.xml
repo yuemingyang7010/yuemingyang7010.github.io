@@ -3,7 +3,14 @@
   <entry>
     <title><![CDATA[最优化]]></title>
     <url>%2F2019%2F10%2F31%2F%E6%9C%80%E4%BC%98%E5%8C%96%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <content type="text"></content>
+      <categories>
+        <category>深度学习</category>
+        <category>CS231N笔记</category>
+      </categories>
+      <tags>
+        <tag>DeepLearning</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[分类器]]></title>
