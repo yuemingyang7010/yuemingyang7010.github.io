@@ -89,15 +89,15 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="线性分类器神经网络方法包含两部分组成：评分函数（score function）和损失函数（loss function） 线性分类器评分函数评分函数是原始图像数据到类别分值的映射，损失函数是用来量化预测分类标签的得分与真实标签之间一致性的。  f\left(x_{i}, W, b\right)=W x_{i}+b矩阵W被称为权重（weights）。b被称为偏差向量（bias vector） 线性分类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/10/28/分类器/10/28/分类器/001.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/10/28/分类器/10/28/分类器/002.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/10/28/分类器/10/28/分类器/003.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/10/28/分类器/10/28/分类器/004.png">
-<meta property="og:updated_time" content="2019-10-31T02:35:51.488Z">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/10/28/分类器/001.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/10/28/分类器/002.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/10/28/分类器/003.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/10/28/分类器/004.png">
+<meta property="og:updated_time" content="2019-10-31T03:32:02.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分类器">
 <meta name="twitter:description" content="线性分类器神经网络方法包含两部分组成：评分函数（score function）和损失函数（loss function） 线性分类器评分函数评分函数是原始图像数据到类别分值的映射，损失函数是用来量化预测分类标签的得分与真实标签之间一致性的。  f\left(x_{i}, W, b\right)=W x_{i}+b矩阵W被称为权重（weights）。b被称为偏差向量（bias vector） 线性分类">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/10/28/分类器/10/28/分类器/001.jpg">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/10/28/分类器/001.jpg">
 
 
 
@@ -422,16 +422,16 @@
 <script type="math/tex; mode=display">
 f\left(x_{i}, W, b\right)=W x_{i}+b</script><p>矩阵<strong>W</strong>被称为<strong>权重（weights）</strong>。<strong>b</strong>被称为<strong>偏差向量（bias vector）</strong></p>
 <p><strong>线性分类器的理解：</strong></p>
-<img src="/2019/10/28/分类器/10/28/分类器/001.jpg">
+<p><img src="/2019/10/28/分类器/001.jpg" alt></p>
 <p><strong>将图像看做高维度的点</strong>：</p>
 <p>可以把图像看做这个高维度空间中的一个点（即每张图像是3072维空间中的一个点）。整个数据集就是一个点的集合，每个点都带有1个分类标签。</p>
 <p>既然定义每个分类类别的分值是权重和图像的矩阵乘，那么<strong>每个分类类别的分数就是这个空间中的一个线性函数的函数值。</strong>我们没办法可视化3072维空间中的线性函数，但假设<strong>把这些维度挤压到二维</strong>，那么就可以看看这些分类器在做什么</p>
-<img src="/2019/10/28/分类器/10/28/分类器/002.jpg">
+<p><img src="/2019/10/28/分类器/002.jpg" alt></p>
 <p>从上面可以看到，<strong>W</strong>的每一行都是一个分类类别的分类器。对于这些数字的几何解释是：如果改变其中一行的数字，会看见分类器在空间中对应的直线开始向着不同方向旋转。而偏差<strong>b</strong>，则允许分类器对应的直线平移。</p>
 <p><strong>偏差和权重的合并技巧：</strong></p>
 <script type="math/tex; mode=display">
 f\left(x_{i}, W\right)=W x_{i}</script><p>以CIFAR-10为例，那么[公式]的大小就变成[3073x1]，而不是[3072x1]了，多出了包含常量1的1个维度）。W大小就是[10x3073]了。[公式]中多出来的这一列对应的就是偏差值[公式]，具体见下图：</p>
-<img src="/2019/10/28/分类器/10/28/分类器/003.jpg">
+<p><img src="/2019/10/28/分类器/003.jpg" alt></p>
 <h3 id="线性分类器损失函数："><a href="#线性分类器损失函数：" class="headerlink" title="线性分类器损失函数："></a>线性分类器损失函数：</h3><p>当评分函数输出结果与真实结果之间差异越大，损失函数输出越大，反之越小。</p>
 <p><strong>(1)多类支持向量机损失 Multiclass Support Vector Machine Loss：</strong></p>
 <script type="math/tex; mode=display">
@@ -464,7 +464,7 @@ P\left(y_{i} | x_{i}, W\right)=\frac{e^{f_{y_{i}}}}{\sum_{j} e^{f_{j}}}</script>
 \frac{e^{f_{y_{i}}}}{\sum_{j} e^{f_{j}}}=\frac{C e^{f_{y_{i}}}}{C \sum_{j} e^{f_{j}}}=\frac{e^{f_{y_{i}}+\log C}}{\sum_{j} e^{f_{j}+\log C}}</script><p>$ C$的值可自由选择，不会影响计算结果，通过使用这个技巧可以提高计算中的数值稳定性。通常将$ C$设为$ logC = -max f_j$。该技巧简单地说，就是应该将向量$f$中的数值进行平移，使得最大值为0。代码实现如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f = np.array([<span class="number">123</span>, <span class="number">456</span>, <span class="number">789</span>]) <span class="comment"># 例子中有3个分类，每个评分的数值都很大</span></span><br><span class="line">p = np.exp(f) / np.sum(np.exp(f)) <span class="comment"># 不妙：数值问题，可能导致数值爆炸</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 那么将f中的值平移到最大值为0：</span></span><br><span class="line">f -= np.max(f) <span class="comment"># f becomes [-666, -333, 0]</span></span><br><span class="line">p = np.exp(f) / np.sum(np.exp(f)) <span class="comment"># 现在OK了，将给出正确结果</span></span><br></pre></td></tr></table></figure>
 <h2 id="SVM和Softmax的比较"><a href="#SVM和Softmax的比较" class="headerlink" title="SVM和Softmax的比较"></a>SVM和Softmax的比较</h2><p><strong>命名规则：</strong>精确地说，SVM分类器使用的是折叶损失（hinge loss），有时候又被称为最大边界损失（max-margin loss）。Softmax分类器使用的是交叉熵损失（corss-entropy loss）。</p>
-<img src="/2019/10/28/分类器/10/28/分类器/004.png">
+<p><img src="/2019/10/28/分类器/004.png" alt></p>
 <p>Softmax分类器为每个分类提供了“可能性”,即给出了每种分类的归一化概率。</p>
 <p>​        在实际使用中，SVM和Softmax经常是相似的：通常说来，两种分类器的表现差别很小，不同的人对于哪个分类器更好有不同的看法。相对于Softmax分类器，SVM更加“局部目标化（local objective）”，这既可以看做是一个特性，也可以看做是一个劣势。考虑一个评分是[10, -2, 3]的数据，其中第一个分类是正确的。那么一个SVM（$\Delta = 1$）会看到正确分类相较于不正确分类，已经得到了比边界值还要高的分数，它就会认为损失值是0。SVM对于数字个体的细节是不关心的：如果分数是[10, -100, -100]或者[10, 9, 9]，对于SVM来说没设么不同，只要满足超过边界值等于1，那么损失值就等于0。</p>
 <p>​        对于softmax分类器，情况则不同。对于[10, 9, 9]来说，计算出的损失值就远远高于[10, -100, -100]的。换句话来说，softmax分类器对于分数是永远不会满意的：正确分类总能得到更高的可能性，错误分类总能得到更低的可能性，损失值总是能够更小。但是，SVM只要边界值被满足了就满意了，不会超过限制去细微地操作具体分数。这可以被看做是SVM的一种特性。举例说来，一个汽车的分类器应该把他的大量精力放在如何分辨小轿车和大卡车上，而不应该纠结于如何与青蛙进行区分，因为区分青蛙得到的评分已经足够低了。</p>
