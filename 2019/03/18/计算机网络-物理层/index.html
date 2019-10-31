@@ -89,20 +89,20 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="物理层的基本功能物理层解决如何在连接各种计算机的传输媒体上传输数据比特流，而不是指具体的传输媒体。 物理层的主要任务描述为：确定传输媒体的接口的一些特性，即： 机械特性：例接口形状，大小，引脚数目 电气特性：例规定电压范围（-5V到+5V） 功能特性：例规定-5V表示0，+5V表示1 过程特性：也称规程特性，规定建立连接时各个相关部件的工作步骤 ==中继器、集线器、网桥、交换机、路由器概念与区别=">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/01.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/02.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/03.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/04.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/05.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/06.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/07.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/08.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/09.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/04.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/05.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/06.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/07.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/08.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/09.png">
 <meta property="og:updated_time" content="2019-06-21T10:40:43.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络-物理层">
 <meta name="twitter:description" content="物理层的基本功能物理层解决如何在连接各种计算机的传输媒体上传输数据比特流，而不是指具体的传输媒体。 物理层的主要任务描述为：确定传输媒体的接口的一些特性，即： 机械特性：例接口形状，大小，引脚数目 电气特性：例规定电压范围（-5V到+5V） 功能特性：例规定-5V表示0，+5V表示1 过程特性：也称规程特性，规定建立连接时各个相关部件的工作步骤 ==中继器、集线器、网桥、交换机、路由器概念与区别=">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/01.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/01.png">
 
 
 
@@ -445,33 +445,33 @@
 <p>​       在上述的例子中，如果我没有路由器，我就不知道怎么去小明家，更不用说拿到电脑；如果我没有拿到所需的电脑编号，我也拿不到电脑，因为有十台电脑，我不能乱拿；有个特殊情况，如果小明家只有一台电脑呢？那我就不需要编号就可以确定拿哪台电脑，也就是不需要交换机。</p>
 <p>2.为什么有时候还要在路由器的后面先接1台交换机再接计算机？</p>
 <p>​       路由器是可以直接接电脑等终端设备，为什么标准都是路由器接交换机然后再接电脑等终端，是因为<strong>路由器本来就是一个路由设备，用来选路的，不适合大量的数据交换，交换机是用来大量数据交换的，终端在内网的性质就是需要使用交换机，</strong>所以标准就是路由器地下接交换机的形式。一般是情况就是在<strong>路由器下面接交换机，路由器主要起数据转发，也就是寻址、路由的功能，交换机起到用户接入的目的。</strong>但是家用的路由器的话直接就接计算机就可以了，而不必考虑再接交换机。</p>
-<h1 id="数据通讯的基础知识"><a href="#数据通讯的基础知识" class="headerlink" title="数据通讯的基础知识"></a><strong>数据通讯的基础知识</strong></h1><img src="/2019/03/18/计算机网络-物理层/01.png">
+<h1 id="数据通讯的基础知识"><a href="#数据通讯的基础知识" class="headerlink" title="数据通讯的基础知识"></a><strong>数据通讯的基础知识</strong></h1><img src="/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/01.png">
 <h3 id="半双工和全双工通讯："><a href="#半双工和全双工通讯：" class="headerlink" title="半双工和全双工通讯："></a><strong>半双工和全双工通讯：</strong></h3><p>两者都可发可收，但是半双工不能同时收发，全双工可以。</p>
 <h3 id="基带信号和带通信号："><a href="#基带信号和带通信号：" class="headerlink" title="基带信号和带通信号："></a><strong>基带信号和带通信号：</strong></h3><p><strong>基带信号（即基本频带信号）——来自信源的信号。</strong></p>
 <p>像计算机输出的代表各种文字或图像文件的数据信号都属于基带信号。基带信号就是发出的直接表达了要传输的信息的信号，比如我们说话的声波就是基带信号</p>
 <p><strong>带通信号——把基带信号经过载波调制后</strong>，把信号的频率范围搬移到较高的频段以便在信道中传输（即仅在一段频率范围内能够通过信道）。</p>
 <p>因此在<strong>传输距离较近</strong>时，计算机网络都采用<strong>基带传输方式</strong>由于在近距离范围内基带信号的衰减不大，从而信号内容不会发生变化。因此在传输距离较近时，计算机网络都采用基带传输方式。如从计算机到监视器、打印机等外设的信号就是基带传输的。</p>
-<h3 id="对基带数字信号的几种调制方法："><a href="#对基带数字信号的几种调制方法：" class="headerlink" title="对基带数字信号的几种调制方法："></a><strong>对基带数字信号的几种调制方法：</strong></h3><img src="/2019/03/18/计算机网络-物理层/02.png">
-<h3 id="编码方式："><a href="#编码方式：" class="headerlink" title="编码方式：**"></a>编码方式：**</h3><img src="/2019/03/18/计算机网络-物理层/03.png">
-<img src="/2019/03/18/计算机网络-物理层/04.png">
+<h3 id="对基带数字信号的几种调制方法："><a href="#对基带数字信号的几种调制方法：" class="headerlink" title="对基带数字信号的几种调制方法："></a><strong>对基带数字信号的几种调制方法：</strong></h3><img src="/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/02.png">
+<h3 id="编码方式："><a href="#编码方式：" class="headerlink" title="编码方式：**"></a>编码方式：**</h3><img src="/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/03.png">
+<img src="/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/04.png">
 <p>采用曼切斯特编码，<strong>一个时钟周期只可表示一个bit，并且必须通过两次采样</strong>才能得到一个bit但它能携带时钟信号，且<strong>可表示没有数据传输</strong>(没有数据传输就没有电平变化)</p>
-<img src="/2019/03/18/计算机网络-物理层/05.png">
+<img src="/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/05.png">
 <p>差分曼彻斯特编码与曼彻斯特编码相同，但<strong>抗干扰性能强于曼彻斯特编码</strong></p>
 <p>将1000100111进行曼彻斯特和差分曼彻斯特编码</p>
-<img src="/2019/03/18/计算机网络-物理层/06.png">
-<img src="/2019/03/18/计算机网络-物理层/07.png">
+<img src="/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/06.png">
+<img src="/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/07.png">
 <p><strong>奈氏准则(没干扰)</strong></p>
 <p>1924年，奈奎斯特（Nyquist）就推导出了著名的奈氏准则。他给出了在<strong>假定的理想条件下</strong>，为了避免码间串扰，<strong>码元的传输速率的上限值</strong>。</p>
 <p>在任何信道中，码元传输的速率是有上限的，否则就会出现码间串扰的问题，使接收端对码元的判决（即识别）成为不可能。如果信道的频带越宽，也就是能够通过的信号高频分量越多，那么就可以用更高的速率传送码元而不出现码间串扰。</p>
 <p><strong>香农公式</strong></p>
 <p>香农（Shannon）用信息论的理论推导出了带宽受限且有高斯白噪声干扰的信道的极限、无差错的信息传输速率。信道的<strong>极限信息传输速率C</strong>可表达为</p>
-<img src="/2019/03/18/计算机网络-物理层/08.png">
+<img src="/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/08.png">
 <p><strong>香农公式表明</strong></p>
 <p>信道的带宽或信道中的<strong>信噪比越大，则信息的极限传输速率就越高</strong>。</p>
 <p>只要信息传输速率低于信道的极限信息传输速率，就一定可以找到某种办法来实现无差错的传输。</p>
 <p>若信道带宽W或信噪比S/N没有上限（当然实际信道不可能是这样的），则信道的极限信息传输速率C也就没有上限。</p>
 <p><strong>实际信道上能够达到的信息传输速率要比香农的极限传输速率低不少</strong>。</p>
-<img src="/2019/03/18/计算机网络-物理层/09.png">
+<img src="/2019/03/18/计算机网络-物理层/03/18/计算机网络-物理层/09.png">
 
       
     </div>
@@ -526,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/18/计算机网络-应用层/" rel="next" title="计算机网络-应用层">
-                <i class="fa fa-chevron-left"></i> 计算机网络-应用层
+              <a href="/2019/03/18/计算机网络-网络层/" rel="next" title="计算机网络-网络层">
+                <i class="fa fa-chevron-left"></i> 计算机网络-网络层
               </a>
             
           </div>
@@ -622,7 +622,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

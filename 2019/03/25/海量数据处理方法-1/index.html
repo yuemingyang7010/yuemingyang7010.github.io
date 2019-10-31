@@ -89,19 +89,19 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="密匙一、分而治之/Hash映射 + Hash_map统计 + 堆/快速/归并排序1、海量日志数据，提取出某日访问百度次数最多的那个IP。既然是海量数据处理，那么可想而知，给我们的数据那就一定是海量的。针对这个数据的海量，我们如何着手呢?对的，无非就是分而治之/hash映射 + hash统计 + 堆/快速/归并排序，说白了，就是先映射，而后统计，最后排序：  分而治之/hash映射：针对数据太大，内">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/01.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/../../typora_img/0_1313302329UNN0.gif">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/../../typora_img/0_1313302192BLP4.gif">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/../../typora_img/0_13133022154fL9.gif">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/../../typora_img/0_13133022364Qoo.gif">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/../../typora_img/0_1313302261MhJ0.gif">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/02.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/03.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/03/25/海量数据处理方法-1/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/typora_img/0_1313302329UNN0.gif">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/typora_img/0_1313302192BLP4.gif">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/typora_img/0_13133022154fL9.gif">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/typora_img/0_13133022364Qoo.gif">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/typora_img/0_1313302261MhJ0.gif">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/03/25/海量数据处理方法-1/02.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/03/25/海量数据处理方法-1/03.jpg">
 <meta property="og:updated_time" content="2019-08-14T02:12:57.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yue">
 <meta name="twitter:description" content="密匙一、分而治之/Hash映射 + Hash_map统计 + 堆/快速/归并排序1、海量日志数据，提取出某日访问百度次数最多的那个IP。既然是海量数据处理，那么可想而知，给我们的数据那就一定是海量的。针对这个数据的海量，我们如何着手呢?对的，无非就是分而治之/hash映射 + hash统计 + 堆/快速/归并排序，说白了，就是先映射，而后统计，最后排序：  分而治之/hash映射：针对数据太大，内">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/01.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/03/25/海量数据处理方法-1/01.png">
 
 
 
@@ -443,7 +443,7 @@
 <li>求出每台电脑上的TOP10后，然后把这100台电脑上的TOP10组合起来，共1000个数据，再利用上面类似的方法求出TOP10就可以了。</li>
 </ol>
 <p>​    但如果同一个元素重复出现在不同的电脑中呢，如下例子所述：</p>
-<img src="/2019/03/25/海量数据处理方法-1/01.png">
+<img src="/2019/03/25/海量数据处理方法-1/03/25/海量数据处理方法-1/01.png">
 <p>​    这个时候，你可以有两种方法：</p>
 <ul>
 <li>遍历一遍所有数据，重新hash取摸，如此使得同一个元素只出现在单独的一台电脑中，然后采用上面所说的方法，统计每台电脑中各个元素的出现次数找出TOP10，继而组合100台电脑上的TOP10，找出最终的TOP10。</li>
@@ -453,13 +453,13 @@
 <ol>
 <li>hash映射：顺序读取10个文件，按照hash(query)%10的结果将query写入到另外10个文件（记为a0,a1,..a9）中。这样新生成的文件每个的大小大约也1G（假设hash函数是随机的）。</li>
 <li>hash_map统计：找一台内存在2G左右的机器，依次对用hash_map(query, query_count)来统计每个query出现的次数。注：hash_map(query,query_count)是用来统计每个query的出现次数，不是存储他们的值，出现一次，则count+1。</li>
-<li>堆/快速/归并排序：利用快速/堆/归并排序按照出现次数进行排序，将排序好的query和对应的query_cout输出到文件中，这样得到了10个排好序的文件（记为<img src="//yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/../../typora_img/0_1313302329UNN0.gif" alt="img">）。最后，对这10个文件进行归并排序（内排序与外排序相结合）。根据此方案1，这里有一份实现：<a href="https://github.com/ooooola/sortquery/blob/master/querysort.py" target="_blank" rel="noopener">https://github.com/ooooola/sortquery/blob/master/querysort.py</a>。</li>
+<li>堆/快速/归并排序：利用快速/堆/归并排序按照出现次数进行排序，将排序好的query和对应的query_cout输出到文件中，这样得到了10个排好序的文件（记为<img src="/2019/03/25/海量数据处理方法-1/../../typora_img/0_1313302329UNN0.gif" alt="img">）。最后，对这10个文件进行归并排序（内排序与外排序相结合）。根据此方案1，这里有一份实现：<a href="https://github.com/ooooola/sortquery/blob/master/querysort.py" target="_blank" rel="noopener">https://github.com/ooooola/sortquery/blob/master/querysort.py</a>。</li>
 </ol>
 <p>​     除此之外，此题还有以下两个方法：<br>​    方案2：一般query的总量是有限的，只是重复的次数比较多而已，可能对于所有的query，一次性就可以加入到内存了。这样，我们就可以采用trie树/hash_map等直接来统计每个query出现的次数，然后按出现次数做快速/堆/归并排序就可以了。</p>
 <p>​    方案3：与方案1类似，但在做完hash，分成多个文件后，可以交给多个文件来处理，采用分布式的架构来处理（比如MapReduce），最后再进行合并。</p>
 <h5 id="6、-给定a、b两个文件，各存放50亿个url，每个url各占64字节，内存限制是4G，让你找出a、b文件共同的url？"><a href="#6、-给定a、b两个文件，各存放50亿个url，每个url各占64字节，内存限制是4G，让你找出a、b文件共同的url？" class="headerlink" title="6、 给定a、b两个文件，各存放50亿个url，每个url各占64字节，内存限制是4G，让你找出a、b文件共同的url？"></a><strong>6、 给定a、b两个文件，各存放50亿个url，每个url各占64字节，内存限制是4G，让你找出a、b文件共同的url？</strong></h5><p>​    可以估计每个文件安的大小为5G×64=320G，远远大于内存限制的4G。所以不可能将其完全加载到内存中处理。考虑采取分而治之的方法。</p>
 <ol>
-<li>分而治之/hash映射：遍历文件a，对每个url求取<img src="//yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/../../typora_img/0_1313302192BLP4.gif" alt="img">，然后根据所取得的值将url分别存储到1000个小文件（记为<img src="//yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/../../typora_img/0_13133022154fL9.gif" alt="img">，这里漏写个了a1）中。这样每个小文件的大约为300M。遍历文件b，采取和a相同的方式将url分别存储到1000小文件中（记为<img src="//yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/../../typora_img/0_13133022364Qoo.gif" alt="img">）。这样处理后，所有可能相同的url都在对应的小文件（<img src="//yuemingyang7010.github.io/2019/03/25/海量数据处理方法-1/../../typora_img/0_1313302261MhJ0.gif" alt="img">）中，不对应的小文件不可能有相同的url。然后我们只要求出1000对小文件中相同的url即可。</li>
+<li>分而治之/hash映射：遍历文件a，对每个url求取<img src="/2019/03/25/海量数据处理方法-1/../../typora_img/0_1313302192BLP4.gif" alt="img">，然后根据所取得的值将url分别存储到1000个小文件（记为<img src="/2019/03/25/海量数据处理方法-1/../../typora_img/0_13133022154fL9.gif" alt="img">，这里漏写个了a1）中。这样每个小文件的大约为300M。遍历文件b，采取和a相同的方式将url分别存储到1000小文件中（记为<img src="/2019/03/25/海量数据处理方法-1/../../typora_img/0_13133022364Qoo.gif" alt="img">）。这样处理后，所有可能相同的url都在对应的小文件（<img src="/2019/03/25/海量数据处理方法-1/../../typora_img/0_1313302261MhJ0.gif" alt="img">）中，不对应的小文件不可能有相同的url。然后我们只要求出1000对小文件中相同的url即可。</li>
 <li>hash_set统计：求每对小文件中相同的url时，可以把其中一个小文件的url存储到hash_set中。然后遍历另一个小文件的每个url，看其是否在刚才构建的hash_set中，如果是，那么就是共同的url，存到文件里面就可以了。</li>
 </ol>
 <p>​    OK，此第一种方法：分而治之/hash映射 + hash统计 + 堆/快速/归并排序，再看最后4道题，如下：</p>
@@ -474,10 +474,10 @@
 <ul>
 <li>1、hash_set在千万级数据下，insert操作优于set? 这位blog：<a href="http://t.cn/zOibP7t" target="_blank" rel="noopener">http://t.cn/zOibP7t</a> 给的实践数据可靠不? </li>
 <li><p>2、那map和hash_map的性能比较呢? 谁做过相关实验?</p>
-<img src="/2019/03/25/海量数据处理方法-1/02.jpg">
+<img src="/2019/03/25/海量数据处理方法-1/03/25/海量数据处理方法-1/02.jpg">
 </li>
 <li><p>3、那查询操作呢，如下段文字所述?</p>
-<img src="/2019/03/25/海量数据处理方法-1/03.jpg"> 
+<img src="/2019/03/25/海量数据处理方法-1/03/25/海量数据处理方法-1/03.jpg"> 
 </li>
 </ul>
 <p>​    或者小数据量时用map，构造快，大数据量时用hash_map?</p>
@@ -638,7 +638,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

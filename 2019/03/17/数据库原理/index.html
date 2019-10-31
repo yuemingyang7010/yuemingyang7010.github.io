@@ -89,19 +89,19 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="一、数据库常见分类与特点（1） 关系型和非关系型数据库的区别（各自优点）     数据库类型 特性 优点 缺点     关系型数据库SQLite、Oracle、mysql 1、关系型数据库，是指采用了关系模型来组织数据的数据库；2、关系型数据库的最大特点就是事务的一致性；3、简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。 1、容易理解：二">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/06.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/07.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/08.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/01.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/02.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/03.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/04.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/05.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/03/17/数据库原理/06.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/03/17/数据库原理/07.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/03/17/数据库原理/08.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/03/17/数据库原理/01.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/03/17/数据库原理/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/03/17/数据库原理/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/03/17/数据库原理/04.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/03/17/数据库原理/05.png">
 <meta property="og:updated_time" content="2019-06-23T15:16:40.775Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库原理">
 <meta name="twitter:description" content="一、数据库常见分类与特点（1） 关系型和非关系型数据库的区别（各自优点）     数据库类型 特性 优点 缺点     关系型数据库SQLite、Oracle、mysql 1、关系型数据库，是指采用了关系模型来组织数据的数据库；2、关系型数据库的最大特点就是事务的一致性；3、简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。 1、容易理解：二">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/06.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/17/数据库原理/03/17/数据库原理/06.png">
 
 
 
@@ -535,13 +535,13 @@
 <p>【2】第二范式(<strong>确保表中的每列都和主键相关</strong>)【符合第一范式，同时非主属性完全依赖于主键】</p>
 <p>说明：表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。</p>
 <p>订单信息表：</p>
-<img src="/2019/03/17/数据库原理/06.png">
+<img src="/2019/03/17/数据库原理/03/17/数据库原理/06.png">
 <p>这样就产生一个问题：这个表中是以<strong>订单编号和商品编号作为联合主键</strong>。这样在该表中商品名称、单位、商品价格等信息不与该表的主键相关，而仅仅是与商品编号相关。所以在这里违反了第二范式的设计原则。</p>
 <p>而如果把这个订单信息表进行拆分，把商品信息分离到另一个表中，把订单项目表也分离到另一个表中，就非常完美了。如下所示。</p>
-<img src="/2019/03/17/数据库原理/07.png">
+<img src="/2019/03/17/数据库原理/03/17/数据库原理/07.png">
 <p>【3】第三范式(<strong>确保每列都和主键列直接相关,而不是间接相关</strong>)【符合2NF，并且消除传递依赖】</p>
 <p>比如在设计一个订单数据表的时候，可以将客户编号作为一个外键和订单表建立相应的关系。而不可以在订单表中添加关于客户其它信息（比如姓名、所属公司等）的字段。如下面这两个表所示的设计就是一个满足第三范式的数据库表。</p>
-<img src="/2019/03/17/数据库原理/08.png">
+<img src="/2019/03/17/数据库原理/03/17/数据库原理/08.png">
 <p>这样在查询订单信息的时候，就可以使用客户编号来引用客户信息表中的记录，也不必在订单信息表中多次输入客户信息的内容，减小了数据冗余。</p>
 <h1 id="四、锁"><a href="#四、锁" class="headerlink" title="四、锁"></a>四、锁</h1><h2 id="锁粒度"><a href="#锁粒度" class="headerlink" title="锁粒度"></a>锁粒度</h2><p><strong>MySQL 中提供了两种封锁粒度：行级锁以及表级锁。</strong></p>
 <p>应该尽量只锁定需要修改的那部分数据，而不是所有的资源。锁定的数据量越少，发生锁争用的可能就越小，系统的并发程度就越高。</p>
@@ -846,7 +846,7 @@
 <li>删除版本号：如果该快照的删除版本号大于当前事务版本号表示该快照有效，否则表示该快照已经被删除了。</li>
 </ul>
 <h2 id="Undo-日志"><a href="#Undo-日志" class="headerlink" title="Undo 日志"></a>Undo 日志</h2><p>MVCC 使用到的快照存储在 Undo 日志中，该日志通过回滚指针把一个数据行（Record）的所有快照连接起来。</p>
-<img src="/2019/03/17/数据库原理/01.jpg">
+<img src="/2019/03/17/数据库原理/03/17/数据库原理/01.jpg">
 <h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>以下实现过程针对可重复读隔离级别。</p>
 <p>当开始一个事务时，该事务的版本号肯定大于当前所有数据行快照的创建版本号，理解这一点很关键。数据行快照的创建版本号是创建数据行快照时的系统版本号，系统版本号随着创建事务而递增，因此新创建一个事务时，这个事务的系统版本号比之前的系统版本号都大，也就是比所有数据行快照的创建版本号都大。</p>
 <h3 id="1-SELECT"><a href="#1-SELECT" class="headerlink" title="1. SELECT"></a>1. SELECT</h3><p>多个事务必须读取到同一个数据行的快照，并且这个快照是距离现在最近的一个有效快照。但是也有例外，如果有一个事务正在修改该数据行，那么它可以读取事务本身所做的修改，而不用和其它事务的读取结果一致。</p>
@@ -935,14 +935,14 @@
 <li>如果是多对多，画两个不带箭头的线段。</li>
 </ul>
 <p>下图的 Course 和 Student 是一对多的关系。</p>
-<img src="/2019/03/17/数据库原理/02.png">
+<img src="/2019/03/17/数据库原理/03/17/数据库原理/02.png">
 <h2 id="表示出现多次的关系"><a href="#表示出现多次的关系" class="headerlink" title="表示出现多次的关系"></a>表示出现多次的关系</h2><p>一个实体在联系出现几次，就要用几条线连接。</p>
 <p>下图表示一个课程的先修关系，先修关系出现两个 Course 实体，第一个是先修课程，后一个是后修课程，因此需要用两条线来表示这种关系。</p>
-<img src="/2019/03/17/数据库原理/03.png">
+<img src="/2019/03/17/数据库原理/03/17/数据库原理/03.png">
 <h2 id="联系的多向性"><a href="#联系的多向性" class="headerlink" title="联系的多向性"></a>联系的多向性</h2><p>虽然老师可以开设多门课，并且可以教授多名学生，但是对于特定的学生和课程，只有一个老师教授，这就构成了一个三元联系。</p>
-<img src="/2019/03/17/数据库原理/04.png">
+<img src="/2019/03/17/数据库原理/03/17/数据库原理/04.png">
 <h2 id="表示子类"><a href="#表示子类" class="headerlink" title="表示子类"></a>表示子类</h2><p>用一个三角形和两条线来连接类和子类，与子类有关的属性和联系都连到子类上，而与父类和子类都有关的连到父类上。</p>
-<img src="/2019/03/17/数据库原理/05.png">
+<img src="/2019/03/17/数据库原理/03/17/数据库原理/05.png">
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
 <li>AbrahamSilberschatz, HenryF.Korth, S.Sudarshan, 等. 数据库系统概念 [M]. 机械工业出版社, 2006.</li>
 </ul>
@@ -1096,7 +1096,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

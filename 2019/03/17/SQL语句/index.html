@@ -89,14 +89,14 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="●基础1.连接数据库 1mysql -uroot -p 然后输入密码 2。创建“bjpowernode”数据库 1mysql&amp;gt; create database bjpowernode; 3.选择数据库 1mysql&amp;gt; use bjpowernode; 4.导入数据 1mysql&amp;gt;source  D:\ bjpowernode.sql  删除数据库  1mysql&amp;gt; drop">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/01.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/02.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/03/17/SQL语句/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/03/17/SQL语句/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/03/17/SQL语句/03.png">
 <meta property="og:updated_time" content="2019-08-08T12:49:07.563Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL语句">
 <meta name="twitter:description" content="●基础1.连接数据库 1mysql -uroot -p 然后输入密码 2。创建“bjpowernode”数据库 1mysql&amp;gt; create database bjpowernode; 3.选择数据库 1mysql&amp;gt; use bjpowernode; 4.导入数据 1mysql&amp;gt;source  D:\ bjpowernode.sql  删除数据库  1mysql&amp;gt; drop">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/01.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/17/SQL语句/03/17/SQL语句/01.png">
 
 
 
@@ -441,12 +441,12 @@
 <p>代表关键字:grant,revoke.</p>
 <h2 id="●数据定义语句-create、drop、alter"><a href="#●数据定义语句-create、drop、alter" class="headerlink" title="●数据定义语句(create、drop、alter)"></a><strong>●数据定义语句(create、drop、alter)</strong></h2><p><strong>1.定义基本表</strong></p>
 <p>SQL 语言使用CREATETABLE语句定义基本表，其基本格式如下：</p>
-<img src="/2019/03/17/SQL语句/01.png">
+<img src="/2019/03/17/SQL语句/03/17/SQL语句/01.png">
 <p>建立一个“学生信息”表Student：</p>
-<img src="/2019/03/17/SQL语句/02.png">
+<img src="/2019/03/17/SQL语句/03/17/SQL语句/02.png">
 <p><strong>2.修改基本表</strong></p>
 <p>随着应用环境和应用需求的变化，有时需要修改已建立好的基本表，SQL 语言用ALTER TABLE语句修改基本表，其一般格式为：</p>
-<img src="/2019/03/17/SQL语句/03.png">
+<img src="/2019/03/17/SQL语句/03/17/SQL语句/03.png">
 <p>其中，&lt;表名&gt;是要修改的表，<strong>ADD子句用于增加新列和新的完整性约束条件</strong>，DROP子句用于删除指定的完整性约束条件，<strong>MODIFY COLUMN子句用于修改原有的列定义，包括修改列名和数据类型。</strong></p>
 <p><strong>例1：</strong>向Student表增加“入学时间”列，其数据类型为日期型。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Student <span class="keyword">ADD</span> S entrance <span class="built_in">DATE</span>；</span><br></pre></td></tr></table></figure>
@@ -848,7 +848,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

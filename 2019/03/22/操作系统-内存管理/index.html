@@ -89,19 +89,19 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="★★★ 虚拟内存的作用，分页系统实现虚拟内存原理。★★★ 页面置换算法的原理，特别是 LRU 的实现原理，最好能手写，再说明它在 Redis 等作为缓存置换算法。★★★ 比较分页与分段的区别。 ★★★ 分析静态链接的不足，以及动态链接的特点。 2.1逻辑地址空间与物理地址空间Eg：编译时只需确定变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/01.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/02.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/03.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/04.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/06.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/07.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/05.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/08.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/04.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/06.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/07.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/05.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/08.png">
 <meta property="og:updated_time" content="2019-07-13T13:25:06.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统-内存管理">
 <meta name="twitter:description" content="★★★ 虚拟内存的作用，分页系统实现虚拟内存原理。★★★ 页面置换算法的原理，特别是 LRU 的实现原理，最好能手写，再说明它在 Redis 等作为缓存置换算法。★★★ 比较分页与分段的区别。 ★★★ 分析静态链接的不足，以及动态链接的特点。 2.1逻辑地址空间与物理地址空间Eg：编译时只需确定变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址）。CPU想要找到x在内存中">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/01.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/01.png">
 
 
 
@@ -435,10 +435,10 @@
 <p><strong>为方便地址转换，页面大小应是2的整数幂。</strong>同时页面大小应该适中，如果页面太小，会使进程的页面数过多，这样页表就过长，占用大量内存，而且也会增加硬件地址转换的开销，降低页面换/</p>
 <p>换出的效率；页面过大又会使页面内碎片增大，降低内存的利用率。所以页面的大小应该适中，考虑到空间效率和时间效率的权衡。</p>
 <p>②地址结构。分页存储管理的逻辑地址结构如下图所示：</p>
-<img src="/2019/03/22/操作系统-内存管理/01.png">
+<img src="/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/01.png">
 <p>地址结构包含两部分：前一部分为页号P，后一部分为页内偏移量M。地址长度为32位，其中0～11位为页内地址，即每页大小为4KB；12~31位为页号，地址空间最多允许有2^20页。</p>
 <p>③页表。为了便于在内存中找到进程的每个页面所对应的物理块，系统为每个进程建立一张页表，记录页面在内存中对应的物理块号，<strong>页表一般存放在内存中。</strong>在配置了页表后，进程执行时，通过查找该表，即可找到每页在内存中的物理块号。可见，页表的作用是实现从页号到物理块号的地址映射。</p>
-<img src="/2019/03/22/操作系统-内存管理/02.png">
+<img src="/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/02.png">
 <p><strong>如何计算(以手动计算为例)：</strong></p>
 <p><strong>页号</strong>=逻辑地址/页面长度（取除法的整数部分）  </p>
 <p><strong>页内偏移量</strong>=逻辑地址%页面长度（取除法的余数部分）</p>
@@ -448,11 +448,11 @@
 <p>01号页在内存中存放的起始位置450    物理地址为450+3=453</p>
 <h3 id="2-2-2基本分段存储管理方式"><a href="#2-2-2基本分段存储管理方式" class="headerlink" title="2.2.2基本分段存储管理方式"></a><strong>2.2.2基本分段存储管理方式</strong></h3><p>段式管理方式按照用户进程中的自然段划分逻辑空间。例如，用户进程由主程序、两个子程序、栈和一段数据组成，于是可以把这个用户进程划分为5个段，每段从0开始编址，并分配一段连续的地址空间（段内要求连续，段间不要求连续，因此整个作业的地址空间是二维的）。其逻辑地址由段号S与段内偏移量W两部分组成。</p>
 <p>在下图中，段号为16位，段内偏移量为16位，则一个作业最多可有216-65536个段，最大段长为64KB。</p>
-<img src="/2019/03/22/操作系统-内存管理/03.png">
+<img src="/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/03.png">
 <p>在页式系统中，逻辑地址的页号和页内偏移量对用户是透明的，但在段式系统中，段号和段内偏移量必须由用户显示提供，在高级程序设计语言中，这个工作由编译程序完成。</p>
-<img src="/2019/03/22/操作系统-内存管理/04.png">
-<h3 id="2-2-3段页式管理方式"><a href="#2-2-3段页式管理方式" class="headerlink" title="2.2.3段页式管理方式"></a><strong>2.2.3段页式管理方式</strong></h3><img src="/2019/03/22/操作系统-内存管理/06.png">
-<img src="/2019/03/22/操作系统-内存管理/07.png">
+<img src="/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/04.png">
+<h3 id="2-2-3段页式管理方式"><a href="#2-2-3段页式管理方式" class="headerlink" title="2.2.3段页式管理方式"></a><strong>2.2.3段页式管理方式</strong></h3><img src="/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/06.png">
+<img src="/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/07.png">
 <p>例1：关于段页式管理中，地址映像表是（）。</p>
 <p>A.每个进程一张段表，一张页表B.进程的每个段一张段表，一张页表C.每个进程一张段表，每个段一张页表D.每个进程一张页表，每个段一张段表解答：C。</p>
 <h2 id="2-3虚拟内存管理"><a href="#2-3虚拟内存管理" class="headerlink" title="2.3虚拟内存管理"></a><strong>2.3虚拟内存管理</strong></h2><p>上一节所讨论的各种内存管理策略都是为了同时将多个进程保存在内存中以便允许多道程序设计。它们都具有以下两个共同的特征：作业必须一次性全部装入内存后，方能开始运行；驻留性：作业被装入内存后，就一直驻留在内存中，其任何部分都不会被换出，直至作业运行结束。</p>
@@ -480,7 +480,7 @@
 <p>在请求分页系统中，只要求将当前需要的一部分页面装入内存，便可以启动作业运行。在作业执行过程中，<strong>当所要访问的页面不在内存时，再通过调页功能将其调入，同时还可以通过置换功能将暂时不用的页面换出到外存上，以便腾出内存空间。</strong></p>
 <p>为了实现请求分页，系统必须提供一定的硬件支持。除了需要一定容量的内存及外存的计算机系统，还需要有页表机制(在基本分页的页表基础上对每个页加了状态位、访问字段等，用于判断是否调入内存，以及最近访问的次数等..)、缺页中断机构和地址变换机构。</p>
 <p>常见的置换算法有以下三种：<strong>最佳置换算法、先进先出（FIFO）页面置换算法、最近最久未使用（LRU）置换算法。</strong></p>
-<img src="/2019/03/22/操作系统-内存管理/05.png">
+<img src="/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/05.png">
 <h2 id="2-4抖动："><a href="#2-4抖动：" class="headerlink" title="2.4抖动："></a><strong>2.4抖动：</strong></h2><p>在页面置换过程中的一种最糟糕的情形是，刚刚换出的页面马上又要换入主存，刚刚换入的页面马上就要换出主存，这种频繁的页面调度行为称为抖动，或颠簸。如果一个进程在换页上用的时间多于执行时间，那么这个进程就在颠簸。</p>
 <p>频繁的发生缺页中断，其主要原因是<strong>某个进程频繁访问的页面数目高于可用的物理页帧数目</strong>。</p>
 <h2 id="2-5缺页中断与最近最久未使用置换算法（-LRU）"><a href="#2-5缺页中断与最近最久未使用置换算法（-LRU）" class="headerlink" title="2.5缺页中断与最近最久未使用置换算法（ LRU）"></a>2.5缺页中断与最近最久未使用置换算法（ LRU）</h2><p><strong>缺页中断:</strong><br>在地址映射过程中，<strong>若在页表中发现所要访问的页面不在内存，则产生中断，当发生中断时，系统必须在内存选择一个页面移出内存，以便为调入新的页面让出空间</strong>，尽管每次可以随机选选择一个页面置换，但选择不常使用的页面会是系统性能好的多，减少不必要的额外开销，就产生了页面置换算法。</p>
@@ -495,7 +495,7 @@
 <p>示例:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">LRUCache cache = <span class="keyword">new</span> LRUCache( <span class="number">2</span> <span class="comment">/* 缓存容量 */</span> );</span><br><span class="line"></span><br><span class="line">cache.put(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">cache.put(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">cache.get(<span class="number">1</span>);       <span class="comment">// 返回  1</span></span><br><span class="line">cache.put(<span class="number">3</span>, <span class="number">3</span>);    <span class="comment">// 该操作会使得密钥 2 作废</span></span><br><span class="line">cache.get(<span class="number">2</span>);       <span class="comment">// 返回 -1 (未找到)</span></span><br><span class="line">cache.put(<span class="number">4</span>, <span class="number">4</span>);    <span class="comment">// 该操作会使得密钥 1 作废</span></span><br><span class="line">cache.get(<span class="number">1</span>);       <span class="comment">// 返回 -1 (未找到)</span></span><br><span class="line">cache.get(<span class="number">3</span>);       <span class="comment">// 返回  3</span></span><br><span class="line">cache.get(<span class="number">4</span>);       <span class="comment">// 返回  4</span></span><br></pre></td></tr></table></figure>
 <p>思路分析：</p>
-<img src="/2019/03/22/操作系统-内存管理/08.png">
+<img src="/2019/03/22/操作系统-内存管理/03/22/操作系统-内存管理/08.png">
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    LRUCache(<span class="keyword">int</span> capacity) &#123;</span><br><span class="line">        m_capacity = capacity;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> it = cacheMap.find(key);</span><br><span class="line">        <span class="comment">//如果key不存在</span></span><br><span class="line">        <span class="keyword">if</span>(it == cacheMap.end()) </span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="comment">//如果key存在，将其值（最近操作的）对应的节点移到链表头，O(1)时间</span></span><br><span class="line">        cacheList.splice(cacheList.begin(),cacheList,it-&gt;second);</span><br><span class="line">        <span class="keyword">return</span> it-&gt;second-&gt;second;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//put()之前需要检查，key是否已经存在，存在则更新值，存在的话分为两种情况：</span></span><br><span class="line">    <span class="comment">//第一种：容器已经满，需要先剔除链表尾部元素，第二种：容器未满，正常添加。</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> it = cacheMap.find(key);</span><br><span class="line">        <span class="comment">//如果key存在,更新值</span></span><br><span class="line">        <span class="keyword">if</span>(it != cacheMap.end())&#123;</span><br><span class="line">            it-&gt;second-&gt;second = value;</span><br><span class="line">            <span class="comment">//如果key存在，将其值（最近操作的）对应的节点移到链表头，O(1)时间</span></span><br><span class="line">            cacheList.splice(cacheList.begin(),cacheList,it-&gt;second);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//key不存在情况下，cacheMap已经满了</span></span><br><span class="line">        <span class="keyword">if</span>(cacheMap.size()==m_capacity)&#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">auto</span>&amp; node = cacheList.back();</span><br><span class="line">            cacheMap.erase(node.first);</span><br><span class="line">            cacheList.pop_back();            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//key不存在情况下，cacheMap未满，正常插入</span></span><br><span class="line">        cacheList.emplace_front(key,value); <span class="comment">//直接插到顺序容器头部，C++11出的新方法</span></span><br><span class="line">        cacheMap[key] = cacheList.begin();      </span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_capacity;</span><br><span class="line">    <span class="built_in">list</span>&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; &gt; cacheList;</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="built_in">list</span>&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; &gt;::iterator&gt; cacheMap;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your LRUCache object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * LRUCache* obj = new LRUCache(capacity);</span></span><br><span class="line"><span class="comment"> * int param_1 = obj-&gt;get(key);</span></span><br><span class="line"><span class="comment"> * obj-&gt;put(key,value);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 
       
@@ -551,8 +551,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/21/操作系统面试题/" rel="next" title="操作系统面试题">
-                <i class="fa fa-chevron-left"></i> 操作系统面试题
+              <a href="/2019/03/21/操作系统-死锁/" rel="next" title="操作系统-死锁">
+                <i class="fa fa-chevron-left"></i> 操作系统-死锁
               </a>
             
           </div>
@@ -647,7 +647,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

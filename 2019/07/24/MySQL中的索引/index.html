@@ -89,22 +89,22 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="索引什么是索引？排好序的快速查询的数据结构，常常类比为字典目录。 优点：大大加快数据的检索速度； 缺点：创建索引和维护索引要花费一定的时间。 索引的分类主键索引（PRIMAY KEY） 普通索引（INDEX） 唯一索引（UNIQUE） 联合索引 InnoDB和MyISAM会自动为主键或者声明为UNIQUE的列去自动建立B+树索引。 主键索引（最常用，最好用自增ID）为表设置了主键，数据库将自动创建">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/01.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/02.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/03.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/04.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/08.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/09.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/10.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/05.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/06.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/11.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/04.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/07.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/08.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/09.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/10.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/05.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/06.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/11.jpg">
 <meta property="og:updated_time" content="2019-09-01T11:37:06.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL中的索引">
 <meta name="twitter:description" content="索引什么是索引？排好序的快速查询的数据结构，常常类比为字典目录。 优点：大大加快数据的检索速度； 缺点：创建索引和维护索引要花费一定的时间。 索引的分类主键索引（PRIMAY KEY） 普通索引（INDEX） 唯一索引（UNIQUE） 联合索引 InnoDB和MyISAM会自动为主键或者声明为UNIQUE的列去自动建立B+树索引。 主键索引（最常用，最好用自增ID）为表设置了主键，数据库将自动创建">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/01.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/01.png">
 
 
 
@@ -507,7 +507,7 @@
 <li>Pi(i=1,…n)为指向子树根节点的指针。P(i-1)指向的子树的所有节点关键字均小于ki，但都大于k(i-1)。</li>
 </ol>
 <p>B-Tree中的每个节点根据实际情况可以包含大量的关键字信息和分支，如下图所示为一个3阶的B-Tree：</p>
-<img src="/2019/07/24/MySQL中的索引/01.png">
+<img src="/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/01.png">
 <p>两个关键词划分成的三个范围域对应三个指针指向的子树的数据的范围域。以根节点为例，关键字为17和35，P1指针指向的子树的数据范围为小于17，P2指针指向的子树的数据范围为17~35，P3指针指向的子树的数据范围为大于35。</p>
 <p>模拟查找关键字29的过程：</p>
 <p>根据根节点找到磁盘块1，读入内存。【磁盘I/O操作第1次】<br>比较关键字29在区间（17,35），找到磁盘块1的指针P2。<br>根据P2指针找到磁盘块3，读入内存。【磁盘I/O操作第2次】<br>比较关键字29在区间（26,30），找到磁盘块3的指针P2。<br>根据P2指针找到磁盘块8，读入内存。【磁盘I/O操作第3次】<br>在磁盘块8中的关键字列表中找到关键字29。</p>
@@ -521,7 +521,7 @@
 <li>数据记录都存放在叶子节点中。</li>
 </ol>
 <p>将上一节中的B-Tree优化，由于B+Tree的非叶子节点只存储键值信息，假设每个磁盘块能存储4个键值及指针信息，则变成B+Tree后其结构如下图所示：</p>
-<img src="/2019/07/24/MySQL中的索引/02.png">
+<img src="/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/02.png">
 <p>通常在B+Tree上有两个头指针，一个指向根节点，另一个指向关键字最小的叶子节点，而且所有叶子节点（即数据节点）之间是一种链式环结构。因此可以对B+Tree进行两种查找运算：一种是对于主键的范围查找和分页查找，另一种是从根节点开始，进行随机查找。</p>
 <h2 id="为什么使用B-Tree（B-Tree）"><a href="#为什么使用B-Tree（B-Tree）" class="headerlink" title="为什么使用B-Tree（B+Tree）"></a>为什么使用B-Tree（B+Tree）</h2><p>一般来说，索引本身也很大，<strong>不可能全部存储在内存中</strong>，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I/O消耗，相对于内存存取，I/O存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是要<strong>尽量减少查找过程中磁盘I/O的存取次数</strong>。</p>
 <p><strong>与红黑树的比较：</strong></p>
@@ -544,10 +544,10 @@
 <p>前面已经知道，<strong>Hash 索引是将索引键通过 Hash 运算之后</strong>，将 Hash运算结果的 Hash 值和所对应的行指针信息存放于一个 Hash 表中，<strong>由于不同索引键存在相同 Hash 值**</strong>，所以即使取满足某个 Hash 键值的数据的记录条数，也无法从 Hash 索引中直接完成查询<strong>，还是要通过访问表中的实际数据进行相应的比较，并得到相应的结果。</strong>当Hash 索引遇到大量Hash值相等的情况后性能并不一定就会比B-Tree索引高。</p>
 <h2 id="磁盘存取原理"><a href="#磁盘存取原理" class="headerlink" title="磁盘存取原理"></a><strong>磁盘存取原理</strong></h2><p>​      上面说过，索引一般以文件形式存储在磁盘上，索引检索需要磁盘I/O操作。与主存不同，磁盘I/O存在机械运动耗费，因此磁盘I/O的时间消耗是巨大的。</p>
 <p>​      下图是磁盘的整体结构示意图。</p>
-<img src="/2019/07/24/MySQL中的索引/03.png">
+<img src="/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/03.png">
 <p>一个磁盘由大小相同且同轴的圆形盘片组成，磁盘可以转动（各个磁盘必须同步转动）。在磁盘的一侧有磁头支架，磁头支架固定了一组磁头，每个磁头负责存取一个磁盘的内容。磁头不能转动，但是可以沿磁盘半径方向运动（实际是斜切向运动），每个磁头同一时刻也必须是同轴的，即从正上方向下看，所有磁头任何时候都是重叠的（不过目前已经有多磁头独立技术，可不受此限制）。</p>
 <p>​      下图是磁盘结构的示意图。</p>
-<img src="/2019/07/24/MySQL中的索引/04.png">
+<img src="/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/04.png">
 <p>盘片被划分成一系列同心环，圆心是盘片中心，每个同心环叫做一个磁道，所有半径相同的磁道组成一个柱面。磁道被沿半径线划分成一个个小的段，每个段叫做一个扇区，每个扇区是磁盘的最小存储单元。为了简单起见，我们下面假设磁盘只有一个盘片和一个磁头。</p>
 <p>​      当需要从磁盘读取数据时，系统会将数据逻辑地址传给磁盘，磁盘的控制电路按照寻址逻辑将逻辑地址翻译成物理地址，即确定要读的数据在哪个磁道，哪个扇区。为了读取这个扇区的数据，需要将磁头放到这个扇区上方，为了实现这一点，磁头需要移动对准相应磁道，这个过程叫做寻道，所耗费时间叫做寻道时间，然后磁盘旋转将目标扇区旋转到磁头下，这个过程耗费的时间叫做旋转时间。</p>
 <h2 id="局部性原理与磁盘预读"><a href="#局部性原理与磁盘预读" class="headerlink" title="局部性原理与磁盘预读"></a><strong>局部性原理与磁盘预读</strong></h2><p> 由于存储介质的特性，磁盘本身存取就比主存慢很多，再加上机械运动耗费，磁盘的存取速度往往是主存的几百分分之一，因此为了提高效率，要尽量减少磁盘I/O。为了达到这个目的，磁盘往往不是严格按需读取，而是每次都会预读，即使只需要一个字节，磁盘也会从这个位置开始，顺序向后读取一定长度的数据放入内存。这样做的理论依据是计算机科学中著名的局部性原理：</p>
@@ -559,15 +559,15 @@
 <p>​     综上所述，用B-Tree作为索引结构效率是非常高的。</p>
 <h1 id="MySQL索引实现"><a href="#MySQL索引实现" class="headerlink" title="MySQL索引实现"></a><strong>MySQL索引实现</strong></h1><p>在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，下面主要讨论MyISAM和InnoDB两个存储引擎的索引实现方式。</p>
 <h2 id="MyISAM索引实现"><a href="#MyISAM索引实现" class="headerlink" title="MyISAM索引实现"></a><strong>MyISAM索引实现</strong></h2><p>MyISAM引擎使用B+Tree作为索引结构，<strong>叶节点的data域存放的是数据记录的地址</strong>。下图是MyISAM索引的原理图：</p>
-<img src="/2019/07/24/MySQL中的索引/07.png">
+<img src="/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/07.png">
 <p>这里设表一共有三列，假设我们以Col1为主键，则上图是一个MyISAM表的主索引（Primary key）示意。可以看出MyISAM的索引文件仅仅保存数据记录的地址。<strong>在MyISAM中，主索引和辅助索引（Secondary key）在结构上没有任何区别，只是主索引要求key是唯一的，而辅助索引的key可以重复。</strong>如果我们在Col2上建立一个辅助索引，则此索引的结构如下图所示：</p>
-<img src="/2019/07/24/MySQL中的索引/08.png">
+<img src="/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/08.png">
 <h2 id="InnoDB索引实现"><a href="#InnoDB索引实现" class="headerlink" title="InnoDB索引实现"></a><strong>InnoDB索引实现</strong></h2><p>​     虽然InnoDB也使用B+Tree作为索引结构，但具体实现方式却与MyISAM截然不同。</p>
 <p>​     第一个重大区别是<strong>InnoDB的数据文件本身就是索引文件。</strong>从上文知道，<strong>MyISAM索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。</strong>而在InnoDB中，表数据文件本身就是按B+Tree组织的一个索引结构，这棵树的<strong>叶节点data域保存了完整的数据记录</strong>。这个索引的key是数据表的主键，因此InnoDB表数据文件本身就是主索引。</p>
-<img src="/2019/07/24/MySQL中的索引/09.png">
+<img src="/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/09.png">
 <p>​    上图是InnoDB主索引（同时也是数据文件）的示意图，可以看到叶节点包含了完整的数据记录。这种索引叫做聚集索引。因为InnoDB的数据文件本身要按主键聚集，所以InnoDB要求表必须有主键（MyISAM可以没有），如果没有显式指定，则MySQL系统会自动选择一个可以唯一标识数据记录的列作为主键，如果不存在这种列，则MySQL自动为InnoDB表生成一个隐含字段作为主键，这个字段长度为6个字节，类型为长整形。</p>
 <p>​      <strong>第二个与MyISAM索引的不同是InnoDB的辅助索引data域存储相应记录主键的值而不是地址。换句话说，InnoDB的所有辅助索引都引用主键作为data域。</strong>例如，下图为定义在Col3上的一个辅助索引：</p>
-<img src="/2019/07/24/MySQL中的索引/10.png">
+<img src="/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/10.png">
 <p>这里以英文字符的ASCII码作为比较准则。<strong><u>聚集索引这种实现方式使得按主键的搜索十分高效，但是辅助索引搜索需要检索两遍索引：首先检索辅助索引获得主键，然后用主键到主索引中检索获得记录。</u></strong></p>
 <p>​     了解不同存储引擎的索引实现方式对于正确使用和优化索引都非常有帮助，例如知道了InnoDB的索引实现后，就很容易明白为什么<strong>不建议使用过长的字段作为主键，因为所有辅助索引都引用主索引，过长的主索引会令辅助索引变得过大。</strong>再例如，用<strong>非单调的字段</strong>作为主键在InnoDB中不是个好主意，因为InnoDB数据文件本身是一颗B+Tree，非单调的主键会造成在<strong>插入新记录时数据文件</strong>为了维持B+Tree的特性而<strong>频繁的分裂调整</strong>，十分低效，而<strong><u>使用自增字段作为主键则是一个很好的选择。</u></strong></p>
 <p><strong><u>对于InnoDB而言，因为节点下有数据文件，因此节点的分裂将会比较慢。对于InnoDB的主键，尽量用整型，而且是递增的整型。如果是无规律的数据，将会产生页的分裂，影响速度。</u></strong></p>
@@ -578,13 +578,13 @@
 <p>补充：<strong>索引覆盖</strong></p>
 <p>索引覆盖是指如果查询的列恰好是索引的一部分，那么查询只需要在索引文件上进行，不需要回行到磁盘再找数据（<strong>即不需要回表查找</strong>）。这种查询速度非常快，称为“索引覆盖”。</p>
 <h2 id="聚簇索引与非聚簇索引"><a href="#聚簇索引与非聚簇索引" class="headerlink" title="聚簇索引与非聚簇索引"></a><strong>聚簇索引与非聚簇索引</strong></h2><h3 id="1、聚簇索引"><a href="#1、聚簇索引" class="headerlink" title="1、聚簇索引"></a><strong>1、聚簇索引</strong></h3><p>​    所谓聚簇索引，就是指<strong><u>主索引</u>文件和数据文件为同一份文件，聚簇索引主要用在Innodb存储引擎中。</strong>在该索引实现方式中B+Tree的叶子节点上的data就是数据本身，key为主键，如果是一般索引的话，data便会指向对应的主索引(<strong>然后再进行一次索引</strong>)，如下图所示：</p>
-<img src="/2019/07/24/MySQL中的索引/05.png">
+<img src="/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/05.png">
 <p>  在B+Tree的每个叶子节点增加一个指向相邻叶子节点的指针，就形成了带有顺序访问指针的B+Tree。<strong>做这个优化的目的是为了提高区间访问的性能</strong>，例如上图中如果要查询key为从18到49的所有数据记录，当找到18后，只需顺着节点和指针顺序遍历就可以一次性访问到所有数据节点，极大提到了区间查询效率。</p>
 <h3 id="2、非聚簇索引"><a href="#2、非聚簇索引" class="headerlink" title="2、非聚簇索引"></a><strong>2、非聚簇索引</strong></h3><p>​    非聚簇索引就是<strong>指B+Tree的叶子节点上的data，并不是数据本身，而是数据存放的地址。</strong>主索引和辅助索引没啥区别，只是主索引中的key一定得是唯一的。主要用在MyISAM存储引擎中，如下图：</p>
-<img src="/2019/07/24/MySQL中的索引/06.png">
+<img src="/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/06.png">
 <p><strong>非聚簇索引比聚簇索引多了一次读取数据的IO操作，所以查找性能上会差。</strong></p>
 <h2 id="联合索引-1"><a href="#联合索引-1" class="headerlink" title="联合索引"></a>联合索引</h2><h3 id="联合索引的B-树结构"><a href="#联合索引的B-树结构" class="headerlink" title="联合索引的B+树结构"></a>联合索引的B+树结构</h3><p>我们用（name，age）这个联合索引来分析</p>
-<img src="/2019/07/24/MySQL中的索引/11.jpg">
+<img src="/2019/07/24/MySQL中的索引/07/24/MySQL中的索引/11.jpg">
 <p>可以看到，索引项是按照索引定义里面出现的字段顺序排序的。</p>
 <p>当你的逻辑需求是查到所有名字是“张三”的人时，可以快速定位到 ID4，然后向后遍历得到所有需要的结果。</p>
 <p>只要满足最左前缀，就可以利用索引来加速检索。这个最左前缀可以是联合索引的最左 N 个字段，也可以是字符串索引的最左 M 个字符。</p>
@@ -845,7 +845,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

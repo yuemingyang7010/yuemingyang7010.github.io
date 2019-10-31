@@ -89,15 +89,15 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="1.设计模式概述历史性著作《设计模式：可复用面向对象软件的基础》一书中描述了23种经典面向对象设计模式，创立了模式在软件设计中的地位。  什么是好的软件设计？软件设计的金科玉律：复用！变化是复用的天敌！面向对象设计最大的优势在于：抵御变化！ 重新认识面向对象&amp;gt;理解隔离变化·从宏观层面来看，面向对象的构建方式更能适应软件的变化，能将变化所带来的影响减为最小 &amp;gt;各司其职·从微观层面来看，面向对象">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/设计模式/01.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/设计模式/02.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/设计模式/03.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/设计模式/04.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/设计模式/03/17/设计模式/01.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/设计模式/03/17/设计模式/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/设计模式/03/17/设计模式/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/17/设计模式/03/17/设计模式/04.png">
 <meta property="og:updated_time" content="2019-08-20T01:32:39.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式">
 <meta name="twitter:description" content="1.设计模式概述历史性著作《设计模式：可复用面向对象软件的基础》一书中描述了23种经典面向对象设计模式，创立了模式在软件设计中的地位。  什么是好的软件设计？软件设计的金科玉律：复用！变化是复用的天敌！面向对象设计最大的优势在于：抵御变化！ 重新认识面向对象&amp;gt;理解隔离变化·从宏观层面来看，面向对象的构建方式更能适应软件的变化，能将变化所带来的影响减为最小 &amp;gt;各司其职·从微观层面来看，面向对象">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/17/设计模式/01.jpg">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/17/设计模式/03/17/设计模式/01.jpg">
 
 
 
@@ -407,7 +407,7 @@
 
       
         <h2 id="1-设计模式概述"><a href="#1-设计模式概述" class="headerlink" title="1.设计模式概述"></a>1.设计模式概述</h2><p>历史性著作《设计模式：可复用面向对象软件的基础》一书中描述了23种经典面向对象设计模式，创立了模式在软件设计中的地位。</p>
-<img src="/2019/03/17/设计模式/01.jpg">
+<img src="/2019/03/17/设计模式/03/17/设计模式/01.jpg">
 <h3 id="什么是好的软件设计？"><a href="#什么是好的软件设计？" class="headerlink" title="什么是好的软件设计？"></a>什么是好的软件设计？</h3><p>软件设计的金科玉律：<br><strong>复用！</strong><br>变化是复用的天敌！<br>面向对象设计最大的优势在于：<br><strong>抵御变化！</strong></p>
 <h3 id="重新认识面向对象"><a href="#重新认识面向对象" class="headerlink" title="重新认识面向对象"></a>重新认识面向对象</h3><p>><strong>理解隔离变化</strong>·从宏观层面来看，面向对象的构建方式更能适应软件的变化，能将变化所带来的影响减为最小</p>
 <p><strong>&gt;各司其职·</strong>从微观层面来看，面向对象的方式更强调各个类的“责任”·由于需求变化导致的新增类型不应该影响原来类型的实现——是所谓各负其责(比如，line类draw()负责画线,rect类draw()负责画矩形..)</p>
@@ -420,7 +420,7 @@
 <li>高层模块(稳定)不应该依赖于低层模块(变化)，二者都应该依赖于抽象(稳定) 。</li>
 <li>抽象(稳定)不应该依赖于实现细节(变化) ，实现细节应该依赖于抽象(稳定)。</li>
 </ul>
-<img src="/2019/03/17/设计模式/02.png">
+<img src="/2019/03/17/设计模式/03/17/设计模式/02.png">
 <p><strong>上面第二种方式隔离了变化。</strong></p>
 <p>2.开放封闭原则（OCP）</p>
 <ul>
@@ -528,13 +528,13 @@
 <p>>紧耦合  &gt; 松耦合</p>
 <h2 id="2-Template-Method（模板模式）"><a href="#2-Template-Method（模板模式）" class="headerlink" title="2.Template Method（模板模式）"></a>2.Template Method（模板模式）</h2><h3 id="动机（Motivation）"><a href="#动机（Motivation）" class="headerlink" title="动机（Motivation）"></a>动机（Motivation）</h3><p>在软件构建过程中，<strong>对于某一项任务，它常常有稳定的整体操作结构，但各个子步骤却有很多改变的需求</strong>，或者由于固有的原因（比如框架与应用之间的关系）而无法 和任务的整体结构同时实现。</p>
 <p>如何在确定稳定操作结构的前提下，来灵活应对各个子步骤的变化或者晚期实现需求？</p>
-<img src="/2019/03/17/设计模式/03.png">
+<img src="/2019/03/17/设计模式/03/17/设计模式/03.png">
 <p><strong>例如如下的结构化设计流程：</strong></p>
 <p>template1_lib.cpp</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//程序库开发人员</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Library</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Step1</span><span class="params">()</span>   <span class="comment">//稳定</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"Step1"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Step3</span><span class="params">()</span>   <span class="comment">//稳定</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"Step3"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Step5</span><span class="params">()</span>   <span class="comment">//稳定</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"Step5"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>template1_app.cpp</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"template1_lib.cpp"</span></span></span><br><span class="line"><span class="comment">//应用程序开发人员</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Application</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">Step2</span><span class="params">()</span>   <span class="comment">//变化</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"myStep2"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Step4</span><span class="params">()</span>    <span class="comment">//变化</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"myStep4"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Library lib;</span><br><span class="line">	Application app;</span><br><span class="line"> <span class="comment">////////////写程序主流程start///////////////////</span></span><br><span class="line">	lib.Step1();</span><br><span class="line">	<span class="keyword">if</span> (app.Step2())</span><br><span class="line">	&#123;</span><br><span class="line">		lib.Step3();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		app.Step4();</span><br><span class="line">	&#125;</span><br><span class="line">	lib.Step5();</span><br><span class="line"> <span class="comment">////////////写程序主流程end///////////////////</span></span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2019/03/17/设计模式/04.png">
+<img src="/2019/03/17/设计模式/03/17/设计模式/04.png">
 <p>template2_lib.cpp</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -687,7 +687,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

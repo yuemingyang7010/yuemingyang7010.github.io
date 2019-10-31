@@ -89,19 +89,19 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="MySql常用数据类型    类型 描述     Char(长度) 定长字符串，存储空间大小固定，适合作为主键或外键   Varchar(长度) 变长字符串，存储空间等于实际数据空间   double(有效数字位数，小数位) 数值型   Float(有效数字位数，小数位) 数值型   Int(长度) 整型   bigint(长度) 长整型   Date 日期型   BLOB Binary Larg">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/12.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/08.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/11.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/04.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/05.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/06.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/07.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/10.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/03/15/MySQL/12.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/03/15/MySQL/08.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/03/15/MySQL/11.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/03/15/MySQL/04.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/03/15/MySQL/05.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/03/15/MySQL/06.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/03/15/MySQL/07.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/03/15/MySQL/10.png">
 <meta property="og:updated_time" content="2019-08-10T10:47:55.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL">
 <meta name="twitter:description" content="MySql常用数据类型    类型 描述     Char(长度) 定长字符串，存储空间大小固定，适合作为主键或外键   Varchar(长度) 变长字符串，存储空间等于实际数据空间   double(有效数字位数，小数位) 数值型   Float(有效数字位数，小数位) 数值型   Int(长度) 整型   bigint(长度) 长整型   Date 日期型   BLOB Binary Larg">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/12.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/15/MySQL/03/15/MySQL/12.png">
 
 
 
@@ -472,7 +472,7 @@
 </tbody>
 </table>
 </div>
-<h1 id="一条SQL查询语句是如何执行的？"><a href="#一条SQL查询语句是如何执行的？" class="headerlink" title="一条SQL查询语句是如何执行的？"></a>一条SQL查询语句是如何执行的？</h1><img src="/2019/03/15/MySQL/12.png">
+<h1 id="一条SQL查询语句是如何执行的？"><a href="#一条SQL查询语句是如何执行的？" class="headerlink" title="一条SQL查询语句是如何执行的？"></a>一条SQL查询语句是如何执行的？</h1><img src="/2019/03/15/MySQL/03/15/MySQL/12.png">
 <p>第二步：查询缓存；MySQL 拿到一个查询请求后，会先到查询缓存看看，之前是不是执行过这条语句。之前执行过的语句及其结果可能会以 key-value 对的形式。<strong>但是大多数情况下我会建议你不要使用查询缓存，为什么呢？因为查询缓存往往弊大于利。</strong>（因为只要表做了更新，查询缓存就会清空，对更新频繁的数据库来说，查询缓存命中率低。因此查询缓存适合业务是静态表，或者很长时间才更新）</p>
 <p>需要注意的是，<strong>MySQL 8.0 版本直接将查询缓存的整块功能删掉了</strong>，也就是说 8.0 开始彻底没有这个功能了。</p>
 <p>优化器：优化器是在表里面有多个索引的时候，决定使用哪个索引；或者在一个语句有多表关联（join）的时候，决定各个表的连接顺序。</p>
@@ -484,9 +484,9 @@
 <p><strong>InnoDB:</strong>InnoDB是一个健壮的事务型存储引擎,他引入了行级锁和外键约束。一般来说，如果需要事务支持，并且有较高的并发读取频率，InnoDB是不错的选择。</p>
 <p><strong>MEMORY：</strong>使用MySQL Memory存储引擎的出发点是速度。为得到最快的响应时间，采用的逻辑存储介质是系统内存。</p>
 <p>一般在以下几种情况下使用Memory存储引擎：1.目标数据较小，而且被非常频繁地访问。2.如果数据是临时的，而且要求必须立即可用，那么就可以存放在内存表中。3.存储在Memory表中的数据如果突然丢失，不会对应用服务产生实质的负面影响。</p>
-<img src="/2019/03/15/MySQL/08.png">
+<img src="/2019/03/15/MySQL/03/15/MySQL/08.png">
 <h1 id="查询性能优化"><a href="#查询性能优化" class="headerlink" title="查询性能优化"></a>查询性能优化</h1><h2 id="使用-Explain-进行分析"><a href="#使用-Explain-进行分析" class="headerlink" title="使用 Explain 进行分析"></a>使用 Explain 进行分析</h2><p>Explain 用来分析 SELECT 查询语句，开发人员可以通过分析 Explain 结果来优化查询语句。</p>
-<img src="/2019/03/15/MySQL/11.png">
+<img src="/2019/03/15/MySQL/03/15/MySQL/11.png">
 <p>比较重要的字段有：</p>
 <ul>
 <li>select_type : 查询类型，有简单查询、联合查询、子查询等</li>
@@ -514,10 +514,10 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag <span class="keyword">WHERE</span> tag=<span class="string">'mysql'</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag_post <span class="keyword">WHERE</span> tag_id=<span class="number">1234</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> post <span class="keyword">WHERE</span> post.id <span class="keyword">IN</span> (<span class="number">123</span>,<span class="number">456</span>,<span class="number">567</span>,<span class="number">9098</span>,<span class="number">8904</span>);</span><br></pre></td></tr></table></figure>
 <h1 id="切分"><a href="#切分" class="headerlink" title="切分"></a>切分</h1><h2 id="水平切分"><a href="#水平切分" class="headerlink" title="水平切分"></a>水平切分</h2><p>水平切分又称为 Sharding，它是将同一个表中的记录拆分到多个结构相同的表中。</p>
 <p>当一个表的数据不断增多时，Sharding 是必然的选择，它可以将数据分布到集群的不同节点上，从而缓存单个数据库的压力。</p>
-<img src="/2019/03/15/MySQL/04.jpg">
+<img src="/2019/03/15/MySQL/03/15/MySQL/04.jpg">
 <h2 id="垂直切分"><a href="#垂直切分" class="headerlink" title="垂直切分"></a>垂直切分</h2><p>垂直切分是将一张表按列切分成多个表，通常是按照列的关系密集程度进行切分，也可以利用垂直切分将经常被使用的列和不经常被使用的列切分到不同的表中。</p>
 <p>在数据库的层面使用垂直切分将按数据库中表的密集程度部署到不同的库中，例如将原来的电商数据库垂直切分成商品数据库、用户数据库等。</p>
-<img src="/2019/03/15/MySQL/05.jpg">
+<img src="/2019/03/15/MySQL/03/15/MySQL/05.jpg">
 <h2 id="Sharding-策略"><a href="#Sharding-策略" class="headerlink" title="Sharding 策略"></a>Sharding 策略</h2><ul>
 <li>哈希取模：hash(key) % N；</li>
 <li>范围：可以是 ID 范围也可以是时间范围；</li>
@@ -536,7 +536,7 @@
 <li><strong>I/O 线程</strong> ：负责从主服务器上读取二进制日志，并写入从服务器的中继日志（Relay log）。</li>
 <li><strong>SQL 线程</strong> ：负责读取中继日志，解析出主服务器已经执行的数据更改并在从服务器中重放（Replay）。</li>
 </ul>
-<img src="/2019/03/15/MySQL/06.png">
+<img src="/2019/03/15/MySQL/03/15/MySQL/06.png">
 <h2 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h2><p>主服务器处理写操作以及实时性要求比较高的读操作，而从服务器处理读操作。</p>
 <p>读写分离能提高性能的原因在于：</p>
 <ul>
@@ -545,7 +545,7 @@
 <li>增加冗余，提高可用性。</li>
 </ul>
 <p>读写分离常用代理方式来实现，代理服务器接收应用层传来的读写请求，然后决定转发到哪个服务器。</p>
-<img src="/2019/03/15/MySQL/07.png">
+<img src="/2019/03/15/MySQL/03/15/MySQL/07.png">
 <h1 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h1><h2 id="按锁的粒度分类："><a href="#按锁的粒度分类：" class="headerlink" title="按锁的粒度分类："></a>按锁的粒度分类：</h2><p>Mysql为了解决并发、数据安全的问题，使用了锁机制。</p>
 <p>可以按照锁的粒度把数据库锁分为表级锁和行级锁。</p>
 <p><strong>表级锁</strong></p>
@@ -602,7 +602,7 @@
 <p>补充：<strong>当你创建或设置主键的时候，mysql会自动添加一个与主键对应的唯一索引，不需要再做额外的添加。</strong></p>
 <p>【2】行锁的一种特殊情况：间隙锁：</p>
 <p>值在范围内，但却不存在<br>—此时linelock表中没有id=7的数据</p>
-<img src="/2019/03/15/MySQL/10.png">
+<img src="/2019/03/15/MySQL/03/15/MySQL/10.png">
 <p>update linelock set name =’x’where id&gt;1 and id&lt;9；—即在此where范围中，没有id=7的数间隙：Mysq1会自动给间隙加索-〉间隙锁。即本题会自动给id=7的数据加间隙锁（行锁）。</p>
 <p>行锁：如果有where，则实际加索的范围就是where后面的范围（不是实际的值）</p>
 <p>InnoDB默认采用行锁；</p>
@@ -772,7 +772,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

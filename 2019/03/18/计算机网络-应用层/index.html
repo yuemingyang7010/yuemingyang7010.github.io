@@ -89,15 +89,15 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="域名系统DNSDNS服务作用：负责将域名解析成IP DNS 是一个分布式数据库，提供了主机名和 IP 地址之间相互转换的服务。这里的分布式数据库是指，每个站点只保留它自己的那部分数据。 域名具有层次结构，从上到下依次为：根域名、顶级域名、二级域名。  DNS 可以使用 UDP 或者 TCP 进行传输，使用的端口号都为 53。大多数情况下 DNS 使用 UDP 进行传输，这就要求域名解析器和域名服务">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/01.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/04.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/05.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/06.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/03/18/计算机网络-应用层/01.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/03/18/计算机网络-应用层/04.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/03/18/计算机网络-应用层/05.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/03/18/计算机网络-应用层/06.png">
 <meta property="og:updated_time" content="2019-08-05T07:24:31.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络-应用层">
 <meta name="twitter:description" content="域名系统DNSDNS服务作用：负责将域名解析成IP DNS 是一个分布式数据库，提供了主机名和 IP 地址之间相互转换的服务。这里的分布式数据库是指，每个站点只保留它自己的那部分数据。 域名具有层次结构，从上到下依次为：根域名、顶级域名、二级域名。  DNS 可以使用 UDP 或者 TCP 进行传输，使用的端口号都为 53。大多数情况下 DNS 使用 UDP 进行传输，这就要求域名解析器和域名服务">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/01.jpg">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/18/计算机网络-应用层/03/18/计算机网络-应用层/01.jpg">
 
 
 
@@ -420,7 +420,7 @@
         <h1 id="域名系统DNS"><a href="#域名系统DNS" class="headerlink" title="域名系统DNS"></a>域名系统DNS</h1><p><strong>DNS服务作用：负责将域名解析成IP</strong></p>
 <p>DNS 是一个分布式数据库，提供了主机名和 IP 地址之间相互转换的服务。这里的分布式数据库是指，每个站点只保留它自己的那部分数据。</p>
 <p>域名具有层次结构，从上到下依次为：根域名、顶级域名、二级域名。</p>
-<img src="/2019/03/18/计算机网络-应用层/01.jpg">
+<img src="/2019/03/18/计算机网络-应用层/03/18/计算机网络-应用层/01.jpg">
 <p><strong>DNS 可以使用 UDP 或者 TCP 进行传输</strong>，使用的端口号都为 53。大多数情况下 DNS 使用 UDP 进行传输，这就要求域名解析器和域名服务器都必须自己处理超时和重传从而保证可靠性。在两种情况下会使用 TCP 进行传输：</p>
 <ul>
 <li>如果返回的响应超过的 512 字节（UDP 最大只支持 512 字节的数据）。</li>
@@ -444,14 +444,14 @@
 <li>如果客户端选择了某个 DHCP 服务器提供的信息，那么就发送 Request 报文给该 DHCP 服务器。</li>
 <li>DHCP 服务器发送 Ack 报文，表示客户端此时可以使用提供给它的信息。</li>
 </ol>
-<img src="/2019/03/18/计算机网络-应用层/04.jpg">
+<img src="/2019/03/18/计算机网络-应用层/03/18/计算机网络-应用层/04.jpg">
 <h1 id="远程登录协议TELNET"><a href="#远程登录协议TELNET" class="headerlink" title="远程登录协议TELNET"></a>远程登录协议TELNET</h1><p>TELNET 用于登录到远程主机上，并且远程主机上的输出也会返回。</p>
 <p>TELNET 可以适应许多计算机和操作系统的差异，例如不同操作系统系统的换行符定义。</p>
 <h1 id="电子邮件协议"><a href="#电子邮件协议" class="headerlink" title="电子邮件协议"></a>电子邮件协议</h1><p>一个电子邮件系统由三部分组成：用户代理、邮件服务器以及邮件协议。</p>
 <p>邮件协议包含发送协议和读取协议，发送协议常用 SMTP，读取协议常用 POP3 和 IMAP。</p>
-<img src="/2019/03/18/计算机网络-应用层/05.png">
+<img src="/2019/03/18/计算机网络-应用层/03/18/计算机网络-应用层/05.png">
 <h2 id="1-SMTP-发送"><a href="#1-SMTP-发送" class="headerlink" title="1. SMTP(发送)"></a>1. SMTP(发送)</h2><p>SMTP 只能发送 ASCII 码，而互联网邮件扩充 MIME 可以发送二进制文件。MIME 并没有改动或者取代 SMTP，而是增加邮件主体的结构，定义了非 ASCII 码的编码规则。</p>
-<img src="/2019/03/18/计算机网络-应用层/06.png">
+<img src="/2019/03/18/计算机网络-应用层/03/18/计算机网络-应用层/06.png">
 <h2 id="2-POP3-接收"><a href="#2-POP3-接收" class="headerlink" title="2. POP3(接收)"></a>2. POP3(接收)</h2><p>POP3 的特点是只要用户从服务器上读取了邮件，就把该邮件删除。</p>
 <h2 id="3-IMAP-接收"><a href="#3-IMAP-接收" class="headerlink" title="3. IMAP(接收)"></a>3. IMAP(接收)</h2><p>IMAP 协议中客户端和服务器上的邮件保持同步，如果不手动删除邮件，那么服务器上的邮件也不会被删除。IMAP 这种做法可以让用户随时随地去访问服务器上的邮件。</p>
 <h1 id="常用端口"><a href="#常用端口" class="headerlink" title="常用端口"></a><u>常用端口</u></h1><div class="table-container">
@@ -649,8 +649,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/18/计算机网络-网络层/" rel="next" title="计算机网络-网络层">
-                <i class="fa fa-chevron-left"></i> 计算机网络-网络层
+              <a href="/2019/03/17/socket编程/" rel="next" title="socket编程">
+                <i class="fa fa-chevron-left"></i> socket编程
               </a>
             
           </div>
@@ -659,8 +659,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/18/计算机网络-物理层/" rel="prev" title="计算机网络-物理层">
-                计算机网络-物理层 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/18/计算机网络-网络层/" rel="prev" title="计算机网络-网络层">
+                计算机网络-网络层 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -745,7 +745,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -89,21 +89,21 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="中断与异常 进程与线程0.重点梳理★★★ 进程与线程的本质区别、以及各自的使用场景。 ★★★ 进程调度算法的特点以及使用场景。 ★★★ 进程通信方法的特点以及使用场景。 ★★☆ 协程的作用。★★☆ 常见进程同步问题。 ★☆☆ 进程状态。 ★☆☆ 线程实现的方式。 1. 进程  解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/12.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/13.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/09.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/15.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/14.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/16.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/10.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/11.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/07.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/08.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/12.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/13.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/09.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/15.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/14.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/16.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/10.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/11.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/07.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/08.png">
 <meta property="og:updated_time" content="2019-08-09T03:11:08.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统-进程管理">
 <meta name="twitter:description" content="中断与异常 进程与线程0.重点梳理★★★ 进程与线程的本质区别、以及各自的使用场景。 ★★★ 进程调度算法的特点以及使用场景。 ★★★ 进程通信方法的特点以及使用场景。 ★★☆ 协程的作用。★★☆ 常见进程同步问题。 ★☆☆ 进程状态。 ★☆☆ 线程实现的方式。 1. 进程  解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/12.jpg">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/12.jpg">
 
 
 
@@ -423,21 +423,21 @@
       
 
       
-        <h1 id="中断与异常"><a href="#中断与异常" class="headerlink" title="中断与异常"></a>中断与异常</h1><img src="/2019/03/20/操作系统-进程管理/12.jpg">
+        <h1 id="中断与异常"><a href="#中断与异常" class="headerlink" title="中断与异常"></a>中断与异常</h1><img src="/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/12.jpg">
 <h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><h3 id="0-重点梳理"><a href="#0-重点梳理" class="headerlink" title="0.重点梳理"></a>0.重点梳理</h3><p>★★★ 进程与线程的本质区别、以及各自的使用场景。</p>
 <p>★★★ 进程调度算法的特点以及使用场景。</p>
 <p>★★★ 进程通信方法的特点以及使用场景。</p>
 <p>★★☆ 协程的作用。<br>★★☆ 常见进程同步问题。</p>
 <p>★☆☆ 进程状态。</p>
 <p>★☆☆ 线程实现的方式。</p>
-<h2 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h2><img src="/2019/03/20/操作系统-进程管理/13.jpg">
-<img src="/2019/03/20/操作系统-进程管理/09.png">
+<h2 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h2><img src="/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/13.jpg">
+<img src="/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/09.png">
 <p>解答：D。程序一开始，产生一个进程Pl执行此程序，P1进入程序后，此时i=0，于是进入循环体，fork()产生一个子进程P2，接着Pl执行下一条语句输出一个”-“（其实是放入缓冲区，等合适的时候再输出，我们将此’-‘记为a）；</p>
 <p>P2成为一个独立的子进程，继承P1的诸如环境变量、PC等环境，P2也执行下一条语句输出一个’-‘（其实是放入缓冲区，等合适的时候再输出，我们将此记为b），同时P2中此时i=1，继续执行for 循环P2先forkO出一个子进程P3，然后P2再执行下一条语句输出一个一（其实是放入缓冲区，等合适的时候再输出，我们将此记为c）。</p>
 <p>P3进程为P2的子进程，它会复制其父进程P2的诸如环境变量、PC等环境，它执行下一条语句（输出语句）本应该输出一个，但事实上因为这里P3会继承P2的缓冲区，而P2的缓冲区中有一个（P2调用fork产生P3时缓冲区里有b），所以P3会输出两个。</p>
 <p>Pl产生子进程P2后，继续下一轮循环，当i=1时，fork()产生另一个它的子进程P4，同时P1执行输出语句输出一个’-‘。</p>
 <h2 id="2-线程"><a href="#2-线程" class="headerlink" title="2. 线程"></a>2. 线程</h2><p><strong>线程是独立调度的基本单位。</strong></p>
-<img src="/2019/03/20/操作系统-进程管理/15.jpg">
+<img src="/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/15.jpg">
 <p><strong>例1：</strong>同一进程下的线程可以共享（）。（2012·搜狗）</p>
 <p>A.stack                                B.data section                             C.register set                        D.thread ID             </p>
 <p>解答：B。B中data section存放全局变量等内容，显然是可以被同一进程下的线程共享的。</p>
@@ -466,8 +466,8 @@
 <p>由于创建或撤销进程时，系统都要为之分配或回收资源，如内存空间、I/O 设备等，所付出的开销远大于创建或撤销线程时的开销。类似地，在进行进程切换时，涉及当前执行进程 CPU 环境的保存及新调度进程 CPU 环境的设置，而线程切换时只需保存和设置少量寄存器内容，开销很小。</p>
 <p>Ⅳ 通信方面</p>
 <p>线程间可以通过直接读写同一进程中的数据进行通信，但是进程通信需要借助 IPC。</p>
-<h1 id="进程状态的切换"><a href="#进程状态的切换" class="headerlink" title="进程状态的切换"></a>进程状态的切换</h1><img src="/2019/03/20/操作系统-进程管理/14.jpg">
-<img src="/2019/03/20/操作系统-进程管理/16.jpg">
+<h1 id="进程状态的切换"><a href="#进程状态的切换" class="headerlink" title="进程状态的切换"></a>进程状态的切换</h1><img src="/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/14.jpg">
+<img src="/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/16.jpg">
 <h1 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h1><p>可以参考<a href="https://mp.weixin.qq.com/s/D_woyVReMhAXH-sHx7eZfA" target="_blank" rel="noopener">大话操作系统之调度算法</a>   重要！！！</p>
 <p>不同环境的调度算法目标不同，因此需要针对不同环境来讨论调度算法。</p>
 <p>调度的基本准则包括CPU利用率、系统吞吐量、周转时间、等待时间、响应时间等。</p>
@@ -480,14 +480,14 @@
 <p>A.先来先服务                 B.均衡调度                  C.最短作业优先               D.最高响应比优先</p>
 <p>解答：D。</p>
 <p>例2：假定我们有3个程序，每个程序花费80%的时间进行I/0，20%的时间使用CPU。每个程序启动时间和其需要使用进行计算的分钟数如下，不考虑进程切换时间：</p>
-<img src="/2019/03/20/操作系统-进程管理/10.png">
+<img src="/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/10.png">
 <p>请问，在多线程/进程环境下，系统的总周转时间为（）。（2012·腾讯）</p>
 <p>A.22.5                    B.23.5                     C.24.5                              D.25.5</p>
 <p>解答：B。从0点0分开始到0点10分，系统里只有1个程序，因此属于单道编程状态。单道编程时CPU的利用率为20%，因此第1个程序在该10分钟里总共使用了CPU达2分钟（其他8分钟都用来进行I/0了）。0点10分到0点15分，系统里面有两个程序，因此属于2道编程。<strong>2道编程时CPU利用率为36%（两个进程同时不使用CPU的概率是0.8*0.8-0.64）</strong>，则在5分钟时间内，CPU使用了1.8分钟。假定这两个程序完全平等，则每个程序使用CPU的时间是0.9分钟。至此，程序1总共运行了2.9分钟CPU时间，程序2运行了0.9分钟CPU时间。</p>
 <p>从0点15分开始，系统里面有3个程序，因此属于3道编程状态。3道编程时CPU的利用率为48.8%（三个进程同时不使用CPU的概率是0.8<em>0.8</em>0.8=0.512），同样，假定所有程序完全平等，此时，程序1离结束所需要的CPU时间最短，仅为0.6分钟。而如果程序1想再运行0.6分钟CPU时间，则整个系统需运行时间约为3.7分钟（3.7分钟时间内CPU共被使用1.8分钟，平均每个程序使用CPU时间为0.6分钟），因此在0点18.7分时，<strong>第一个程序执行完毕，系统变为2道编程。</strong></p>
 <p><strong>2道编程时CPU利用率为36%</strong>，此时程序2运行了0.9+0.6-1.5分钟，程序3运行了0.6分钟，此时，程序2离结束所需要的CPU时间最短，仅为0.5分钟。而如果程序2想再运行0.5分钟CPU时间，则整个系统需运行时间约为2.8分钟（2.8分钟时间内CPU共被使用1分钟，平均每个程序使用CPU时间为0.5分钟），因此在0点<strong>21.5分</strong>时，第二个程序执行完毕，系统变为1道编程。</p>
 <p>系统里只有1个程序，因此属于单道编程状态。单道编程时CPU的利用率为20%，此时程序3运行了0.6+0.5=1.1分钟，还需要运行0.4分钟的CPU时间，故整个系统需要2分钟（2分钟内CPU被利用0.4分钟），故程序3在0点<strong>23.5分</strong>时结束。</p>
-<img src="/2019/03/20/操作系统-进程管理/11.png">
+<img src="/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/11.png">
 <h1 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h1><h2 id="1-临界区"><a href="#1-临界区" class="headerlink" title="1. 临界区"></a>1. 临界区</h2><p>对临界资源进行访问的那段代码称为临界区。</p>
 <p>为了互斥访问临界资源，每个进程在进入临界区之前，需要先进行检查。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// entry section</span><br><span class="line">// critical section;</span><br><span class="line">// exit section</span><br></pre></td></tr></table></figure>
@@ -547,11 +547,11 @@
 <li>只支持半双工通信（单向交替传输）；</li>
 <li>只能在父子进程或者兄弟进程中使用。</li>
 </ul>
-<img src="/2019/03/20/操作系统-进程管理/07.png">
+<img src="/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/07.png">
 <h2 id="2-FIFO"><a href="#2-FIFO" class="headerlink" title="2. FIFO"></a>2. FIFO</h2><p>也称为命名管道，去除了管道只能在父子进程中使用的限制。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mkfifo</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *path, <span class="keyword">mode_t</span> mode)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mkfifoat</span><span class="params">(<span class="keyword">int</span> fd, <span class="keyword">const</span> <span class="keyword">char</span> *path, <span class="keyword">mode_t</span> mode)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>FIFO 常用于客户-服务器应用程序中，FIFO 用作汇聚点，在客户进程和服务器进程之间传递数据。</p>
-<img src="/2019/03/20/操作系统-进程管理/08.png">
+<img src="/2019/03/20/操作系统-进程管理/03/20/操作系统-进程管理/08.png">
 <h2 id="3-消息队列"><a href="#3-消息队列" class="headerlink" title="3. 消息队列"></a>3. 消息队列</h2><p>相比于 FIFO，消息队列具有以下优点：</p>
 <ul>
 <li>消息队列可以独立于读写进程存在，从而避免了 FIFO 中同步管道的打开和关闭时可能产生的困难；</li>
@@ -650,8 +650,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/20/Shell编程四剑客/" rel="next" title="Shell编程四剑客">
-                <i class="fa fa-chevron-left"></i> Shell编程四剑客
+              <a href="/2019/03/19/Shell/" rel="next" title="Shell">
+                <i class="fa fa-chevron-left"></i> Shell
               </a>
             
           </div>
@@ -746,7 +746,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

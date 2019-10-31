@@ -89,14 +89,14 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="本地事务与分布式事务 两阶段提交协议(2PC)两种常见方案：  基于XA协议的两阶段提交方案交易中间件与数据库通过 XA 接口规范，使用两阶段提交来完成一个全局事务， XA 规范的基础是两阶段提交协议。第一阶段是表决阶段，所有参与者都将本事务能否成功的信息反馈发给协调者；第二阶段是执行阶段，协调者根据所有参与者的反馈，通知所有参与者，步调一致地在所有分支上提交或者回滚。  两阶段提交方案应用非常广">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/08/20/分布式/01.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/08/20/分布式/03.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/08/20/分布式/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/08/20/分布式/08/20/分布式/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/08/20/分布式/08/20/分布式/03.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/08/20/分布式/08/20/分布式/02.png">
 <meta property="og:updated_time" content="2019-08-22T04:30:38.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式事务">
 <meta name="twitter:description" content="本地事务与分布式事务 两阶段提交协议(2PC)两种常见方案：  基于XA协议的两阶段提交方案交易中间件与数据库通过 XA 接口规范，使用两阶段提交来完成一个全局事务， XA 规范的基础是两阶段提交协议。第一阶段是表决阶段，所有参与者都将本事务能否成功的信息反馈发给协调者；第二阶段是执行阶段，协调者根据所有参与者的反馈，通知所有参与者，步调一致地在所有分支上提交或者回滚。  两阶段提交方案应用非常广">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/08/20/分布式/01.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/08/20/分布式/08/20/分布式/01.png">
 
 
 
@@ -405,11 +405,11 @@
       
 
       
-        <h2 id="本地事务与分布式事务"><a href="#本地事务与分布式事务" class="headerlink" title="本地事务与分布式事务"></a>本地事务与分布式事务</h2><img src="/2019/08/20/分布式/01.png">
+        <h2 id="本地事务与分布式事务"><a href="#本地事务与分布式事务" class="headerlink" title="本地事务与分布式事务"></a>本地事务与分布式事务</h2><img src="/2019/08/20/分布式/08/20/分布式/01.png">
 <h2 id="两阶段提交协议-2PC"><a href="#两阶段提交协议-2PC" class="headerlink" title="两阶段提交协议(2PC)"></a>两阶段提交协议(2PC)</h2><p>两种常见方案：</p>
-<img src="/2019/08/20/分布式/03.png">
+<img src="/2019/08/20/分布式/08/20/分布式/03.png">
 <h3 id="基于XA协议的两阶段提交方案"><a href="#基于XA协议的两阶段提交方案" class="headerlink" title="基于XA协议的两阶段提交方案"></a>基于XA协议的两阶段提交方案</h3><p>交易中间件与数据库通过 XA 接口规范，使用两阶段提交来完成一个全局事务， XA 规范的基础是两阶段提交协议。<br>第一阶段是表决阶段，所有参与者都将本事务能否成功的信息反馈发给协调者；第二阶段是执行阶段，协调者根据所有参与者的反馈，通知所有参与者，步调一致地在所有分支上提交或者回滚。</p>
-<img src="/2019/08/20/分布式/02.png">
+<img src="/2019/08/20/分布式/08/20/分布式/02.png">
 <p>两阶段提交方案应用非常广泛，几乎所有商业OLTP数据库都支持XA协议。但是<strong>两阶段提交方案锁定资源时间长，对性能影响很大</strong>，基本不适合解决微服务事务问题。</p>
 <h3 id="TCC（Try-Confirm-Cancel）两阶段补偿型方案"><a href="#TCC（Try-Confirm-Cancel）两阶段补偿型方案" class="headerlink" title="TCC（Try-Confirm-Cancel）两阶段补偿型方案"></a>TCC（Try-Confirm-Cancel）两阶段补偿型方案</h3><p><a href="https://wenku.baidu.com/view/be946bec0975f46527d3e104.html" target="_blank" rel="noopener">TCC方案</a>在电商、金融领域落地较多。TCC方案其实是两阶段提交的一种改进。其将整个业务逻辑的每个分支显式的分成了Try、Confirm、Cancel三个操作。Try部分完成业务的准备工作，confirm部分完成业务的提交，cancel部分完成事务的回滚。</p>
 
@@ -562,7 +562,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

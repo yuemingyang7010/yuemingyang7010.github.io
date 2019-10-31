@@ -89,13 +89,13 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="目录    题目 难度      7.重建二叉树.note ☆☆☆ 采用递归的方式不断找出根节点和左右子树   树的子结构.note ☆☆☆☆ 第一步在树A中找到和B的根结点的值一样的结点R,第二步再判断树A中以R为根节点的子树是不是包含和树B一样的结构。   二叉树的镜像.note ☆☆ 先交换根节点的左右子节点，再将子节点作为根节点进行递归镜像操作。   从上往下打印二叉树.note ☆ 根节">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/19/剑指offer-树/01.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/19/剑指offer-树/02.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/19/剑指offer-树/06/19/剑指offer-树/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/06/19/剑指offer-树/06/19/剑指offer-树/02.png">
 <meta property="og:updated_time" content="2019-06-28T06:28:12.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer-树">
 <meta name="twitter:description" content="目录    题目 难度      7.重建二叉树.note ☆☆☆ 采用递归的方式不断找出根节点和左右子树   树的子结构.note ☆☆☆☆ 第一步在树A中找到和B的根结点的值一样的结点R,第二步再判断树A中以R为根节点的子树是不是包含和树B一样的结构。   二叉树的镜像.note ☆☆ 先交换根节点的左右子节点，再将子节点作为根节点进行递归镜像操作。   从上往下打印二叉树.note ☆ 根节">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/06/19/剑指offer-树/01.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/06/19/剑指offer-树/06/19/剑指offer-树/01.png">
 
 
 
@@ -475,7 +475,7 @@
 <h2 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h2><p><strong>题目描述</strong></p>
 <p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。</p>
 <p><strong>解题思路：采用递归方法</strong></p>
-<img src="/2019/06/19/剑指offer-树/01.png">
+<img src="/2019/06/19/剑指offer-树/06/19/剑指offer-树/01.png">
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for binary tree</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">reConstructBinaryTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; pre,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vin)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> reConstruct(pre,<span class="number">0</span>,pre.size()<span class="number">-1</span>,vin,<span class="number">0</span>,vin.size()<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">TreeNode* <span class="title">reConstruct</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; pre,<span class="keyword">int</span> startPre,<span class="keyword">int</span> endPre,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vin,<span class="keyword">int</span> startIn,<span class="keyword">int</span> endIn)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(startPre &gt; endPre||startIn &gt; endIn)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(pre[startPre]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=startIn;i&lt;=endIn;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(vin[i] == pre[startPre])&#123;</span><br><span class="line">                root-&gt;left = reConstruct(pre,startPre + <span class="number">1</span>,startPre+i-startIn,vin,startIn,i<span class="number">-1</span>);</span><br><span class="line">                root-&gt;right = reConstruct(pre,startPre+i-startIn+<span class="number">1</span>,endPre,vin,i+<span class="number">1</span>,endIn);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="树的子结构"><a href="#树的子结构" class="headerlink" title="树的子结构"></a>树的子结构</h2><p><strong>题目描述</strong></p>
 <p>输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）</p>
@@ -514,7 +514,7 @@
 <p>该结构特点可以类比到双向链表中： </p>
 <p>在双向链表中，每个结点也有两个指针，它们分别指向前一个结点和后一个结点。</p>
 <p>所以这两种数据结构的结点是一致，二叉搜索树之所以为二叉搜索树，双向链表之所以为双向链表，只是因为两个指针的指向不同而已，通过改变其指针的指向来实现是完全可能的。</p>
-<img src="/2019/06/19/剑指offer-树/02.png">
+<img src="/2019/06/19/剑指offer-树/06/19/剑指offer-树/02.png">
 <p><strong>具体实现步骤：</strong> </p>
 <p>原先指向左子结点的指针调整为链表中指向前一个结点的指针，原先指向右子结点的指针调整为链表中指向下一个结点的指针。 </p>
 <p>具体转换过程：按照中序遍历的方法遍历二叉搜索树，可以将该二叉树分为三个部分：根节点、左子树和右子树，当遍历结点值为4的节点时，将它分为以2为节点的左子树和以6为节点的右子树，并将4的左指针指向值为3的结点，值为3的节点的右指针指向值为4的结点，因为采用的是中序遍历，所以当遍历到根节点的时候，它的左子树已经遍历结束了，所以要对所有的子树采用递归的执行上述操作</p>
@@ -682,7 +682,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

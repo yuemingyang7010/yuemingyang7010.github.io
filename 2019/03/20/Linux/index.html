@@ -96,15 +96,15 @@
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/5/1646955be781daaa?w=589&h=228&f=png&s=16360">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/5/16469565b6951791?w=489&h=209&f=png&s=39791">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/5/164697447dc6ecac?w=525&h=246&f=png&s=12362">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/12.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/13.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/14.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/15.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/16.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/17.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/18.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/11.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/19.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/03/20/Linux/12.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/03/20/Linux/13.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/03/20/Linux/14.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/03/20/Linux/15.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/03/20/Linux/16.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/03/20/Linux/17.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/03/20/Linux/18.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/03/20/Linux/11.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/03/20/Linux/03/20/Linux/19.png">
 <meta property="og:updated_time" content="2019-08-09T06:38:34.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux">
@@ -718,13 +718,13 @@
 <p>示例：两秒钟刷新一次</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># top -d 2    可以直接top命令，采用系统默认刷新时间</span></span><br></pre></td></tr></table></figure>
 <p>Linux系统可以通过top命令查看系统的CPU、内存、运行时间、交换分区、执行的线程等信息。通过top命令可以有效的发现系统的缺陷出在哪里。<strong>是内存不够、CPU处理能力不够、IO读写过高</strong>。</p>
-<img src="/2019/03/20/Linux/12.png">
-<img src="/2019/03/20/Linux/13.png">
-<img src="/2019/03/20/Linux/14.png">
-<img src="/2019/03/20/Linux/15.png">
-<img src="/2019/03/20/Linux/16.png">
-<img src="/2019/03/20/Linux/17.png">
-<img src="/2019/03/20/Linux/18.png">
+<img src="/2019/03/20/Linux/03/20/Linux/12.png">
+<img src="/2019/03/20/Linux/03/20/Linux/13.png">
+<img src="/2019/03/20/Linux/03/20/Linux/14.png">
+<img src="/2019/03/20/Linux/03/20/Linux/15.png">
+<img src="/2019/03/20/Linux/03/20/Linux/16.png">
+<img src="/2019/03/20/Linux/03/20/Linux/17.png">
+<img src="/2019/03/20/Linux/03/20/Linux/18.png">
 <h3 id="4-df"><a href="#4-df" class="headerlink" title="4.df"></a>4.df</h3><p>列出文件系统的整体磁盘使用量</p>
 <h3 id="5-netstat"><a href="#5-netstat" class="headerlink" title="5. netstat"></a>5. netstat</h3><p>查看占用端口的进程</p>
 <p>示例：查看特定端口的进程</p>
@@ -762,7 +762,7 @@
 </table>
 </div>
 <p><br></p>
-<img src="/2019/03/20/Linux/11.png">
+<img src="/2019/03/20/Linux/03/20/Linux/11.png">
 <h2 id="SIGCHLD"><a href="#SIGCHLD" class="headerlink" title="SIGCHLD"></a>SIGCHLD</h2><p>当一个子进程改变了它的状态时（停止运行，继续运行或者退出），有两件事会发生在父进程中：</p>
 <ul>
 <li>得到 SIGCHLD 信号；</li>
@@ -815,7 +815,7 @@
 <h2 id="3-自旋锁"><a href="#3-自旋锁" class="headerlink" title="3.自旋锁"></a><strong>3.自旋锁</strong></h2><p><strong>特点：</strong>轮询忙等待。 </p>
 <p>在单核cpu下不起作用：被自旋锁保护的临界区代码执行时不能进行挂起状态。会造成死锁<br> 自旋锁的初衷就是：在短期间内进行轻量级的锁定。一个被争用的自旋锁使得请求它的线程在等待锁重新可用的期间进行自旋（特别浪费处理器时间），所以自旋锁不应该被持有时间过长。如果需要长时间锁定的话, 最好使用信号量。</p>
 <p><strong>API:</strong></p>
-<img src="/2019/03/20/Linux/19.png">
+<img src="/2019/03/20/Linux/03/20/Linux/19.png">
 <h2 id="4-互斥锁和自旋锁的比较"><a href="#4-互斥锁和自旋锁的比较" class="headerlink" title="4.互斥锁和自旋锁的比较"></a>4.互斥锁和自旋锁的比较</h2><p><a href="https://blog.csdn.net/susidian/article/details/51068858" target="_blank" rel="noopener">参考</a></p>
 <p>互斥锁的起始原始开销要高于自旋锁，但是基本是一劳永逸，临界区持锁时间的大小并不会对互斥锁的开销造成影响，而自旋锁是死循环检测，加锁全程消耗cpu，起始开销虽然低于互斥锁，但是随着持锁时间，加锁的开销是线性增长。</p>
 <p>互斥锁：线程会从sleep（加锁）——&gt;running（解锁），过程中有上下文的切换，cpu的抢占，信号的发送等开销。</p>
@@ -914,8 +914,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/21/操作系统其他/" rel="prev" title="操作系统其他">
-                操作系统其他 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/20/Shell编程四剑客/" rel="prev" title="Shell编程四剑客">
+                Shell编程四剑客 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1000,7 +1000,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

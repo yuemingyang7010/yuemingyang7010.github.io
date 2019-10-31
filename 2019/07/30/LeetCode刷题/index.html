@@ -89,12 +89,12 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="两数之和(1.易)给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。 示例: 给定 nums = [2, 7, 11, 15], target = 9 因为 nums[0] + nums[1] = 2 + 7 = 9所以返回 [0, 1] 两遍">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/30/LeetCode刷题/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/07/30/LeetCode刷题/07/30/LeetCode刷题/01.png">
 <meta property="og:updated_time" content="2019-08-03T07:08:30.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode刷题">
 <meta name="twitter:description" content="两数之和(1.易)给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。 示例: 给定 nums = [2, 7, 11, 15], target = 9 因为 nums[0] + nums[1] = 2 + 7 = 9所以返回 [0, 1] 两遍">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/07/30/LeetCode刷题/01.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/07/30/LeetCode刷题/07/30/LeetCode刷题/01.png">
 
 
 
@@ -466,7 +466,7 @@
 <p>示例:</p>
 <p>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL<br>进阶:<br>你可以迭代或递归地反转链表。你能否用两种方法解决这道题？</p>
 <p>思路：</p>
-<img src="/2019/07/30/LeetCode刷题/01.png">
+<img src="/2019/07/30/LeetCode刷题/07/30/LeetCode刷题/01.png">
 <p>迭代法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *newHead = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">while</span> (head) &#123;</span><br><span class="line">            ListNode *t = head-&gt;next;</span><br><span class="line">            head-&gt;next = newHead;</span><br><span class="line">            newHead = head;</span><br><span class="line">            head = t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> newHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>递归法：</p>
@@ -650,7 +650,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
