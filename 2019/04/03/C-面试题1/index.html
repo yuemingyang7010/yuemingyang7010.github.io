@@ -89,18 +89,18 @@
 <meta property="og:site_name" content="yue">
 <meta property="og:description" content="为什么标准头文件都有类似以下的结构？12345678910#ifndef __INCvxWorksh#define __INCvxWorksh #ifdef __cplusplusextern &quot;C&quot; &amp;#123;#endif /*...*/ #ifdef __cplusplus&amp;#125;#endif #endif /* __INCvxWorksh */ 头文件中的编译宏  ifndef　INC">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/04/03/C-面试题1/01.png">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/04/03/C-面试题1/02.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/04/03/C-面试题1/03.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/04/03/C-面试题1/04.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/04/03/C-面试题1/05.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/04/03/C-面试题1/06.jpg">
-<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/04/03/C-面试题1/07.jpg">
-<meta property="og:updated_time" content="2019-09-06T09:32:55.114Z">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/01.png">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/02.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/03.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/04.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/05.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/06.jpg">
+<meta property="og:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/07.jpg">
+<meta property="og:updated_time" content="2019-10-31T04:08:45.203Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++面试题(1)">
 <meta name="twitter:description" content="为什么标准头文件都有类似以下的结构？12345678910#ifndef __INCvxWorksh#define __INCvxWorksh #ifdef __cplusplusextern &quot;C&quot; &amp;#123;#endif /*...*/ #ifdef __cplusplus&amp;#125;#endif #endif /* __INCvxWorksh */ 头文件中的编译宏  ifndef　INC">
-<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/04/03/C-面试题1/01.png">
+<meta name="twitter:image" content="http://yuemingyang7010.github.io/2019/04/03/C-面试题1/01.png">
 
 
 
@@ -737,7 +737,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Student</span><br><span class="line">~Student 3735080</span><br><span class="line">~Student 3735080</span><br></pre></td></tr></table></figure>
 <p>执行结果：调用一次构造函数，调用两次析构函数，两个对象的指针成员所指内存相同，这会导致什么问题呢？name指针被分配一次内存，但是程序结束时该内存却被释放了两次，会导致崩溃！</p>
 <p>这是由于编译系统在我们没有自己定义拷贝构造函数时，会在拷贝对象时调用默认拷贝构造函数，进行的是浅拷贝！即对指针name拷贝后会出现两个指针指向同一个内存空间。</p>
-<img src="/2019/04/03/C-面试题1/04/03/C-面试题1/01.png">
+<p><img src="/2019/04/03/C-面试题1/01.png" alt></p>
 <p>所以，在对含有指针成员的对象进行拷贝时，必须要自己定义拷贝构造函数，使拷贝后的对象指针成员有自己的内存空间，即进行深拷贝，这样就避免了内存泄漏发生。</p>
 <p><strong>对于成员变量存在指针变量的对象，浅拷贝带来问题的本质在于析构函数释放多次堆内存</strong>，使用std::shared_ptr，可以完美解决这个问题。</p>
 <h3 id="C-模板"><a href="#C-模板" class="headerlink" title="C++模板"></a>C++模板</h3><p><strong>函数模板：</strong></p>
@@ -887,17 +887,17 @@
 <h3 id="虚继承及其内存模型"><a href="#虚继承及其内存模型" class="headerlink" title="虚继承及其内存模型"></a>虚继承及其内存模型</h3><p><a href="http://c.biancheng.net/cpp/biancheng/view/3005.html" target="_blank" rel="noopener">参考</a></p>
 <p>为了解决多继承时的命名冲突和冗余数据问题，C++ 提出了虚继承，使得在派生类中只保留一份间接基类的成员。</p>
 <p>普通的继承内存模型如下：B继承A，C继承B，D继承C</p>
-<img src="/2019/04/03/C-面试题1/04/03/C-面试题1/02.jpg">
+<p><img src="/2019/04/03/C-面试题1/02.jpg" alt></p>
 <p>假设 A 是 B 的虚基类，B 又是 C 的虚基类，那么各个对象的内存模型如下图所示：</p>
-<img src="/2019/04/03/C-面试题1/04/03/C-面试题1/03.jpg">
+<p><img src="/2019/04/03/C-面试题1/03.jpg" alt></p>
 <p>VC对于虚继承，对象内存的设计：</p>
 <p>VC 引入了<strong>虚基类表</strong>，如果某个派生类有一个或多个虚基类，编译器就会在派生类对象中安插一个指针，指向虚基类表。虚基类表其实就是一个数组，数组中的元素存放的是各个虚基类的偏移。</p>
 <p>假设 A 是 B 的虚基类，同时 B 又是 C 的虚基类</p>
-<img src="/2019/04/03/C-面试题1/04/03/C-面试题1/04.jpg">
+<p><img src="/2019/04/03/C-面试题1/04.jpg" alt></p>
 <p>假设 A、B、C、D 类的继承关系为：</p>
-<img src="/2019/04/03/C-面试题1/04/03/C-面试题1/05.jpg">
+<p><img src="/2019/04/03/C-面试题1/05.jpg" alt></p>
 <p>内存模型如下图所示：</p>
-<img src="/2019/04/03/C-面试题1/04/03/C-面试题1/06.jpg">
+<p><img src="/2019/04/03/C-面试题1/06.jpg" alt></p>
 <p><strong>总结：每多一层虚继承，对象里面多一个指向虚基类表的指针。</strong></p>
 <h3 id="虚函数表"><a href="#虚函数表" class="headerlink" title="虚函数表"></a>虚函数表</h3><p><a href="https://www.jianshu.com/p/9e083ea23b23" target="_blank" rel="noopener">参考1：单继承虚函数表</a></p>
 <p><a href="https://blog.51cto.com/10740026/1748140" target="_blank" rel="noopener">参考2：多继承虚函数表</a></p>
@@ -908,7 +908,7 @@
 <p>虚函数表是一个指针数组，每个元素对应一个虚函数的函数指针，普通的函数即非虚函数，其调用不需要经过虚表。</p>
 <p>基类如果有 虚函数，几重继承就有几个虚函数表，如果子类对父类的虚函数重写了，虚函数表中对应位置指针则指向子类重写的<strong>虚函数</strong>。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~A();</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_data1, m_data2;</span><br><span class="line">&#125;; </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> :</span> A &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span></span>;;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~B();</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_data3;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> :</span> B &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_data1, m_data4;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<img src="/2019/04/03/C-面试题1/04/03/C-面试题1/07.jpg">
+<p><img src="/2019/04/03/C-面试题1/07.jpg" alt></p>
 <p><strong>多继承虚函数表：</strong></p>
 <p>例如：class Derive : public Base1, public Base2</p>
 <p>Base1，Base2中有虚函数，则Derive 的对象有两个指向虚函数表的指针，分别指向Base1和Base2的虚函数表。</p>
